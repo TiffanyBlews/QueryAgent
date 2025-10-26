@@ -1,0 +1,208 @@
+{
+  "queries": [
+    {
+      "query_id": "uav_mapping_operator-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "ASPRS Positional Accuracy Standards 2023 PDF",
+      "search_queries": [
+        "ASPRS Positional Accuracy Standards 2023 PDF",
+        "FGDC 国家空间数据精度标准 NSSDA 1998 PDF",
+        "大疆 Mavic 3 Enterprise RTK 用户手册 PDF",
+        "无人机摄影测量 航线重叠 推荐 80% 70% 行业标准",
+        "中国民航局 无人机 管理规定 2023 PDF"
+      ],
+      "scenario": "角色：市政道路项目的无人机测绘操控员。背景：需在城市施工区域完成约1 km²的高精度正射影像与DSM航测任务，制定航迹规划、重叠度、GSD目标与GCP布设方案，并形成作业前技术与合规清单。约束：不得使用任何内部数据或保密资料；仅能引用公开可获得的权威标准、指南、设备手册与法规；任务在数小时内完成，产出面向项目经理的可执行计划。",
+      "task_focus": [
+        "根据ASPRS（2023）与NSSDA（1998）的精度标准，设定目标GSD与预期平面/高程精度等级",
+        "结合Mavic 3E RTK相机参数（传感器尺寸、焦距、像元大小）推算飞行高度与前/侧向重叠度",
+        "制定GCP与检查点布设方案（数量、分布与标识要求），并说明检核方法",
+        "编制作业风险与合规清单（空域、禁飞限制、操作规程）并明确引用来源"
+      ],
+      "deliverable_requirements": [
+        "提交一份6–10页的技术计划报告（仅报告），包含：任务范围、目标GSD与精度等级、航线参数（高度、速度、前/侧向重叠、航线间距）、预计作业时长与电池需求",
+        "在报告中以可验证方式引用公开资料：至少包含ASPRS 2023标准、NSSDA 1998标准、Mavic 3E RTK官方手册、以及当地或国家民航无人机操作规定的URL或PDF链接",
+        "包含GSD计算过程与公式、预期RMSE/CE/LE估算逻辑（基于公开标准的方法），并给出GCP/检查点布设图示（可用示意图或文字说明）",
+        "提供预飞检查清单与风/光照/障碍风险评估，明确合规边界（例如最大高度、目视范围、禁飞区）"
+      ],
+      "evaluation_focus": [
+        "标准与手册引用的准确性与可核查性（是否为权威来源，是否标注年份/版本/URL）",
+        "参数推算合理性：GSD计算与航线重叠设置是否符合摄影测量常规与设备能力；预期精度等级与ASPRS/NSSDA方法的一致性",
+        "GCP与检查点布设的完整性与可执行性（数量、分布、边角/中心覆盖、标识与量测要求）",
+        "合规与风险控制的全面性（空域限制、操作规程、气象与安全评估），是否可由第三方依据公开资料复核"
+      ]
+    },
+    {
+      "query_id": "uav_mapping_operator-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OpenDroneMap sample dataset gcp GitHub",
+      "search_queries": [
+        "OpenDroneMap sample dataset gcp GitHub",
+        "OpenDroneMap documentation orthophoto DSM 2023",
+        "MicMac UAV photogrammetry tutorial GCP PDF",
+        "ASPRS Positional Accuracy Standards 2023 accuracy classes PDF",
+        "NSSDA RMSE 计算 示例 PDF"
+      ],
+      "scenario": "角色：基础设施测绘承包商的无人机测绘操控员/数据处理负责人。背景：需要用公开无人机影像数据与GCP，在3–4天内搭建可复现的开源处理流水线（下载数据、结构化处理、生成正射与DSM、精度评定、输出报告），以验证公司不依赖商业软件即可完成成果交付的能力。约束：仅使用公开数据集与开源工具（例如OpenDroneMap或MicMac）；不得使用私有算法或内部数据；成果可在他人机器上复现。",
+      "task_focus": [
+        "选择含GCP的公开无人机数据集（影像与GCP/检查点）并记录来源与采集条件",
+        "基于OpenDroneMap或MicMac构建自动化处理脚本（Docker/CLI），产出正射影像与DSM",
+        "依据ASPRS/NSSDA计算精度指标（RMSE、CE、LE），并进行分类或阈值对比",
+        "形成可复现的流程文档与日志，保障他人按步骤在新环境跑通"
+      ],
+      "deliverable_requirements": [
+        "提交一个可运行的代码仓库（仅代码仓库），包含：数据下载脚本（或说明）、处理脚本（ODM/MicMac参数）、精度评定脚本（与GCP对比计算RMSE/CE/LE）以及README",
+        "README需明确：环境依赖（Docker/版本）、运行步骤、数据集来源链接、处理参数说明与理由（引用开源文档或标准）、以及预期运行时长与资源需求",
+        "在仓库中附带一份简短成果说明（可置于README或docs），展示生成的正射影像/DSM的文件结构与示例预览（可使用低分辨率截图），并标注精度评定结果与ASPRS/NSSDA对应关系",
+        "全部结论需可通过公开资料与脚本重跑验证；外部评审者无需访问任何内部资源即可复现"
+      ],
+      "evaluation_focus": [
+        "可复现性：在清洁环境按README运行是否能获取数据、完成处理并产出成果与精度评定",
+        "标准对齐：精度计算方法与ASPRS/NSSDA的一致性（指标定义、采样、报告格式与分类逻辑）",
+        "流程健壮性与透明度：参数选择是否有依据（文档/标准引用），脚本结构是否清晰、错误处理是否基本完善",
+        "仓库可验证性：数据来源合法公开、链接有效，README与脚本注释齐全、日志可用于复核"
+      ]
+    },
+    {
+      "query_id": "uav_mapping_operator-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "JARUS SORA v2.0 PDF",
+      "search_queries": [
+        "JARUS SORA v2.0 PDF",
+        "ASPRS Positional Accuracy Standards 2023 PDF",
+        "OGC STAC 1.0.0 specification GitHub",
+        "Cloud Optimized GeoTIFF COG specification",
+        "ISO 19115 metadata overview PDF"
+      ],
+      "scenario": "角色：区县自然资源与城市建设项目群的无人机测绘技术负责人。背景：为期1个月以上，需为多项目、多团队的无人机测绘与数据治理制定战略方案：覆盖合规风险评估（SORA/地区法规）、精度与质量控制（ASPRS/NSSDA）、成果编目与元数据（STAC/ISO 19115）、数据交付（COG/Tile等），并规划自动化管线与培训路线。约束：仅依赖公开标准、规范与开源社区资料；方案需能跨项目复用、第三方可核验；交付为一份战略报告。",
+      "task_focus": [
+        "建立合规与风险框架：参考JARUS SORA与本地法规，明确VLOS/BVLOS、空域与操作许可流程",
+        "制定成果质量与精度控制体系：采用ASPRS/NSSDA定义精度等级、采样与验收标准",
+        "设计数据治理与编目策略：采用OGC STAC 1.0与ISO 19115的元数据字段，规范交付（COG/GeoTIFF）",
+        "规划自动化处理与培训体系：确定开源工具链、版本管理、审计日志与人员能力提升路径"
+      ],
+      "deliverable_requirements": [
+        "提交一份20–40页的战略与实施路线图报告（仅报告），包含：现状诊断、目标与KPI、阶段性里程碑（≥3个阶段）、资源与角色分工、风险矩阵与缓解措施",
+        "报告需系统引用公开标准与规范（JARUS SORA v2.0、ASPRS 2023、NSSDA、OGC STAC 1.0.0、COG规范、ISO 19115概述等），并给出URL或PDF链接、版本/年份与关键条款对照关系",
+        "提供面向企业级的成果数据模型与交付清单：文件格式（COG/GeoTIFF）、坐标参考系、元数据字段映射（STAC/ISO 19115），以及质量验收流程（抽样方案、RMSE/CE/LE阈值）",
+        "描述自动化流水线的架构蓝图（工具栈、容器化/CI、日志与审计）、人员培训大纲（岗位能力、评估标准）与落地试点计划（选型与时间表）"
+      ],
+      "evaluation_focus": [
+        "标准合规性：方案是否与JARUS SORA、ASPRS/NSSDA、OGC STAC/COG、ISO 19115的条款与术语一致，并提供可核查引用",
+        "可执行性与可扩展性：路线图的阶段划分、资源计划与风险管控是否清晰、可落地且能跨项目复用",
+        "数据治理完整性：元数据映射、交付格式标准化、质量验收流程与审计机制是否可被第三方验证",
+        "KPI与里程碑的可测量性：目标量化明确（如精度等级达标率、处理时效、复现场次），评估闭环清晰"
+      ]
+    },
+    {
+      "query_id": "digital_records_manager-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FADGI Still Image Digitization Guidelines 2023 PDF",
+      "search_queries": [
+        "FADGI Still Image Digitization Guidelines 2023 PDF",
+        "The National Archives UK Technical specifications for digitising records PDF 2022",
+        "ISAD(G) General International Standard Archival Description second edition 2000 PDF",
+        "EAD3 Tag Library 2021 Library of Congress"
+      ],
+      "scenario": "角色：某市级公共机构的档案数字化管理师。背景：机构计划启动一轮5,000卷纸质案卷的数字化与编目，需在采购与实施前完成一份技术规范对标与差距分析，确保扫描质量、元数据最小集与交付要求符合国际权威指南。约束：不得使用任何内部样本或敏感信息；所有参数、阈值与元数据要素均需直接引用公开、权威的标准或指南（如FADGI、英国国家档案馆TNA技术规范、ICA的ISAD(G)、LoC的EAD3资料）；完成时间不超过1天，交付物为一篇可引用的对标报告。",
+      "task_focus": [
+        "提炼FADGI（2023）与TNA数字化技术规范中的关键扫描与质量控制参数（分辨率、位深、色彩、目标、验收阈值）",
+        "梳理ISAD(G)核心描述要素并提出与EAD3的字段映射建议（最小可用集）",
+        "提出文件命名、色彩管理、主文件/衍生文件与校验和策略的建议，附权威依据",
+        "形成可执行的供应商评估检查清单，用于招标或验收比对"
+      ],
+      "deliverable_requirements": [
+        "提交一份4–6页报告（PDF或DOCX），以FADGI 2023、TNA技术规范、ISAD(G)与EAD3公开资料为主线；每条结论需标明出处（章节/页码/段落）与可访问链接",
+        "报告需包含一页检查清单（参数、标准阈值、建议值、引用来源），便于供应商自评与验收使用",
+        "提供一个最小映射示例：将ISAD(G)的核心字段映射到EAD3元素/属性（可用元素名与XPath/路径示例，禁止包含任何内部数据）",
+        "列出主要风险清单（如设备校准、色彩目标、分辨率不足、元数据缺失）及可操作的缓解措施，并逐条给出标准/指南引用",
+        "附参考文献/链接清单：包含文献名称、机构、年份/版本、URL"
+      ],
+      "evaluation_focus": [
+        "权威性与可验证性：是否准确引用FADGI、TNA、ISAD(G)、EAD3等权威资料，引用是否包含版本/年份与链接",
+        "技术准确度：扫描与QC参数阈值是否与指南一致，建议是否落地可执行",
+        "元数据映射的合理性与可复用性：ISAD(G)→EAD3映射是否清晰、符合规范",
+        "检查清单的完整性与可操作性：能否直接用于供应商比对与项目验收",
+        "表达与结构：逻辑清晰、条理分明、避免依赖内部或不可公开信息"
+      ]
+    },
+    {
+      "query_id": "digital_records_manager-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "RFC 8493 BagIt 2018 PDF",
+      "search_queries": [
+        "RFC 8493 BagIt 2018 PDF",
+        "Siegfried PRONOM format identification GitHub",
+        "PRONOM registry file format signatures The National Archives UK",
+        "METS schema 1.12 official site Library of Congress",
+        "Recommended Formats Statement 2024-2025 Library of Congress PDF"
+      ],
+      "scenario": "角色：档案数字化管理师（技术实现导向）。背景：需要在3–5天内复现一条最小可行的OAIS接收/归档链路，用公开样本文件完成“下载→格式识别→打包（BagIt）→生成METS描述与基础保全元数据（简化）→校验”的自动化流程，以便为后续批量化落地提供技术验证。约束：仅使用公开互联网样本（如LoC/TNA公开资源URL），不得使用或上传任何内部档案；严格遵循RFC 8493（BagIt）、METS官方架构；使用开源工具（如Python、bagit库、Siegfried），依据PRONOM进行格式标识；输出为一个可复现的公共代码仓库。",
+      "task_focus": [
+        "自动抓取3–10个公开机构样本文件（建议包含TIFF/PDF/JPEG等），保留原始文件名与完整性",
+        "使用Siegfried进行格式识别，记录PRONOM PUID与识别详情（CSV/JSON）",
+        "按BagIt规范打包生成AIP结构，并生成METS（最小可用结构）与校验和；提供一键验证脚本",
+        "在README中解释所用标准与工具版本、配置参数与依据，确保他人可复现"
+      ],
+      "deliverable_requirements": [
+        "仅提交一个公共代码仓库（GitHub或Gitee），包含：README（运行步骤、标准引用、环境/依赖版本）、requirements文件、主脚本、示例配置（公开URL清单）、示例输出目录结构",
+        "README需逐条引用RFC 8493、METS官方页面、Siegfried/PRONOM、LoC Recommended Formats Statement（2024–2025）等权威资料，并标注链接与版本/年份",
+        "提供一键执行脚本（如make或bash/PowerShell入口），完成：下载→格式识别→生成识别清单（CSV/JSON）→BagIt打包→生成METS→校验（bag validate）→输出日志",
+        "仓库内需包含一个最小可运行示例（默认下载至少3个公开文件），并给出可通过的校验结果与METS片段示例",
+        "AIP包内结构需标准化（bagit.txt、bag-info.txt、data/、manifests、METS.xml 等），并确保校验和验证通过；所有路径与文件名清晰可读"
+      ],
+      "evaluation_focus": [
+        "可复现性：拉取依赖后一键可跑通，日志与输出结果与说明一致",
+        "标准符合性：BagIt结构正确、METS结构合法（至少通过基本XML/schema校验）、校验和可验证",
+        "格式识别质量：Siegfried输出包含PRONOM PUID并与文件类型一致，识别清单规范可读",
+        "工程质量：代码结构与README清晰、配置与参数可维护、异常处理与错误提示合理",
+        "引用合规性：对RFC/标准/工具的引用完整、链接有效、版本/年份标注准确"
+      ]
+    },
+    {
+      "query_id": "digital_records_manager-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "CCSDS 650.0-M-2 OAIS Reference Model 2012 PDF",
+      "search_queries": [
+        "CCSDS 650.0-M-2 OAIS Reference Model 2012 PDF",
+        "PREMIS Data Dictionary 3.0 PDF Library of Congress",
+        "EAC-CPF Tag Library 2018 Library of Congress",
+        "NDSA Levels of Digital Preservation 2020 PDF",
+        "Europeana Data Model EDM primer PDF 2017"
+      ],
+      "scenario": "角色：市级档案馆数字化管理师/项目负责人。背景：拟制定一个为期12–18个月的“AI赋能档案知识抽取与跨系统流转”战略与实施路线图，覆盖从数字化接收、编目、保全、开放到服务的全生命周期（OAIS），并实现跨系统互操作与语义增强（如与文化遗产平台/知识库对接）。约束：仅依赖公开互联网权威资料（OAIS、PREMIS、NDSA Levels、EAC-CPF、Europeana EDM等）进行论证；需要提出可量化KPI、阶段里程碑、资源估算方法与风险控制；最终交付为一份系统性战略报告，便于决策与招采使用；周期规划≥1个月（战略层面，非代码实现）。",
+      "task_focus": [
+        "以NDSA Levels为框架进行现有能力差距分析的方法设计（不使用内部数据，给出可自评模板与步骤）",
+        "AI知识抽取与质控闭环方案：OCR/NLP→实体抽取与规范化→对齐到EAC-CPF（人名/机构等）→人工复核→持续改进",
+        "跨系统互操作架构：基于EAD/EAC核心要素与EDM映射思路、持久标识符（ARK/Handle/DOI）策略、对接流程与治理机制",
+        "数字保全与风险管理：依据OAIS+PREMIS定义事件/证据链、格式风险评估与分层存储策略，明确KPI与监测方案"
+      ],
+      "deliverable_requirements": [
+        "提交一份15–25页的战略与实施路线图报告（PDF或DOCX）：含执行摘要、方法论、标准依据、阶段规划、资源与预算估算方法、治理与风险控制",
+        "每项关键建议（例如元数据模型、互操作、AI质控、保全策略）需至少对应一个权威来源，并附上可访问链接与版本/年份（如CCSDS 650.0-M-2、PREMIS 3.0、NDSA 2020、EAC-CPF、EDM）",
+        "给出12–18个月路线图（按季度/阶段描述里程碑、产出与验收标准），并提供KPI定义（如FADGI达标率、抽取准确率、编目吞吐、格式风险暴露度）的计算与验证方法",
+        "提出互操作与标识符策略：说明EAD/EAC核心元素与EDM的对接思路、PIDs（ARK/Handle/DOI）的选型比较与落地路径，附参考来源",
+        "数字保全章节需给出PREMIS事件模型与证据链示例（概念层面），并说明与OAIS信息包/AIP的关系与监测指标（如校验频率、修复流程）",
+        "附录提供标准与数据要素对照清单（EAC-CPF核心元素、PREMIS事件、PIDs用途），并列出参考文献与链接清单"
+      ],
+      "evaluation_focus": [
+        "标准与证据链：是否系统引用OAIS、PREMIS、NDSA、EAC-CPF、EDM等，并标注版本/年份与有效链接",
+        "战略可操作性：路线图阶段目标清晰、KPI可量化、资源与风险估算方法合理，可用于落地与招采参考",
+        "互操作与标识符设计：跨系统对接与标识符治理方案完备、符合行业实践、具备可验证性",
+        "AI工作流与质控：从抽取到复核的闭环设计合理、质量与伦理风险控制到位",
+        "完整性与清晰度：结构严谨、逻辑清晰、避免依赖内部或不可公开数据"
+      ]
+    }
+  ]
+}

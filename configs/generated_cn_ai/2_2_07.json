@@ -1,0 +1,293 @@
+{
+  "queries": [
+    {
+      "query_id": "corporate_compliance_officer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "促进和规范数据跨境流动规定 2024 全文 国家网信办",
+      "search_queries": [
+        "促进和规范数据跨境流动规定 2024 全文 国家网信办",
+        "个人信息出境标准合同办法 2023 全文 国家网信办",
+        "数据出境安全评估办法 2022 全文 国家网信办",
+        "个人信息保护法 2021 全文 全国人大"
+      ],
+      "scenario": "角色：跨国SaaS企业的企业合规师。背景：公司近期关注中国数据跨境监管变化，需要在半天内向管理层提交一份“2024年《促进和规范数据跨境流动规定》”对现有跨境传输合规路径（安全评估/标准合同/认证）的影响简报，并提出立即可执行的制度与证据留痕建议。约束：仅可引用公开权威来源（国家网信办官网、全国人大法律文本等），不得依赖公司内部数据或付费标准；所有结论需标注法规条文编号与可验证链接。",
+      "task_focus": [
+        "提炼《促进和规范数据跨境流动规定》（2024）适用范围、豁免情形与与既有路径（2022安全评估办法、2023标准合同办法）的差异点",
+        "按法规条文建立对照矩阵：跨境传输前置条件、备案/报告要求、敏感个人信息与重要数据的判定要点",
+        "提出低风险日常数据场景（如员工信息、人力外包、云运维日志）下的操作要点与证据留痕清单",
+        "给出对现有制度文本（隐私政策、供应商合同模板、跨境评估表单）的红线修订建议"
+      ],
+      "deliverable_requirements": [
+        "提交一份3-5页的合规影响简报（PDF或DOCX），包含：背景与范围、关键变化点（逐条对照）、操作建议与优先级；每一变化点均需标注法规条文号与官方链接",
+        "附1页差异对照表：2024规定 vs 2022《数据出境安全评估办法》vs 2023《个人信息出境标准合同办法》，明确相同点/新增/豁免与被替换要点，并给出执行清单",
+        "提供一页证据留痕模板（清单形式），覆盖：合法性基础、个人信息影响评估（PIA）要点、标准合同备案材料目录、第三方承诺条款及保存期限；模板需可直接复用",
+        "引用仅限官方与权威来源（网信办官网、全国人大法律库），提供可点击链接；如来源更新，需说明访问日期"
+      ],
+      "evaluation_focus": [
+        "是否准确引用并对应到具体条文（含条款编号）、是否源自权威公开链接",
+        "差异分析是否全面、逻辑清晰、能支撑可执行的制度修订与优先级排定",
+        "证据留痕和操作清单是否具体、可落地、可被非项目参与人复用",
+        "报告结构清晰、结论与引用一致，无依赖内部或付费资料"
+      ]
+    },
+    {
+      "query_id": "corporate_compliance_officer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "DOJ Evaluation of Corporate Compliance Programs 2023 PDF",
+      "search_queries": [
+        "DOJ Evaluation of Corporate Compliance Programs 2023 PDF",
+        "A Resource Guide to the U.S. Foreign Corrupt Practices Act Second Edition 2020 PDF",
+        "UK Bribery Act 2010 Guidance Ministry of Justice PDF",
+        "OECD 2021 Recommendation for Further Combating Bribery of Foreign Public Officials PDF",
+        "SEC FCPA enforcement actions 2022 2023 2024 site:sec.gov"
+      ],
+      "scenario": "角色：总部合规部企业合规师。背景：公司计划在亚太地区对200家经销与代理进行第三方反贿赂尽职调查与培训分层，要求在3-5天内形成可复用的方法学与清单，并以公开权威指南为依据。约束：不得引用内部交易/财务数据；所有标准与方法需可被第三方专家通过公开资料复现与审计；须覆盖2022-2024年执法趋势以校准红旗与权重。",
+      "task_focus": [
+        "从US DOJ《Evaluation of Corporate Compliance Programs (2023)》提炼“有效合规计划”的要素并形成检查表",
+        "结合FCPA资源指南（2020第二版）与UK MoJ《Bribery Act Guidance》，萃取第三方风险因素、红旗与合同控制点",
+        "基于2022-2024年FCPA/UK执法公开案例提炼高频风险场景，反向验证检查表与权重设计",
+        "设计尽调分层模型（问卷与文件清单）、培训分层策略与监督KPI，并形成可落地模板"
+      ],
+      "deliverable_requirements": [
+        "提交一份12-20页方法报告（PDF或DOCX）：包含合规要素矩阵（来源逐条引用）、第三方风险评分模型（指标、权重、阈值与理由）、培训分层方案（目标、频率、对象）、监督与测试计划（抽样、频度、证据）",
+        "附尽调工具包样稿：1份第三方问卷（涵盖受益所有人、政府关系、赠礼招待、代理费/折扣、合规制度）、1份合同合规条款清单（审计权、反腐承诺、终止权、记录保存），并在每条后标注其公开指南来源",
+        "执法案例摘录页：列出至少5起2022-2024间的官方公开案例（DOJ/SEC/SFO等），概述事实要点、违规模式与启示，提供官方链接与访问日期",
+        "所有结论、权重与KPI须可被公开资料溯源；禁止引用付费数据库或内部材料"
+      ],
+      "evaluation_focus": [
+        "来源权威性与可验证性：是否准确援引DOJ 2023、FCPA Guide 2020、UK MoJ Guidance、OECD 2021等原文并链接",
+        "模型可复现性：风险指标与权重是否有公开依据、阈值设定是否有执法案例或指南逻辑支撑",
+        "工具可用性：问卷、合同条款、监督KPI是否完整具体、可直接部署",
+        "执法趋势提炼是否准确反映2022-2024公开案例，能与模型设计形成闭环"
+      ]
+    },
+    {
+      "query_id": "corporate_compliance_officer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "EU AI Act 2024 EUR-Lex official journal",
+      "search_queries": [
+        "EU AI Act 2024 EUR-Lex official journal",
+        "NIST AI RMF 1.0 2023 PDF",
+        "FTC AI guidance advertising claims 2023 site:ftc.gov",
+        "生成式人工智能服务管理暂行办法 2023 全文 国家网信办",
+        "互联网信息服务算法推荐管理规定 2022 全文"
+      ],
+      "scenario": "角色：集团首席合规官办公室的企业合规师。背景：公司决定在1-2个月内构建一套开源“法规动态监测与义务登记（Obligations Register）”原型，用于AI与数据治理合规（覆盖欧盟、美国、中国），要求基于公开权威源自动抓取/订阅、标准化更新、映射到开放框架，并输出可运行的代码仓库。约束：仅使用公开接口/网页与RSS，不得绕过robots；控制映射仅引用开放框架（如NIST AI RMF、OECD AI原则），不得引用付费标准；仓库需包含数据血缘与可复现实验脚本。",
+      "task_focus": [
+        "确认权威源与可订阅通道：EUR-Lex（AI Act与配套文件）、US Federal Register/FTC/NIST、国家网信办与相关公开规章原文",
+        "设计数据抓取与标准化流程：RSS/API优先，其次静态HTML解析；建立变更检测与去重策略，记录元数据（来源URL、发布日期、版本）",
+        "建立义务条款萃取与映射模板：将法规条文要点结构化为义务项，并映射到NIST AI RMF/ OECD AI原则分类",
+        "在README中提供可复现实验步骤、数据样例与合规使用说明（含robots合规、频率、缓存策略）"
+      ],
+      "deliverable_requirements": [
+        "交付一个公开代码仓库（GitHub或等效），目录包含：/feeds（源与RSS/API配置YAML）、/ingest（Python脚本：抓取、解析、去重、变更比对）、/normalize（结构化字段与版本控制）、/mapping（义务登记CSV/JSON与到NIST AI RMF、OECD AI原则的映射模板）、/tests（基本单元测试）、README（环境、运行命令、数据溯源与限制说明）",
+        "至少集成5个权威公开源的可运行抓取/订阅示例：EUR-Lex（AI Act官方公报或文件页RSS/Atom）、US Federal Register API（查询FTC/NIST相关拟/最终规则）、FTC Business Blog RSS、NIST AI RMF官方页面、国家网信办公布的《生成式AI暂行办法》《算法推荐规定》原文链接（如无RSS则提供静态解析+缓存）",
+        "提供一份样例义务登记表（CSV/JSON），包含：jurisdiction、instrument、article/section、obligation_text、effective_date、source_url、mapping_to_NIST_AI_RMF、mapping_to_OECD_AI_Principles，并给出不少于10条示例（分别来自EU/US/CN）",
+        "仓库需包含许可证（如MIT）、数据使用与抓取合规声明（尊重robots、频率限制、仅存元数据与小体量文本片段），并确保一键可复现（requirements.txt与示例命令）"
+      ],
+      "evaluation_focus": [
+        "权威性与覆盖度：是否接入并正确解析EUR-Lex、Federal Register/FTC/NIST、网信办等公开权威源",
+        "工程可复现性：脚本可运行、数据管线清晰、版本与元数据记录完善、README可让他人一键复现",
+        "义务登记质量：条款萃取准确、字段完整、到NIST AI RMF/OECD原则的映射合理且仅基于公开框架",
+        "合规性与可持续性：遵守robots与频率规范、缓存与变更检测策略可行、数据血缘可追溯"
+      ]
+    },
+    {
+      "query_id": "ps_criminal_intelligence_analyst-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "College of Policing 3x5x2 intelligence grading PDF",
+      "search_queries": [
+        "College of Policing 3x5x2 intelligence grading PDF",
+        "UNODC Criminal Intelligence Manual for Analysts 2011 PDF",
+        "site:europol.europa.eu press release organized crime 2024",
+        "site:interpol.int press release drug trafficking 2024"
+      ],
+      "scenario": "角色：市级公安机关刑侦情报分析师。背景：上级要求对一则近期跨境有组织犯罪的公开通报进行快速情报可信度评估，并形成一页行动建议，供合成作战室值班研判参考。约束：仅使用公开且权威来源（如Europol/INTERPOL官方通报、法院判决书、政府执法公告等）；必须采用英国警务学院3x5x2源与信息评估框架，并参考UNODC《刑事情报分析手册》的基础流程；禁止引用社交媒体未经官方证实的信息；全程保留来源链接与引文页码/段落。",
+      "task_focus": [
+        "锁定一则过去12个月内的官方跨境犯罪通报（优先Europol/INTERPOL），抽取5–8条关键信息项（人物、组织、物证、地点、时间、手法）。",
+        "依据3x5x2标准对每条信息进行来源可靠度与信息准确度评级，并记录支撑证据。",
+        "按UNODC情报循环要素（收集-处理-分析-发布）制作简要分析链路，标注不确定性与情报缺口。",
+        "形成面向行动的建议（如进一步核验方向、合作请求、数据补强清单），并明确优先级。"
+      ],
+      "deliverable_requirements": [
+        "提交一份不超过2页的研判备忘录（PDF/Doc），包含：摘要、信息项清单、3x5x2评级表、行动建议；正文中对每条结论标注出处超链接与页码/段落。",
+        "附1页3x5x2矩阵表（可置于附录），逐条展示来源类型、可靠度、信息准确度、证据摘录（50–120字）。",
+        "至少引用2份权威方法论资料（如College of Policing 3x5x2、UNODC手册）作为评估依据，并在参考文献中给出可公开访问链接。"
+      ],
+      "evaluation_focus": [
+        "方法合规性：是否严格、正确应用3x5x2标准，并参考UNODC情报分析流程；评级理由是否与引用证据一致。",
+        "证据可核性：所有关键判断是否有权威公开来源支撑，链接有效、定位到具体段落/页面；是否避免未经证实的社媒材料。",
+        "可行动性与清晰度：行动建议是否具体、可执行且按优先级排序；不确定性与情报缺口标注是否充分。"
+      ]
+    },
+    {
+      "query_id": "ps_criminal_intelligence_analyst-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "UNODC World Drug Report 2024 synthetic opioids PDF",
+      "search_queries": [
+        "UNODC World Drug Report 2024 synthetic opioids PDF",
+        "ONDCP Fentanyl Flow to the United States 2024 PDF",
+        "European Drug Report 2024 fentanyl PDF site:europa.eu",
+        "site:home.treasury.gov OFAC sanctions fentanyl 2023 press release",
+        "NIJ Crime Analysis for Problem Solvers in 60 Small Steps PDF"
+      ],
+      "scenario": "角色：省级刑侦情报中心分析师。背景：针对合成阿片类（以芬太尼为代表）威胁态势，领导要求在3–5天内用公开资料构建一个可复现的小型知识图谱，梳理“前体化学品—中间体—行动组织—跨境路径—查获/制裁事件”的关键关联，并给出关键节点分析与情报补强建议。约束：仅使用公开权威资料（UNODC、ONDCP白宫禁毒办公室、EUDA/EMCDDA、美国财政部OFAC制裁通报、司法部/海关公开通告等）；可手工整理结构化CSV，但须在仓库中完整保留来源与抽取口径；节点规模建议30–80个，关系不少于60条；遵循合法合规与来源标注规范。",
+      "task_focus": [
+        "资料采集与抽取：从UNODC《世界毒品报告2024》、ONDCP《芬太尼流向美国（2024）》与EUDA《欧洲毒品报告2024》识别核心实体与关系；用OFAC制裁通告补充组织/个人节点与时间线。",
+        "模式化建模：设计最小可用模式（实体：化学品、组织/网络、地点/国家、事件、路线；关系：供应、制造、运输、查获、制裁、涉及）与命名规范（同名合并、别名处理）。",
+        "图构建与分析：以Jupyter Notebook+NetworkX/igraph构建知识图谱，计算度中心性、介数中心性与关键子群；生成可视化（.png/.svg）。",
+        "行动建议：基于图指标与证据链提出3–5条可执行的情报补强与合作建议（如关注的前体/端点、时间窗、联合线索核验）。"
+      ],
+      "deliverable_requirements": [
+        "提交一个公开代码仓库（GitHub/GitLab），包含：data目录（CSV/JSON，列含source_url、citation_note、extracted_text片段）、notebooks目录（1个可复现Notebook从原始CSV构建图与输出指标/图像）、README（数据口径、依赖环境、运行步骤）。",
+        "Notebook需输出：节点/边计数、去重前后对比、中心性排名Top10、关键关系子图；所有图表需附简短解释并回链到数据条目ID。",
+        "引用至少3个权威报告/通告来源，README中列出完整参考（含版本/年份、可访问链接）；仓库需包含开源许可证与数据来源版权说明。"
+      ],
+      "evaluation_focus": [
+        "可复现性：仓库能在全新环境按README成功运行，生成与样例一致的统计与图谱；数据口径、去重规则透明。",
+        "证据完整性与可追溯：每条边/节点均可回溯到具体公开来源（链接+摘录/页码）；跨来源一致性处理合理。",
+        "分析有效性：中心性/子群分析解释是否与公开报告趋势一致；行动建议是否基于图结构洞见且可执行。"
+      ]
+    },
+    {
+      "query_id": "ps_criminal_intelligence_analyst-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FBI IC3 Internet Crime Report 2023 PDF",
+      "search_queries": [
+        "FBI IC3 Internet Crime Report 2023 PDF",
+        "Europol IOCTA 2023 PDF",
+        "FTC Consumer Sentinel Network Data Book 2023 PDF",
+        "NATO OSINT Handbook PDF",
+        "OASIS STIX 2.1 specification PDF"
+      ],
+      "scenario": "角色：国家级刑侦情报单位首席分析师。背景：针对跨境“投资/杀猪盘+SIM交换+加密资产”复合型网络诈骗，拟开展为期12周的开放源情报（OSINT）知识图谱与研判工作流试点，目标是在不依赖任何内部或保密数据库的前提下，打通“数据源编目—采集与合规—标准化建模—人机协同研判—发布与反馈评估”的闭环。约束：仅使用公开权威数据与报告（FBI IC3年度报告、Europol IOCTA、FTC数据年报、监管/司法执法通告、交易所/链上分析公开博客与透明度报告等）；数据模型优先采用或兼容开放标准（如STIX 2.1）；流程需对标UNODC情报循环与警务3x5x2评级；全程评估合规与伦理风险并制定缓解措施。",
+      "task_focus": [
+        "战略与需求：明确试点范围、优先情报需求（PIRs）与KPI（如命名实体解析精度、跨来源匹配率、线索工单周转时效）。",
+        "数据与合规：梳理公开数据源目录（官方年报、执法公告、制裁/黑名单、法院文书、企业注册、交易平台透明度报告），制定采集策略、频率、合法性评估与留痕SOP。",
+        "建模与流程：设计与STIX 2.1兼容的最小模型（实体/关系/时间/置信度），定义3x5x2在OSINT场景的适配；规划人机协同研判与质量控制（抽样复核、逆向验证、冲突解决）。",
+        "评估与扩展：制定12周里程碑、资源计划（开源工具栈优先）、风险清单与应对（误报/偏见/平台条款变更），建立效果评估与复盘改进机制。"
+      ],
+      "deliverable_requirements": [
+        "提交一份25–40页的战略路线图报告（PDF），包含：目标与PIRs、数据源清单与合法合规评估、系统总体架构（采集—处理—存储—分析—发布—评估）、与STIX 2.1兼容的数据模型草案、3x5x2评级SOP、12周甘特图与资源/预算粗估（基于开源工具）。",
+        "报告需以权威公开资料为依据：至少引用FBI IC3 2023、Europol IOCTA 2023、FTC 2023数据年报与1份OSINT方法论（如NATO OSINT Handbook），并提供可访问链接；关键设计决策须标注文献依据页码/章节。",
+        "包含可执行的评估方案：定义数据质量与研判成效指标、基线与验收标准；给出合规与伦理风险矩阵（来源合法性、个人数据最小化、跨境数据传输），及对应控制措施与审计点。"
+      ],
+      "evaluation_focus": [
+        "对标性与可落地：架构、模型、流程是否与权威标准（UNODC情报循环、STIX 2.1、3x5x2）一致且可操作；里程碑与资源配置是否现实可行。",
+        "证据支撑：关键判断与设计选择是否均有公开权威资料作为依据，引用是否准确到章节/数据图表；数据源目录是否全面、可获取。",
+        "评估与合规：指标体系是否可量化、可复现；合规与伦理风险识别是否完整，缓解措施与监控机制是否到位。"
+      ]
+    },
+    {
+      "query_id": "gov_policy_evaluator-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "WHO Fiscal policies for diet and prevention of NCDs 2016 pdf",
+      "search_queries": [
+        "WHO Fiscal policies for diet and prevention of NCDs 2016 pdf",
+        "UK Soft Drinks Industry Levy evaluation 2020 2023 DHSC HM Treasury pdf",
+        "Mexico sugar sweetened beverage tax evaluation 2016 2020 BMJ pdf",
+        "Berkeley sugar-sweetened beverage tax evaluation 2017 2019 pdf",
+        "OECD obesity prevention fiscal policies 2019 report pdf"
+      ],
+      "scenario": "角色：地市卫生健康委的政策评估分析师。背景：市政府考虑开征含糖饮料消费税，需要在当天内提供一份“快速证据简报”，汇总国际同类政策（英国SDIL、墨西哥SSB税、美国伯克利税等）的成效指标，为领导会议提供量化参考。约束：不得使用本市内部销售数据；所有指标与假设必须来自公开权威资料（WHO、OECD、政府评估报告、同行评审论文），并给出可访问链接与年份/版本；仅做情景推演，不做本地预测建模校准。",
+      "task_focus": [
+        "锁定权威综述与官方评估（WHO 2016财政政策指南、OECD相关报告、英国SDIL 2020–2023评估、墨西哥和伯克利城市评估）",
+        "提取并对齐关键量化指标：税收传导率、价格与购买量弹性、消费降幅（含收入分组）、能量摄入变化、产业配方重塑证据",
+        "基于文献弹性区间构建低/中/高三种情景推演，明确假设与外推边界",
+        "识别主要风险与不确定性（替代品、跨境购买、行业规避、分配影响）并提出证据支撑的风险提示"
+      ],
+      "deliverable_requirements": [
+        "单篇简报（3–5页，PDF），含执行摘要、方法与检索策略、证据汇编与指标对比表、三情景推演结果与不确定性说明、政策含义",
+        "按案例（国家/城市）列出指标表：指标定义、数值区间、年份、数据口径、来源标题与可访问链接",
+        "透明假设与参数表：每项参数列明来源（报告/论文名、年份/版本）、取值范围与理由",
+        "引用至少：1份权威指南（如WHO 2016），3个以上政策评估案例（如UK SDIL 2020/2023、Mexico 2016/2020、Berkeley 2017/2019），1篇同行评审论文；所有链接需公开可访问"
+      ],
+      "evaluation_focus": [
+        "证据来源的权威性与可验证性（是否为WHO/OECD/政府官方/同行评审；年份与版本标注是否准确）",
+        "指标口径与可比性（是否在不同案例中保持定义一致，避免混用不可比口径）",
+        "情景推演是否严格落在文献弹性/区间内，假设透明，外推边界说明充分",
+        "结论与建议是否与证据一致，风险与不确定性是否有依据的论述"
+      ]
+    },
+    {
+      "query_id": "gov_policy_evaluator-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "World Bank Impact Evaluation in Practice 2018 pdf",
+      "search_queries": [
+        "World Bank Impact Evaluation in Practice 2018 pdf",
+        "HM Treasury Magenta Book 2020 pdf evaluation",
+        "ILO youth employment programme evaluation guidelines 2020 pdf",
+        "South Africa Employment Tax Incentive evaluation 2016 2018 pdf National Treasury",
+        "Jordan wage subsidy randomized controlled trial 2019 2021 World Bank pdf"
+      ],
+      "scenario": "角色：省人社厅委托的政策评估分析师。背景：将于下季度启动“青年就业工资补贴”试点，需在5天内提交一份可复现的评估设计方案（技术方案），覆盖理论框架、识别策略、指标体系、样本量（power）粗算、数据来源与实施路径。约束：当前无法获取行政微观数据；方案必须仅基于公开指南与既有项目评估案例提出可操作的评估设计与数据采集计划；所有参数、方法与假设需引用权威资料并可在线核验。",
+      "task_focus": [
+        "对标国际指南制定评估方法：World Bank《Impact Evaluation in Practice》(2018)、HM Treasury《Magenta Book》(2020)、ILO青年就业项目评估指南(2020)",
+        "构建理论变化路径（ToC）与指标体系：主结果、过程指标、异质性分析与成本-效益/成本-效果指标",
+        "提出与试点条件匹配的识别策略（RCT或准实验如RD/DID/PSM），并以南非ETI、约旦工资补贴等公开案例佐证可行性",
+        "进行样本量与统计功效的粗略估算，制定数据来源（公开数据/标准化调查）、时间表、伦理与风险管理"
+      ],
+      "deliverable_requirements": [
+        "单篇技术方案报告（15–25页，PDF）：包含ToC、评估问题与识别策略、指标字典（定义/口径/计算方法/频率/数据源/责任）、样本量与功效估算思路、实施进度与里程碑、伦理合规与风险缓解",
+        "指标表需对接公开可获取数据源（如国家统计年鉴、劳动力调查、公开就业服务数据接口）或标准化调查工具，并注明来源链接",
+        "参考文献与链接：至少包含1本综合方法指南（WB或Magenta Book）、1本专项指南（ILO或J-PAL等）、2个相近国家/地区工资补贴评估案例（如南非ETI 2016/2018、约旦2019/2021）",
+        "所有参数（如预期效应量、基线转移率、流失率）均需标注来源、年份/版本，并给出敏感性区间"
+      ],
+      "evaluation_focus": [
+        "识别策略与实际试点条件的匹配度与可操作性（样本、分配机制、合规风险）",
+        "指标体系的严谨性与可获取性（定义清晰、口径一致、可通过公开渠道或标准化工具采集）",
+        "样本量/功效估算透明且参数有权威出处，敏感性分析合理",
+        "实施计划、伦理与风险控制是否完整，参考资料年份/版本与链接可核验"
+      ]
+    },
+    {
+      "query_id": "gov_policy_evaluator-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OECD Regulatory Impact Analysis Best Practice Principles 2020 pdf",
+      "search_queries": [
+        "OECD Regulatory Impact Analysis Best Practice Principles 2020 pdf",
+        "HM Treasury Green Book 2022 update pdf distributional analysis",
+        "OMB Circular A-4 2023 pdf benefit-cost analysis",
+        "Foundations for Evidence-Based Policymaking Act 2018 OMB learning agenda 2022 pdf",
+        "What Works Network Standards of Evidence 2020 pdf OR Nesta Standards of Evidence 2019 pdf"
+      ],
+      "scenario": "角色：中央层面社会事务主管部门的政策评估分析师。背景：为在未来12–18个月内建立跨项目的“证据与评估框架”（标准、流程、能力与治理），现需用1个月完成战略对标与实施路线图，确保新框架与国际最佳实践一致，可落地并支持分配影响与不确定性分析。约束：仅使用公开资料（OECD/UK/US等官方指南、法律与标准）进行基准对比与框架设计；需明确各规范的年份/版本，并提供可访问链接；最终形成单一报告，包含模板与路线图，便于后续复现与执行。",
+      "task_focus": [
+        "对标国际规范并提炼共识：OECD RIA最佳实践原则(2020)、HM Treasury Green Book(2022/2023更新，含分配影响)、OMB Circular A-4(2023)、美国Evidence Act(2018)及OMB 2022学习议程指南、What Works/Nesta证据标准(2019/2020)",
+        "设计评估与证据分级体系、通用KPI与成本-效益/成本-效果分析最小合规要求（含不确定性分析与分配影响）",
+        "确立治理与能力建设方案：角色分工、评估计划模板与学习议程流程、数据与质量管理机制",
+        "制定12–18个月实施路线图：试点-评审-扩散循环、资源测算、风险与缓解策略"
+      ],
+      "deliverable_requirements": [
+        "单篇战略路线图报告（30–40页，PDF）：含基准对标（逐项对照表）、统一评估框架与证据分级、成本效益与分配影响最小合规清单、治理与能力建设方案、实施里程碑与资源测算",
+        "附录在同一报告内提供可直接复用的模板：评估计划模板、指标字典模板、成本效益简表与不确定性记录表（仍为同一PDF）",
+        "引用并标注年份/版本与链接：OECD RIA Best Practice Principles(2020)、HM Treasury Green Book(2022/2023)、OMB Circular A-4(2023)、Foundations for Evidence-Based Policymaking Act(2018)与OMB学习议程指南(2022)、What Works或Nesta证据标准(2019/2020)",
+        "所有结论需附对应参考来源并可在线核验；关键术语与口径需与来源一致并在文中定义"
+      ],
+      "evaluation_focus": [
+        "对标范围与准确性：是否覆盖所列关键规范，年份/版本匹配且引用可访问",
+        "框架与分级标准的可操作性与一致性（包含不确定性与分配影响分析的制度化要求）",
+        "实施路线图可行、资源与风险假设清晰，具备试点-复盘-扩散的闭环设计",
+        "模板与最小合规清单是否清晰、可复用，并与国际最佳实践对齐"
+      ]
+    }
+  ]
+}

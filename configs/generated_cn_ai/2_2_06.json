@@ -1,0 +1,1289 @@
+{
+  "queries": [
+    {
+      "query_id": "fin_risk_manager-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OFAC Specially Designated Nationals SDN List update 2025 site:home.treasury.gov",
+      "search_queries": [
+        "OFAC Specially Designated Nationals SDN List update 2025 site:home.treasury.gov",
+        "EU consolidated sanctions list update 2025 site:sanctionsmap.eu",
+        "FATF high-risk jurisdictions list 2024-2025 site:fatf-gafi.org",
+        "UK OFSI consolidated list 2025 update site:gov.uk",
+        "UN Security Council sanctions list update 2025 site:un.org"
+      ],
+      "scenario": "角色：城市商业银行风险控制经理。背景：近期多国/多机构制裁清单频繁更新（新增、移除、重新指定），需要在不使用任何内部客户数据的前提下，快速形成一份面向支付筛查与尽职调查的风险简报。约束：仅依赖权威官网公开信息；聚焦过去30天变更；输出报告可直接被合规与业务部门使用，并且每一项结论均有可核验的链接、日期与版本号。",
+      "task_focus": [
+        "检索并提取过去30天OFAC、欧盟、英国OFSI、联合国安理会以及FATF名单的新增/移除/制裁措施变更",
+        "按国家/实体类型/行业整理变更，并提炼对跨境支付、贸易融资、经销商/代理等业务的潜在影响",
+        "提出可操作的控制建议（如加强EDD、冻结/拒付规则更新、名单同步周期与例外审批机制）",
+        "用权威链接、公告编号/版本、发布时间戳逐条核验并记录以便复核"
+      ],
+      "deliverable_requirements": [
+        "提交一份2-3页中文报告（PDF或DOC），包含：概览摘要、变更清单表格、业务影响评估、控制建议",
+        "每条变更需给出权威来源URL、发布日期、公告/文件编号或版本信息，支持审计复核",
+        "对变更进行分类（国家/实体类型/制裁措施/生效日期），并标注可能影响的交易类型与地域",
+        "报告末尾列出不少于8条权威引用（官网或法规原文），且引用与正文论述存在明确对应关系"
+      ],
+      "evaluation_focus": [
+        "事实准确性与权威清单一致性（抽查链接、版本号与日期是否匹配）",
+        "变更覆盖度（是否涵盖主要清单与关键更新、无明显遗漏）",
+        "建议的可操作性与合规性（能否直接指导筛查与尽职调查调整）",
+        "时间性与可复核性（引用完整、时间窗明确、记录规范）"
+      ]
+    },
+    {
+      "query_id": "fin_risk_manager-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FRED API documentation 2025",
+      "search_queries": [
+        "FRED API documentation 2025",
+        "BIS credit-to-GDP gap dataset statistics 2024 site:bis.org",
+        "ICE BofA High Yield Index Option-Adjusted Spread FRED BAMLH0A0HYM2",
+        "CBOE VIX historical data download 2025 site:cboe.com",
+        "IMF World Economic Outlook database 2024 download site:imf.org"
+      ],
+      "scenario": "角色：证券公司风险控制经理。背景：需在数天内建立一个可复现的“外部市场与宏观压力预警”开源仓库，用公开数据每日/每周生成风险简报供投委会与前中后台参考。约束：仅使用公开API或官网数据下载（FRED、BIS、CBOE、IMF等），不得使用付费或内部数据；仓库需一键运行，可在本地或CI环境复现；所有指标定义与来源需可追溯。",
+      "task_focus": [
+        "选择并定义核心指标（例：高收益利差、股市波动、信用缺口、主要利率与收益率曲线、增长与通胀预期）与计算方法",
+        "实现数据获取与清洗脚本（FRED API、BIS CSV、CBOE下载、IMF WEO），并保存原始与处理后数据及元数据",
+        "构建信号生成逻辑（如z-score、百分位、阈值预警）与图表可视化，自动产出HTML/PDF周报",
+        "完善README与运行脚本（如Makefile/cron），并提供CITATIONS与LICENSE文件，确保复现与合规引用"
+      ],
+      "deliverable_requirements": [
+        "提交一个公开代码仓库（Python或R），包含：README（环境、依赖、运行步骤）、目录结构说明",
+        "data_fetch模块：对接FRED API、下载BIS信贷缺口与IMF WEO，记录数据字典与来源URL；处理异常与重试",
+        "analytics与reporting模块：生成图表、信号摘要、最近一月变动评述；在报告中嵌入或附上来源链接与指标定义",
+        "提供最小化示例运行输出（图表与周报），基础单元测试或校验脚本，以及CITATIONS与LICENSE文件"
+      ],
+      "evaluation_focus": [
+        "数据正确性与定义一致性（如BIS信贷缺口计算口径、FRED系列ID匹配）",
+        "可复现性与稳健性（不依赖私有密钥；FRED免费API配置说明清晰；异常处理与日志记录完善）",
+        "信号与报告的透明度与解释性（阈值设定、方法说明、来源清晰）",
+        "代码质量与文档完备度（结构合理、测试覆盖、依赖管理与可移植性）"
+      ]
+    },
+    {
+      "query_id": "fin_risk_manager-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NGFS climate scenarios 2024 phase IV download site:ngfs.net",
+      "search_queries": [
+        "NGFS climate scenarios 2024 phase IV download site:ngfs.net",
+        "ISSB IFRS S2 Climate-related Disclosures 2023 pdf site:ifrs.org",
+        "BCBS climate-related financial risks principles 2021 pdf site:bis.org",
+        "EBA Guidelines on ESG risk management and supervision 2024 pdf site:eba.europa.eu",
+        "ECB Guide on climate and environmental risks 2020 updated 2024 site:ecb.europa.eu"
+      ],
+      "scenario": "角色：银行集团风险控制经理。背景：董事会要求基于国际权威标准在1个月以上的周期内制定“气候与转型风险控制蓝图”，对接披露（ISSB IFRS S2）与监管期望（BCBS、EBA、ECB），并以NGFS 2024情景为压力测试基准。约束：仅依赖公开标准、指南、监管文件与权威数据；不使用内部敞口数据，聚焦方法、流程与治理；输出一份可执行的战略报告，涵盖路线图、指标、情景方法与数据治理。",
+      "task_focus": [
+        "系统梳理并映射监管与披露要求（IFRS S2、BCBS气候原则、EBA ESG指南、ECB气候与环境风险指引），形成差距分析与优先级",
+        "基于NGFS 2024 Phase IV情景设计气候压力测试框架（转型/物理风险传导路径、参数与假设），并提出可复现的方法说明",
+        "提出度量指标与阈值（如高碳行业敞口占比、PCAF融资排放、潜在信用迁移），制定限额与控制清单以及应急演练方案",
+        "设计数据治理与模型风险管理框架（BCBS 239对齐、模型验证与文档化、审计追踪），明确RACI与里程碑"
+      ],
+      "deliverable_requirements": [
+        "提交一份12-20页策略报告，包含：执行摘要、监管/披露映射与差距分析、NGFS情景方法、风险度量与限额、治理架构、实施路线图（至少3-6个月里程碑）",
+        "明确KPI/KRI（监控频率、数据来源、门槛与升级路径），并以流程图/表格呈现控制与应急机制",
+        "每一主张需附权威出处与可核验链接（标准/指南/报告），不少于15条引用，并建立结论到来源的映射清单",
+        "附上气候压力测试的参数表与方法说明（可在无内部数据条件下复用），以及数据治理与模型风险管理的检查表"
+      ],
+      "evaluation_focus": [
+        "与国际标准/监管的对齐程度（IFRS S2、BCBS、EBA、ECB）与证据链完整性",
+        "方法论的可执行性与落地可行性（跨部门协同、治理与审计可行）",
+        "风险覆盖的完备性（物理、转型、声誉/法律等维度与传导路径）",
+        "路线图与里程碑的合理性、KPI/KRI的可测性与监控可持续性"
+      ]
+    },
+    {
+      "query_id": "risk_management_specialist-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Basel III Liquidity Coverage Ratio 2014 PDF BCBS",
+      "search_queries": [
+        "Basel III Liquidity Coverage Ratio 2014 PDF BCBS",
+        "Basel III Net Stable Funding Ratio final standard 2014 2018 PDF BCBS",
+        "中国银保监会 流动性风险管理办法 2021 年 监管指标 LCR NSFR PDF",
+        "银行年度报告 流动性覆盖率 披露 示例 2023 PDF",
+        "Federal Reserve liquidity risk management guidance SR 10-6 PDF"
+      ],
+      "scenario": "角色：银行风险管理师；背景：需在季度风险例会前，用监管口径的流动性风险指标（LCR/NSFR）快速校准预警阈值，并用公开披露的数据进行一次示范；约束：仅引用公开权威文件（BCBS、监管机构、上市银行年报），不得使用内部系统或保密数据；时间：≤1天。",
+      "task_focus": [
+        "锁定Ground Truth：梳理BCBS对LCR/NSFR的定义、计算公式与监管最低要求，并对齐本地监管口径（如银保监会2021版办法）",
+        "提取公开披露数据：选取2-3家上市银行2023年或最新年报中的LCR/NSFR披露数值与口径说明",
+        "制定预警阈值分级与触发规则（监管红线、观察线与信息核查线），并说明适用前提与例外情形",
+        "输出可复核的计算示例（按公开公式）与数据源链接，形成会议用摘要图表"
+      ],
+      "deliverable_requirements": [
+        "提交一份6-8页的报告：含指标定义与公式、阈值设计逻辑、示例计算与图表、数据来源",
+        "明确引用Ground Truth：标注BCBS与本地监管文件的年份/版本、章节/条款、页码，并附原文链接",
+        "列出每个数据来源的公开链接与获取步骤（如年报下载位置、披露章节），保证第三方可复核",
+        "包含复现说明：他人可在2小时内按链接、公式与步骤重算并验证结论"
+      ],
+      "evaluation_focus": [
+        "监管口径准确性（定义、公式、阈值）与本地化对齐程度",
+        "数据取用与计算正确性（与年报披露一致，示例计算无差错）",
+        "引用完整与可核验性（链接可达、版本/年份匹配、条款定位明确）",
+        "可复现性与呈现清晰度（结构化、图表与结论易于复核）"
+      ]
+    },
+    {
+      "query_id": "risk_management_specialist-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Basel Committee backtesting traffic light approach 1996 PDF",
+      "search_queries": [
+        "Basel Committee backtesting traffic light approach 1996 PDF",
+        "Basel Minimum capital requirements for market risk 2019 PDF",
+        "S&P 500 daily historical data CSV Stooq",
+        "FRED DEXUSEU EURUSD daily exchange rate",
+        "Basel VaR 99% one-day backtesting exceptions threshold"
+      ],
+      "scenario": "角色：市场风险分析师；背景：需用公开数据对1天99%历史模拟VaR进行回测，并依据BCBS“交通灯”框架评估模型有效性，形成可复现的分析仓库以支持方法评审；约束：仅用开放数据源（如Stooq/Yahoo/FRED）与公开标准，不使用交易台P&L或内部数据库；周期：≤一周，可多轮迭代与稳健性检验。",
+      "task_focus": [
+        "锁定Ground Truth：BCBS 1996回测框架（交通灯）与2019/2021《市场风险最低资本要求》相关参考",
+        "数据获取与清洗：选择至少一种资产（如标普500或EUR/USD），获取≥5年日度价格并转换为日收益率",
+        "实现VaR与回测：历史模拟VaR（1天99%，滚动窗口≥250天），统计异常次数并判定交通灯区间",
+        "敏感性分析：比较不同窗口长度、资产类别与置信水平对异常次数与区间判定的影响"
+      ],
+      "deliverable_requirements": [
+        "提交一个可复现的代码仓库（Python或R）：含README、依赖环境文件（requirements.txt或renv）、一键运行脚本",
+        "自动生成回测结果与简报（Markdown/HTML）：含异常计数、交通灯判定、敏感性图表；并明确引用BCBS文件与数据源链接",
+        "数据获取模块应从公开源自动下载（或提供下载说明），并缓存以确保重复运行一致性",
+        "提供开源许可证与再现步骤（从空白环境到完整结果的指引）"
+      ],
+      "evaluation_focus": [
+        "方法合规性：VaR与回测实现符合BCBS定义与阈值判定（交通灯）",
+        "可复现性与工程质量：环境管理、数据下载稳健、脚本自动化与日志记录完善",
+        "结果一致性与可核验性：异常计数、阈值判定与图表与代码逻辑一致、可由他人重现",
+        "分析深度与透明度：敏感性分析充分、模型假设与局限交代清楚、引用齐全"
+      ]
+    },
+    {
+      "query_id": "risk_management_specialist-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "TCFD Recommendations 2017 PDF",
+      "search_queries": [
+        "TCFD Recommendations 2017 PDF",
+        "ISSB IFRS S2 2023 Climate-related Disclosures PDF",
+        "BCBS Principles for the effective management and supervision of climate-related financial risks 2022 PDF",
+        "NGFS climate scenarios 2023 technical documentation data portal",
+        "EBA Report on management and supervision of ESG risks 2021 PDF"
+      ],
+      "scenario": "角色：企业风险管理负责人（金融机构）；背景：董事会要求在未来12个月内落地“气候风险早识别—情景推演—整改跟踪”体系，并与TCFD/ISSB/BCBS/NGFS等公开框架兼容；约束：仅使用公开框架与数据（不依赖供应商私有模型或内部敏感数据），形成可执行路线图与治理方案；周期：≥1月，战略与创新规划。",
+      "task_focus": [
+        "锁定Ground Truth：系统梳理TCFD 2017建议、ISSB IFRS S2(2023)、BCBS 2022气候风险原则、NGFS 2023情景技术说明与数据集",
+        "设计指标体系：构建转型/物理风险KRI目录、预警阈值与公开数据源清单（举例以NGFS/气象/能源公开数据）",
+        "情景推演方法：选择NGFS情景（如DISORDERLY/ORDERLY/HOT HOUSE WORLD），定义关键参数、传导路径与定性/半定量评估流程",
+        "整改与治理闭环：明确职责分工、报告机制、AI智能体监控与升级流程、审计追踪与验证安排"
+      ],
+      "deliverable_requirements": [
+        "提交一份20-30页的战略报告：包含框架映射（TCFD/ISSB/BCBS/NGFS）、指标目录与阈值、情景方法、治理设计与实施计划",
+        "提供引用清单：每个结论对应公开文件的章节/页码与数据链接，标注年份/版本，保证可追溯性",
+        "给出12个月实施路线图：里程碑、资源与预算、试点范围、风险评估与应对、验收标准",
+        "包含复核与复现说明：第三方可据报告独立访问数据源并重建情景设定与指标口径"
+      ],
+      "evaluation_focus": [
+        "与Ground Truth的对齐与可追溯性（TCFD/ISSB/BCBS/NGFS文件与数据）",
+        "指标与情景设计的现实可行性、覆盖度与优先级合理性",
+        "治理与整改闭环的完整性（职责、流程、监督、审计）与可操作性",
+        "路线图的清晰度与严谨性（时间表、资源、风险与验收标准可执行）"
+      ]
+    },
+    {
+      "query_id": "fin_wealth_advisor-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "证券期货投资者适当性管理办法 全文 PDF 2017 CSRC",
+      "search_queries": [
+        "证券期货投资者适当性管理办法 全文 PDF 2017 CSRC",
+        "ESMA Guidelines on suitability of MiFID II 2022 pdf",
+        "FINRA Rule 2111 suitability pdf",
+        "SEC Regulation Best Interest final rule 2019 pdf",
+        "银保监会 理财产品 销售 合规 话术 不得保本 保收益"
+      ],
+      "scenario": "角色：银行/券商的财富管理顾问。背景：首次与一位新零售客户（年收入稳定、计划10-15年退休）接触，需要在首次会面前准备合规风险画像问卷、适当性匹配逻辑与首轮沟通话术，以确保不误导、不承诺保本保收益，并能清晰披露产品风险与费用。约束：仅使用公开互联网的权威资料（监管规则、行业指南、协会标准与官方案例）作为Ground Truth；必须在报告中逐条引用来源的条款或页面段落，禁用任何内部数据库或客户私密信息。",
+      "task_focus": [
+        "提炼并对比CSRC投资者适当性管理办法、ESMA MiFID II适当性指南、FINRA Rule 2111与SEC Reg BI的核心条款，形成合规要点清单",
+        "设计一份10-15题的风险画像问卷与评分映射（风险承受度、损失厌恶、流动性偏好、投资经验），并在每一映射规则处标注所依据的条款或指南段落",
+        "编制首轮沟通合规话术（禁止承诺收益、风险披露、费用透明、适当性说明），并在每一关键句背后提供来源引用",
+        "构建通用产品类型与风险特征说明（例如公募基金、ETF、债券型产品、结构性存款等），并附监管或发行方公开资料引用"
+      ],
+      "deliverable_requirements": [
+        "提交一篇6-10页的合规准备报告（PDF或DOC），包含：合规要点清单、风险问卷与评分映射、沟通话术范例、产品类型与风险说明",
+        "在报告中为每一项规则或话术添加可验证引用（来源名称、年份/版本、具体章节/页码、公开URL）",
+        "提供一个可复用的风险画像评分表（含说明与阈值），确保他人仅用公开资料即可复现",
+        "在报告结尾附上引用文献列表（至少涵盖中国监管、欧盟MiFID II、美国FINRA/SEC各一条）"
+      ],
+      "evaluation_focus": [
+        "来源可验证性与权威性（监管官网、官方指南、协会标准），是否包含年份/版本与具体条款定位",
+        "适当性映射逻辑的严谨性与可复现性（评分阈值明确、对应条款清晰），不依赖内部数据",
+        "沟通话术的合规性与完整性（风险、费用、禁止承诺收益、信息不对称提示）",
+        "报告结构清晰，内容与引用一一对应，可被审计与复核"
+      ]
+    },
+    {
+      "query_id": "fin_wealth_advisor-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Morningstar Target Risk Index Series methodology PDF 2024",
+      "search_queries": [
+        "Morningstar Target Risk Index Series methodology PDF 2024",
+        "Vanguard Total Stock Market ETF VTI prospectus 2024 pdf",
+        "iShares Core U.S. Aggregate Bond ETF AGG fact sheet 2024 pdf",
+        "SPDR S&P 500 ETF Trust SPY prospectus 2024 pdf",
+        "yfinance documentation GitHub"
+      ],
+      "scenario": "角色：财富管理顾问兼产品分析师。背景：为中等风险偏好、15年投资期限的客户制作一个可复现的ETF建议生成器，要求以公开发行方资料和指数方法论为依据，透明展示费用、跟踪指数、历史回报与波动，并用公开风险模型（如Morningstar Target Risk Index方法论）定义资产配置基准。约束：仅用公开可获取来源（ETF发行方官网的招募说明书/事实卡、指数方法论、开源数据接口yfinance）；不得调用付费或内部数据；代码需可在全新环境复现。",
+      "task_focus": [
+        "基于Morningstar Target Risk Index方法论定义至少三档风险配置（保守/中等/积极），并在代码注释与README中标注具体方法论页面/段落",
+        "抓取或下载VTI、AGG、SPY等ETF的官方招募说明书/事实卡，解析费用率、跟踪指数、基金目标等关键字段，并保留来源链接",
+        "使用yfinance获取公开历史价格，计算基本风险与绩效指标（年化回报、年化波动、最大回撤），并与事实卡信息进行一致性校验",
+        "实现从客户画像输入（风险档次、期限）到ETF组合建议的规则引擎，输出建议及透明依据（指标、链接、方法论）"
+      ],
+      "deliverable_requirements": [
+        "提交一个开源代码仓库（GitHub），包含：主脚本/模块、requirements.txt、README（含数据来源、复现步骤、方法论引用与链接）",
+        "在README中提供完整的来源清单（ETF发行方PDF/网页、指数方法论PDF、yfinance文档），并说明每个字段的取值与验证方式",
+        "提供可运行的示例（如moderate/15年），输出包含组合权重、ETF清单、费用加权、风险指标与对应公开链接",
+        "包含至少3个单元测试或校验脚本（如费用率与事实卡一致性、风险指标计算健全性、输入参数边界检查），确保他人可复现"
+      ],
+      "evaluation_focus": [
+        "数据可追溯与一致性校验：关键指标与发行方事实卡/招募说明书是否一致，链接是否有效",
+        "方法论对齐：资产配置与Morningstar Target Risk Index方法论的映射是否清晰、可验证",
+        "代码可复现性与工程质量（依赖管理、README清晰度、测试覆盖）",
+        "合规透明度：明确披露数据来源、假设与限制，未使用任何非公开或付费数据"
+      ]
+    },
+    {
+      "query_id": "fin_wealth_advisor-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "CSRC 证券期货投资者适当性管理办法 2017 PDF",
+      "search_queries": [
+        "CSRC 证券期货投资者适当性管理办法 2017 PDF",
+        "ESMA MiFID II suitability guidelines 2022 pdf",
+        "SEC Regulation Best Interest 2019 final rule pdf",
+        "NIST AI Risk Management Framework 1.0 2023 pdf",
+        "SR 11-7 Model Risk Management pdf"
+      ],
+      "scenario": "角色：财富管理顾问团队的项目负责人。背景：拟在1-2个月内制定一套“客户画像与策略引擎”智能体落地路线图（最小可行版本MVP），要求贯穿监管合规（中国/欧盟/美国适当性与受托标准）、AI风险管理与模型治理（NIST AI RMF、SR 11-7），并明确研究-验证-迭代闭环与可审计证据链。约束：所有依据均来自公开权威资料；路线图需包含时间线、里程碑、数据与功能边界、合规审计机制；交付仅为一份战略与实施报告。",
+      "task_focus": [
+        "系统梳理跨法域适当性与受托标准（CSRC、ESMA MiFID II、SEC Reg BI），提炼可实现的规则库与话术约束，并设计证据留痕方案",
+        "引入NIST AI RMF与SR 11-7的模型风险治理框架，定义数据来源控制、验证集构建（仅用公开文档）、监控与事后评估流程",
+        "制定MVP迭代计划：需求分解、原型验证、用户试点、合规评审、上线门槛与回滚策略",
+        "设计成效指标（适当性匹配率、合规审计通过率、投诉率、建议解释性评分）与复现步骤，确保外部团队可独立验证"
+      ],
+      "deliverable_requirements": [
+        "提交一篇25-40页的战略与实施路线图报告（PDF或DOC），包含：监管对照表、规则库蓝图、AI风险治理方案、MVP里程碑与时间线、度量与验证方法",
+        "在关键设计处提供精确引用（法规/指南的章节/页码、版本/年份、公开URL），构建可审计证据链",
+        "明确数据与功能边界：仅使用公开资料（法规、指南、发行方产品文件），不接触客户个人数据；说明如何在MVP中实现合规话术与适当性规则",
+        "提供复现指引：第三方如何按报告步骤在1个月内完成小规模试点（研究-验证-评审-上线），并列出所需公开资源清单"
+      ],
+      "evaluation_focus": [
+        "监管覆盖与准确引用：跨法域规则提炼是否准确、可定位、可审计",
+        "AI与模型风险治理的可操作性：与NIST AI RMF、SR 11-7的一致性与落地细化程度",
+        "路线图的可执行性与复现性：时间线、里程碑、风险与回滚设计是否清晰具体",
+        "度量与验证闭环：指标定义明确、外部团队可用公开资料独立验证"
+      ]
+    },
+    {
+      "query_id": "fin_esg_analyst-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Microsoft 2024 Sustainability Report PDF Scope 1 Scope 2",
+      "search_queries": [
+        "Microsoft 2024 Sustainability Report PDF Scope 1 Scope 2",
+        "GHG Protocol Corporate Standard PDF 2004 2015",
+        "GHG Protocol Scope 2 Guidance 2015 PDF market-based location-based",
+        "TCFD 2021 Metrics Targets Guidance PDF greenhouse gas intensity",
+        "Microsoft Form 10-K 2024 revenue PDF investor relations"
+      ],
+      "scenario": "角色：买方机构ESG投融资分析师。\n背景：研究团队拟将微软纳入ESG主题组合，主管要求在投资委员会前完成气候关键数据快审与核算复核，验证该公司的温室气体范围1与范围2（市场法/地理法）数据、强制边界与保证情况，计算与披露一致性。\n约束：仅使用公开互联网权威资料（公司可持续发展报告/10-K、GHG Protocol、TCFD指南等），不得使用任何付费或内部数据库；所有结论必须以可在线检索的原文出处（页码/章节）支持；在数小时内完成。",
+      "task_focus": [
+        "从微软2024可持续发展报告与10-K提取Scope 1/Scope 2（市场法/地理法）与收入等基础数据并记录来源",
+        "将公司披露口径与GHG Protocol企业核算标准与Scope 2指导进行概念与边界对齐",
+        "依据TCFD Metrics & Targets指南计算并呈现温室气体强度（如tCO2e/百万美元收入），说明公式与单位",
+        "核查数据的第三方保证类型（有限/合理保证）、组织边界、基准年与任何重述说明"
+      ],
+      "deliverable_requirements": [
+        "一篇不超过2000字的核查报告（含计算步骤与简明表格），报告中每一项数据与定义均需标注来源链接与页码/章节",
+        "至少引用：微软2024可持续发展报告、微软2024年Form 10-K、GHG Protocol企业核算标准与Scope 2指导、TCFD 2021度量与目标指南；总引用不少于8条",
+        "明确列出市场法与地理法差异、组织边界与保证范围，并给出是否满足TCFD建议度量的判断结论",
+        "在报告末尾提供可复现步骤清单（检索、提取、计算、核对），确保第三方可复现"
+      ],
+      "evaluation_focus": [
+        "证据可验证：核心数据与定义均有权威来源且标注准确的页码/章节与链接",
+        "计算透明与正确性：公式、单位换算、基准年与边界说明清晰一致，结果与原文披露不冲突",
+        "方法对齐：对GHG Protocol与TCFD指标口径的理解准确，区分market-based与location-based并进行一致性判断",
+        "可复现性：步骤清晰、链接有效，第三方可按步骤重现计算与结论"
+      ]
+    },
+    {
+      "query_id": "fin_esg_analyst-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "IFRS S2 Climate-related disclosures 2023 PDF site:ifrs.org",
+      "search_queries": [
+        "IFRS S2 Climate-related disclosures 2023 PDF site:ifrs.org",
+        "IFRS S1 General Requirements 2023 PDF site:ifrs.org",
+        "ESRS 2023 EFRAG Set 1 PDF site:efrag.org",
+        "US SEC 2024 climate disclosure final rule PDF site:sec.gov",
+        "TCFD 2017 Recommendations PDF site:ifrs.org"
+      ],
+      "scenario": "角色：资产管理机构ESG投融资分析师。\n背景：公司拟更新全球气候信息披露对齐策略，覆盖ISSB（IFRS S1/S2）、欧盟CSRD下ESRS以及美国SEC 2024气候披露最终规则，形成可执行的投资筛选与尽调政策，并评估对现有组合的影响。\n约束：仅依赖公开、权威的法规与标准文本及官方指南（IFRS、EFRAG、SEC、TCFD等），不使用付费数据库；需在数天内完成可复现的框架交叉映射与策略报告。",
+      "task_focus": [
+        "提炼并交叉映射IFRS S2、IFRS S1、ESRS（尤其E1气候）与SEC 2024气候规则的关键披露要求与过渡条款",
+        "识别对资产管理人有直接影响的指标（温室气体、治理、风险、目标、保证要求）与数据口径差异",
+        "制定投资筛选与尽调政策（如最低气候披露门槛、目标设定与审计/保证要求）以及合规时间表",
+        "选取至少2家跨法域上市公司，展示在各框架下的披露差距与潜在投资影响（仅用公开报告/官网资料）"
+      ],
+      "deliverable_requirements": [
+        "一篇3000-5000字的政策与框架对齐报告，包含标准化的交叉映射矩阵（条款编号/章节与指标的对应关系）",
+        "每个框架至少引用5处官方条文或段落（IFRS S1/S2、ESRS、SEC最终规则、TCFD建议）；总引用不少于20条，全部提供可访问链接与版本/发布日期",
+        "给出面向资产管理人的投资尽调与筛选清单（指标、证据与最低阈值）与分法域的合规里程碑（季度/年度）",
+        "提供2-3家样本公司披露差距的案例分析（公司年报/可持续报告/官网页面），并标注出处与页码/章节；确保第三方可复查"
+      ],
+      "evaluation_focus": [
+        "准确性与完整性：对各框架的条款与指标映射严谨，无关键信息遗漏或误解",
+        "可验证证据链：每一结论均由权威原文支撑，链接有效、版本与年份清晰",
+        "政策可操作性：筛选与尽调清单可直接用于投资流程；合规时间表现实可行",
+        "复现性：结构化矩阵与步骤足够使他人根据公开资料在数天内重建同等成果"
+      ]
+    },
+    {
+      "query_id": "fin_esg_analyst-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Climate Action 100+ Net Zero Company Benchmark 2023-2024 PDF electric utilities",
+      "search_queries": [
+        "Climate Action 100+ Net Zero Company Benchmark 2023-2024 PDF electric utilities",
+        "NGFS climate scenarios 2023 download site:ngfs.net",
+        "Transition Pathway Initiative electric utilities assessment 2023 PDF site:transitionpathwayinitiative.org",
+        "SBTi companies target dashboard 2024 electric utilities site:sciencebasedtargets.org",
+        "PCAF Standard financed emissions 2020 2022 electricity generation PDF site:pcafglobal.org"
+      ],
+      "scenario": "角色：大型公募/私募机构ESG投融资分析师，兼顾投后治理。\n背景：机构拟为全球电力公用事业板块制定12-18个月的净零对齐投资与投后参与路线图，构建开源评分模型，基于公开权威数据（CA100+、TPI、SBTi、NGFS、PCAF与公司报告）完成可重复的数据整合、情景分析与目标设定，支持仓位调整与参与目标。\n约束：仅使用公开互联网资料与开放框架；需要多轮迭代与系统整合；最终交付为一个公开GitHub仓库（代码与文档），不附加其他交付物。",
+      "task_focus": [
+        "设计净零对齐评分框架（治理、目标、资本支出、退煤计划、范围1/2/3与中期目标进度），明确权重与可解释性",
+        "系统整合公开来源（CA100+基准、TPI评估、SBTi目标状态、公司可持续报告）并建立可复现的数据收集流程",
+        "基于NGFS情景对关键指标进行压力测试与情景比较，量化转型风险与资本开支一致性",
+        "形成投后参与策略（关键KPI、里程碑、参与议题），并设定季度性评审与调仓触发条件"
+      ],
+      "deliverable_requirements": [
+        "一个公开GitHub代码仓库：包含README（方法与运行步骤）、data_sources.md（全部来源链接与版本）、/scripts（数据抓取/清洗/评分脚本）",
+        "在仓库中提供最少15家全球电力公用事业公司的评分结果（CSV/JSON）与一键复现实验脚本；每项评分均需对应到具体公开来源链接",
+        "实现至少两条NGFS情景的压力测试（如NDC与Net Zero 2050），并输出情景下的评分变化与风险指标",
+        "提供模型透明度材料：权重设定、敏感性分析、局限性声明与再现性说明（环境依赖、版本固定）"
+      ],
+      "evaluation_focus": [
+        "权威与覆盖：数据来源均为公开可信（CA100+、TPI、SBTi、NGFS、PCAF与公司官方报告），链接有效，版本清楚",
+        "模型严谨与可解释：评分维度合理、权重与口径清晰；包含敏感性分析与情景结果说明",
+        "可复现性与工程质量：仓库结构规范、脚本可运行、依赖与版本固定、他人可一键重现输出",
+        "策略可操作性：参与KPI与里程碑明确、与评分和情景输出一致，能支持1个月以上的持续迭代"
+      ]
+    },
+    {
+      "query_id": "capital_market_professional-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "ISDA 2021 Interest Rate Definitions pdf site:isda.org",
+      "search_queries": [
+        "ISDA 2021 Interest Rate Definitions pdf site:isda.org",
+        "ISDA 2006 Definitions pdf site:isda.org",
+        "ISDA 2020 IBOR Fallbacks Protocol pdf site:isda.org",
+        "ARRC recommended conventions USD SOFR swaps 2021 pdf site:newyorkfed.org",
+        "FCA LIBOR cessation 2021 announcement site:fca.org.uk"
+      ],
+      "scenario": "角色：银行金融市场业务专业人员（同业衍生品交易）。背景：需与同业达成一笔美元SOFR固定-浮动利率互换（Plain Vanilla IRS），在LIBOR退出背景下准备合规的交易确认关键字段与校验清单。约束：仅依赖公开互联网资料（ISDA、ARRC、FCA等权威来源），不得使用银行内部模板或保密数据；交付为一篇中文报告，所有结论需引用英文原文并标注版本/页码。",
+      "task_focus": [
+        "锁定适用的定义与协议版本，明确应使用ISDA 2021 Interest Rate Definitions及与ISDA 2006 Definitions、IBOR Fallbacks Protocol的关系与差异",
+        "梳理并标准化产品要素：本金、固定腿（利率、频率、日计数）、浮动腿（SOFR复利/简单、重设频率、观察/计息约定）、业务日规则、节假日日历与支付安排",
+        "专项合规校验：基准替代/回退条款、重大变更与终止事件、治理与披露（引用FCA 2021公告与ARRC惯例）",
+        "生成交易确认关键字段样例（不含对手方敏感信息），并建立可复用的逐条核对清单与引用索引"
+      ],
+      "deliverable_requirements": [
+        "一篇报告（中文），包含：1）合规核对清单（逐条项与引用出处页码/章节）；2）交易确认关键字段示例（字段名、取值规范、来源依据）；3）对ISDA 2006与2021定义差异的对照摘要；4）引用资料的完整链接与版本信息",
+        "明确SOFR相关惯例（如ARRC建议的计息与结算约定），并将与ISDA定义的契合点/差异以表格或列表形式呈现",
+        "在报告中给出可直接复用的确认书字段模板（纯文本），并标注需要机构自定义的留白项；所有条款必须有可验证的权威出处"
+      ],
+      "evaluation_focus": [
+        "权威引用的准确性与可验证性（是否引用ISDA/ARRC/FCA正式文件，是否标注版本与页码/章节）",
+        "条款覆盖与完整性（是否覆盖产品要素、基准回退、业务日/日计数、重大事件等核心合规项）",
+        "示例与清单的实用性（字段模板是否可直接用于交易材料准备，逻辑是否清晰可操作）",
+        "一致性与术语规范（与ISDA/ARRC术语保持一致，避免歧义）"
+      ]
+    },
+    {
+      "query_id": "capital_market_professional-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "BCBS Minimum capital requirements for market risk 2019 pdf site:bis.org",
+      "search_queries": [
+        "BCBS Minimum capital requirements for market risk 2019 pdf site:bis.org",
+        "Treasury yield curve rates daily site:treasury.gov",
+        "FRED API Treasury yields DGS10 documentation site:fred.stlouisfed.org",
+        "Basel market risk backtesting VaR methodology pdf site:bis.org 2016",
+        "python fredapi GitHub README"
+      ],
+      "scenario": "角色：银行债券交易台风险分析师。背景：搭建一个可在数天内复现的公开数据利率风险度量原型，用于同业投资与限额论证，覆盖DV01与历史VaR（99%）。约束：仅使用公开API与权威资料，不得使用付费终端或内部数据；以美国国债（Treasury.gov/FRED公开数据）作为样例投资组合；交付为一个可复现的Python代码仓库。",
+      "task_focus": [
+        "数据获取与清洗：使用FRED API或Treasury.gov下载可复现的收益率/价格数据（如DGS1/DGS2/DGS10），记录来源与时间戳",
+        "风险度量实现：计算样例组合的久期与DV01，构建历史VaR（99%置信、滚动窗口）并说明假设与限制",
+        "合规框架映射：对照BCBS FRTB（2019版）关键概念（风险因子、回测、非模型化风险简述），说明原型与标准的差距与可扩展点",
+        "复现实验：提供一键运行的脚本/说明，生成指标与简要图表/报告片段，确保第三方在数天内无障碍复现"
+      ],
+      "deliverable_requirements": [
+        "一个公开代码仓库（Python），包含：README（运行步骤、环境与数据来源）、requirements.txt、数据抓取脚本、风险计算模块（DV01与历史VaR）、可重复的示例运行（含输出保存）",
+        "方法说明文档（可置于README或docs），明确：1）数据来源与系列（代码、频率、单位）；2）DV01与VaR计算公式与参数；3）与BCBS 2019市场风险标准的对应关系与局限",
+        "引用清单：BIS（BCBS 2019/相关VaR回测文档）、Treasury.gov与FRED的官方链接、API文档或GitHub库链接，确保第三方可独立检索与验证"
+      ],
+      "evaluation_focus": [
+        "可复现性与健壮性（是否可在干净环境下按README一键运行，数据抓取是否稳定、含错误处理）",
+        "计算正确性与透明度（DV01与VaR逻辑正确、参数可追溯、注释充分，有与理论/样例的一致性检查）",
+        "合规映射的准确性（对BCBS标准的理解与引用是否到位，边界与扩展路径阐述清晰）",
+        "代码质量与文档完备性（模块化、可读性、依赖最小化、引用与版本标注齐全）"
+      ]
+    },
+    {
+      "query_id": "capital_market_professional-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NAFMII 自律规则 债券回购 2022 PDF site:nafmii.org.cn",
+      "search_queries": [
+        "NAFMII 自律规则 债券回购 2022 PDF site:nafmii.org.cn",
+        "CFETS 银行间市场 交易规则 质押式回购 2022 PDF site:cfets.com.cn",
+        "中国人民银行 银行间债券市场 回购 管理 办法 公告 2013 site:pbc.gov.cn",
+        "ISDA Clause Library 2020 pdf site:isda.org",
+        "BCBS 239 Principles for effective risk data aggregation and reporting 2014 pdf site:bis.org"
+      ],
+      "scenario": "角色：银行金融市场合规与业务创新负责人。背景：面对中国银行间市场（NAFMII/CFETS/人民银行）与国际（ISDA/BIS）规则快速迭代，需设计一个为期1个月的智能体赋能路线图，自动监测并解析规则变更，输出可用于交易前合规校验的工作流设计与数据字典。约束：仅依赖公开官网资料与可访问接口，不使用内部系统或保密数据；交付为一篇战略报告（含路线图与验证方法），覆盖债券回购、同业拆借、利率衍生品关键环节。",
+      "task_focus": [
+        "权威来源盘点与采集策略：NAFMII自律规则、CFETS交易规则、人民银行公告、ISDA条款库与BIS数据治理原则的抓取与更新监测方案",
+        "规则版本管理与差异比对：建立版本语义标签（发布日期/适用范围/条款编号），输出差异清单及变更影响路径（交易、确认、风控）",
+        "数据字典与校验清单设计：定义交易前校验字段（如回购期限、质押物、业务日规则、基准回退条款），建立规则-字段-来源三向映射",
+        "智能体工作流蓝图：规划抓取-解析-比对-告警-审计留痕的闭环机制，给出试点场景（如质押式回购与IRS）的端到端流程与验证方法"
+      ],
+      "deliverable_requirements": [
+        "一篇战略报告（中文），包含：1）权威来源目录与访问方法（链接、更新频率、可用接口/格式）；2）版本管理与差异比对方法论（示例条款的对照与影响评估）；3）数据字典（字段、定义、引用来源、适用业务）；4）交易前自动化校验清单与工作流架构图；5）试点用例与验证步骤（含成功/失败判定标准）",
+        "明确合规与风险控制要求：对齐BIS BCBS 239数据治理原则与审计追踪要求，设计留痕与回溯机制",
+        "所有结论与设计均需有公开资料出处，标注来源网址、版本/年份、章节或条款编号，以便第三方审核与复现"
+      ],
+      "evaluation_focus": [
+        "权威性与覆盖度（是否覆盖NAFMII/CFETS/人民银行/ISDA/BIS等核心来源，链接有效、版本清晰）",
+        "可执行性与复现度（工作流步骤明确、工具与方法可实施，试点用例可被他人独立验证）",
+        "验证闭环与数据治理（差异比对与告警机制完整、审计留痕设计符合BCBS 239精神）",
+        "业务适配度与扩展性（校验清单与数据字典能落地至回购/拆借/衍生品，具备未来扩展计划）",
+        "创新性与风险意识（对自动化解析与合规联动的创新方案充分、识别并缓释潜在合规/技术风险）"
+      ]
+    },
+    {
+      "query_id": "fin_research_analyst-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "国家能源局 2024年8月 电力工业统计 光伏 新增装机",
+      "search_queries": [
+        "国家能源局 2024年8月 电力工业统计 光伏 新增装机",
+        "国家能源局 2024年8月 全国新增发电装机 太阳能",
+        "中国光伏行业协会 2024年上半年 光伏产业发展报告 PDF",
+        "国家统计局 2024年8月 电力生产 增速",
+        "IEA PV China 2024 monthly installations"
+      ],
+      "scenario": "角色：覆盖新能源发电的券商研究员。背景：需要在半天内为销售团队和机构客户准备一次“2024年8月中国光伏新增装机与发电量速评”，用于早会与路演材料。约束：仅使用公开权威来源（国家能源局、中国光伏行业协会、国家统计局、国际机构公开简报），不得使用付费数据库；所有数据需可交叉验证并标注原始链接与发布时间；时间不超过当日内完成。",
+      "task_focus": [
+        "检索并提取国家能源局发布的2024年8月光伏新增装机与发电量相关口径，计算当月与累计同比、环比",
+        "用中国光伏行业协会（CPIA）2024上半年行业报告的年度预测或区间判断对全年装机目标完成度进行核验",
+        "对比国家统计局的电力生产与发电量增速口径，解释不同统计口径差异对结论的影响",
+        "结合IEA公开简报（若可获取）进行国际对比，给出对H2景气度的定性判断与关键风险点"
+      ],
+      "deliverable_requirements": [
+        "提交一篇3-5页的速评报告（含图表），明确列示每条数据的来源、发布日期、原始URL与访问日期；报告仅依赖公开互联网资料",
+        "计算并展示2024年8月光伏新增装机的同比/环比、1-8月累计同比，以及全年装机目标完成度（引用CPIA公开预测或区间），所有计算公式与口径定义需在文中说明",
+        "在结论部分提供对H2行业景气度的判断，并以至少两处权威来源的证据支持（NEA/CPIA/NBS/IEA），同时说明数据口径差异与不确定性",
+        "所有图表需可复核（标注数据单位、时间维度、来源）；不使用内部或保密信息"
+      ],
+      "evaluation_focus": [
+        "数据准确性与可验证性：是否全部来自权威公开来源，是否提供原始链接与发布时间/访问日期",
+        "方法透明度：同比、环比、完成度等计算是否清晰可复现，口径差异说明是否充分",
+        "结论稳健性：是否基于多源交叉验证，是否合理界定不确定性与风险",
+        "呈现与逻辑：报告结构清晰、图表规范、论证链条完整，便于客户快速理解"
+      ]
+    },
+    {
+      "query_id": "fin_research_analyst-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "中国人民银行 加权平均贷款利率 数据 2018-2024 官网",
+      "search_queries": [
+        "中国人民银行 加权平均贷款利率 数据 2018-2024 官网",
+        "货币政策执行报告 2024年第二季度 净息差 解释 人民银行",
+        "国家金融监督管理总局 银行业监督管理统计公报 2023 PDF",
+        "工商银行 2023年年报 净息差 指标",
+        "建设银行 2024年中期报告 净息差 指标"
+      ],
+      "scenario": "角色：覆盖银行板块的券商研究员。背景：团队需要一份可复现的“2018-2024年A股上市银行净息差(NIM)与利率传导关系”研究，以支撑后续板块策略与个股精排。约束：仅使用PBoC/NFRA（原银保监会）/上市银行年报与中报等公开权威资料；不使用付费数据库；研究过程需能被同组研究员在数天内复现。",
+      "task_focus": [
+        "采集2018-2024年中国人民银行公布的LPR、MLF、加权平均贷款与存款利率等公开数据，并统一频率与口径",
+        "从主要A股上市银行（如工行、建行、农行、招行、邮储等）的年报/中报中提取NIM数据，建立年度或半年度面板",
+        "设计并描述统计检验框架（相关性、滞后效应、简化回归设定）以评估利率变量对NIM的影响",
+        "与PBoC货币政策执行报告对于NIM变化的官方阐述进行比对，核对一致性与解释差异"
+      ],
+      "deliverable_requirements": [
+        "提交一篇10-15页研究报告，包含数据来源清单（PBoC、NFRA、各银行年报/中报）与原始链接，列示数据口径、频率与清洗规则",
+        "提供2018-2024年样本银行的NIM汇总表与关键利率变量的时间序列图，说明滞后选择、回归设定与稳健性检验（如不同滞后阶数、子样本）",
+        "对比货币政策执行报告对NIM变化的官方解读，指出一致与不一致之处，并给出可能原因（周期、结构性因素、监管政策）",
+        "报告结尾附上银行年报/中报具体章节的引用页码或指标表格编号，确保他人可据此复核"
+      ],
+      "evaluation_focus": [
+        "来源权威性与完整性：是否覆盖PBoC/NFRA及主要上市银行公开资料，链接与口径是否齐备",
+        "数据处理与方法严谨性：频率统一、滞后设定、回归描述是否清晰、可复现",
+        "结论与政策比对：对官方阐述的检验是否到位，解释差异是否合理",
+        "可复现性与可读性：报告结构、图表与附录能否支持他人独立复现结果"
+      ]
+    },
+    {
+      "query_id": "fin_research_analyst-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "中国汽车工业协会 2024年 新能源汽车 产销 快讯 月度",
+      "search_queries": [
+        "中国汽车工业协会 2024年 新能源汽车 产销 快讯 月度",
+        "乘联会 2024年 新能源乘用车 月度 零售 批发 数据",
+        "中国汽车动力电池产业创新联盟 2024年 月度 装车量 公报",
+        "中国电动汽车充电基础设施促进联盟 2024年 月度 运营数据",
+        "国家统计局 汽车制造业 2020-2024 统计数据 新能源"
+      ],
+      "scenario": "角色：新能源车产业链组的首席研究员/项目负责人。背景：为提升研究自动化与透明度，计划在1个月内搭建一个开源、可复现的“新能源汽车产业链公开数据与景气度指标库”，用于后续周报与策略模型。约束：仅使用权威公开来源（中汽协、乘联会、动力电池产业创新联盟、充电设施促进联盟、国家统计局）；代码与数据处理流程必须开源、可复现、可审计；不得使用任何付费或内部数据。",
+      "task_focus": [
+        "梳理并实现对月度公开数据源的抓取/解析（产销、乘用车零售/批发、动力电池装车量、充电设施运营等），建立统一ETL与口径映射",
+        "定义核心指标（渗透率、月度同比/环比、三月滚动均值、TOP3品牌份额、装车量强度等）及公式，构建校验与单元测试",
+        "实现数据版本化与溯源（原始URL、发布时间、快照），输出标准化CSV与元数据字典",
+        "配置每周自动更新任务（CLI或调度脚本），并撰写完整README与使用指南，确保研究团队与外部用户可复现运行"
+      ],
+      "deliverable_requirements": [
+        "交付一个公开代码仓库（含README、依赖清单、模块化ETL代码、测试用例、样例数据/输出），采用可信开源许可证（如 MIT 或 Apache-2.0）",
+        "至少覆盖过去24个月的有效历史数据（可从公开月度快讯/公报复刻），并提供数据字典、字段说明、口径差异备注",
+        "为每个数据源记录原始URL、发布时间、抓取日期与快照方法（如保存PDF/HTML片段），实现数据溯源与版本管理",
+        "提供一键运行的脚本/CLI（含示例命令）生成标准化CSV与核心指标表，并通过测试确保指标计算正确"
+      ],
+      "evaluation_focus": [
+        "来源权威性与稳健性：数据源是否均为行业/政府权威公开渠道，抓取解析是否稳定",
+        "工程质量与可复现性：代码结构、文档、测试与版本管理是否规范，是否一键可运行",
+        "指标定义与准确性：公式清晰、单位口径一致、与原始月报/公报数值核对无误",
+        "可扩展性与维护性：数据字典与ETL设计是否便于新增来源/指标，更新流程是否可持续"
+      ]
+    },
+    {
+      "query_id": "business_data_analyst-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "国家统计局 网上零售额 2024 年度 数据 公报",
+      "search_queries": [
+        "国家统计局 网上零售额 2024 年度 数据 公报",
+        "麦肯锡 中国消费者报告 2024 PDF",
+        "CNNIC 第54次 中国互联网络发展状况统计报告 2024 PDF 移动支付",
+        "艾瑞咨询 电商 行业研究 2024 报告 PDF"
+      ],
+      "scenario": "角色：消费品行业总部的商务数据分析师。背景：为筹备即将到来的双11运营会，管理层需要在数小时内获得一份基于公开权威资料的线上零售增长与用户行为趋势简报（2022-2024年）。约束：不得使用任何公司内部数据或付费数据库；所有结论必须来自可公开访问的权威来源（如国家统计局、行业研究机构、国际咨询公司公开报告、行业协会），并在报告内逐条注明来源链接、发布时间与口径说明；仅允许使用公开互联网可获取的数据与报告。",
+      "task_focus": [
+        "汇总并对比2022-2024年中国网上零售额及实物/非实物分项增速，标注统计口径与数据来源",
+        "提炼消费者数字行为与渗透相关指标（如移动互联网普及率、移动支付使用率、线上购物渗透）并给出趋势解读",
+        "抽取头部行业研究报告的关键结论，形成对未来1-2个季度的风险与机会判断",
+        "以图表+要点方式输出可直接用于管理会的决策简报，确保可追溯和可验证"
+      ],
+      "deliverable_requirements": [
+        "交付物为一篇2-3页的中文简报（PDF或DOCX），包含：关键KPI表（指标定义、数值、年份、来源链接）、1-2张趋势图、结论与行动建议",
+        "每一项数据或结论须在正文或脚注标明来源机构、报告名称、发布日期/年份、可访问URL，确保第三方可点击验证；注明访问日期",
+        "说明数据口径与可比性（例如名义值/实际值、是否含旅游服务、样本范围），列出不确定性与可能偏差",
+        "只采纳公开可获取的权威资料（示例来源：国家统计局公报、CNNIC统计报告、麦肯锡/艾瑞公开PDF、商务部公开材料），不引用付费墙后的数据摘要",
+        "图表需标注数据来源与时间范围，数值与原文一致，允许四舍五入但需注明"
+      ],
+      "evaluation_focus": [
+        "数据准确性与可追溯性：抽查3-5个核心数字能否与原始权威来源逐一对上（数值、年份、口径）",
+        "来源权威性与覆盖度：是否至少覆盖国家统计局+行业权威报告（CNNIC/咨询机构）等不低于3个独立来源",
+        "洞察有效性：趋势解释是否谨慎、边界清晰（不夸大）、行动建议与数据证据一致",
+        "表达清晰度：图表与表格清晰、脚注规范、易于高管快速阅读"
+      ]
+    },
+    {
+      "query_id": "business_data_analyst-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "UCI Machine Learning Repository Online Retail II Data Set 2019",
+      "search_queries": [
+        "UCI Machine Learning Repository Online Retail II Data Set 2019",
+        "Fader Hardie 2005 BG NBD paper PDF Counting Your Customers",
+        "lifetimes Python documentation BG-NBD Gamma-Gamma 0.11.3",
+        "BTYD R package CRAN BG/NBD"
+      ],
+      "scenario": "角色：DTC电商创业公司的商务数据分析师。背景：公司计划搭建留存与客户终身价值（CLV）度量体系，但目前尚无可对外分享的内部数据。为向管理层与潜在合作方展示方法论与可行性，需要用公开数据完整复现一次“从原始交易数据到留存/CLV”的分析路径。约束：仅可使用公开可下载的数据集、开源工具与公开论文/文档；代码与结果必须可在本地环境一步复现；不得上传包含个人信息或非公开数据；仓库需标注数据来源与许可。",
+      "task_focus": [
+        "使用UCI Online Retail II数据集完成数据清洗、RFM分群、按首购月的用户留存队列分析（以周/月为周期）",
+        "基于交易明细构建客户级别复购模型：拟合BG/NBD与Gamma-Gamma，用90天窗口评估留存与CLV基线",
+        "构建校准与验证：留出最近一段时间作为Holdout，报告模型预测与实际的偏差、校准图",
+        "输出完全可复现的代码仓库与README（含环境、运行步骤、指标定义、来源与许可）"
+      ],
+      "deliverable_requirements": [
+        "交付物为一个公共代码仓库（如GitHub），包含：README（项目目的、数据来源URL与许可、环境配置、运行步骤）、environment/requirements文件、Jupyter Notebook或脚本、可重现的图表输出",
+        "Notebook需涵盖：数据清洗（去重、缺失处理、退货处理）、RFM计算与分组、队列留存矩阵与曲线、BG/NBD与Gamma-Gamma建模、Holdout评估与可视化、关键假设与限制",
+        "在仓库内引用并链接核心Ground Truth：UCI数据集主页、Fader/Hardie论文PDF、lifetimes或BTYD文档；注明版本（例如lifetimes 0.11.3）与访问日期",
+        "提供一键复现指令（如Makefile或脚本）与随机种子固定；确保在CPU环境下可在≤2小时完成端到端运行",
+        "在README中明确数据隐私与许可声明，仅使用公开数据，不包含任何公司或个人敏感信息"
+      ],
+      "evaluation_focus": [
+        "可复现性：新环境克隆仓库后，按README是否能顺利跑通并生成相同关键图表和指标",
+        "方法严谨性：模型假设说明完整、校准与Holdout评估规范、指标（留存率、CLV）定义与实现正确",
+        "工程质量：代码结构清晰、依赖固定、运行时间与资源占用在约束内、可读性与注释充分",
+        "合规性与学术引用：数据许可证遵从、对UCI数据与BG/NBD原始论文的引用规范",
+        "洞察解释：对RFM分群差异、留存曲线形态、模型偏差来源有合理商业解读"
+      ]
+    },
+    {
+      "query_id": "business_data_analyst-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "M5 competition dataset Kaggle Walmart sales WRMSSE",
+      "search_queries": [
+        "M5 competition dataset Kaggle Walmart sales WRMSSE",
+        "M5 Accuracy competition results paper 2022 PDF Makridakis",
+        "WRMSSE evaluator GitHub M5 official",
+        "Monash Time Series Forecasting Repository M5",
+        "Prophet forecasting documentation 2024"
+      ],
+      "scenario": "角色：全国连锁零售企业的高级商务数据分析师。背景：CFO要求在未来12个月内将需求预测纳入预算与补货的核心流程，期望看到在公开权威基准上的可量化提升与落地路线。但当前阶段只允许使用公开数据进行验证与能力建设演示。约束：全流程仅使用公开数据集（如M5竞赛零售销售数据）与开源工具；指标体系需对齐权威基准（WRMSSE等）；代码与结果可重复；输出需同时包含战略白皮书与可运行基线代码，以支撑管理层决策与后续技术转移。",
+      "task_focus": [
+        "基于M5数据构建分层零售销量预测基线（商品-门店-州-总计），实现多种模型（ARIMA/ETS、Prophet、LightGBM或XGBoost、简单移动平均）",
+        "严格复现与解释M5权威指标WRMSSE，并与公开文献中的基准结果对比，形成基线性能画像",
+        "完成文献综述：总结M5及后续研究中的有效做法（特征工程、层级汇总、误差度量与不确定性）",
+        "形成企业级落地路线图：数据治理、MLOps与监控、人才与成本评估、分阶段里程碑与风险控制"
+      ],
+      "deliverable_requirements": [
+        "交付物由两部分组成：1) 一份15-20页的中文战略与技术白皮书（PDF），包含文献综述、方法设计、实验结果（与权威基准对比）、业务影响预估、实施路线图；2) 一个公共代码仓库，含数据下载脚本、特征工程与训练脚本、WRMSSE评估实现、可重复的实验配置与结果复现实例",
+        "白皮书中对每个关键结论提供Ground Truth引用与链接：如M5官方数据页/竞赛说明、Makridakis等人2022年论文、WRMSSE官方或权威实现仓库、Monash时序库等；附参考文献表与访问日期",
+        "代码仓库需包含固定依赖（环境文件/容器定义）、可一键运行的基线实验（不要求搜参极致，但需可在常规CPU环境≤6小时完成样例子集训练与评估）、以及对WRMSSE公式与实现的注释",
+        "提供结果复现实验：给出至少2种模型在同一数据切片上的WRMSSE对比，并与文献中的可比指标进行差距分析（说明口径差异与原因）",
+        "落地路线图需覆盖：数据接入清单（内部化后的等价表结构建议）、部署形态（批处理/流式）、监控指标（滚动WRMSSE/偏差漂移）、组织与成本评估、风险与回滚预案"
+      ],
+      "evaluation_focus": [
+        "权威对齐：WRMSSE实现正确性与对文献/官方基准的对齐程度，引用是否充分且精确",
+        "研究深度：文献综述是否覆盖M5核心成果与代表性后续研究，方法选择是否有充分理由与取舍",
+        "工程与复现：代码仓库是否可运行、实验是否可复现、依赖与配置是否规范，结果是否稳定",
+        "业务落地性：路线图是否可执行、风险识别充分、资源与时间估算合理，与企业实际流程对齐",
+        "透明度与合规：数据与代码许可证合规、对假设与限制说明清晰，差异与偏差有充分解释"
+      ]
+    },
+    {
+      "query_id": "fin_data_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "World Bank API indicators FP.CPI.TOTL.ZG SL.UEM.TOTL.ZS NY.GDP.MKTP.CD 2024 documentation",
+      "search_queries": [
+        "World Bank API indicators FP.CPI.TOTL.ZG SL.UEM.TOTL.ZS NY.GDP.MKTP.CD 2024 documentation",
+        "World Bank API v2 country codes list 2024",
+        "Great Expectations documentation 2024 getting started",
+        "Frictionless Data Package specification v1.0",
+        "World Bank indicator metadata CPI unemployment GDP definitions"
+      ],
+      "scenario": "角色：买方机构投研数据工程师。背景：为宏观月度例会快速搭建一个公开指标的小型数据管线，统一口径并输出数据字典与异常报警，供投研团队用于跨国对比。约束：只能使用无需注册密钥的公开数据与文档；以世界银行开放数据API为唯一数据源；任务需在数小时内完成并可本地完全复现；需在报告中引用所用官方文档与指标元数据链接验证结论。",
+      "task_focus": [
+        "利用世界银行API提取美国、英国、日本2000-2023年的通胀(CPI, FP.CPI.TOTL.ZG)、失业率(SL.UEM.TOTL.ZS)、名义GDP(NY.GDP.MKTP.CD)",
+        "依据世界银行指标元数据对单位、频率、含义进行口径对齐并生成数据字典（含指标代码、单位、来源URL、更新时间）",
+        "使用Great Expectations定义关键数据质量规则（如取值范围、非负性、缺失率阈值、重复检测）并输出异常记录",
+        "采用Frictionless Data数据包规范为数据集生成机器可读的元数据描述"
+      ],
+      "deliverable_requirements": [
+        "一个公开代码仓库：包含数据拉取与清洗脚本、Great Expectations配置/检查结果、Frictionless datapackage.json、可复现实验依赖文件（如requirements.txt）",
+        "仓库README即报告：说明指标选择理由、口径对齐方法、质量规则设计与触发示例，并逐条给出所引用的官方文档与元数据URL",
+        "输出数据文件（CSV/Parquet）与数据字典（CSV/JSON），字段含义、单位、时间范围明确，文件内含生成时间戳"
+      ],
+      "evaluation_focus": [
+        "可复现性：拉取脚本在全新环境可一次性运行成功，产生与报告一致的数据与校验结果",
+        "口径与正确性：数据字典与世界银行指标元数据一致（单位、定义、频率），随机抽样数值可与世界银行网站可视化一致",
+        "数据质量覆盖度：质量规则对核心问题（非法范围、缺失、重复、异常波动）识别准确，异常报告可追溯到原始记录"
+      ]
+    },
+    {
+      "query_id": "fin_data_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "SEC EDGAR companyfacts API 2024 documentation",
+      "search_queries": [
+        "SEC EDGAR companyfacts API 2024 documentation",
+        "SEC company_tickers.json 2024 CIK to ticker mapping",
+        "XBRL US Data Quality Committee DQC rules 2024 revenue EPS",
+        "US GAAP Taxonomy 2024 us-gaap Revenues EarningsPerShareDiluted element",
+        "Great Expectations financial statements custom expectations example"
+      ],
+      "scenario": "角色：投研数据工程师。背景：为基本面量化选股原型，需在数天内复现一个小规模美股财报数据管线，从SEC EDGAR公开JSON接口提取AAPL、MSFT、AMZN的2018-2024财务关键指标（收入、摊薄每股收益），对齐US GAAP标签与单位，落地可运行的质量规则与异常报告。约束：仅可使用SEC公开接口与公开标准/规则；不得依赖任何私有数据库或付费API；需要处理重述、单位/标度、季度/年度帧；需在仓库报告中给出比对与引用。",
+      "task_focus": [
+        "使用SEC companyfacts API与company_tickers.json完成CIK映射，抓取us-gaap:Revenues与us-gaap:EarningsPerShareDiluted 2018-2024数据",
+        "对齐US GAAP Taxonomy 2024相关元素与单位（USD、每股、标度），处理frame（季度/年度）与重述版本选择",
+        "基于XBRL US DQC规则设计质量检查（如收入为非负、年度与季度汇总一致性阈值、单位匹配与比例尺一致性）",
+        "生成可审计的数据字典、异常日志与最小化回测样表，并在README中与10-K/10-Q公开数值进行抽样核对"
+      ],
+      "deliverable_requirements": [
+        "一个公开代码仓库：包含数据抓取/解析/对齐脚本、Great Expectations或自定义校验、单元测试样例、可复现环境文件",
+        "整理后的数据集（CSV/Parquet）：覆盖AAPL、MSFT、AMZN 2018-2024财年的季度与年度Revenues与EPS（标注单位、帧、来源）",
+        "仓库README即方法报告：描述标签映射与单位处理逻辑、DQC规则化落地方式、与随机选取的10-K/10-Q页面/数值的URL及比对截图或表格（允许少量人工对照），并附SEC与XBRL规则官方链接"
+      ],
+      "evaluation_focus": [
+        "准确性与一致性：抽样核对的收入与EPS与SEC文档呈报数值在合理误差范围内；季度与年度口径处理正确",
+        "规则合规：质量规则与XBRL US DQC指引一致，能识别常见问题（单位/比例尺错误、帧错配、重述冲突）",
+        "工程化程度：代码结构清晰、错误处理与日志完善、数据与元数据可追溯（来源URL、抓取时间、元素名、CIK、frame）"
+      ]
+    },
+    {
+      "query_id": "fin_data_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FAIR data principles 2016 original publication",
+      "search_queries": [
+        "FAIR data principles 2016 original publication",
+        "BCBS 239 Principles for effective risk data aggregation and risk reporting 2013 PDF",
+        "W3C DCAT 3 2022 Recommendation",
+        "GLEIF LEI data API 2024",
+        "OpenLineage specification 2023 documentation"
+      ],
+      "scenario": "角色：投研数据工程团队负责人。背景：为下一代投研数据平台制定1个月以上的战略方案，聚焦“开放标准+可观测+可追溯”的数据质量与血缘系统，覆盖宏观（World Bank/OECD）、基本面（SEC EDGAR）、标识（LEI）等公开数据源，形成跨域口径对齐、数据契约、质量规则库与告警闭环。约束：只能依据公开标准、监管与行业组织发布的资料；采用开源工具与公开数据完成方法论与小型验证方案（POC）设计；在报告中用权威来源支撑每一项设计决策（标准、规则、流程）。",
+      "task_focus": [
+        "梳理并映射关键开放标准到投研场景：FAIR原则、BCBS 239、W3C DCAT 3、LEI标识、OpenLineage血缘规范等",
+        "设计面向投研域的数据契约模板（JSON Schema）与数据目录/血缘元模型（对接DCAT与OpenLineage），定义核心SLA/SLO与质量KPI",
+        "制定跨源口径对齐与主数据（发行人、证券、实体）的识别策略（优先LEI与SEC CIK），并给出对齐与冲突解决流程",
+        "规划分阶段POC路线：以World Bank与SEC EDGAR为示例数据源，落地质量规则库、告警与回溯审计能力的演进里程碑与验收标准"
+      ],
+      "deliverable_requirements": [
+        "一份战略白皮书（单一报告，PDF/HTML均可）：包含目标架构、标准映射矩阵、数据契约与元数据模型草案、质量KPI与告警设计、POC里程碑与风险清单",
+        "报告需引用并标注可访问的权威资料URL（FAIR原文、BCBS 239、W3C DCAT 3、GLEIF LEI API、OpenLineage规范；以及World Bank与SEC EDGAR官方文档）以支撑设计决策",
+        "附带最小可行示例设计：提供数据契约（JSON Schema样稿）、质量规则清单样式、血缘事件示例（符合OpenLineage模型）与SLA监控指标定义"
+      ],
+      "evaluation_focus": [
+        "标准与合规覆盖：选择与映射是否全面且与权威出处一致，能支撑金融投研数据的质量与治理需求",
+        "可实施性与路线清晰：POC与量产路线、资源/风险评估、验收标准明确，工具与数据源均可公开获取与复现",
+        "可追溯与可观测：血缘、数据契约、质量KPI与告警闭环设计是否形成闭环并具备审计追踪能力"
+      ]
+    },
+    {
+      "query_id": "mfg_supply_chain_planner-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "M5 Forecasting Accuracy dataset Kaggle 2020",
+      "search_queries": [
+        "M5 Forecasting Accuracy dataset Kaggle 2020",
+        "M5 competition RMSSE definition rulebook PDF 2020",
+        "Forecasting Principles and Practice 3rd ETS Hyndman",
+        "MIT inventory safety stock formula z sqrt(L) pdf",
+        "Prophet documentation 2024"
+      ],
+      "scenario": "角色：一家中型快消企业的供应链优化规划师，需在内部数据不可用的前提下，用公开数据快速搭建“需求预测+初始库存策略”的基线方案，作为后续智能体规划功能的验证集。背景：管理层希望以公共数据验证算法与流程的可复现性与可比性，要求使用权威竞赛数据与统一评估指标。约束：仅使用公开可获取的数据与文档（不得使用内部销量、供应或保密数据）；评估指标与方法需可从权威资料验证；交付在数小时内可运行并复现。",
+      "task_focus": [
+        "获取并理解M5 Forecasting数据结构（商品-门店-日期分层），选择3个代表性SKU-门店序列作为样例",
+        "实现2-3个可复现的基线预测模型（如Naive/季节Naive、ETS、Prophet），并严格按M5的RMSSE定义评估",
+        "将预测误差转化为安全库存与订货点演示（给定多种公开可引用的服务水平z值与离散固定供货提前期情景）",
+        "完整记录数据来源、评估口径、公式与假设，并在代码中以注释形式引用权威资料"
+      ],
+      "deliverable_requirements": [
+        "一个可运行的代码仓库（含README、环境文件/requirements.txt、Jupyter Notebook或脚本），可一键下载公开数据、训练基线模型并输出评估指标",
+        "输出包含：所选3个SKU-门店序列的预测图、RMSSE对比表、在若干服务水平与提前期下的安全库存与订货点计算表",
+        "README中列出权威引用清单（含URL与访问日期）：M5数据与RMSSE定义、FPP3对ETS法的说明、标准正态分布z值与MIT公开讲义中的安全库存公式来源",
+        "确保随机性可控（设定随机种子）与结果可复现（给出运行步骤与预计运行时长）"
+      ],
+      "evaluation_focus": [
+        "评估指标正确性：是否严格按M5规则书的RMSSE公式实现并给出可追溯计算过程",
+        "可复现性与工程规范：环境锁定、数据下载与处理流程自动化、结果一致性",
+        "方法透明度与合规性：预测方法、库存公式与服务水平z值均有权威出处并在报告/代码注释中清晰引用",
+        "基线合理性：至少两个不同基线模型的对比是否体现改进空间与业务含义"
+      ]
+    },
+    {
+      "query_id": "mfg_supply_chain_planner-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OR-Library capacitated facility location cap Beasley",
+      "search_queries": [
+        "OR-Library capacitated facility location cap Beasley",
+        "Best known solutions OR-Library cap instances",
+        "Google OR-Tools Python MIP facility location example 2024",
+        "Pyomo capacitated facility location tutorial",
+        "Supply chain network design case study open data"
+      ],
+      "scenario": "角色：全国渠道规划的供应链优化规划师，需在无内部订单与成本明细情况下，利用公开OR基准数据复现实体网络选址（容量设施选址CFLP）的解法与质量校验。背景：公司拟评估开设/关闭分拨中心的影响，需要一个可复现的求解框架与对比基线以支持后续迭代。约束：仅依赖公开基准数据（OR-Library cap实例）与公开算法工具（OR-Tools/Pyomo/CBC/SCIP等）；需对照公开的Best-Known Solutions验证求解质量；产出在数天内可复现。",
+      "task_focus": [
+        "下载并解析OR-Library的cap实例（容量设施选址），明确成本、容量、需求等字段含义并与业务语义映射",
+        "用Python构建MILP模型（推荐OR-Tools或Pyomo），求解至少3个cap实例，并与公开BKS对比求解目标值与求解时间",
+        "进行2-3个敏感性场景（如运输成本±20%、设施固定成本±30%、需求放大1.2倍）以观察选址与总成本的变化",
+        "形成从学术基准到业务语义的转换方法：如何将cap实例映射为“DC-客户-运价-能力”的企业网络设计问题"
+      ],
+      "deliverable_requirements": [
+        "一个可运行的代码仓库：包含数据加载与转换脚本、MILP建模与求解脚本、结果分析Notebook、环境文件、README运行指南",
+        "结果文件与对照表：列出每个cap实例的求解目标值、与BKS的相对差距（%gap）、求解时间；敏感性分析下的设施开闭与成本变化图表",
+        "引用清单（URL与访问日期）：OR-Library cap数据页面、公开BKS页面/论文、所用求解器与库的官方文档链接；并注明硬件与求解参数",
+        "可复现实验步骤：包含随机种子设置、求解时间限制、停止准则，以及如何在本地或云端重复获得同等或更好结果"
+      ],
+      "evaluation_focus": [
+        "解的质量与可验证性：与公开BKS的目标值差距、是否提供可核对的实例编号与对照链接",
+        "建模正确性与鲁棒性：容量约束、分配约束、固定开闭逻辑等是否实现正确，敏感性分析是否反映合理的业务趋势",
+        "工程化与透明度：代码结构清晰、依赖可安装、README详尽、结果可稳定复现",
+        "业务可解释性：从学术实例到企业网络设计的映射是否清晰且可执行"
+      ]
+    },
+    {
+      "query_id": "mfg_supply_chain_planner-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "ISO 14083:2023 freight transport GHG standard overview PDF",
+      "search_queries": [
+        "ISO 14083:2023 freight transport GHG standard overview PDF",
+        "GLEC Framework 3.0 PDF Smart Freight Centre",
+        "EU Alternative Fuels Infrastructure Regulation 2023/1804 PDF",
+        "EU ETS maritime 2024 shipping extension scope",
+        "TEN-T core network corridors map 2023 PDF",
+        "UK government GHG conversion factors 2024 freight transport",
+        "ICCT 2024 total cost of ownership electric trucks Europe PDF"
+      ],
+      "scenario": "角色：欧洲区域的供应链优化规划师，负责制定3-5年多式联运减碳与韧性提升路线图。背景：公司拟将公路长途部分向铁路/内河转移，并评估绿色燃料与车队电动化的可行性；需满足ISO 14083与GLEC核算口径，响应EU ETS海运扩围、AFIR充电/加氢网络、TEN‑T走廊等政策。约束：不得使用企业内部运单或成本数据；需基于公开统计与标准建立“方法学+情景模拟”蓝图，含数据来源、边界设定、排放因子、成本与服务影响的可追溯假设。周期：≥1月，要求多轮调研‑验证‑复现。",
+      "task_focus": [
+        "方法学搭建：对齐ISO 14083与GLEC v3.0，明确功能单位（t·km）、边界、分摊原则与数据质量分级；选取权威排放因子（如UK DEFRA 2024）",
+        "基线估算与数据代理：使用Eurostat/EEA等公开统计（货运t·km、模式份额）与TEN‑T走廊公开线路，构建区域主干运输基线排放与服务时效基线",
+        "情景设计与评估：至少三个情景（如20–40%干线改铁路、多港口分流与海运低碳燃料占比、干线电动重卡渗透率路径），量化排放、成本（ICCT TCO、公开运价指数）与服务水平变动",
+        "实施路线图：确定优先走廊与节点、基础设施依赖（AFIR充换电/加氢）、KPI与治理（数据治理、年度核算审计、供应商协同）"
+      ],
+      "deliverable_requirements": [
+        "一篇完整的战略与方法报告（建议20–40页，PDF）：包含方法学（ISO 14083/GLEC对齐）、基线假设与数据来源、情景设定与结果（排放tCO2e、tCO2e/t·km、时效、成本区间）、实施路线图与风险矩阵",
+        "可核验的数据与引用：以附录形式给出关键参数表（排放因子、模式份额、里程估算、成本参数）并逐条标注URL与访问日期；图表需注明数据年份与版本",
+        "可复现的计算说明：明确公式、单位换算、边界与分摊方法（如载重率、回空率），并说明如何在公开数据更新后复算结果的步骤",
+        "合规与时间表映射：将情景与政策时间表（如EU ETS海运生效节奏、AFIR基础设施里程碑、TEN‑T节点改造）对齐，并在报告中专章呈现"
+      ],
+      "evaluation_focus": [
+        "标准一致性与可审计性：是否严格对齐ISO 14083与GLEC框架，排放因子与数据来源可追溯且版本清晰",
+        "情景的现实约束与可实施性：TEN‑T走廊能力、AFIR基础设施规划、运力与服务水平影响评估是否充分",
+        "量化质量：排放/成本/时效三维权衡是否以可核验的公开参数为基础，计算过程透明、单位与边界一致",
+        "战略落地性：路线图的优先级、KPI、治理与供应商协同机制是否清晰且具备季度/年度里程碑"
+      ]
+    },
+    {
+      "query_id": "mfg_performance_analyst-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "EIA MECS 2018 energy intensity manufacturing NAICS 333",
+      "search_queries": [
+        "EIA MECS 2018 energy intensity manufacturing NAICS 333",
+        "DOE EnPI Lite user guide energy intensity formula 2021 PDF",
+        "Vorne OEE formula Availability Performance Quality world class 85%",
+        "EIA MECS 2018 tables energy consumption by NAICS PDF"
+      ],
+      "scenario": "角色：制造运营绩效分析师（外部顾问）。背景：某中型离散制造企业（NAICS 333 机械制造）希望建立一套可复用的KPI定义与快速看板模板，用于对标行业能效与生产效率，并在内部启动改善前的对标沟通。约束：不得接触企业内部数据；所有KPI公式、基准与示例均须来自公开权威资料（如EIA MECS 2018、DOE EnPI 指南、权威OEE定义资料），并在报告中以可核验链接注明来源与版本；任务需在数小时内完成，交付物仅限一篇报告。",
+      "task_focus": [
+        "梳理并标准化制造业通用KPI定义：OEE（三要素与公式）、能耗强度（能耗/产出）等，引用权威来源并给出公式来源链接",
+        "基于EIA MECS 2018公开表（机械制造行业）提取行业能耗与能效强度指标，给出可用于管理层沟通的对标区间与解释",
+        "结合DOE EnPI能效方法，说明如何在缺少内部计量数据时进行基线与强度指标的替代估算与不确定性提示",
+        "给出一个最小可行的KPI看板字段设计（字段名、单位、数据来源），并用公开示例数据演示计算过程"
+      ],
+      "deliverable_requirements": [
+        "提交一篇5-8页中文报告（PDF或HTML），结构包含：执行摘要、KPI字典与公式（来源标注）、MECS 2018行业对标结果、示例计算、数据来源与局限性说明、参考文献（含可点击URL与访问日期）",
+        "报告中至少引用并标注以下类型来源：EIA MECS 2018（包含行业能耗或能效强度表）、DOE EnPI（能效强度与基线计算方法）、权威OEE定义资料（如Vorne OEE指南）",
+        "提供一个附录页展示最小看板数据字典（KPI名称、定义、公式、单位、参考来源）与一个简短的示例计算（可用公开示例或虚拟数据明确标注），计算过程需可复核",
+        "所有图表需标注数据来源及年份/版本；若采用单位换算（如Btu↔kWh），需给出换算系数来源"
+      ],
+      "evaluation_focus": [
+        "可验证性：KPI定义、公式与对标数值是否均可通过公开权威链接查证；引用是否注明版本/年份",
+        "正确性与一致性：OEE与能效强度公式是否与来源一致；单位、换算与示例计算是否无歧义且可复算",
+        "实用性：看板字段设计是否覆盖管理层常用视角（效率、质量、能耗强度、趋势）并可直接落地复用",
+        "完整性：报告结构是否完整，参考文献是否规范，数据与方法的局限性是否清晰说明"
+      ]
+    },
+    {
+      "query_id": "mfg_performance_analyst-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "DOE Better Plants case study manufacturing energy savings PDF",
+      "search_queries": [
+        "DOE Better Plants case study manufacturing energy savings PDF",
+        "ENERGY STAR industrial case studies success stories manufacturing",
+        "EU JRC Energy Efficiency BREF 2017 PDF",
+        "DOE Improving Compressed Air System Performance sourcebook PDF 2020"
+      ],
+      "scenario": "角色：制造运营绩效分析师（数据驱动改进库构建）。背景：为建立跨行业可复用的“生产效率与能耗改善措施-效果”知识库，用于在工厂缺乏历史数据时进行启发式方案选择与预期效益评估。约束：仅使用公开权威案例与指南（如DOE Better Plants案例库、ENERGY STAR工业成功案例、EU BREF能源效率指南、DOE压缩空气/泵系统手册），通过程序化抓取与结构化整理形成可复现数据集与基础规则引擎；预计3-5天内可完成，交付物仅限一个代码仓库（含README报告）。",
+      "task_focus": [
+        "从权威来源程序化收集≥30个工业案例（含工艺/设备类型、措施类别、KPI提升幅度、节能量、回收期等），并建立可复现的数据抓取与解析脚本",
+        "建立统一的字段与分类体系（如能耗介质、设备系统：压缩空气、蒸汽、泵、风机；生产效率：换线优化、瓶颈治理、TPM等），保证跨案例可比较",
+        "实现一个最小可用的规则化推荐器：基于常见根因（如压缩空气泄漏、过大流量冗余、低负载运行、换模时间长）匹配相应改善措施与典型效果区间，引用来源",
+        "在README内生成聚合分析（如措施分布、典型节能强度、OEE提升区间、回收期分布）并可一键复现实验"
+      ],
+      "deliverable_requirements": [
+        "交付一个公开代码仓库（含数据抓取脚本、解析与清洗、数据字典、最小推荐器、环境依赖与一键复现脚本/Notebook），并以README.md形式提供10-15页等效内容的中文分析报告（含图表与引用链接）",
+        "数据层需包含：原始链接清单（CSV/JSON，含标题、来源、年份、URL）、结构化案例集（统一字段的CSV/Parquet/SQLite）、数据字典与字段来源说明；每条案例须可追溯至原PDF/网页",
+        "规则化推荐器需可对给定根因列表输出候选措施与参考效果区间，并在输出中附带具体来源（文献ID与链接）",
+        "确保仓库可在全新环境中复现（提供requirements.txt/pyproject与运行说明），并通过脚本自动生成README中的关键统计图表"
+      ],
+      "evaluation_focus": [
+        "权威性与覆盖度：案例来源是否主要来自DOE、ENERGY STAR、EU JRC等权威；案例数量≥30且行业/措施多样",
+        "可复现性：是否可在新环境一键拉取/更新数据并生成相同的结构化数据与图表；数据溯源是否清晰",
+        "结构化质量：字段标准化、一致性检查、缺失值处理与单位统一是否规范；分类体系是否清晰可扩展",
+        "实用价值：推荐器输出是否有依据（带来源与效果区间），对典型根因的覆盖与解释是否充分"
+      ]
+    },
+    {
+      "query_id": "mfg_performance_analyst-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "DOE 50001 Ready Navigator ISO 50001 steps",
+      "search_queries": [
+        "DOE 50001 Ready Navigator ISO 50001 steps",
+        "ISO 50001:2018 overview site:iso.org",
+        "open62541 OPC UA GitHub",
+        "NIST SP 800-82 Rev. 3 2024 ICS security PDF",
+        "ISO 22400 manufacturing KPI overview"
+      ],
+      "scenario": "角色：制造运营绩效分析师（战略与智能体落地规划负责人）。背景：为一家具备多条离散装配产线的企业制定“以智能体驱动的能效与OEE提升”一年期路线图，要求：以ISO 50001/DOE 50001 Ready为管理体系框架，采用开放标准与开源组件（OPC UA、时序数据库+可视化、Python/ML）构建数据底座与KPI度量模块，规划从数据采集、指标计算、根因分析到M&V闭环；同时纳入工控网络安全基线。约束：仅使用公开资料与开源仓库，不依赖任何内部/商业系统；以月度里程碑规划，输出可被复核的标准映射、技术栈与试点方案；交付物仅限一篇报告。",
+      "task_focus": [
+        "以DOE 50001 Ready Navigator对应ISO 50001:2018条款，制定能源管理与绩效改进闭环（策划-实施-检查-改进），并映射到制造KPI（参考ISO 22400概览与DOE EnPI）",
+        "设计数据与系统架构：现场数据接入（OPC UA开源实现如open62541/Eclipse Milo）、时序存储（如InfluxDB/TimescaleDB）、可视化（Grafana/Apache Superset）、指标计算与智能体（Python）",
+        "制定OEE与能效KPI数据字典与计算血缘，明确数据质量与口径控制；给出M&V方案（参考DOE M&V Guidelines v4.0），用于量化节能与效率提升",
+        "规划网络与系统安全基线（参考NIST SP 800-82 Rev.3），提出分区分域、只读采集、账户与补丁策略；形成12个月里程碑、试点范围、风险与预算粗算"
+      ],
+      "deliverable_requirements": [
+        "提交一篇25-35页中文战略报告，至少包含：执行摘要、标准与框架映射（ISO 50001/50001 Ready/ISO 22400/DOE EnPI）、目标KPI清单与定义、数据与系统架构图、智能体功能路线图（数据抓取-特征-诊断-建议-验证）、M&V与治理、网络安全基线、12个月路线图与试点设计、参考文献（URL）",
+        "在标准映射章节中，用表格或清单方式逐条对应50001 Ready任务与ISO 50001条款，并标注支撑KPI的具体数据与流程节点；所有定义需提供公开来源链接",
+        "架构章节需引用并链接至至少2个开源仓库（如open62541 GitHub、Grafana/InfluxDB/TimescaleDB）以支撑实施可行性；同时给出最小原型方案（用合成/公开数据）的实现步骤说明",
+        "M&V章节需参照DOE M&V Guidelines v4.0给出基线、计量边界、调整方法与不确定性处理；安全章节需参照NIST SP 800-82 Rev.3提出最小控制集"
+      ],
+      "evaluation_focus": [
+        "权威一致性：与DOE 50001 Ready、ISO 50001:2018、DOE M&V v4.0与NIST SP 800-82 Rev.3的对应是否准确、可追溯（含URL与版本）",
+        "技术可行性：架构所选开源组件与标准（OPC UA、时序库、可视化、Python/ML）是否成熟、互操作性是否合理、落地步骤是否清晰",
+        "指标严谨性：KPI定义、数据口径与计算血缘是否明确，M&V方法是否满足可量化与可审核要求",
+        "路线图与风险：12个月计划是否分阶段可交付、试点设计是否具备代表性与可扩展性、风险与缓解措施是否充分"
+      ]
+    },
+    {
+      "query_id": "credit_management_specialist-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "中国银监会 贷款风险分类指引 2007 全文 PDF",
+      "search_queries": [
+        "中国银监会 贷款风险分类指引 2007 全文 PDF",
+        "商业银行授信工作尽职指引 2022 银保监会 PDF",
+        "Altman Z-score 1968 Journal of Finance pdf",
+        "site:sse.com.cn 年度报告 2023 PDF 上市公司 年报",
+        "联合资信 评级报告 发行人 2023 PDF"
+      ],
+      "scenario": "你是某银行信用管理师，需对一家在上交所/深交所上市的制造业企业开展3年期流动资金贷款的初步授信评估。由于不能使用任何行内征信或第三方付费数据库，你只能依靠公开互联网资料：上市公司2023年度报告、最近一次主体/债项评级报告、监管指引。需在4小时内形成供授信审议的快评备忘。约束：仅使用无需登录的公开资料；所有结论需可由引用的公开文档核验；以2023会计年度为基准；不得假设客户提供额外材料。",
+      "task_focus": [
+        "锁定并下载目标公司的2023年年报和最近一份主体或债项评级报告（如联合资信/中证鹏元等）",
+        "基于年报计算关键信用比率（资产负债率、流动/速动比率、EBITDA利息保障倍数、经营现金流/总债务）并按Altman Z值法快速衡量违约风险",
+        "识别审计意见、或有负债、重大未决诉讼、到期债务集中度等定性风险点",
+        "依据《贷款风险分类指引》五级分类口径，给出拟定风险分类与授信建议（额度/期限/担保）及理由"
+      ],
+      "deliverable_requirements": [
+        "一份3-5页中文评估备忘录（PDF），包含执行摘要、数据来源清单（标题+发布日期+官方URL）、方法与假设说明",
+        "附比率计算表，列出公式、数据取值所在年报页码/表名、Altman Z值计算过程与结果",
+        "引用至少1份监管指引与1份评级报告的原文内容（标注页码/段落）支撑判断与分级结论",
+        "对关键不确定性与数据缺口（如分部数据口径差异）给出影响评估与缓释建议"
+      ],
+      "evaluation_focus": [
+        "资料可验证性：是否全部来自公开权威来源且可通过给定检索线索复现",
+        "计算与方法正确性：比率/Altman Z公式应用是否准确、与年报口径是否一致",
+        "监管口径一致性：风险分类判定与理由是否符合《贷款风险分类指引》描述",
+        "结论可审计性：每一条关键结论是否都有对应出处与页码支撑"
+      ]
+    },
+    {
+      "query_id": "credit_management_specialist-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "中债资信 违约与回收 年度报告 2023 PDF",
+      "search_queries": [
+        "中债资信 违约与回收 年度报告 2023 PDF",
+        "S&P Global Annual Global Corporate Default Study 2023 PDF",
+        "国家统计局 商品房 销售额 2023 年度 数据",
+        "IFRS 9 impairment expected credit loss PDF IFRS Foundation 2014",
+        "site:hkexnews.hk 2023 annual report property developer PDF"
+      ],
+      "scenario": "你是城商行公司金融条线的信用管理师，负责对房地产行业授信存量开展组合层面的6个月压力情景复核与预警阈值校准。只能使用公开资料（监管、评级年鉴、统计公报、上市公司年报与公告），不得使用付费数据库，不得接触客户内部经营数据。目标是在3—5天内提交可复现的方法与计算报告，便于后续季度滚动复用。",
+      "task_focus": [
+        "汇编近年国内外权威机构的违约/回收与评级迁移统计，形成基准PD、LGD与迁移率假设（以中债资信违约研究、S&P违约年鉴为主）",
+        "选取10家中国房地产上市公司（A股或港股）的2023年度经审计财务数据，构建指标库（杠杆、利息保障、现金短债比）",
+        "设计并论证2-3个行业压力情景（如销售额同比-30%、未展期到期债务比例上升、融资成本+100bp），并据国家统计局数据进行口径校准",
+        "将指标/情景映射到PD/ECL演示（参照IFRS 9），给出组合层面预警阈值与分层响应建议（如名单制监控、限授信、增信要求）"
+      ],
+      "deliverable_requirements": [
+        "10-15页中文方法与结果报告（PDF），包含数据来源与下载指引、变量定义、情景设定、计算结果与敏感性分析",
+        "附录提供每家样本公司的数据摘录表（注明年报页码/表名）与计算公式，保证无付费数据库亦可复现",
+        "采用至少2份权威年鉴/研究作为PD/LGD或迁移率依据，并逐条引用页码与图表编号（如中债资信违约与回收年度报告、S&P违约年鉴）",
+        "清晰记录可重复流程（检索词、下载路径、处理步骤），并说明任何口径调整与其影响"
+      ],
+      "evaluation_focus": [
+        "来源权威性与完整性：是否覆盖国内外权威报告与官方统计，引用是否规范且可核验",
+        "情景合理性与透明度：假设是否与公开数据相符，参数可追溯且解释充分",
+        "计算严谨性：PD/LGD映射与ECL演示是否自洽，敏感性分析是否覆盖关键不确定性",
+        "可复现性：是否按报告步骤可在数天内由第三方复现结论"
+      ]
+    },
+    {
+      "query_id": "credit_management_specialist-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "BCBS 239 Principles for effective risk data aggregation and risk reporting 2013 PDF",
+      "search_queries": [
+        "BCBS 239 Principles for effective risk data aggregation and risk reporting 2013 PDF",
+        "中华人民共和国个人信息保护法 2021 全文",
+        "上交所 上市公司 自律监管 指引 信息披露 2023 PDF",
+        "银行间市场 NAFMII 持续信息披露 业务指引 2021 PDF",
+        "中国执行信息公开网 失信被执行人 查询 说明"
+      ],
+      "scenario": "你是全国性银行信用风险部的创新负责人，被要求在12周内形成“公开信息驱动的贷后智能体预警系统”蓝图并交付一个最小可行原型（监测≥10家发行人），用于全行推广的前置验证。系统必须只使用公开互联网信息来源，遵守数据合规（含个人信息保护法），并满足风险数据治理要求（如BCBS 239）。不得抓取需要登录/付费的资源；采集内容以元数据与要点字段为主，避免版权争议。",
+      "task_focus": [
+        "梳理与优先级排序公开数据源与披露制度：上/深交所临时公告与年报、银行间市场（NAFMII）持续信息披露、国家企业信用信息公示系统、执行信息公开网等，并明确抓取边界与频率",
+        "设计符合BCBS 239的数据架构与数据字典，定义贷后预警事件分类与规则库（如违约、诉讼、评级下调、重大资产处置、被立案调查等）",
+        "实现可运行的采集-解析-分类-告警闭环MVP：用开源工具（Scrapy、结巴/THULAC、HuggingFace中文模型）抽取公告标题/时间/主体/要点并进行事件分类与去重",
+        "制定评价与治理方案：标注近12个月历史样本，计算分类准确率/召回率，生成审计日志与模型更新流程，并输出PIPL合规说明"
+      ],
+      "deliverable_requirements": [
+        "一个公开代码仓库（GitHub/Gitee）：包含源码、数据源清单与合法性/使用边界声明、配置与部署文档（README）、事件分类标签体系（YAML/JSON）、示例数据（元数据/摘录字段）、试运行报告（准确率/召回率、误报/漏报案例）",
+        "README逐项引用监管与披露规则（文件名+年份+官方来源）支撑数据来源合法性与预警口径，并提供可配置的抓取频率、告警阈值与停用开关",
+        "提供全链路审计日志生成方法与样例，保证数据处理与告警可追溯、可审计"
+      ],
+      "evaluation_focus": [
+        "合规与治理：是否体现PIPL与BCBS 239要求，数据来源与使用边界是否清晰并可执行",
+        "工程可复现性：仓库能否按说明在本地拉起并完成一次端到端跑通",
+        "监测有效性：分类器准确率/召回率是否达标（提供基线与改进计划），告警规则是否可解释与可维护",
+        "文档完备性：README、数据字典、标签体系与样例是否充分，是否便于团队扩展与审计"
+      ]
+    },
+    {
+      "query_id": "ps_economic_crime_modeler-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FATF trade-based money laundering best practices 2020 PDF",
+      "search_queries": [
+        "FATF trade-based money laundering best practices 2020 PDF",
+        "APG typology trade-based money laundering 2017 PDF",
+        "EBA ML/TF Risk Factors Guidelines 2021 PDF",
+        "FinCEN Advisory FIN-2010-A011 Trade-Based Money Laundering PDF",
+        "人民银行 可疑交易报告 管理办法 2007 PDF"
+      ],
+      "scenario": "角色：省级公安经侦支队协作的外聘数据建模师。背景：为跨境贸易融资风控项目的规则层做打样，需要在数小时内梳理贸易型洗钱（TBML）与虚假发票相关的红旗指标，并形成可直接用于模型设计的规则清单。约束：仅使用公开互联网权威资料（FATF/APG/EBA/FinCEN/人民银行等），不得使用任何内部交易数据或商业数据库；所有结论必须有可验证的引用（链接、版本、年份、章节/页码）。",
+      "task_focus": [
+        "系统提取TBML与虚假发票红旗指标，归纳为可操作规则（交易模式、地理风险、价格/数量异常、分拆等）",
+        "将红旗规则映射到通用数据字段（付款人/收款人、金额/币种、贸易对手国、商品类别、运单信息等）",
+        "为每条规则设定触发逻辑与阈值，并以权威资料中的段落/页码作为依据",
+        "进行交叉验证：对不同来源的相同/矛盾指标进行一致性说明与适用范围界定"
+      ],
+      "deliverable_requirements": [
+        "仅一篇报告（中文或中英双语），包含不少于15条规则，每条规则须包含：规则描述、数据字段映射、触发逻辑/阈值、来源引用（URL+版本/年份+章节/页码）",
+        "报告需包含资料来源综述与比较表，标注来源机构（FATF/APG/EBA/FinCEN/人民银行）及适用场景",
+        "给出术语与字段的统一命名规范（如付款人/收款人、开票金额、HS编码、开证行等）与数据可获得性说明",
+        "提供完整参考文献列表（可点击链接），并在文中用脚注/尾注标注对应引用"
+      ],
+      "evaluation_focus": [
+        "Ground Truth覆盖度与权威性（至少4类权威来源，包含国际与国内）",
+        "证据可追溯性（引用链接有效、版本/年份清晰、段落/页码指向准确）",
+        "规则的可执行性与可移植性（数据字段映射明确、阈值设定有依据）",
+        "术语与定义的一致性与清晰度（便于不同系统对接）",
+        "严格遵守不使用内部或保密数据的约束"
+      ]
+    },
+    {
+      "query_id": "ps_economic_crime_modeler-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OpenSanctions API documentation 2024",
+      "search_queries": [
+        "OpenSanctions API documentation 2024",
+        "OFAC SDN list CSV download 2024 site:home.treasury.gov",
+        "EU consolidated sanctions list download 2024 CSV",
+        "UN Security Council Sanctions List XML 2024",
+        "Wolfsberg Group sanctions screening guidance 2019 PDF"
+      ],
+      "scenario": "角色：银行经侦协作团队的数据建模师。背景：需在3–5天内交付一个可复现的制裁/PEP筛查原型仓库，用于演示名单集成、模糊匹配与风险评分的端到端流程。约束：只使用公开数据源（OpenSanctions、OFAC、UN、EU、UK等），不接入任何客户数据或内网系统；仓库应支持冷启动、自动更新、日志审计，并对风险阈值给出权威指引依据。",
+      "task_focus": [
+        "集成公开名单数据源（API/文件），构建拉取、标准化、去重与版本留档的更新管道",
+        "实现姓名/别名/音译的模糊匹配策略（如Levenshtein、Jaro-Winkler、音码），并支持语言/字符规范化",
+        "依据Wolfsberg与FATF相关建议设计风险评分与告警阈值，输出统一告警格式（来源、分数、时间戳）",
+        "提供CLI与日志审计（抓取日志、变更日志、告警日志），支持每日增量刷新与重跑"
+      ],
+      "deliverable_requirements": [
+        "仅一个公开代码仓库（含README、requirements、安装与运行脚本、示例配置、最小测试数据）",
+        "自动化数据源清单与下载：明确URL、文件格式（CSV/XML/JSON）、更新时间与许可说明，至少覆盖OFAC、UN、EU或UK中的三个以上，或以OpenSanctions为统一入口",
+        "统一输出告警文件（JSON/CSV），包含：命中实体、匹配分数、匹配字段、来源清单、时间戳与版本号",
+        "README需引用Wolfsberg制裁筛查指引与FATF相关建议，解释匹配阈值与误报/漏报权衡",
+        "提供可重复运行的集成测试（pytest或shell），从全新环境冷启动到产出告警清单的总用时≤30分钟（不含网络波动）"
+      ],
+      "evaluation_focus": [
+        "从零复现成功率与用时（环境配置、数据拉取、流水线执行）",
+        "数据源覆盖、更新可靠性与版本留档完整性（含来源与更新时间）",
+        "匹配质量与可解释性（误报/漏报示例、阈值设定与指引一致性）",
+        "代码质量（结构清晰、异常处理、日志完备、许可与依赖管理）",
+        "权威来源引用的完整性与可验证性（README链接有效、年份/版本明确）"
+      ]
+    },
+    {
+      "query_id": "ps_economic_crime_modeler-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FATF virtual assets red flag indicators 2020 PDF",
+      "search_queries": [
+        "FATF virtual assets red flag indicators 2020 PDF",
+        "Europol IOCTA 2023 PDF",
+        "Basel Committee Sound management of risks related to ML/TF 2021 PDF",
+        "NIST AI Risk Management Framework 1.0 2023 PDF",
+        "FinCEN SAR Statistics 2024"
+      ],
+      "scenario": "角色：省级经侦与金融机构联合工作组的经侦数据建模师。背景：制定“经济犯罪风险模型与实时告警平台”的1–3个月创新路线图，覆盖电信网络诈骗、虚拟资产洗钱、非法集资等重点场景，目标是构建可持续的开源情报与规则-图谱-机器学习融合框架。约束：仅依赖公开权威资料与开源工具，不接触受限或内部数据；方案需可分阶段复现，并包含治理与评估机制。",
+      "task_focus": [
+        "定义公开数据资产与情报源池（FATF红旗、Europol IOCTA、OpenSanctions、UN/EU/OFAC名单、DoJ/SEC案件公告、媒体与法院公开裁判摘要）及接入方式",
+        "设计三层检测架构：规则引擎（红旗指示）、关系图谱（账号/地址/收款链路）、模型层（异常检测/分类），明确数据流、接口与审计留痕",
+        "建立KPI与治理框架（精确率、召回率、告警延迟、可解释性、审计合规），并与NIST AI RMF和巴塞尔指南条款逐条映射",
+        "制定1个月以上的迭代与验证计划（周级里程碑），包含复现步骤、工具链选择、风险与合规评审清单"
+      ],
+      "deliverable_requirements": [
+        "仅一份路线图与技术方案报告：包含数据源清单与链接、架构设计、模型与规则细化、评估KPI与治理、实施里程碑、风险与合规映射、完整引用清单",
+        "每项设计决策需至少关联一个权威来源（URL/年份/章节或页码），并注明适配范围、前提与限制",
+        "提供可复现实验规划（使用公开数据或合成数据），明确阶段性目标与评估方法（包含基准指标、验收标准与回归测试）",
+        "提出告警联动与审计留痕规范（日志字段、证据标签、链路回溯方法），确保证据链条可追溯与可验证"
+      ],
+      "evaluation_focus": [
+        "权威资料覆盖度与可靠性（至少包含FATF、Europol、Basel、NIST四类核心来源）",
+        "架构设计与路线图的可执行性（数据流、接口、里程碑、风险控制）",
+        "合规对齐准确性（与FATF建议、巴塞尔与NIST AI RMF的条款映射完整且正确）",
+        "KPI设定的合理性与可验证性（评价方法、准入阈值、回归策略明确）",
+        "引用完整性与证据链可追溯（链接有效、年份/版本清晰、引文定位准确）"
+      ]
+    },
+    {
+      "query_id": "gov_urban_credit_specialist-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "国家公共信用信息中心 城市信用监测 指标 2023 评价方法 site:creditchina.gov.cn",
+      "search_queries": [
+        "国家公共信用信息中心 城市信用监测 指标 2023 评价方法 site:creditchina.gov.cn",
+        "国务院办公厅 2019 新型监管机制 社会信用 指导意见 全文",
+        "国家发展改革委 2022 关于加快推进社会信用体系建设高质量发展 意见 全文",
+        "浙江省社会信用条例 2020 全文",
+        "信用中国 信用修复 指南 2023"
+      ],
+      "scenario": "你是某地级市发改委（信用办）下属的城市信用体系专员。市领导要求在本周例会上汇报：围绕“工程建设领域”的联合奖惩、信用承诺与信用修复三项机制，快速梳理本市政策落地与国家权威文件的符合度，并参考一个兄弟城市的公开做法提出可在30天内落地的干预清单（5-10项）。约束：仅使用公开互联网权威来源（国务院/国家发改委/国家公共信用信息中心/省市政府及‘信用中国’等），不得依赖任何内部数据或保密信息；所有判断必须给出可核验的链接与原文引用位置；控制在数小时内完成、形成可对外公开的材料。",
+      "task_focus": [
+        "提炼国家与省级关于城市信用监测、联合奖惩、信用承诺、信用修复的合规基线与必须要素",
+        "对照本市现有公开文件与办事指南，识别差距点与阻点（流程、清单、公开渠道、时限等）",
+        "抽取一个兄弟城市的成熟公开案例或做法，对比可复制性与法理依据",
+        "形成面向工程建设领域的干预清单（含法律/政策依据、牵头单位建议、30天内最小可行改进）"
+      ],
+      "deliverable_requirements": [
+        "一篇6-10页的中文对标报告（PDF/Doc均可），结构包含：政策基线摘要→本市现状对照表→兄弟城市案例→干预清单与优先级→引用与链接清单",
+        "对照表至少覆盖：联合奖惩对象/条件、信用承诺适用场景、信用修复流程要件（材料、期限、公示渠道）、信息公开渠道与更新频率；逐项标注出处",
+        "每一条干预建议必须对应至少1条国家或省级权威文件原文（段落或条款）与URL，并给出城市层面实施的操作路径（流程或表单模板参考来源）",
+        "引用来源限定为：国务院/国家发改委/国家公共信用信息中心/省级人民政府公报与法规库/信用中国与省市‘信用+城市名’官网；报告末尾附“引用明细表”（标题、发布机关、年份、链接）不少于10条"
+      ],
+      "evaluation_focus": [
+        "来源权威性与可核验性（是否来自国务院、国家发改委、国家公共信用信息中心、省级法规或城市官方信用平台）",
+        "政策条款与本市做法的映射准确性（是否逐条可对应，引用是否精准到条款/段落）",
+        "干预清单的可执行性与合规性（30天内可落地的最小改进、明确牵头与配套要件）",
+        "报告结构清晰度与可读性（表格化对照、引用清单完备、链接可用）"
+      ]
+    },
+    {
+      "query_id": "gov_urban_credit_specialist-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "信用杭州 行政处罚 公示 2023",
+      "search_queries": [
+        "信用杭州 行政处罚 公示 2023",
+        "中国执行信息公开网 杭州 失信被执行人 查询",
+        "杭州市 数据开放 平台 市场主体 2024",
+        "国家公共信用信息中心 城市信用监测 指标 说明 2023",
+        "杭州市 常住人口 2023 统计 数据开放"
+      ],
+      "scenario": "你受委托为杭州市搭建一个“城市信用风险迷你指标库（2023-2024）”，用于内部培训与示范复现。约束：仅使用公开数据门户与权威官网可下载/可查询的数据（如‘信用杭州’、中国执行信息公开网、杭州市数据开放平台等），不得绕过认证或使用爬虫侵入式抓取；可采用手动下载与脚本混合方式，但需保证他人按照README即可在3天内复现同样结果；指标需参考国家公共信用信息中心‘城市信用监测’指标口径进行简化映射。",
+      "task_focus": [
+        "明确数据来源与字段定义：行政处罚（年度/月度数量）、失信被执行人（累计/存量）、市场主体数量、常住人口等，形成数据字典",
+        "构建3-5个可复现的“迷你信用风险指标”（如：每万人行政处罚数、万户市场主体失信被执行人密度、处罚同比变化率等）并给出与国家指标的映射说明",
+        "使用Python建立清洗、口径统一与计算脚本，生成可视化图表（折线/柱状），并在README解释复现步骤与数据来源链接",
+        "对每个指标给出局限性与改进建议（数据滞后、口径差异、缺失处理等），并提出下一步可纳入的数据集清单"
+      ],
+      "deliverable_requirements": [
+        "一个公开代码仓库（GitHub/Gitee），包含：README（相当于技术报告，需含数据来源URL、获取步骤截图或说明、字段与口径、计算公式、复现步骤）、/data（原始与中间数据或下载指引）、/src（清洗与计算脚本）、/outputs（图表与CSV）",
+        "README需提供至少4个权威来源链接，并标注时间范围与更新频率；同时提供一键运行说明（Python版本、依赖、命令示例）",
+        "至少输出3个核心指标及其近12-18个月的趋势图，并给出与国家公共信用信息中心‘城市信用监测’相关指标的映射或差异说明",
+        "在仓库中附上“数据可用性与限制”章节，说明无法获取的字段与替代口径的合理性；确保不包含任何敏感或个人信息"
+      ],
+      "evaluation_focus": [
+        "可复现性（按README可在≤3天内跑通并复得相同结果）",
+        "数据溯源与合规性（链接可靠、来源权威、未绕过授权）",
+        "指标计算准确性与与官方口径的映射严谨性（公式、单位、人口或主体数分母处理）",
+        "代码质量与工程化（目录结构清晰、依赖可安装、异常处理与日志基础完备）"
+      ]
+    },
+    {
+      "query_id": "gov_urban_credit_specialist-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "国务院办公厅 2019 新型监管机制 社会信用 指导意见 全文",
+      "search_queries": [
+        "国务院办公厅 2019 新型监管机制 社会信用 指导意见 全文",
+        "国家发展改革委 2022 关于加快推进社会信用体系建设高质量发展 意见 全文",
+        "中华人民共和国 个人信息保护法 2021 全文",
+        "中华人民共和国 数据安全法 2021 全文",
+        "GB/T 35273-2020 信息安全技术 个人信息安全规范 标准全文"
+      ],
+      "scenario": "你被任命为“城市信用风险智能体（AIA）”专项负责人，需在1个月内产出一份可提交市政府的顶层方案与试点路线图，目标是利用公开数据构建跨部门的信用风险早预警与干预建议能力（不接入任何内部系统），并确保全链路符合法律法规与国家信用建设政策。方案需覆盖：数据来源地图、风控方法框架、合规与隐私保护设计、组织与治理、试点评估指标与里程碑。要求：全程依托公开权威资料进行论证与引用，形成可供后续招标与立项的蓝图。",
+      "task_focus": [
+        "梳理国家层面政策与标准要求：新型监管机制、社会信用体系高质量发展意见、PIPL/数据安全法/个人信息安全规范等，对数据采集、处理、共享、公开的边界进行合规界定",
+        "设计AIA总体架构：数据层（公开数据源目录与接入方式）、指标与风险模型层（ISO/COSO兼容的风险评估流程）、应用层（预警与干预建议）、治理层（模型与数据治理）",
+        "提出公开数据驱动的试点方案：选择2-3类高风险场景（如工程建设、食药安全、涉企合规），定义可落地的数据集、指标、预警规则与验收KPI",
+        "制定1-3年滚动路线图（首月、首季、首年关键里程碑）与评估机制（AB测试/专家评审/合规审查清单），并明确复现步骤与版本管理"
+      ],
+      "deliverable_requirements": [
+        "一份不少于25页的中文战略与实施白皮书（PDF），包含：政策与标准综述→合规边界与风险清单→AIA架构设计（数据/模型/应用/治理）→公开数据源目录（含链接、字段、更新频率、许可）→试点方案（场景、指标、规则、KPI、流程）→实施路线图与预算假设→评估与复现方法→引用与附录",
+        "引用至少15个权威来源（国务院/国家发改委/全国人大法律文本/国家标准全文公开系统/国家公共信用信息中心/省市条例与官方信用平台），每处核心论点需附对应条款或段落编号与URL",
+        "在白皮书中提供可执行的复现附录：首月试点的任务拆解、角色分工、交付清单、版本控制与风控清单（模型偏见、数据质量、合规审查点），确保后续团队可据此开展工作",
+        "对隐私与合规给出可操作性设计（最小必要性、匿名化/去标识化、数据共享授权、公开发布规则与争议处理流程），并和相关法律条款逐一对应"
+      ],
+      "evaluation_focus": [
+        "政策合规与标准对齐度（是否系统引用并正确理解国务院/发改委意见、PIPL、数据安全法、国家标准）",
+        "方案完整性与可执行性（架构、数据源、指标、试点与KPI、路线图均可落地，边界清晰）",
+        "创新性与风险控制（利用公开数据实现预警的可行创新点，同时具备充分的合规与偏见风险缓释）",
+        "可复现性与可验证性（数据源与流程可由第三方按文档复现，引用链接可访问且能支撑关键结论）"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "queries": [
+    {
+      "query_id": "industrial_robot_ops_manager-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OSHA 29 CFR 1910.147 lockout tagout industrial robots",
+      "search_queries": [
+        "OSHA 29 CFR 1910.147 lockout tagout industrial robots",
+        "ISO 10218-1:2011 Industrial robots — Safety requirements for industrial robots",
+        "ISO/TS 15066:2016 collaborative robot safety limits",
+        "HSE industrial robot safety maintenance guidance",
+        "EU Machinery Regulation (EU) 2023/1230 Annex I safety requirements"
+      ],
+      "scenario": "角色：工业机器人系统运维员；背景：汽车零部件厂区将对多台六轴工业机器人进行季度性预防性维护，需在不开启内部资料的情况下，更新并验证锁定/挂牌（LOTO）与维护安全检查表，确保与国际/地区法规及标准一致；约束：仅使用公开互联网的权威资料（OSHA、ISO、HSE、欧盟官方公报等），不得引用厂内专有手册或内部数据库。",
+      "task_focus": [
+        "梳理工业机器人维护作业的能量隔离点与残余能量风险（电力、气压、液压、机械势能等），制定LOTO步骤",
+        "将维护安全检查表对齐至OSHA 29 CFR 1910.147、ISO 10218-1/-2以及HSE公开指南的术语与要求",
+        "识别协作模式（如手臂与人共作）的限值与风险控制，参考ISO/TS 15066公开信息",
+        "形成可操作的现场核查清单，覆盖启停、互锁、紧急停止、验证与复位流程"
+      ],
+      "deliverable_requirements": [
+        "提交一份6-10页的维护安全与LOTO核查报告（单一报告），包含步骤化流程、风险清单、检查表与责任分工",
+        "在报告中以可检索的引用方式标注法规/标准来源（含标题、年份/版本、官方链接或权威机构页面），并说明对应条款或要求点",
+        "提供一张能量隔离点与控制措施的对照表，涵盖电力、气压/液压、机械能量与软件互锁的验证步骤",
+        "加入协作机器人相关的限制与验证项（基于ISO/TS 15066公开资料摘要），明确何时需要限速、功率限制或安全监控停机"
+      ],
+      "evaluation_focus": [
+        "引用的权威资料是否可公开检索、来源是否可信（OSHA、ISO官网页面或权威机构网站、EU官方公报、HSE）",
+        "LOTO与维护检查流程的完整性与可执行性（步骤、验证、复位、记录）是否清晰一致",
+        "对协作场景限值与风险控制的理解是否基于公开资料且与标准术语对齐",
+        "现场核查清单的覆盖度（互锁、紧急停止、隔离装置、残余能量释放与验证）与可操作性"
+      ]
+    },
+    {
+      "query_id": "industrial_robot_ops_manager-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Case Western Reserve University Bearing Data Center dataset download",
+      "search_queries": [
+        "Case Western Reserve University Bearing Data Center dataset download",
+        "Paderborn University bearing dataset 2018 faults",
+        "ISO 13374-1:2014 Condition monitoring — Data processing",
+        "communication",
+        "ISO 20816-1:2016 mechanical vibration evaluation of machine condition",
+        "NASA IMS bearing dataset repository"
+      ],
+      "scenario": "角色：工业机器人系统运维员（兼数据分析）；背景：在缺乏厂内日志与传感数据的约束下，需用公开机械故障数据集（轴承/旋转机械）构建可复现的预测性维护原型代码仓，验证特征工程、模型评估与标准对齐方法，以便后续迁移到机器人关节与减速机的状态监测；约束：仅使用公开的开源数据集与权威标准/指南，不依赖任何厂内或供应商私有数据。",
+      "task_focus": [
+        "获取并记录公开机械故障数据集（如CWRU/Paderborn/NASA IMS）的下载、结构与许可信息",
+        "依据ISO 13374-1的处理框架设计特征工程（时域/频域：RMS、峰值因子、峭度、带宽能量等）",
+        "构建并评估分类/早期故障检测模型（交叉验证、混淆矩阵、PR/ROC），并对齐ISO 20816-1的阈值/等级参考",
+        "编写从数据下载到训练评估的全流程脚本与README，确保一键复现实验与结果"
+      ],
+      "deliverable_requirements": [
+        "提交一个唯一的公开代码仓库（含README与环境文件），包含数据下载脚本、特征提取、模型训练/评估与结果可视化",
+        "在README中明确引用并链接所用数据集来源与许可（CWRU/Paderborn/NASA IMS），以及标准/指南（ISO 13374-1、ISO 20816-1）的公开信息页面",
+        "输出可复现的基线指标（如F1、AUC、早期检测提前量），并提供模型卡说明适用范围与风险",
+        "提供从机理到迁移的说明段落：如何将轴承/旋转机械监测思路迁移至机器人关节与减速机（传感类型、采样率、机座/安装差异）"
+      ],
+      "evaluation_focus": [
+        "代码仓的可复现性（环境、数据获取、脚本一键运行）与文档清晰度",
+        "特征工程与评估方法是否与ISO 13374-1、ISO 20816-1公开资料保持术语与框架对齐",
+        "模型性能与验证过程的透明度（交叉验证、混淆矩阵、错误分析）",
+        "对从公开数据集到机器人场景迁移的工程合理性与风险认知（传感、结构差异、阈值应用）"
+      ]
+    },
+    {
+      "query_id": "industrial_robot_ops_manager-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OPC UA IEC 62541 overview robotics interoperability 2020",
+      "search_queries": [
+        "OPC UA IEC 62541 overview robotics interoperability 2020",
+        "VDMA OPC UA Robotics Companion Specification Part 1 2020 PDF",
+        "IEC 62443-3-3:2013 system security requirements industrial automation",
+        "ISO 10218-1:2011 and ISO/TS 15066:2016 robot safety collaborative operations",
+        "NIST AI Risk Management Framework 1.0 2023 PDF"
+      ],
+      "scenario": "角色：工厂可靠性与智能运维负责人；背景：计划在多个机器人工作单元部署数据驱动的预测性维护与作业指导智能体，需制定1个月以上的战略路线图，覆盖数据采集互操作（OPC UA/ROS-Industrial）、安全合规（ISO 10218、EU 2023/1230）、网络安全（IEC 62443）、AI风险管理（NIST AI RMF），并形成可执行的试点与扩展方案；约束：仅依赖公开的标准、法规、权威指南与公开案例/资料，不使用供应商内部接口文档或厂内数据。",
+      "task_focus": [
+        "设计端到端架构：机器人控制器数据接入（OPC UA/VDMA Robotics规范）、时序数据存储与模型服务",
+        "制定安全合规与网络安全策略：对齐ISO 10218、安全控制、IEC 62443防护层级与补偿措施",
+        "制定AI治理与风险管理流程：对齐NIST AI RMF 1.0（风险识别、度量、监控与持续改进）",
+        "形成试点到规模化的路线图：选型、KPI（MTBF/MTTR/可用率、停机减少）、预算与里程碑"
+      ],
+      "deliverable_requirements": [
+        "提交一份25-40页的战略规划报告（单一报告），包含系统架构图、数据流与接口（基于OPC UA与VDMA Robotics公开规范）、部署阶段与里程碑",
+        "提供标准/法规对齐矩阵：ISO 10218、ISO/TS 15066、EU Machinery Regulation (EU) 2023/1230、IEC 62443-3-3、NIST AI RMF 1.0，并以可检索引用（标题/年份/官方链接）说明对应控制与要求",
+        "定义试点方案与量化KPI（如停机率降低、维护工时减少、预测准召率），包含测量方法、数据需求与风险缓解计划",
+        "给出数据治理与安全策略（身份与访问、分区隔离、补丁管理、模型监控），以及变更管理与培训计划"
+      ],
+      "evaluation_focus": [
+        "标准与法规对齐的完整性与准确性（是否提供可检索的官方链接与版本信息）",
+        "架构与实施路线的可行性（互操作、网络安全、部署流程）与对业务痛点的针对性",
+        "KPI与测量方案的可验证性与量化明确性，试点到规模化路径的清晰度",
+        "AI风险管理与安全策略（NIST AI RMF、IEC 62443）在工业机器人场景中的落地性与持续改进机制"
+      ]
+    },
+    {
+      "query_id": "industrial_robot_operator-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "URScript programming manual e-Series PDF",
+      "search_queries": [
+        "URScript programming manual e-Series PDF",
+        "ur_robot_driver ROS2 Humble GitHub",
+        "MoveIt 2 pick and place tutorial 2023",
+        "CoppeliaSim user manual motion planning"
+      ],
+      "scenario": "角色：一线工业机器人系统操作员；背景：为一台UR e-Series机器人在同一工作单元内实现从简单码垛到机床上下料的快速换型，需在数小时内给出可复用的程序模板与离线仿真校验；约束：仅使用公开可获取的资料与开源工具（UR官方公开手册、ROS-Industrial、MoveIt/CoppeliaSim文档），不得使用厂内专有CAD数据或商业OLP软件授权。",
+      "task_focus": [
+        "基于URScript编写参数化的任务切换模板（基座/工具坐标、TCP、速度/加速度、数字IO映射、安全回退位）。",
+        "利用ROS2+MoveIt 2或CoppeliaSim，调用ur_robot_driver与示例URDF进行离线可达性与碰撞校验。",
+        "依据公开手册列出换型SOP清单（工具标定、参考坐标、夹具开闭信号、故障复位与安全停靠）。",
+        "从规划日志提取轨迹规划时间与路径长度，给出两任务模式的周期估算与差异说明。"
+      ],
+      "deliverable_requirements": [
+        "提交一份6-10页技术简报（PDF，仅此一件交付物），包含：URScript关键片段（带参数占位符）、仿真环境搭建步骤、关键截图/日志、结果汇总表。",
+        "在文内以可点击链接形式引用权威公开资料：URScript官方编程手册、ur_robot_driver仓库、MoveIt官方教程、CoppeliaSim用户手册相关章节。",
+        "提供可复用的任务切换清单（SOP），以清单形式覆盖：坐标与TCP核对、IO点位分配、限速/安全停靠、程序入口与异常恢复。",
+        "在附录给出仿真复现实验条件（ROS2发行版、MoveIt版本、默认规划器、关节限位），便于他人复现核对。"
+      ],
+      "evaluation_focus": [
+        "Ground Truth一致性：URScript语法与功能调用须与UR官方编程手册一致；驱动与仿真步骤与官方/社区文档对应。",
+        "可复现性：按报告步骤在公开资源环境中可在数小时内复现仿真与得到相近规划时间/路径长度指标。",
+        "实用性：任务切换模板参数化充分（坐标、速度、IO可配置），SOP清单覆盖常见换型要点与风险点。",
+        "引用完整性：所有关键结论有明确公开链接支撑，链接可访问且权威。"
+      ]
+    },
+    {
+      "query_id": "industrial_robot_operator-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST ARIAC 2023 GitHub",
+      "search_queries": [
+        "NIST ARIAC 2023 GitHub",
+        "ARIAC ROS2 documentation",
+        "MoveIt Task Constructor GitHub",
+        "ROS 2 Humble docker image",
+        "Gazebo ROS2 tutorial"
+      ],
+      "scenario": "角色：3C制造产线的机器人系统操作与维护人员；背景：用开源竞赛环境复现“订单A→订单B”的自动化换型流程，量化换型时间与任务完成率，沉淀可复用代码；约束：仅使用NIST ARIAC开源资料、ROS2/MoveIt与官方文档，产出一个可一键复现实验的公共仓库，不得依赖企业内部工艺数据。",
+      "task_focus": [
+        "在Docker中部署ARIAC（ROS2+Gazebo）模拟环境，加载两类差异化订单场景并验证运行。",
+        "用MoveIt Task Constructor或行为树（BehaviorTree.CPP）实现自动换型逻辑（清线、工具/工位切换、任务参数重载）。",
+        "记录指标：换型耗时、订单完成率、失败重试次数、资源占用（CPU/GPU）并导出CSV日志。",
+        "抽象参数化任务描述（YAML/JSON），实现不同订单的可配置加载与切换。"
+      ],
+      "deliverable_requirements": [
+        "提交一个公共代码仓库（仅此一项交付物），包含：Dockerfile/compose、一键脚本、场景配置、换型控制代码、日志采集脚本、README（含运行步骤与预期输出）。",
+        "README需引用并链接至权威公开资料：NIST ARIAC官方GitHub/文档、MoveIt Task Constructor文档/仓库、ROS2与Gazebo教程。",
+        "仓库需提供至少两套订单配置文件与对比实验结果（含原始日志与简要可视化）。",
+        "提供基础CI脚本（例如GitHub Actions）自动拉起构建并运行最小化验证场景，确保可复现性。"
+      ],
+      "evaluation_focus": [
+        "可运行性：克隆仓库后通过容器可一键启动并顺利完成两种订单的执行和换型，日志生成完整。",
+        "测量口径一致性：指标采集与ARIAC任务评价口径一致，日志时间戳/事件与场景状态匹配。",
+        "工程化质量：代码结构清晰、参数化良好、文档充分（环境、步骤、问题排查），具备移植与复用价值。",
+        "证据链：README与代码注释对关键实现给出公开资料链接，结论可被独立验证。"
+      ]
+    },
+    {
+      "query_id": "industrial_robot_operator-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OSHA Technical Manual industrial robots and robot system safety",
+      "search_queries": [
+        "OSHA Technical Manual industrial robots and robot system safety",
+        "Regulation (EU) 2023/1230 machinery regulation PDF",
+        "TUV SUD collaborative robot safety ISO 10218 ISO/TS 15066 white paper PDF",
+        "ROS-Industrial roadmap 2023 PDF",
+        "LEI SMED quick changeover guide"
+      ],
+      "scenario": "角色：汽车零部件工厂的工业机器人系统操作与方法工程联合负责人；背景：开展为期≥1个月的“机器人工位换型提效30%”战略项目，要求以公开标准与开源栈为依据，设计合规、安全、可复制的换型数字化方案（含智能体在指令生成、仿真校验、SOP生成中的应用）；约束：仅使用公开可访问的法规/标准摘要、白皮书、开源项目与案例，不能使用企业敏感数据，最终形成可落地路线图。",
+      "task_focus": [
+        "建立合规框架：对标OSHA机器人系统安全、EU Machinery Regulation 2023/1230、ISO 10218/ISO/TS 15066公开解读，形成适配矩阵与责任分配。",
+        "技术路线：基于ROS-Industrial/MoveIt/CoppeliaSim等开源OLP/仿真栈与模板化程序生成（智能体辅助），规划90天PoC与里程碑。",
+        "SMED换型方法与KPI：结合公开SMED指南制定换型时间、OEE、一次通过率等KPI口径与数据采集方案（以公开基准或公开案例假设）。",
+        "风险与治理：功能安全边界（按公开白皮书要求）、网络安全与变更控制、培训与资质计划、持续改进闭环。"
+      ],
+      "deliverable_requirements": [
+        "提交一份25-30页路线图报告（PDF，仅此一件交付物），包含：合规适配矩阵、技术栈选型与系统架构、90天PoC甘特图与资源/预算估算、KPI与度量方法、风险登记表与缓解措施、智能体应用场景与迭代计划。",
+        "必须在文内以脚注/链接引用权威公开资料，至少覆盖：OSHA OTM机器人安全章节、EU Machinery Regulation 2023/1230正式文本、TÜV SÜD或同等机构对ISO 10218/ISO/TS 15066的公开白皮书/指南、ROS-Industrial路线图/案例、公开SMED指南。",
+        "给出可执行的复现路径：基于开源栈的PoC任务清单（工具、环境、样例单元结构、验收标准）与KPI达成判据（含公开基准或来源）。",
+        "明确智能体在三大环节的角色与接口：程序模板生成、仿真校验与SOP自动化输出，并给出数据与权限边界。"
+      ],
+      "evaluation_focus": [
+        "权威性与可验证性：所有标准/法规/白皮书与技术资料来源公开、权威、可访问；关键主张均有明确引用与出处页码/章节。",
+        "可落地性：技术路线、资源与时间匹配度高；PoC计划细致、KPI定义可测量且与行业口径一致；风险措施具体可执行。",
+        "系统性与创新性：将合规、安全、开源OLP与SMED方法整合为一体化方案，清晰定义智能体在流程中的价值与边界。",
+        "复现与扩展：路线图提供可被他人按公开资料独立复现的步骤，并可扩展到不同机器人品牌/工艺场景。"
+      ]
+    }
+  ]
+}

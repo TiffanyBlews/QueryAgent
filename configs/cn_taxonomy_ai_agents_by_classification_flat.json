@@ -1,0 +1,851 @@
+{
+  "industries": [
+    {
+      "industry_id": "2_2_02",
+      "title": "专业技术人员 · 工程技术人员",
+      "description": "基于职业大典分类：专业技术人员 / 工程技术人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "cyber_security_engineer",
+          "name": "信息安全工程技术人员",
+          "description": "搭建安全策略、威胁检测与应急响应机制，对接智能体实现合规核查、漏洞分析及审计取证。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "digital_government_ai"
+          ]
+        },
+        {
+          "profession_id": "digital_solution_architect",
+          "name": "数字化解决方案设计师",
+          "description": "对接企业痛点并设计端到端数字化项目，智能体可协助调研资料、撰写蓝图与测算ROI。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "industrial_internet_ai"
+          ]
+        },
+        {
+          "profession_id": "embedded_system_engineer",
+          "name": "嵌入式系统设计工程技术人员",
+          "description": "负责终端控制器软硬件设计，智能体可辅助代码生成、测试脚本与安全审查。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "industrial_internet_ai"
+          ]
+        },
+        {
+          "profession_id": "grid_substation_engineer",
+          "name": "变电工程技术人员",
+          "description": "保障变电站设备安全与调度，智能体可辅助状态监测、事故演练和合规报告。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "green_energy_ai"
+          ]
+        },
+        {
+          "profession_id": "industrial_control_engineer",
+          "name": "自动控制工程技术人员",
+          "description": "规划生产控制策略，智能体可辅助参数自适应、异常诊断与控制逻辑生成。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "industrial_internet_ai"
+          ]
+        },
+        {
+          "profession_id": "info_system_analysis_engineer",
+          "name": "信息系统分析工程技术人员",
+          "description": "统筹政务业务流程梳理、需求分析与信息系统架构设计，为智能体调用提供结构化接口与规范。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "digital_government_ai"
+          ]
+        },
+        {
+          "profession_id": "info_system_ops_engineer",
+          "name": "信息系统运行维护工程技术人员",
+          "description": "负责政务平台日常运行监控、故障定位与变更发布，可与智能体协同实现自动化巡检与回滚。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "digital_government_ai"
+          ]
+        },
+        {
+          "profession_id": "mfg_digital_twin_designer",
+          "name": "数字孪生设计师",
+          "description": "构建产线孪生模型，智能体可辅助数据建模、仿真分析与优化建议。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "industrial_internet_ai"
+          ]
+        },
+        {
+          "profession_id": "mfg_predictive_maintenance_architect",
+          "name": "预测性维护架构师",
+          "description": "规划监测体系与维护策略，智能体可组合传感数据，输出维修计划与风险提示。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "industrial_internet_ai"
+          ]
+        },
+        {
+          "profession_id": "mfg_visual_inspection_engineer",
+          "name": "视觉质检工程师",
+          "description": "重建缺陷检测流程，智能体可生成标注规则、协助模型验证与质量报告。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "industrial_internet_ai"
+          ]
+        },
+        {
+          "profession_id": "power_generation_engineer",
+          "name": "发电工程技术人员",
+          "description": "负责发电厂运行优化与技术改造，智能体可协助负荷预测、故障诊断与检修计划。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "green_energy_ai"
+          ]
+        },
+        {
+          "profession_id": "power_transmission_engineer",
+          "name": "输电工程技术人员",
+          "description": "维护输电线路全寿命资产，智能体可自动分析巡检数据并生成风险告警。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "green_energy_ai"
+          ]
+        },
+        {
+          "profession_id": "ps_cyber_drill_commander",
+          "name": "网安攻防演练指挥官",
+          "description": "策划攻防演练与复盘，智能体可生成演练脚本、攻防报告与整改路线。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "public_security_ai"
+          ]
+        },
+        {
+          "profession_id": "ps_traffic_fde_engineer",
+          "name": "交通治理FDE工程师",
+          "description": "部署治堵与信号优化方案，智能体可协助仿真调度、数据研判与优化报告。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "public_security_ai"
+          ]
+        },
+        {
+          "profession_id": "water_conservation_engineer",
+          "name": "节水工程技术人员",
+          "description": "规划工业与城市节水项目，智能体适合做方案评估、指标监控与政策对接。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-02",
+            "subcategory_name": "工程技术人员"
+          },
+          "source_industries": [
+            "green_energy_ai"
+          ]
+        }
+      ]
+    },
+    {
+      "industry_id": "2_2_05",
+      "title": "专业技术人员 · 卫生专业技术人员",
+      "description": "基于职业大典分类：专业技术人员 / 卫生专业技术人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "clinical_records_technologist",
+          "name": "病案信息技师",
+          "description": "管理临床病案编码与信息标准，智能体适合用于自动抽取、质控与指标化分析。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-05",
+            "subcategory_name": "卫生专业技术人员"
+          },
+          "source_industries": [
+            "healthcare_ai"
+          ]
+        },
+        {
+          "profession_id": "med_ai_ethics_officer",
+          "name": "AI伦理合规官",
+          "description": "建立医疗AI伦理审查与持续监管体系，智能体可跟踪法规、生成评估陈述和整改计划。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-05",
+            "subcategory_name": "卫生专业技术人员"
+          },
+          "source_industries": [
+            "healthcare_ai"
+          ]
+        },
+        {
+          "profession_id": "med_clinical_ai_manager",
+          "name": "临床AI转化经理",
+          "description": "连接研发与临床，智能体可协助场景评估、试点跟踪与证据沉淀。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-05",
+            "subcategory_name": "卫生专业技术人员"
+          },
+          "source_industries": [
+            "healthcare_ai"
+          ]
+        },
+        {
+          "profession_id": "med_data_governance_officer",
+          "name": "医疗数据治理官",
+          "description": "制定数据标准与权限策略，智能体可辅助合规校验、元数据管理与审计。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-05",
+            "subcategory_name": "卫生专业技术人员"
+          },
+          "source_industries": [
+            "healthcare_ai"
+          ]
+        },
+        {
+          "profession_id": "med_imaging_quality_engineer",
+          "name": "影像中心质量工程师",
+          "description": "保障影像AI上线质量，智能体可做数据巡检、质控报告与风险清单。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-05",
+            "subcategory_name": "卫生专业技术人员"
+          },
+          "source_industries": [
+            "healthcare_ai"
+          ]
+        },
+        {
+          "profession_id": "medical_device_engineer",
+          "name": "医学设备管理工程技术人员",
+          "description": "统筹医疗设备选型、维护与合规备案，智能体可协助故障诊断、保养计划与审计材料。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-05",
+            "subcategory_name": "卫生专业技术人员"
+          },
+          "source_industries": [
+            "healthcare_ai"
+          ]
+        },
+        {
+          "profession_id": "medical_research_specialist",
+          "name": "医学研究人员",
+          "description": "开展临床与基础研究设计，可借助智能体完成文献综述、实验方案优化与数据解读。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-05",
+            "subcategory_name": "卫生专业技术人员"
+          },
+          "source_industries": [
+            "healthcare_ai"
+          ]
+        },
+        {
+          "profession_id": "public_health_lab_technologist",
+          "name": "公卫检验技师",
+          "description": "负责公共卫生样本检测与质量控制，智能体可加速检测流程、报告生成与风险提示。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-05",
+            "subcategory_name": "卫生专业技术人员"
+          },
+          "source_industries": [
+            "healthcare_ai"
+          ]
+        }
+      ]
+    },
+    {
+      "industry_id": "2_2_06",
+      "title": "专业技术人员 · 经济与金融专业人员",
+      "description": "基于职业大典分类：专业技术人员 / 经济与金融专业人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "business_data_analyst",
+          "name": "商务数据分析师",
+          "description": "整合多渠道经营数据，为经营决策提供洞察，智能体可加速建模、洞察撰写与可视化。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "fintech_risk_ai"
+          ]
+        },
+        {
+          "profession_id": "capital_market_professional",
+          "name": "银行金融市场业务专业人员",
+          "description": "面向同业拆借、债券与衍生品业务，智能体可协助做行情研判、合规校验与交易材料准备。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "fintech_risk_ai"
+          ]
+        },
+        {
+          "profession_id": "credit_management_specialist",
+          "name": "信用管理师",
+          "description": "负责客户信用评估与贷后监控，适合引入智能体开展征信分析、异常识别与决策建议生成。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "fintech_risk_ai"
+          ]
+        },
+        {
+          "profession_id": "fin_data_engineer",
+          "name": "投研数据工程师",
+          "description": "搭建数据管线与质量监控，智能体可自动对齐口径、生成数据文档与异常报警。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "fintech_risk_ai"
+          ]
+        },
+        {
+          "profession_id": "fin_esg_analyst",
+          "name": "ESG投融资分析师",
+          "description": "整合ESG数据与评分模型，智能体可协助披露核查、案例研究和方案撰写。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "fintech_risk_ai"
+          ]
+        },
+        {
+          "profession_id": "fin_research_analyst",
+          "name": "券商研究员",
+          "description": "执行深度行业研究，智能体可协助研报检索、模型复现与观点结构化输出。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "fintech_risk_ai"
+          ]
+        },
+        {
+          "profession_id": "fin_risk_manager",
+          "name": "风险控制经理",
+          "description": "负责多维风险监测和应急机制，智能体可实时巡检、输出风险简报和复盘建议。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "fintech_risk_ai"
+          ]
+        },
+        {
+          "profession_id": "fin_wealth_advisor",
+          "name": "财富管理顾问",
+          "description": "打造客户画像与策略引擎，智能体可生成跟进计划、合规话术与产品建议。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "fintech_risk_ai"
+          ]
+        },
+        {
+          "profession_id": "gov_urban_credit_specialist",
+          "name": "城市信用体系专员",
+          "description": "维护城市信用指标与风险模型，智能体可支持数据画像、风险识别与信用干预建议。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "digital_government_ai"
+          ]
+        },
+        {
+          "profession_id": "mfg_performance_analyst",
+          "name": "制造运营绩效分析师",
+          "description": "监控生产效率和能耗，智能体可自动生成KPI看板、根因分析与改进方案。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "industrial_internet_ai"
+          ]
+        },
+        {
+          "profession_id": "mfg_supply_chain_planner",
+          "name": "供应链优化规划师",
+          "description": "整合需求预测、库存与物流调度，智能体可模拟场景并输出协同方案。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "industrial_internet_ai"
+          ]
+        },
+        {
+          "profession_id": "ps_economic_crime_modeler",
+          "name": "经侦数据建模师",
+          "description": "设计经济犯罪风险模型，智能体可进行链路梳理、证据匹配与实时告警。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "public_security_ai"
+          ]
+        },
+        {
+          "profession_id": "risk_management_specialist",
+          "name": "风险管理师",
+          "description": "建立风险识别、预警与处置体系，可由智能体辅助完成指标监控、情景推演与整改跟踪。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-06",
+            "subcategory_name": "经济与金融专业人员"
+          },
+          "source_industries": [
+            "fintech_risk_ai"
+          ]
+        }
+      ]
+    },
+    {
+      "industry_id": "2_2_07",
+      "title": "专业技术人员 · 法律、社会和宗教专业人员",
+      "description": "基于职业大典分类：专业技术人员 / 法律、社会和宗教专业人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "corporate_compliance_officer",
+          "name": "企业合规师",
+          "description": "负责企业级制度搭建与合规监控，可利用智能体处理法规更新、内控审查与证据留痕。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-07",
+            "subcategory_name": "法律、社会和宗教专业人员"
+          },
+          "source_industries": [
+            "fintech_risk_ai"
+          ]
+        },
+        {
+          "profession_id": "gov_policy_evaluator",
+          "name": "政策评估分析师",
+          "description": "构建政策评估模型与访谈研究，智能体协助收集资料、撰写报告和模拟政策成效。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-07",
+            "subcategory_name": "法律、社会和宗教专业人员"
+          },
+          "source_industries": [
+            "digital_government_ai"
+          ]
+        },
+        {
+          "profession_id": "ps_criminal_intelligence_analyst",
+          "name": "刑侦情报分析师",
+          "description": "构建情报知识图谱与研判流程，智能体可整合多源数据并生成行动建议。",
+          "classification": {
+            "category_id": "2",
+            "category_name": "专业技术人员",
+            "subcategory_id": "2-07",
+            "subcategory_name": "法律、社会和宗教专业人员"
+          },
+          "source_industries": [
+            "public_security_ai"
+          ]
+        }
+      ]
+    },
+    {
+      "industry_id": "4_4_02",
+      "title": "社会生产服务和生活服务人员 · 交通运输、仓储和邮政业服务人员",
+      "description": "基于职业大典分类：社会生产服务和生活服务人员 / 交通运输、仓储和邮政业服务人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "parcel_network_manager",
+          "name": "快递站点管理师",
+          "description": "管理快递网点人力、运力与服务质量，智能体可生成资源排班、异常处理与客户洞察。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-02",
+            "subcategory_name": "交通运输、仓储和邮政业服务人员"
+          },
+          "source_industries": [
+            "smart_logistics_ai"
+          ]
+        },
+        {
+          "profession_id": "road_transport_dispatcher",
+          "name": "道路运输调度员",
+          "description": "统筹车队运力与路线调度，智能体可实时计算最优路径并输出调度指令。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-02",
+            "subcategory_name": "交通运输、仓储和邮政业服务人员"
+          },
+          "source_industries": [
+            "smart_logistics_ai"
+          ]
+        },
+        {
+          "profession_id": "traffic_condition_analyst",
+          "name": "路况信息监控员",
+          "description": "监控道路交通态势，智能体可融合多源数据进行异常识别与预警发布。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-02",
+            "subcategory_name": "交通运输、仓储和邮政业服务人员"
+          },
+          "source_industries": [
+            "smart_logistics_ai"
+          ]
+        }
+      ]
+    },
+    {
+      "industry_id": "4_4_04",
+      "title": "社会生产服务和生活服务人员 · 信息传输、软件和信息技术服务人员",
+      "description": "基于职业大典分类：社会生产服务和生活服务人员 / 信息传输、软件和信息技术服务人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "gov_data_product_manager",
+          "name": "数字政府数据产品经理",
+          "description": "规划政务数据产品与指标体系，利用智能体完成Ground Truth检索、指标核验和多部门对齐。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-04",
+            "subcategory_name": "信息传输、软件和信息技术服务人员"
+          },
+          "source_industries": [
+            "digital_government_ai"
+          ]
+        },
+        {
+          "profession_id": "gov_ops_engineer",
+          "name": "政务服务运维工程师",
+          "description": "管理政务服务平台稳定性，智能体可辅助观测、自动告警、脚本生成及快速处置。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-04",
+            "subcategory_name": "信息传输、软件和信息技术服务人员"
+          },
+          "source_industries": [
+            "digital_government_ai"
+          ]
+        },
+        {
+          "profession_id": "network_security_manager",
+          "name": "网络与信息安全管理员",
+          "description": "维护政务网络安全态势、权限与日志，适合让智能体协助完成安全监测、报告编制与合规校验。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-04",
+            "subcategory_name": "信息传输、软件和信息技术服务人员"
+          },
+          "source_industries": [
+            "digital_government_ai"
+          ]
+        }
+      ]
+    },
+    {
+      "industry_id": "4_4_07",
+      "title": "社会生产服务和生活服务人员 · 租赁和商务服务人员",
+      "description": "基于职业大典分类：社会生产服务和生活服务人员 / 租赁和商务服务人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "supply_chain_manager",
+          "name": "供应链管理师",
+          "description": "负责供应链计划与风险控制，智能体适合做需求预测、库存优化与成本模拟。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-07",
+            "subcategory_name": "租赁和商务服务人员"
+          },
+          "source_industries": [
+            "smart_logistics_ai"
+          ]
+        }
+      ]
+    },
+    {
+      "industry_id": "4_4_08",
+      "title": "社会生产服务和生活服务人员 · 技术辅助服务人员",
+      "description": "基于职业大典分类：社会生产服务和生活服务人员 / 技术辅助服务人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "digital_records_manager",
+          "name": "档案数字化管理师",
+          "description": "负责档案数字采集、编目与生命周期管理，可借助智能体完成知识抽取、语义检索与跨系统流转。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-08",
+            "subcategory_name": "技术辅助服务人员"
+          },
+          "source_industries": [
+            "digital_government_ai"
+          ]
+        },
+        {
+          "profession_id": "uav_mapping_operator",
+          "name": "无人机测绘操控员",
+          "description": "执行无人机测绘与数据处理，智能体可加速航迹规划、影像处理与成果编制。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-08",
+            "subcategory_name": "技术辅助服务人员"
+          },
+          "source_industries": [
+            "smart_logistics_ai"
+          ]
+        }
+      ]
+    },
+    {
+      "industry_id": "4_4_09",
+      "title": "社会生产服务和生活服务人员 · 水利、环境和公共设施管理服务人员",
+      "description": "基于职业大典分类：社会生产服务和生活服务人员 / 水利、环境和公共设施管理服务人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "carbon_emission_manager",
+          "name": "碳排放管理员",
+          "description": "管理碳盘查、配额与减排项目，智能体可协助数据核算、合规申报和项目评估。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-09",
+            "subcategory_name": "水利、环境和公共设施管理服务人员"
+          },
+          "source_industries": [
+            "green_energy_ai"
+          ]
+        },
+        {
+          "profession_id": "gov_citizen_engagement_lead",
+          "name": "公众参与运营负责人",
+          "description": "设计线上线下参与机制，智能体可自动汇总反馈、生成活动方案并进行情绪与政策分析。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-09",
+            "subcategory_name": "水利、环境和公共设施管理服务人员"
+          },
+          "source_industries": [
+            "digital_government_ai"
+          ]
+        },
+        {
+          "profession_id": "ps_emergency_coordinator",
+          "name": "公共安全应急协调官",
+          "description": "调度跨部门资源与应急预案，智能体可辅助风险预测、指令编排与复盘总结。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-09",
+            "subcategory_name": "水利、环境和公共设施管理服务人员"
+          },
+          "source_industries": [
+            "public_security_ai"
+          ]
+        }
+      ]
+    },
+    {
+      "industry_id": "4_4_14",
+      "title": "社会生产服务和生活服务人员 · 健康服务人员",
+      "description": "基于职业大典分类：社会生产服务和生活服务人员 / 健康服务人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "health_management_specialist",
+          "name": "健康管理师",
+          "description": "设计个体与企业健康干预方案，智能体可提供个性化数据洞察、随访计划与报告撰写。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-14",
+            "subcategory_name": "健康服务人员"
+          },
+          "source_industries": [
+            "healthcare_ai"
+          ]
+        },
+        {
+          "profession_id": "med_telemedicine_lead",
+          "name": "远程医疗运营主管",
+          "description": "规划远程医疗流程与跨院协同，智能体可生成运营排班、质控分析与服务脚本。",
+          "classification": {
+            "category_id": "4",
+            "category_name": "社会生产服务和生活服务人员",
+            "subcategory_id": "4-14",
+            "subcategory_name": "健康服务人员"
+          },
+          "source_industries": [
+            "healthcare_ai"
+          ]
+        }
+      ]
+    },
+    {
+      "industry_id": "6_6_30",
+      "title": "生产、运输设备操作人员及有关人员 · 运输设备和通用工程机械操作人员及有关人员",
+      "description": "基于职业大典分类：生产、运输设备操作人员及有关人员 / 运输设备和通用工程机械操作人员及有关人员，筛选适合数字化智能体赋能的高价值岗位。",
+      "professions": [
+        {
+          "profession_id": "industrial_robot_operator",
+          "name": "工业机器人系统操作员",
+          "description": "负责机器人作业编程与任务切换，智能体可以快速生成指令、仿真校验并输出模版。",
+          "classification": {
+            "category_id": "6",
+            "category_name": "生产、运输设备操作人员及有关人员",
+            "subcategory_id": "6-30",
+            "subcategory_name": "运输设备和通用工程机械操作人员及有关人员"
+          },
+          "source_industries": [
+            "industrial_internet_ai"
+          ]
+        },
+        {
+          "profession_id": "industrial_robot_ops_manager",
+          "name": "工业机器人系统运维员",
+          "description": "执行机器人巡检与维护，智能体可实现数据驱动的预测性维修与作业指导。",
+          "classification": {
+            "category_id": "6",
+            "category_name": "生产、运输设备操作人员及有关人员",
+            "subcategory_id": "6-30",
+            "subcategory_name": "运输设备和通用工程机械操作人员及有关人员"
+          },
+          "source_industries": [
+            "industrial_internet_ai"
+          ]
+        }
+      ]
+    }
+  ]
+}

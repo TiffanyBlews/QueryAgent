@@ -1,0 +1,1471 @@
+{
+  "queries": [
+    {
+      "query_id": "info_system_ops_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "SRE Workbook Alerting on SLOs multiwindow burn rate",
+      "search_queries": [
+        "SRE Workbook Alerting on SLOs multiwindow burn rate",
+        "Prometheus alerting rules best practices",
+        "NIST SP 800-92 Guide to Computer Security Log Management pdf",
+        "Kubernetes readiness liveness probe best practices"
+      ],
+      "scenario": "角色：市级政务平台的信息系统运行维护工程师。背景：平台采用容器化与微服务架构（Kubernetes + NGINX Ingress + Prometheus/Grafana），需在不接触内部日志与数据的条件下，快速建立一套可复用的核心告警规则与运行手册以支撑日常巡检与故障首报。约束：只能引用公开权威资料，告警阈值与策略必须有出处；交付物为一个可直接复用的开源代码仓库，包含示例规则与参考映射，可在数小时内完成。",
+      "task_focus": [
+        "依据公开SRE资料识别政务平台关键可用性指标（错误率、延迟、可用性SLO）并采用多窗口多燃尽率（burn rate）告警模式",
+        "依据NIST SP 800-92梳理日志类别与严重性级别，明确告警与日志关联映射",
+        "编写Prometheus/Alertmanager规则（含记录规则与路由），覆盖HTTP 5xx比例、P95/P99延迟、服务不可用等场景",
+        "制定最小可执行运行手册（Runbook）：告警触发后的初步确认、降级与回滚建议步骤"
+      ],
+      "deliverable_requirements": [
+        "一个公开代码仓库（如GitHub），包含：alert-rules.yaml、recording-rules.yaml、alertmanager.yml示例，以及README说明其来源与使用方法",
+        "在README中提供规则与公开资料的逐条映射（引用SRE Workbook章节、Prometheus官方文档、NIST SP 800-92条款）",
+        "提供本地快速验证说明：使用Prometheus与Alertmanager的最小容器化环境启动步骤、模拟高错误率与高延迟的命令或脚本（无需真实内部数据）",
+        "列出适用于Kubernetes探针（readiness/liveness）的参考建议，并在README中标注出处与适用场景"
+      ],
+      "evaluation_focus": [
+        "配置可用性：YAML语法正确、可在本地最小环境启动并加载规则，无语法或路由错误",
+        "证据可追溯：每条关键规则的阈值或逻辑均有公开权威出处（SRE/Prometheus/NIST），引用清晰、链接有效",
+        "覆盖合理性：告警覆盖常见政务平台故障（错误率飙升、延迟异常、服务不可用），包含噪声控制（多窗口、多燃尽率）",
+        "运行手册可执行：告警后的确认与处置步骤明确、可在无内部数据情况下进行基本验证"
+      ]
+    },
+    {
+      "query_id": "info_system_ops_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST SP 800-128 Security-Focused Configuration Management PDF",
+      "search_queries": [
+        "NIST SP 800-128 Security-Focused Configuration Management PDF",
+        "NIST SP 800-53 Rev.5 CM controls PDF",
+        "Kubernetes deployment rollback documentation",
+        "Argo Rollouts canary blue green documentation",
+        "CAICT 政务云 白皮书 2023 运维 PDF"
+      ],
+      "scenario": "角色：省级政务平台的信息系统运行维护工程师（变更与发布负责人）。背景：需在多环境（测试/预生产/生产）下建立标准化变更与回滚流程蓝图，支持滚动、金丝雀与蓝绿发布，确保变更安全与可控。约束：仅使用公开标准与官方文档（NIST、Kubernetes、CNCF、CAICT），不使用内部变更记录或私有配置；输出一份可复现的流程与检查表报告，供同类型平台照章执行，预计数天完成。",
+      "task_focus": [
+        "基于NIST SP 800-128与SP 800-53 Rev.5的CM控制要求，梳理变更分类、审批与验证要点",
+        "依据Kubernetes官方与Argo Rollouts文档设计滚动、金丝雀、蓝绿发布流程与回滚触发条件",
+        "将监控信号（错误率、延迟、SLO燃尽率）嵌入发布闸门（gates），定义自动与人工回滚准则",
+        "形成跨环境变更演练与复盘机制（含预生产验证清单、回滚演练步骤、风险登记表）"
+      ],
+      "deliverable_requirements": [
+        "一份结构化报告（20-30页）：包含标准条款映射（NIST SP 800-128、SP 800-53 CM）、流程泳道图、角色职责矩阵、检查清单与风险登记模板",
+        "详细步骤化蓝图：滚动/金丝雀/蓝绿发布的前置检查、发布执行、健康监测、回滚决策与实施的逐步说明，附官方文档链接",
+        "指标与阈值设计：基于公开SRE与Kubernetes建议，明确错误率、延迟、SLO燃尽率的闸门阈值与回滚触发逻辑，并给出引用",
+        "提供附录：示例Kubernetes与Argo Rollouts配置片段（非生产数据），并标注来源与适配范围"
+      ],
+      "evaluation_focus": [
+        "标准符合性：对NIST SP 800-128与SP 800-53 Rev.5的CM控制覆盖完整，条款映射准确",
+        "流程可复现性：流程与检查表对同类平台可直接复用，步骤清晰、无内部依赖",
+        "风险控制有效性：闸门指标合理、回滚触发条件明确，能降低变更失败影响",
+        "引用权威性：所有流程与配置建议均有官方或白皮书出处，链接有效、版本标注清楚"
+      ]
+    },
+    {
+      "query_id": "info_system_ops_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Site Reliability Engineering book SLO error budgets",
+      "search_queries": [
+        "Site Reliability Engineering book SLO error budgets",
+        "OpenTelemetry specification v1.0 semantic conventions",
+        "CNCERT 2024 网络安全态势报告 PDF",
+        "CAICT 政务服务能力评估 报告 2023 PDF",
+        "GOV.UK reliability engineering incident postmortem SRE"
+      ],
+      "scenario": "角色：省级政务平台的信息系统运行维护总负责人（牵头AIOps与可观测性建设）。背景：平台需在1个月以上周期内完成战略规划，建立SLO与错误预算体系、统一追踪与日志标准、自动化告警处置与持续改进闭环，参考国际与国内权威框架与案例。约束：仅使用公开可验证资料（SRE书籍、OpenTelemetry规范、CNCERT态势报告、CAICT政务评估报告、GOV.UK等案例），交付为战略报告，包含路线图与度量体系，支撑后续实施与评估。",
+      "task_focus": [
+        "调研并提炼政务服务公开评估指标（CAICT政务服务能力评估等），对标平台目标与痛点",
+        "建立SLO/错误预算框架（参考SRE），设计端到端指标（可用性、延迟、错误率）与服务层级",
+        "制定统一可观测性方案：OpenTelemetry v1.0语义约定、指标/日志/追踪采集与汇聚架构，选型开源组件（OTel Collector、Prometheus、Loki等）",
+        "设计自动化响应与改进闭环：基于告警分类、剧本化处置、变更质量度量与事后复盘，结合CNCERT趋势与公开政务案例"
+      ],
+      "deliverable_requirements": [
+        "一份战略与实施路线图报告（40-60页）：含现状诊断、证据库（引用与链接）、目标SLO目录、体系架构图、阶段性里程碑（3-6个月）、资源与风险评估",
+        "明确度量与KPI：SLO目标值、错误预算消耗规则、发布质量指标（变更失败率、MTTR/MTTD）与数据来源的公开可验证说明",
+        "技术方案：基于OpenTelemetry v1.0语义约定的采集与处理流程、开源组件选型对比与部署参考（不含内部配置），并引用官方规范",
+        "治理与合规：结合CNCERT 2024态势与CAICT政务评估指标，提出安全与服务质量治理建议，附权威出处与验证方式"
+      ],
+      "evaluation_focus": [
+        "证据质量与权威性：引用SRE/OTel/CNCERT/CAICT等公开资料，出处清晰、版本与年份标注准确",
+        "战略可实施性：路线图与KPI可被同类政务平台复用，阶段规划清晰、资源与风险评估合理",
+        "框架完整度：SLO/错误预算、可观测性采集、自动化响应、复盘改进形成闭环，逻辑自洽",
+        "对标与适配度：与公开政务评估指标充分对齐，能支撑服务质量提升与持续验证"
+      ]
+    },
+    {
+      "query_id": "info_system_analysis_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OpenAPI Specification 3.1.0",
+      "search_queries": [
+        "OpenAPI Specification 3.1.0",
+        "中华人民共和国个人信息保护法 2021 全文 PDF",
+        "GB/T 22239-2019 信息安全技术 网络安全等级保护 基本要求 PDF",
+        "GOV.UK API standards",
+        "RFC 6749 OAuth 2.0 authorization framework"
+      ],
+      "scenario": "角色：市级政务服务中心的信息系统分析工程技术人员。背景：为统一各部门的线上办理预约流程，需设计一个面向智能体调用的最小可行预约接口（REST），并确保合规与可复用。约束：不得使用任何内部数据或保密文档，仅引用公开标准与权威指南；接口需可被第三方验证（OpenAPI 3.1），并明确隐私与安全控制以符合中国个人信息保护法与等保要求。",
+      "task_focus": [
+        "将政务预约流程拆解为可调用的标准化接口（创建预约、查询、取消），以OpenAPI 3.1编写规范",
+        "依据个人信息保护法进行数据最小化与目的限定，明确数据项、法律依据、留存与删除策略",
+        "参考GB/T 22239-2019与OAuth 2.0，给出认证授权与传输安全建议（HTTPS、令牌、速率限制）",
+        "建立可验证的接口契约与示例，便于智能体自动化调用与测试"
+      ],
+      "deliverable_requirements": [
+        "提交一个代码仓库（如GitHub/Gitee），包含：openapi.yaml（3.1版）、示例请求/响应、Postman集合/示例脚本，以及README",
+        "README需映射关键规范条款：OpenAPI 3.1项、个人信息保护法条文（目的、最小必要、公开规则）、GB/T 22239控制点与OAuth 2.0流程引用",
+        "在仓库内以引用列表形式标注Ground Truth的可公开链接（标准/法规/指南），并说明如何用公开验证工具校验OpenAPI文件",
+        "提供接口数据字典（字段、类型、必填、合法性校验），并标明每个字段的合规理由（如法定必要、用户同意）"
+      ],
+      "evaluation_focus": [
+        "OpenAPI 3.1契约是否可通过公开校验工具验证（无语法错误，端点、参数、响应结构完整）",
+        "是否准确引用并映射个人信息保护法与GB/T 22239的相关条款到接口设计（最小化、传输加密、访问控制）",
+        "接口设计是否覆盖核心预约场景且具备可重复测试的示例与清晰数据字典",
+        "安全与授权设计是否与RFC 6749（OAuth 2.0）及行业最佳实践一致，且能被公开资料佐证"
+      ]
+    },
+    {
+      "query_id": "info_system_analysis_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST SP 800-63-3 Digital Identity Guidelines PDF",
+      "search_queries": [
+        "NIST SP 800-63-3 Digital Identity Guidelines PDF",
+        "RFC 6749 OAuth 2.0",
+        "OpenID Connect Core 1.0 specification",
+        "eIDAS Regulation (EU) No 910/2014 PDF",
+        "SingPass OpenID Connect API documentation"
+      ],
+      "scenario": "角色：省级信息中心的信息系统分析工程技术人员。背景：跨部门应用采用不同的身份体系（本地、国家、国际），需为智能体统一设计身份认证与用户同意的集成方案；目标是形成可复现的对比研究与参考架构，兼容多种身份提供方。约束：只使用公开权威资料（标准/官方文档/法规），不依赖内部系统；成果需可由他人基于公开资料复现。",
+      "task_focus": [
+        "基于NIST SP 800-63-3与eIDAS，梳理不同身份保障等级（IAL/AAL/LoA）与属性声明的差异",
+        "对比OAuth 2.0与OpenID Connect在政务服务中的应用模式，明确授权码、PKCE、Scopes、Claims等配置建议",
+        "收集至少两个政府或官方身份系统的公开文档（如SingPass OIDC），提炼兼容的智能体调用序列与最小属性集",
+        "设计参考架构：统一身份集成层、同意管理、审计与风险控制（含威胁模型与缓解措施）"
+      ],
+      "deliverable_requirements": [
+        "提交一篇报告（建议10-20页），包含：对比矩阵（NIST/eIDAS保障等级与属性）、统一序列图（OAuth2/OIDC流程）、参考架构图（组件与数据流）",
+        "报告必须逐条引用Ground Truth（NIST SP 800-63-3、RFC 6749、OIDC核心规范、eIDAS文本、至少一个政府身份系统公开文档如SingPass），并提供可访问链接",
+        "给出最小可行的Claims/Scopes清单与隐私最小化策略（用户同意、撤回、审计），并说明智能体如何以安全模式调用",
+        "附上风险评估与缓解清单：涵盖钓鱼、令牌泄露、重放攻击、回调URI校验、同意记录、日志审计"
+      ],
+      "evaluation_focus": [
+        "对比矩阵与架构是否准确反映NIST/eIDAS/OAuth2/OIDC官方文档内容，并有可验证链接",
+        "调用序列与配置建议（Scopes/Claims/PKCE）是否与公开规范一致且可复现",
+        "隐私与同意管理是否具备可操作性（最小化、撤回、审计）并与官方资料相符",
+        "风险评估是否覆盖关键威胁并提出与公开最佳实践一致的缓解策略"
+      ]
+    },
+    {
+      "query_id": "info_system_analysis_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "World Bank GovTech Maturity Index 2022 report PDF",
+      "search_queries": [
+        "World Bank GovTech Maturity Index 2022 report PDF",
+        "NIST AI Risk Management Framework 1.0 PDF 2023",
+        "ISO/IEC 27001:2022 overview PDF",
+        "AsyncAPI 2.6.0 specification",
+        "CloudEvents 1.0 specification"
+      ],
+      "scenario": "角色：国家级政务数字化项目的信息系统分析工程技术负责人。背景：拟在1个月周期内制定跨部门智能体赋能的事件驱动架构与接口战略蓝图，用于打通高频跨机构业务（如企业开办、出生登记、社会救助），并对齐国际成熟度指数与风险治理框架。约束：不得使用任何内部数据或保密材料；所有判断与设计均需可由公开资料验证；蓝图应明确阶段路线、接口模式与治理机制。",
+      "task_focus": [
+        "以World Bank GovTech Maturity Index 2022为外部标杆，选择3-5个高影响跨机构旅程并提炼关键指标/KPI",
+        "设计智能体可调用的事件驱动集成模式：统一API契约、事件总线（CloudEvents）、异步接口（AsyncAPI）、编目与治理",
+        "制定AI风险治理与信息安全框架映射：NIST AI RMF 1.0与ISO/IEC 27001:2022，覆盖模型风险、访问控制、日志审计",
+        "形成分阶段实施路线图（12-18个月滚动规划），包含里程碑、资源估算、合规检查点与复用策略"
+      ],
+      "deliverable_requirements": [
+        "提交一篇战略蓝图报告（建议25-40页），包含：现状与标杆分析（引用GovTech 2022）、目标旅程与KPI、参考架构（事件驱动/接口层/数据编目/治理）、示例事件模式（CloudEvents）与异步接口契约（AsyncAPI片段）",
+        "逐节提供Ground Truth引用与链接（GovTech 2022、NIST AI RMF 1.0、ISO/IEC 27001:2022、AsyncAPI与CloudEvents规范），并说明每条引用如何支撑设计决策",
+        "提供合规与风险控制清单：模型风险、数据安全、隐私与审计要求的映射表；明确实施阶段的验收标准与度量方式",
+        "给出可复现的实施路线图（季度/里程碑），标注所需角色、工具栈（仅列公开工具与规范）、以及跨机构协同机制"
+      ],
+      "evaluation_focus": [
+        "是否准确引用并对齐GovTech 2022指标与所选旅程的KPI，形成可量化的目标",
+        "事件驱动架构与接口契约（CloudEvents/AsyncAPI）是否清晰、一致且可被公开规范验证",
+        "AI风险治理与信息安全（NIST AI RMF、ISO/IEC 27001）映射是否完整且可操作",
+        "路线图是否具备可执行性与可复现性（里程碑、验收指标、资源与协同），并以公开资料为依据"
+      ]
+    },
+    {
+      "query_id": "ps_traffic_fde_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FHWA Signal Timing Manual Second Edition PDF 2015",
+      "search_queries": [
+        "FHWA Signal Timing Manual Second Edition PDF 2015",
+        "MUTCD 11th Edition 2023 pedestrian timing yellow change interval PDF",
+        "NGSIM Lankershim Boulevard arterial dataset download",
+        "Webster method signal timing calculation formula PDF"
+      ],
+      "scenario": "角色：某市交通治理FDE工程师。背景：收到市民投诉，市中心一处典型四相位信号化交叉口在晚高峰出现车队溢出与行人等待时间过长。内部采集设备暂不可用，需在1个工作日内基于公开资料形成可执行的“快速微调方案”并验证其在原则上的合规性。约束：仅使用公开可获取的权威资料与开源数据，不依赖任何保密或内部数据库；计算与合规判断须以权威标准（FHWA、MUTCD）为依据；交付仅限一篇技术备忘录和/或一个代码仓库。",
+      "task_focus": [
+        "从NGSIM Lankershim数据集中提取该走廊相关交叉口的车流量与相位信息，估算峰小时各进口道的饱和度与关键冲突相位需求",
+        "依据Webster方法计算建议的周期长与绿信比，并与FHWA《Signal Timing Manual》推荐流程进行一致性比对",
+        "根据MUTCD第11版的行人信号、黄灯与红灯清空时间计算要求，检查并修订行人清空时间与相位间隔设置",
+        "生成一份“快速微调”方案（含参数、适用时段、风险提示），并用公开标准条款逐条验证其合理性与合规性"
+      ],
+      "deliverable_requirements": [
+        "技术备忘录（6–10页）：包括数据来源说明、计算方法（含公式与参数取值）、MUTCD与FHWA标准的逐条引用（注明章节/条款号/页码/版本）、结果表与建议方案",
+        "可复现的Python代码仓库：完成数据读取（NGSIM）、流量与相位特征计算、Webster周期与配时计算、行人与清空时间校核的脚本与Notebook，附README说明运行步骤与依赖版本",
+        "明确的假设与边界：如饱和流率参数、行人过街速度取值、时间窗选择；所有假设必须以权威资料佐证或在报告中谨慎说明来源与影响"
+      ],
+      "evaluation_focus": [
+        "可验证性：是否在报告中提供指向权威公开资料的准确引用（FHWA、MUTCD、NGSIM），并可通过检索词快速定位原文以复核结论",
+        "计算与合规正确性：Webster方法应用是否正确、行人与清空时间是否符合MUTCD第11版要求、建议配时与FHWA流程一致性",
+        "复现性与透明度：代码能否在公开环境按README复现结果；数据处理、参数选择、结果生成的每一步是否有清晰记录与日志"
+      ]
+    },
+    {
+      "query_id": "ps_traffic_fde_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "SUMO LuST scenario GitHub",
+      "search_queries": [
+        "SUMO LuST scenario GitHub",
+        "FHWA Signal Timing Manual 2015 arterial coordination PDF",
+        "NCHRP Report 707 Guidelines for Traffic Signal Timing Tools PDF",
+        "UK DfT Traffic Signals Manual 2023 coordination PDF",
+        "SUMO TraCI max-pressure example GitHub"
+      ],
+      "scenario": "角色：交通治理FDE工程师。背景：领导要求在3–5个连续交叉口的城市干道上开展“多日复现”的配时协同优化试验，输出从基线到优化方案的可测量改进与复盘方法。内部探测器数据暂缺，需用公开仿真与指南实现方法论复现。约束：仅使用开源仿真（SUMO）与权威指南（FHWA、NCHRP、UK DfT），在3–5天内完成建模、控制策略实现与效果评估；交付为一份系统报告与/或完整代码仓库。",
+      "task_focus": [
+        "基于LuST（SUMO开源城市场景）裁剪一段包含3–5个信号交叉口的干道网络，配置可复现实验的OD与信号基线方案",
+        "实现两类优化策略：时间段协调（基于FHWA《Signal Timing Manual》流程）与max-pressure控制（TraCI自定义控制器），并给出参数标定逻辑",
+        "对比基线与两类策略在通行时间、平均延误、排队长度、停车次数等KPI的差异，并按NCHRP 707建议的指标与工具选型原则解释结果",
+        "进行敏感性分析（需求波动±10–20%、车速分布、检测误差）以测试策略稳健性与可推广性"
+      ],
+      "deliverable_requirements": [
+        "方法与结果报告（15–25页）：包含网络选取依据、数据/参数来源、控制策略设计（流程图/伪代码）、KPI定义与计算方式（引用FHWA/NCHRP/UK DfT章节）、实验结果与敏感性分析、复盘与推广建议",
+        "完整代码仓库：SUMO场景与配置、TraCI控制器实现（时间段协调与max-pressure）、批量仿真脚本、结果处理与可视化，提供一键复现实验的命令与容器/环境文件",
+        "严格引用与版本化：报告与代码需在README中列出所用资料的版本/链接（LuST版本、SUMO版本、FHWA/NCHRP/UK DfT文档具体章节），保证审查者可独立检索与比对"
+      ],
+      "evaluation_focus": [
+        "模型与实验严谨性：网络裁剪与基线设定是否合理且可复现，控制策略实现是否与公开文献一致",
+        "指标与结果可信度：KPI定义与计算是否遵循权威指南，结果差异是否具有统计与工程意义，敏感性分析是否充分",
+        "可复现性与工程可用性：代码仓库结构清晰、运行稳定，报告与代码能否让他人在公开环境中多日复现同等结论"
+      ]
+    },
+    {
+      "query_id": "ps_traffic_fde_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FHWA Adaptive Signal Control Technologies Implementation Guide 2014 PDF",
+      "search_queries": [
+        "FHWA Adaptive Signal Control Technologies Implementation Guide 2014 PDF",
+        "NCHRP Synthesis 403 Adaptive Traffic Control Systems 2010 PDF",
+        "FHWA ATSPM Guide Automated Traffic Signal Performance Measures 2017 PDF",
+        "Utah DOT ATSPM GitHub",
+        "NYC TLC trip record data 2023 download"
+      ],
+      "scenario": "角色：交通治理FDE工程师（项目负责人）。背景：市政府拟在未来一年内推进“自适应信号+信号性能评估（ATSPM）”的城市级治堵战略。需先用1个月周期完成战略/创新规划，基于公开案例与指南制定路线图、技术架构、投产节奏与ROI区间，并用公开出行数据进行定量假设检验。约束：仅使用权威公开资料与开放数据（不接触任何供应商机密），以深度调研—验证迭代方式完成；交付为一份战略规划报告和/或一个用于ROI与KPI测算的开源代码仓库。",
+      "task_focus": [
+        "系统综述ASCT与ATSPM：汇总FHWA与NCHRP的技术框架、部署要素、典型效益范围与风险点，形成适配本市的实施路径",
+        "制定城市级技术架构：信号控制、检测层、通信与数据治理、ATSPM指标体系与可视化，明确标准兼容性（MUTCD第11版相关要求）",
+        "基于公开出行数据（如NYC TLC 2023或其他开放出行数据）构建可复现的KPI估算模型，生成目标走廊的基线通行时间/延误等指标，并对ASCT实施的效益区间进行情景化测算",
+        "形成路线图与试点方案：分阶段目标（3–6–12月）、治理机制（绩效闭环、数据公开）、预算与ROI区间、风险与缓释策略，全部结论以公开资料为证据链"
+      ],
+      "deliverable_requirements": [
+        "战略规划报告（30–50页）：含综述、标准与指南引用（章节/条款/版本）、技术架构与数据治理方案、试点与扩展路线图、效益测算（区间与不确定性）、风险清单与缓释措施，所有结论均以公开资料与数据为证据支撑",
+        "可复现代码仓库：用于从开放出行数据（如NYC TLC 2023）抽取目标走廊相关KPI（通行时间、速度、延误的代理指标），并进行ASCT情景效益区间的敏感性测算，包含数据下载脚本、处理流程、参数化场景与结果输出",
+        "证据链与合规性：在报告与README中列出所有权威资料与数据源链接与版本，标注采用的指标定义与参考（FHWA ATSPM、MUTCD第11版），保证第三方可独立检索与交叉验证"
+      ],
+      "evaluation_focus": [
+        "权威性与完整性：是否覆盖FHWA、NCHRP、MUTCD等核心资料，并形成自洽的技术与治理框架；引用是否具体到章节/条款",
+        "定量方法与可复现：开放数据的KPI计算是否透明、逻辑严谨，效益区间与敏感性分析是否可通过代码复现",
+        "策略可落地性：路线图、预算与ROI区间是否与公开案例相符，风险识别与缓释是否具体可操作，兼顾数据治理与绩效闭环"
+      ]
+    },
+    {
+      "query_id": "power_transmission_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NERC FAC-003-4 Vegetation Management Standard PDF 2016 MVCD",
+      "search_queries": [
+        "NERC FAC-003-4 Vegetation Management Standard PDF 2016 MVCD",
+        "FERC vegetation management FAC-003 compliance guide PDF",
+        "CPUC General Order 95 PDF tree trimming clearance rules 2014",
+        "Transmission line Minimum Vegetation Clearance Distance MVCD calculation guide",
+        "输电线路 通道 树障 管理 标准 指南 PDF"
+      ],
+      "scenario": "角色：省级电网公司输电工程技术人员。背景：公司拟将无人机/激光雷达巡检接入智能体进行自动风险告警，首个封闭模块需要制定“输电线路通道植被风险告警规则与合规清单”。约束：只使用公开、权威资料（如NERC/FERC标准与监管文件、CPUC GO95公开规程及公开指南），不得使用内部线路几何与私有模型。需将规则设计为可被智能体直接调用的阈值与逻辑，并在报告中以引用条款/章节进行逐条映射与验证。",
+      "task_focus": [
+        "整理并解读NERC FAC-003-4（2016版）对MVCD、年度/周期性巡视、缺陷分类与处置时限的要求，形成面向110/220/500kV的通用化告警逻辑模板",
+        "结合CPUC GO95公开树障清理与电压等级最小间距条款，补充不同工况（风摆、覆冰、热弛度）的保守化告警阈值与优先级分级",
+        "把标准条款映射为可执行的规则库（识别-分类-分级-处置时限），并设计合规核对清单与证据采集要点（照片、坐标、时间戳）",
+        "提出数据要求最小集（不涉及内部机密）：电压等级、走廊宽度分类、植被类型/高度估计方法的公开来源与引用"
+      ],
+      "deliverable_requirements": [
+        "一份8-12页的规则与合规清单报告，逐条引用NERC FAC-003-4与CPUC GO95的具体章节/条款（含页码或条目编号），并给出中文摘要与英文原文对照引用",
+        "形成可被智能体调用的“植被风险告警规则表”，包含：风险类别、触发条件（阈值/逻辑）、优先级、处置时限、所依标准出处",
+        "提供用于验证的示例场景（不依赖内部数据）：以公开条款为依据构造3个典型工况案例，说明智能体如何触发、分类与输出告警",
+        "明确局限性与假设（如MVCD需结合线路参数计算），并提出在无内部数据时的保守阈值与后续接入内部参数的扩展方案"
+      ],
+      "evaluation_focus": [
+        "来源权威性与可验证性：是否引用并准确标注NERC FAC-003-4与CPUC GO95等公开文件的具体条款与链接",
+        "规则可执行度：告警逻辑是否明确、分级合理、处置时限清晰，智能体可直接调用（结构化表）",
+        "场景验证性：示例工况能否按公开标准复核得到一致结论，边界与局限是否说明充分",
+        "合规覆盖度：是否涵盖巡检频次、缺陷定义、清理要求、记录留存等关键合规要点"
+      ]
+    },
+    {
+      "query_id": "power_transmission_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "TTPLA dataset power line aerial images GitHub",
+      "search_queries": [
+        "TTPLA dataset power line aerial images GitHub",
+        "IEEE DataPort high voltage insulator defect dataset PDF",
+        "Power line insulator detection YOLOv5 GitHub baseline",
+        "Roboflow Power Line Insulators dataset public",
+        "Papers With Code insulator defect detection dataset"
+      ],
+      "scenario": "角色：输电工程技术人员联合数据工程师。背景：为智能体上线“巡检图片自动识别绝缘子与缺陷并输出风险告警”的能力，需在3-5天内用公开数据集复现一个基线模型与评估报告。约束：仅使用公开数据集与开源代码仓库（如TTPLA、IEEE DataPort与开源YOLO/Detectron2），不得引入公司内部图片或保密标注。需完成数据下载、训练、评估与推理脚本，保证可复现。",
+      "task_focus": [
+        "数据集筛选与获取：选择至少2个公开数据集（如TTPLA与高压绝缘子缺陷数据集），记录来源、版本、许可与类别定义",
+        "模型基线搭建：基于YOLOv5/YOLOv8或Detectron2训练绝缘子/塔材/导线目标检测与缺陷分类的基线模型",
+        "评估与可视化：在验证集上输出mAP、Precision/Recall、混淆矩阵与典型样例，分析误检/漏检原因",
+        "推理与导出：提供批量推理脚本与输出格式（JSON/CSV），为智能体后续接入告警规则提供结构化输入"
+      ],
+      "deliverable_requirements": [
+        "一个可公开的代码仓库（含README），包含：环境依赖、数据下载脚本/链接、训练与评估命令、推理示例与结果目录结构",
+        "在README或REPORT.md中记录所用数据集的名称、版本/发布日期、下载链接、许可与类别定义，并说明与业务目标（绝缘子/构件缺陷识别）的映射关系",
+        "提供至少1次完整训练日志与评估结果（mAP、Precision、Recall、混淆矩阵），并给出误检/漏检的定性分析与改进建议",
+        "推理脚本输出结构化结果（目标类别、置信度、边界框坐标/分割掩码），示例对至少20张公开样例图像执行并保存结果"
+      ],
+      "evaluation_focus": [
+        "可复现性：代码、依赖、训练/评估/推理流程是否在公开环境下可一键复现",
+        "数据合规性：数据来源是否公开、许可是否符合再训练与发布要求，出处说明是否完整",
+        "指标完备性与解释：是否提供主流检测指标与误差分析，结论能否与数据集定义对齐",
+        "工程质量：仓库结构清晰、脚本稳健、输出格式规范，便于后续智能体对接"
+      ]
+    },
+    {
+      "query_id": "power_transmission_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NERC TADS 2023 annual report PDF transmission outage statistics",
+      "search_queries": [
+        "NERC TADS 2023 annual report PDF transmission outage statistics",
+        "Ofgem NARM methodology transmission 2021 PDF",
+        "ENA CNAIM 2023 PDF Common Network Asset Indices Methodology",
+        "APLIC 2012 Reducing Avian Collisions with Power Lines PDF",
+        "NERC FAC-003-4 2016 Vegetation Management Standard PDF"
+      ],
+      "scenario": "角色：输电工程技术负责人。背景：在1个月内制定“面向输电线路全寿命资产的AI风险告警与资产健康战略蓝图”，要求依据公开监管与行业框架（NERC TADS、Ofgem NARM、ENA CNAIM、APLIC、FAC-003）搭建指标体系、告警策略与迭代路线，支持智能体在巡检数据、气象与外部公开信息下进行闭环风险管理。约束：仅使用公开资料与可引用的权威来源，形成可实施的路线图与验证方法。",
+      "task_focus": [
+        "指标体系设计：参考NERC TADS（2023）故障统计口径，定义输电线路风险与可靠性关键指标（如瞬时/持续性停运、强风/雷击触发）",
+        "资产健康与风险评分框架：借鉴Ofgem NARM与ENA CNAIM（2023）方法，构建OHL资产健康指数与以风险货币化为导向的优先级模型",
+        "专题风险策略：植被（FAC-003）、鸟害（APLIC）、气候极端事件（公开报告）等子策略与智能体告警联动机制",
+        "迭代与验证：制定分阶段（季度）迭代引入更多公开数据源与模型的计划，并设计外部数据驱动的验证清单与里程碑"
+      ],
+      "deliverable_requirements": [
+        "一份20-30页的战略报告，包含：指标体系、风险评分方法、专题策略（植被/鸟害/气象等）、数据与模型集成架构、迭代路线与里程碑",
+        "逐条引用并对齐权威来源：NERC TADS（2023年报告）指标口径与趋势、Ofgem NARM方法对风险货币化的定义、ENA CNAIM（2023版）资产健康与概率/后果模型、APLIC（2012/更新版）鸟害缓解措施、FAC-003植被管理合规要求",
+        "提出智能体告警与资产管理闭环流程（识别-评估-决策-执行-记录-复盘），并给出至少3个可由公开数据驱动的验证用例设计",
+        "风险与合规评估章节：明确潜在偏差/局限（数据缺口、地区差异）、缓解措施与合规审计要点（引用条款与审计证据）"
+      ],
+      "evaluation_focus": [
+        "权威对齐度：是否准确引用并对齐NERC TADS、Ofgem NARM、ENA CNAIM、APLIC与FAC-003的核心概念、指标与要求",
+        "体系完整性：指标—评分—策略—闭环流程是否连贯，能支撑智能体落地与持续迭代",
+        "可验证性与可实施性：验证用例能否用公开数据执行，路线图是否具备清晰里程碑与资源假设",
+        "风险与合规把控：对地区法规差异与数据局限的识别是否充分，审计要点是否具体可检查"
+      ]
+    },
+    {
+      "query_id": "grid_substation_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "DL/T 596-2021 电力设备预防性试验规程 PDF",
+      "search_queries": [
+        "DL/T 596-2021 电力设备预防性试验规程 PDF",
+        "GB 50150-2016 电气装置安装工程 电气设备交接试验标准 PDF",
+        "DL 408-2012 电力安全工作规程 变电部分 PDF",
+        "GB/T 14285-2014 继电保护及安全自动装置 技术规程 PDF",
+        "IEC 62271-100 high-voltage AC circuit-breakers standard overview PDF"
+      ],
+      "scenario": "角色：某110kV变电站继电保护/试验方向的变电工程技术人员。背景：为迎接外部安全与技术监督抽检，需要在不依赖内部制度的情况下，用公开标准梳理主设备（变压器、断路器、CT/PT、蓄电池、继保装置）的预防性试验项目、周期与合格判据，形成可审计的合规清单。约束：仅使用公开互联网可获取的权威标准/规程原文或官方发布的指南，按标准版本与条款号溯源，不引用厂商保密资料；在数小时内完成一个可执行的检查表报告。",
+      "task_focus": [
+        "锁定并比对DL/T 596-2021、GB 50150-2016、DL 408-2012、GB/T 14285-2014的适用范围、条款与版本差异",
+        "提取各设备的必做试验项目、推荐/强制周期与合格判据，形成条款可溯源的表格",
+        "明确现场安全管控要求（作业票、二次回路、带电/停电边界）并匹配到对应规程条款",
+        "补充与国际标准（IEC 62271-100等）在试验方法或判据上的差异点，作为审计备注"
+      ],
+      "deliverable_requirements": [
+        "仅提交一份技术合规检查表报告（PDF或DOCX，6-10页），包含设备类别-试验项目-周期-合格判据的总表与分表，逐项标注标准名称、年份/版本与具体条款号",
+        "报告需列出检索到的标准来源信息（发布机构、发布日期、版次）与可公开访问链接/书号（如无法直接PDF，提供官方标准页链接）",
+        "在结论章节提供对潜在冲突条款的处理建议（以国家/行业标准优先）与现场执行要点",
+        "报告中所有结论必须有文献证据支撑，引用格式统一（标准名-年份-章节/条款号）"
+      ],
+      "evaluation_focus": [
+        "证据可验证性：每一试验项目的来源均有公开链接或官方出处，条款号准确可核验",
+        "完整性与适配性：覆盖变压器、断路器、CT/PT、蓄电池、继保等关键设备，周期与判据不缺项",
+        "规范一致性：标准版本与标题准确，避免混用旧版条款；中英标准引用清晰不冲突",
+        "可执行性：检查表结构清晰、现场可直接应用，安全管控要求明确"
+      ]
+    },
+    {
+      "query_id": "grid_substation_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "IEC 61850-6 Edition 2.1 SCL schema XSD OpenSCD",
+      "search_queries": [
+        "IEC 61850-6 Edition 2.1 SCL schema XSD OpenSCD",
+        "OpenIEC61850 GitHub",
+        "libiec61850 GitHub MZ-automation",
+        "OpenSCD sample SCL GitHub",
+        "IEC 61850-7-4 logical nodes list overview PDF"
+      ],
+      "scenario": "角色：数字化变电站自动化工程师。背景：为降低IED投运前配置错误，需要构建一个开源的SCL（Substation Configuration Language）文件预检工具，对SCL进行XSD结构校验、基本命名规范检查（如LN、DO/DA命名）并生成一致性的报告。约束：仅使用公开的开源库和资料（如OpenSCD、OpenIEC61850、libiec61850），不得依赖厂商私有文档或付费标准全文；在3-5天内完成可复现的代码仓库（含README、示例与测试用例）。",
+      "task_focus": [
+        "基于公开XSD（源自IEC 61850-6 Ed2.1的社区镜像，如OpenSCD提供的schema）实现SCL结构校验（.SCD/.CID/.ICD）",
+        "实现基础规范检查：LN类与命名、IED/LD/LN层级关系、必需字段存在性，参考公开的IEC 61850-6与7-4概述资料",
+        "开发CLI工具，输入SCL文件输出HTML/Markdown一致性报告（通过/失败、错误定位、引用规则来源）",
+        "准备公开测试集（来自OpenSCD样例或社区仓库），并提供自动化测试与使用说明（README）"
+      ],
+      "deliverable_requirements": [
+        "仅提交一个公开代码仓库（GitHub或Gitee），包含：源代码、README（环境/依赖/运行示例）、测试用例、示例SCL文件与生成的样例报告",
+        "在仓库内设置CITATIONS/REFERENCES文件，列出所用开源库与规则依据的公开来源链接（如OpenSCD schema、OpenIEC61850、libiec61850、IEC 61850公开概述资料）",
+        "CLI需支持本地运行与批量校验，输出报告中需标注对应规则的出处（标准名/版本/章节或公开概述页面的锚点）",
+        "提供最少5个公开来源的SCL样例（或链接）用于演示，并包含至少10条覆盖结构与命名错误的单元测试"
+      ],
+      "evaluation_focus": [
+        "复现性：代码克隆后按README可在常见环境（Windows/Linux）成功运行并生成报告",
+        "覆盖度与准确性：结构校验与命名规范检查能发现常见问题，错误定位清晰；与公开XSD一致",
+        "证据溯源：每一条校验规则均可在公开资料中找到来源（标准概述、社区schema、UCAIug公开说明等）",
+        "工程质量：代码结构清晰、测试完备、输出报告可读性强，仓库包含许可与引用声明"
+      ]
+    },
+    {
+      "query_id": "grid_substation_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "IEC 62351 cybersecurity overview 2023 PDF",
+      "search_queries": [
+        "IEC 62351 cybersecurity overview 2023 PDF",
+        "IEC 61850 Edition 2.1 2020 overview",
+        "NERC CIP-002-013 2024 requirements PDF",
+        "CIGRE technical brochure digital substation process bus PDF",
+        "EPRI digital substation architecture 2022 report PDF",
+        "NASPI PMU applications guide 2020 PDF"
+      ],
+      "scenario": "角色：区域公司变电工程技术负责人。背景：规划1个月以上的数字化变电站升级路线图（含IEC 61850 Ed2.1过程总线、继保与自动化系统改造、网络与主站接口），并建立与IEC 62351/NERC CIP相协调的网络安全控制、监测与演练机制。约束：所有依据均来自公开权威资料（IEC/IEEE/CIGRE/NERC/EPRI/NASPI/国家标准与应急指南），不得引用厂商保密方案；产出一份可被审查与复现的战略蓝图报告，涵盖架构、合规差距、风险与实施计划。",
+      "task_focus": [
+        "系统梳理IEC 61850 Ed2.1的关键能力（SCL、过程总线、采样值/GOOSE）与迁移要点，并与CIGRE数字化变电站技术手册/技术手册（TB）公开资料交叉验证",
+        "构建IEC 62351与NERC CIP（CIP-002至CIP-013，2024版）安全控制映射（身份、加密、白名单、补丁管理、供应链），形成差距分析",
+        "结合EPRI/NASPI公开报告制定监测与事件响应方案（如PMU/IED事件检测、日志集中、演练机制），并与GB/T 29639-2013应急预案编制导则呼应",
+        "形成分阶段（12–36个月）实施计划：架构设计、试点验证、风险与成本估算、人员培训与演练安排，均以公开资料为依据"
+      ],
+      "deliverable_requirements": [
+        "仅提交一份战略蓝图报告（PDF或DOCX，15-25页），包含：目标架构图、标准条款映射表（IEC 61850/62351、NERC CIP）、合规差距与整改路径、风险与成本估算、演练与培训计划",
+        "每一结论或控制建议均需提供公开来源的引用（标准/技术手册/法规/报告的标题、年份/版本、章节或页码、可访问链接）",
+        "提供路线图甘特或里程碑表（文本/图示均可），并给出优先级排序原则与验收指标（可度量的KPI）",
+        "报告需包含“证据清单”附录，汇总所有资料的来源、访问链接与核验方法，确保第三方可复核"
+      ],
+      "evaluation_focus": [
+        "权威性与完整性：引用覆盖IEC 61850、IEC 62351、NERC CIP、CIGRE、EPRI、NASPI与国家应急指南，标准版本与条款可核验",
+        "可实施性：架构与控制映射具体、阶段划分清晰、KPI可度量，风险与成本估算合理",
+        "一致性与可追踪性：结论与建议均有明确出处，引用格式统一，证据链完整",
+        "战略深度：兼顾技术、合规、运维与人员能力建设，体现长期迭代与试点—推广路径"
+      ]
+    },
+    {
+      "query_id": "embedded_system_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Modbus Application Protocol Specification v1.1b3 2012 PDF",
+      "search_queries": [
+        "Modbus Application Protocol Specification v1.1b3 2012 PDF",
+        "MODBUS over serial line specification and implementation guide 2006 Modbus.org",
+        "SEI CERT C Coding Standard 2016 INT32-C wiki",
+        "MITRE CWE-190 Integer Overflow or Wraparound 2024",
+        "Zephyr ztest unit testing documentation 2024"
+      ],
+      "scenario": "角色：某工业终端控制器（与PLC通过RS-485/Modbus RTU交互）的嵌入式固件工程师。背景：近期现场反馈CRC校验偶发错误及帧解析边界缺陷，需要在不依赖硬件的条件下快速修复并验证。约束：仅使用公开互联网资料与开源工具；可在PC上用仿真/单元测试复现；交付包含可运行的代码仓库与技术报告，并在报告中引用权威资料（标准/指南/案例/仓库）作为Ground Truth进行比对与验证。",
+      "task_focus": [
+        "依据Modbus Application Protocol v1.1b3与串行线指南实现或修订CRC16-Modbus与帧解析逻辑（含异常帧处理）",
+        "针对整数溢出、缓冲区越界、未定义行为进行安全审查，对照SEI CERT C与MITRE CWE条目给出修复与证据",
+        "构建可复现的单元测试（优先使用C/Zephyr native_posix的ztest或C/Unity），覆盖规范测试向量与边界用例",
+        "提供跨平台构建脚本（如CMake）与静态分析（如cppcheck）配置，确保快速验证"
+      ],
+      "deliverable_requirements": [
+        "代码仓库：包含C语言实现（CRC16-Modbus、帧解析）、构建脚本（CMake）、测试用例（ztest或Unity），并附示例输入/期望输出；提供README说明本地构建与测试步骤",
+        "技术报告（PDF/HTML）：说明需求背景、实现细节、测试方法与结果；逐条引用Modbus规范（版本与页码/章节）、CERT C规则与CWE条目，并展示与规范的比对结论与链接",
+        "安全审查清单：列出潜在风险点（如CWE-190/CWE-120等）与对应修复策略/代码片段；包含静态分析结果截图或日志摘要",
+        "可复现实验步骤：在无硬件条件下于通用开发环境（Linux/macOS/Windows）一键运行构建与测试脚本，并输出与规范一致的CRC校验与帧解析结果"
+      ],
+      "evaluation_focus": [
+        "正确性与一致性：CRC结果与Modbus规范测试向量严格一致；帧解析在异常/边界场景行为符合规范",
+        "安全性与规范对齐：对照CERT C与CWE的修复合理、证据充分；静态分析无高危缺陷且解释清晰",
+        "代码质量与可移植性：模块化、清晰API、跨平台构建与测试均成功；依赖最小化",
+        "可复现性与可验证性：一键构建测试可通过；报告中的来源链接有效、版本与章节标注准确、Ground Truth比对结论清楚"
+      ]
+    },
+    {
+      "query_id": "embedded_system_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OASIS MQTT Version 5.0 2019 specification PDF",
+      "search_queries": [
+        "OASIS MQTT Version 5.0 2019 specification PDF",
+        "RFC 8446 TLS 1.3 2018 IETF",
+        "NISTIR 8259A 2020 Core IoT Device Cybersecurity Capability Baseline",
+        "ETSI EN 303 645 V2.1.1 2020 Cyber Security for Consumer IoT",
+        "Zephyr RTOS MQTT TLS mbedTLS sample 2024"
+      ],
+      "scenario": "角色：嵌入式系统工程师，负责为终端控制器实现安全的云遥测（MQTT）。背景：公司计划在数日内评估MQTT 5.0 over TLS的可行性与性能，无硬件板卡可用，需要在Zephyr（native_posix或QEMU）上实现示例客户端并与本地开源broker进行端到端验证。约束：仅依赖公开资料与开源工具（Zephyr、Mosquitto、OpenSSL、mbedTLS）；全过程可在通用PC环境复现；成果需以报告与代码仓库交付，并引用标准与指南验证设计合规性与安全性。",
+      "task_focus": [
+        "实现Zephyr上的MQTT 5.0客户端（包含QoS1发布/订阅、keepalive、自动重连），启用TLS 1.3（mbedTLS）与双向证书认证",
+        "搭建本地Mosquitto broker（开启TLS与客户端证书校验），使用OpenSSL生成CA/服务端/客户端证书与CRL",
+        "依据OASIS MQTT v5.0与RFC 8446验证协议与加密配置（SNI、ALPN可选、推荐套件）；对照NISTIR 8259A与ETSI EN 303 645做安全基线检查",
+        "记录并分析端到端指标（连接建立时延、消息往返、二进制大小、内存占用估计），给出可复现实验方案与结论"
+      ],
+      "deliverable_requirements": [
+        "代码仓库：Zephyr应用（native_posix或QEMU目标），包含MQTT 5.0客户端代码、Kconfig/prj.conf启用mbedTLS、证书生成脚本（OpenSSL）、与启动本地Mosquitto的自动化脚本；提供端到端自测脚本与日志收集",
+        "技术报告：详述架构、协议流程、TLS配置与证书生命周期；对照OASIS MQTT v5.0与RFC 8446逐项验证（连接、发布/订阅、QoS/保持、错误处理）；对照NISTIR 8259A与ETSI EN 303 645进行安全基线与差距分析，全部结论配权威来源链接与版本/年份",
+        "性能与资源分析：提供构建产物大小、连接与消息往返时延（含测试方法）、内存占用估计（结合Zephyr构建报告与运行日志）；说明测试环境、参数与可复现步骤"
+      ],
+      "evaluation_focus": [
+        "协议合规性：MQTT 5.0关键流程（CONNECT/PUBLISH/SUBSCRIBE/ACK）正确，QoS语义与Keepalive重连行为符合规范",
+        "安全配置合理性：TLS 1.3启用、证书校验严格、套件选择与配置符合RFC 8446与业界最佳实践；安全基线对齐NISTIR 8259A与ETSI EN 303 645",
+        "工程可复现性：一键脚本可启动broker、生成证书、构建并运行客户端、完成端到端测试；日志与度量可复核",
+        "文档与引用质量：报告结构清晰，来源链接有效，年份/版本标注准确，Ground Truth比对充分"
+      ]
+    },
+    {
+      "query_id": "embedded_system_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST SP 800-193 2018 Platform Firmware Resiliency Guidelines PDF",
+      "search_queries": [
+        "NIST SP 800-193 2018 Platform Firmware Resiliency Guidelines PDF",
+        "NIST SP 800-218 2021 Secure Software Development Framework SSDF",
+        "SPDX SBOM specification 2.3 2024 Linux Foundation",
+        "MCUboot Zephyr documentation 2024",
+        "GitHub Actions osv-scanner 2024"
+      ],
+      "scenario": "角色：嵌入式系统架构师，负责终端控制器固件韧性与供应链安全的长期提升。背景：公司要求在1个月内形成可落地的战略方案与演示性实现，覆盖安全启动/恢复、OTA更新、SBOM生成与漏洞治理、开发流程安全实践。约束：仅使用公开互联网标准/指南与开源工具（Zephyr、MCUboot、SPDX工具、osv-scanner、fuzz工具等），在通用开发环境可复现；交付由一篇战略报告与一个演示代码仓库构成，报告中需将架构与实践严格映射到权威标准并给出处链接与版本。",
+      "task_focus": [
+        "构建与标准映射：以NIST SP 800-193定义的认证/测量/恢复/保护能力为核心，结合终端控制器场景形成安全启动与固件韧性架构",
+        "制定SSDLC：参考NIST SP 800-218，将需求、设计、实现、验证、发布、运维的安全实践融入流程；定义度量与里程碑",
+        "供应链与SBOM：选择SPDX 2.3，设计SBOM生成、存储、分发与漏洞审计流程（osv-scanner/Trivy等）；建立告警与修复闭环",
+        "演示实现：在Zephyr（native_posix或QEMU）构建示例模块，集成MCUboot签名流程或等效签名验证演示、CI流水线（GitHub Actions）运行单元测试、静态分析、模糊测试、SBOM生成与漏洞扫描"
+      ],
+      "deliverable_requirements": [
+        "战略报告：包含目标、范围、威胁与风险分析、标准映射（NIST SP 800-193/800-218、SPDX 2.3等）、架构设计（安全启动/恢复/OTA/密钥管理/证书生命周期）、SSDLC流程与治理模型、SBOM与漏洞响应方案、阶段路线图与KPI；每一结论均需引用权威资料（链接+版本/年份）",
+        "演示代码仓库：提供示例固件模块与签名/验证脚本（基于MCUboot imgtool或mbedTLS等实现），CI配置（GitHub Actions）执行单元测试、静态分析（clang-tidy/cppcheck）、模糊测试（libFuzzer/AFL可选）、生成SPDX SBOM（工具与命令）、运行osv-scanner并输出报告",
+        "复现手册：在通用PC环境一键运行CI与本地脚本，生成签名映像、验证结果、SBOM文件与漏洞扫描结果；记录依赖版本与环境需求，确保第三方可重现"
+      ],
+      "evaluation_focus": [
+        "标准对齐与完整性：NIST SP 800-193能力映射准确且可落地；SSDLC与NIST SP 800-218一致；SBOM方案与SPDX 2.3规范符合",
+        "架构可行性与风险控制：安全启动/恢复/OTA方案在资源受限设备上可实现，密钥与证书管理策略合理；威胁模型与风险缓解充分",
+        "工程演示质量：CI流水线稳定可复现；签名/验证/测试/SBOM/漏洞扫描步骤完整并输出清晰；日志与报告可核查",
+        "度量与路线图：KPI明确（修复时效、漏洞暴露窗口、测试覆盖率、SBOM生成率等），阶段目标现实可行且与业务痛点匹配"
+      ]
+    },
+    {
+      "query_id": "mfg_digital_twin_designer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "MTConnect Standard Part 3 Streams Version 1.8.1 PDF",
+      "search_queries": [
+        "MTConnect Standard Part 3 Streams Version 1.8.1 PDF",
+        "MTConnect sample agent GitHub",
+        "ISO 23247-1:2020 Digital Twin manufacturing overview preview",
+        "NIST digital twin manufacturing definition report 2020",
+        "Python MTConnect client example"
+      ],
+      "scenario": "角色：一家机加工车间的数字孪生设计师。背景：公司需要为单台数控机床（CNC）搭建可验证的数据采集到孪生映射的最小可行架构，用于后续产线级孪生扩展。约束：仅允许使用公开可获取的权威资料与开源工具；不得访问任何厂内设备或专有系统；所有指标与数据项的选择必须引用公开标准或官方文档（如MTConnect、ISO 23247、NIST报告）。交付物仅限一篇报告和/或一个代码仓库。",
+      "task_focus": [
+        "基于MTConnect标准（Streams/Devices）识别机床孪生的关键数据项（如availability、spindle speed、feedrate、alarms等），并给出引用版本与章节来源",
+        "将数据项映射到ISO 23247制造业数字孪生的实体/视角（如资产、过程、信息视角）并阐明边界与抽象层级",
+        "使用Python编写最小客户端，从MTConnect开源示例Agent或示例XML数据解析实时/样例流，输出可复现的JSON状态快照",
+        "以NIST或权威定义验证“数字孪生”概念范围，确保术语与能力描述与标准一致"
+      ],
+      "deliverable_requirements": [
+        "一篇简明报告（≤10页）：包含数据项选择理由、ISO 23247实体映射表、架构草图；所有结论须给出标准/报告的版本、章节或页码以及公开链接",
+        "一个代码仓库：包含Python解析脚本、requirements.txt、运行说明（如何拉起MTConnect示例Agent或使用示例XML）、输出JSON示例",
+        "在报告中提供可复核的测试步骤（含命令与期望输出片段）与数据来源（如MTConnect示例数据的URL）",
+        "在报告中明确不使用任何私有或现场数据，并说明复现环境（操作系统、Python版本）"
+      ],
+      "evaluation_focus": [
+        "标准对齐：核查MTConnect数据项与版本、章节引用是否准确；ISO 23247映射是否符合官方定义与术语",
+        "复现实证：审阅代码能否在无现场设备条件下通过示例Agent/示例XML成功生成JSON快照；运行说明是否完整可执行",
+        "证据完整性：所有引用是否为公开可访问来源（官方标准页、公开PDF、权威机构报告），链接有效",
+        "建模合理性：数据项到孪生实体的抽象是否清晰、一致；边界与假设是否透明、可检验"
+      ]
+    },
+    {
+      "query_id": "mfg_digital_twin_designer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OPC UA for Machinery Companion Specification V1.01 PDF",
+      "search_queries": [
+        "OPC UA for Machinery Companion Specification V1.01 PDF",
+        "python-opcua example server tutorial",
+        "OPC UA Machinery IdentificationType NodeSet 1.01",
+        "ISO 23247 manufacturing digital twin mapping overview",
+        "open62541 information model tutorial"
+      ],
+      "scenario": "角色：包装产线的数字孪生设计师。背景：为多台包装设备构建面向孪生的数据接口，需要依据OPC UA for Machinery伴随规范实现设备识别、状态与生产信息的数据模型，作为后续车间级孪生的数据入口。约束：仅使用公开规范与开源工具（python-opcua或open62541）；不得使用厂商私有信息模型或付费标准全文；所有节点与属性需标注规范版本与章节，交付物仅限一篇报告和/或一个代码仓库。",
+      "task_focus": [
+        "研读OPC UA for Machinery V1.01，提取必需的类型与子模型（如MachineryItem、MachineryIdentification、Operational/ProductionState等），形成设备与产线聚合的信息模型草案",
+        "实现一个最小可用的OPC UA Server，公开至少1台设备与1个线体聚合节点的浏览树与关键变量；提供Client示例读取与订阅",
+        "将信息模型与ISO 23247的实体/视角进行对照，说明孪生边界、层级与数据语义如何落地",
+        "给出自检清单（Conformance checklist），标注实现覆盖了规范的哪些强制/推荐要素"
+      ],
+      "deliverable_requirements": [
+        "一个代码仓库：包含OPC UA Server与Client的Python实现（或open62541示例），README写明环境搭建、运行命令、期望的Browse路径与节点说明",
+        "一篇技术报告（10-15页）：信息模型设计、OPC UA节点清单、与ISO 23247的映射表；引用OPC UA for Machinery V1.01具体章节/表格并附公开下载链接",
+        "在报告中给出服务器运行截图或文本化的Browse树、示例监控数据与Client读取结果；标注节点的NodeId、TypeDefinition与语义说明",
+        "提供可复核的测试脚本或步骤，确保他人可在本地数天内复现服务端与客户端的交互结果"
+      ],
+      "evaluation_focus": [
+        "规范一致性：检查实现的节点类型、属性与结构是否符合OPC UA for Machinery V1.01；引用章节是否准确",
+        "功能复现：评估客户端能否稳定读取/订阅关键节点；仓库README是否让评审者在数天内完整复现",
+        "标准映射：审阅ISO 23247对照表是否清晰、合理；孪生实体边界定义是否与公开资料一致",
+        "工程质量：代码结构、异常处理、日志与健壮性；信息模型文档化程度与可维护性"
+      ]
+    },
+    {
+      "query_id": "mfg_digital_twin_designer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "IDTA Asset Administration Shell Specification 3.0 PDF 2023",
+      "search_queries": [
+        "IDTA Asset Administration Shell Specification 3.0 PDF 2023",
+        "RAMI 4.0 reference architecture official PDF",
+        "Catena-X Manufacturing Data Space 2023 whitepaper PDF",
+        "NIST SP 800-82 Rev.3 ICS Security 2024 PDF",
+        "Eclipse BaSyx AAS SDK GitHub"
+      ],
+      "scenario": "角色：汽车零部件总装车间的数字孪生设计负责人。背景：计划在12-18个月内推进从线体到企业级的孪生体系建设，需形成开放标准优先的路线图，涵盖数据模型（AAS）、互操作（OPC UA/ISA-95对照）、架构（RAMI 4.0、ISO 23247）、数据空间（Catena-X）、安全治理（NIST SP 800-82 Rev.3/IEC 62443概览）。约束：仅使用公开可访问的官方白皮书/规范/指南与开源仓库；不得依赖任何供应商私有文档或付费标准全文；交付物仅限一篇报告。",
+      "task_focus": [
+        "系统性比对RAMI 4.0、ISO 23247与AAS（IDTA 3.0）的层级/视角/子模型，提出产线孪生到企业孪生的互操作策略与边界",
+        "评估可用的开源实现（如Eclipse BaSyx AAS、OPC UA开源栈）与数据空间生态（Catena-X公开资料），提出技术选型与集成路径",
+        "制定数据治理与工业控制安全基线，参考NIST SP 800-82 Rev.3与公开IEC 62443概览，形成威胁模型与控制措施建议",
+        "输出12个月以上的分阶段路线图（里程碑、资源、风险与ROI指标），明确验证环节与复现步骤依托公开资料"
+      ],
+      "deliverable_requirements": [
+        "一篇战略报告（≥25页）：包含文献综述、框架对照（配图与表格）、技术选型分析、实施路线图与风险管理；所有引用须为公开链接并标注版本/年份与章节",
+        "明确孪生的数据模型与接口策略（AAS子模型目录、OPC UA对照、与ISO 23247实体边界）并给出验证思路（基于公开样例或开源仓库演示，不要求提交代码）",
+        "安全与治理章节需列出至少10条可操作的控制措施与对应标准条款/章节来源（NIST SP 800-82 Rev.3为主）",
+        "定义度量与验收指标（如可复现性、互操作覆盖度、数据质量KPI、上线里程碑），并说明如何用公开资料进行核验"
+      ],
+      "evaluation_focus": [
+        "权威覆盖：检查引用来源是否来自官方组织（IDTA、Plattform Industrie 4.0、Catena-X、NIST、Eclipse基金会等），链接有效、版本与年份匹配",
+        "框架一致性：评估RAMI 4.0、ISO 23247与AAS的对照分析是否逻辑严谨、术语与层级一致；接口策略是否具有可实施性",
+        "路线与风险：路线图是否可执行（阶段目标、资源、依赖清晰）；风险与缓解措施是否与公开安全指南一致",
+        "可验证性与KPI：报告是否给出可被第三方用公开资料核验的指标与方法；结论透明、假设清楚、边界明确"
+      ]
+    },
+    {
+      "query_id": "water_conservation_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "EU JRC 2022 BREF Textiles water consumption BAT PDF",
+      "search_queries": [
+        "EU JRC 2022 BREF Textiles water consumption BAT PDF",
+        "Alliance for Water Stewardship Standard v2.0 2019 PDF",
+        "国家节水行动方案 2019 全文 发改委 水利部",
+        "Textile dyeing wastewater reuse ultrafiltration reverse osmosis case study"
+      ],
+      "scenario": "角色：某印染企业外部节水工程技术顾问。背景：企业计划开展快速可行性研究，对比两种中水回用技术路线（如“多级逆流清洗+UF/RO”和“分质回用+膜生物反应器MBR”），要求与国际BAT（最佳可行技术）及国内政策相符。约束：不提供企业内部生产数据，仅允许使用公开互联网资料（EU JRC BREF Textiles最新版、AWS标准、国家节水行动方案、公开案例/论文），在数小时内完成一份技术路线速评。",
+      "task_focus": [
+        "锁定权威Ground Truth：提取EU JRC BREF Textiles（最新版）中与用水消耗、工艺节水、回用相关的章节与指标范围（如单位产品用水量m3/t布、冲洗工艺优化、膜回用典型回收率）",
+        "对比两条可选技术路线的关键单元操作、适用边界、预期节水幅度与能耗副作用，引用公开案例或指南中的定量证据",
+        "与政策/管理框架对齐：梳理国家节水行动（2019）及AWS v2.0管理要求中的相关条款，说明方案如何满足合规与治理要求",
+        "形成可执行的指标清单：明确需监测的KPI（单位产品耗水、工段回用率、浓水处置合规性），并给出数据来源与验证路径"
+      ],
+      "deliverable_requirements": [
+        "提交一篇5-8页的技术路线速评报告（PDF），仅使用公开来源；每个关键结论后附来源URL与章节/页码（如BREF Textiles具体章节）",
+        "至少引用3个权威资料：EU JRC BREF Textiles最新版PDF、AWS Standard v2.0（2019）、国家节水行动（2019）全文；如使用案例研究，需来自公开论文/行业指南并可验证",
+        "给出两条技术路线的对比表：列出关键单元（UF/RO、MBR、逆流清洗等）、典型回收率范围、运行能耗/副产物治理要点、适用水质/负荷边界，全部指标需有公开证据",
+        "明确KPI与测量方法，说明若后续落地需采集的数据项及其公开参考标准/指南（如单位产品耗水、回用水质控制点），并提供相应引用链接"
+      ],
+      "evaluation_focus": [
+        "资料权威性与可验证性：是否全部来源为公开、可信机构（EU/JRC、AWS、国家部委等），引用是否包含URL与章节/页码",
+        "指标与结论的可追溯性：每个节水幅度、回收率、KPI定义均有对应公开依据且单位、范围表述准确",
+        "方案比选的完整性与可落地性：对比维度全面（技术、适用边界、合规风险、能耗），能指导后续详细设计",
+        "与政策/治理框架对齐程度：明确指出与国家节水行动及AWS条款的对应关系"
+      ]
+    },
+    {
+      "query_id": "water_conservation_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "California SB 555 water loss audit data 2019-2022 State Water Resources Control Board CSV",
+      "search_queries": [
+        "California SB 555 water loss audit data 2019-2022 State Water Resources Control Board CSV",
+        "AWWA Free Water Audit Software v6 user manual PDF",
+        "IWA water balance Infrastructure Leakage Index guidance PDF",
+        "California DWR Validating Water Loss Audits guidance 2020 PDF"
+      ],
+      "scenario": "角色：地级市供水企业的节水工程技术人员。背景：为制定“十四五/十五五”城市管网漏损与非收益水（NRW）目标，拟搭建一个可复现的数据分析仓库，使用加州SB 555公开水损审计数据（2019-2022），按AWWA/IWA方法计算KPI（NRW%、ILI、单位连接实漏），并进行区间对标。约束：仅使用公开数据与公开方法，不访问任何内部SCADA或资产系统；在数天内完成可复现代码仓库与方法说明。",
+      "task_focus": [
+        "数据获取与清洗：自动下载并解析加州SWRCB发布的SB 555年度水损审计CSV/Excel，构建统一数据模型",
+        "指标计算：依据AWWA Free Water Audit与IWA水量平衡指南，计算NRW%、ILI、真实漏损/连接/日等关键指标",
+        "基准对比：按供水规模、气候区或管网特征进行分组对比，生成可视化与排名，形成对标洞见",
+        "方法透明化：记录数据来源、公式、假设与不确定性，并在README中列出所有引用与版本信息"
+      ],
+      "deliverable_requirements": [
+        "提交一个公开代码仓库（如GitHub），包含：数据抓取脚本、清洗与指标计算模块、可视化脚本、README（说明依赖、运行步骤、数据与方法来源）",
+        "严格引用：README需包含数据下载URL（加州SWRCB官方页面）、方法学参考（AWWA FWA用户手册/IWA指导）并标注版本/年份",
+        "提供至少3个核心图表与对应CSV输出（NRW趋势、ILI分布、分组对标），并确保一键运行可复现（包含requirements.txt或环境文件）",
+        "在仓库中附数据字典与公式说明（含单位与计算路径），明确异常值/缺失值处理策略与来源依据"
+      ],
+      "evaluation_focus": [
+        "可复现性与工程质量：仓库能在全新环境中一键运行，脚本结构清晰、依赖管理规范",
+        "指标计算的正确性：NRW、ILI等KPI计算符合AWWA/IWA方法，单位与公式匹配公开指南",
+        "数据溯源与合规性：所有数据与方法有官方URL与版本说明，可被第三方核验",
+        "洞见有效性：对标分析能支持制定管网漏损目标与改进优先级，图表清晰、解释到位"
+      ]
+    },
+    {
+      "query_id": "water_conservation_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "国家节水行动 2019 全文 PDF 发改委 水利部",
+      "search_queries": [
+        "国家节水行动 2019 全文 PDF 发改委 水利部",
+        "十四五 节水型社会建设 实施方案 2021 水利部 全文",
+        "国家节水型城市 评价标准 2021 住房和城乡建设部 PDF",
+        "工业水效领跑者 2022 名单 基准 工信部 发改委",
+        "ISO 46001:2019 Water efficiency management systems overview PDF"
+      ],
+      "scenario": "角色：省级工业园区群的节水工程技术总监。背景：准备一个为期≥1个月的战略与创新规划，目标是在未来3-5年推动园区达到“节水型工业园区”水平，指标覆盖单位工业增加值取水量、再生水利用率、供水管网漏损率、重点行业单位产品耗水等，并对接国家节水行动（2019）、“十四五”节水型社会建设实施方案（2021）、国家节水型城市/企业评价标准与工业水效领跑者基准。约束：仅依赖公开政策、标准、评价指南与公开案例，不使用内部统计数据；需要形成可执行的政策对标、指标体系与路线图报告。",
+      "task_focus": [
+        "政策对标：系统梳理国家节水行动（2019）、“十四五”节水型社会建设实施方案（2021）、国家节水型城市评价标准与工业水效领跑者基准，形成条款与指标的对照矩阵",
+        "指标体系设计：明确园区层面的KPI（单位工业增加值取水量、再生水利用率、管网漏损率、重点行业单位产品耗水），给出定义、边界、计算方法与公开比对来源",
+        "路线图与投融资：提出阶段性目标（1-3年、3-5年）、项目包（再生水厂扩容、智能计量、工艺改造）、潜在资金渠道（专项资金、绿色信贷），并引用公开政策文件",
+        "案例借鉴与风险管控：选取已公开的国家节水型城市/园区案例进行对比，识别关键成功要素与风险（数据质量、跨部门协同），提出监测与审计机制（参考ISO 46001/AWS）"
+      ],
+      "deliverable_requirements": [
+        "提交一篇深度战略报告（20-30页，PDF），包含：政策对标矩阵（逐条引用来源URL与条款）、园区指标体系（定义/公式/数据来源）、阶段性实施路线图与投融资建议",
+        "引用至少5类权威公开资料：国家部委政策全文（2019/2021），住房和城乡建设部评价标准，工信部/发改委水效领跑者基准与名单，ISO 46001/AWS标准概览，公开案例报告；每处结论均需附URL与年份/版本",
+        "提供指标口径与审计方案：明确数据边界、核算方法、年度评估流程、第三方验证要求，并对照ISO 46001/AWS的条款编号",
+        "附案例对比章节：至少选取2个公开案例（如国家节水型城市或示范园区）进行指标与措施对比分析，并标注来源链接与年份"
+      ],
+      "evaluation_focus": [
+        "政策与标准覆盖度：是否全面、准确地对标2019/2021关键文件与相关评价标准/基准，引用清晰可核",
+        "指标体系的可执行性与一致性：KPI定义、公式、边界与来源一致，能直接用于园区年度考核与监测",
+        "路线图的可落地性：目标分期、项目组合、资金路径清晰，风险与保障机制完善且有公开依据",
+        "证据链与透明度：每项判断或建议均可通过公开链接验证，逻辑自洽、可被第三方复核"
+      ]
+    },
+    {
+      "query_id": "digital_solution_architect-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FinOps Framework 2024 tagging cost allocation best practices site:finops.org",
+      "search_queries": [
+        "FinOps Framework 2024 tagging cost allocation best practices site:finops.org",
+        "State of FinOps 2024 report PDF key metrics cost allocation forecasting error",
+        "FinOps unit economics cloud manufacturing 2023 2024",
+        "Cloud cost optimization quick wins rightsizing storage lifecycle FinOps Foundation"
+      ],
+      "scenario": "角色：数字化解决方案设计师。背景：一家中型离散制造企业在过去6个月云成本上涨30%，CEO要求在不更换云厂商的前提下，找到90天可落地的成本优化方案，并用行业通行的FinOps度量进行ROI测算。约束：只能使用公开互联网权威资料（如FinOps Foundation框架/年度报告、公开最佳实践），不接触企业账单明细或保密数据；交付为一篇面向管理层的简报，需在数小时内完成初版。",
+      "task_focus": [
+        "基于FinOps Foundation公开框架与《State of FinOps 2024》定义成本分摊（Cost Allocation）、预测误差、节省追踪等核心KPI与基线采集方法",
+        "设计跨业务单元的资源标记（tagging）与成本分摊方案，引用权威最佳实践并给出命名规范示例",
+        "梳理90天可落地的优化举措（如右尺码化、预留/节省计划、存储生命周期/归档、闲置资源治理）并构建单位经济模型（Unit Economics）",
+        "产出含公式的ROI测算表，所有假设需有公开来源支撑并可交叉验证"
+      ],
+      "deliverable_requirements": [
+        "一篇6-10页的简报（PDF/HTML），结构包含：执行摘要、KPI与基线方法、标签/分摊方案、90天行动清单与风险、ROI测算与假设",
+        "在文中和附录中逐条引用公开资料（FinOps Framework与State of FinOps 2024等），附可点击URL，标注年份/版本",
+        "提供可复算的ROI公式与示例数字（单位经济模型），并明确其与引用资料的对应关系",
+        "给出制造业场景差异（如批次/车间维度）的适配建议，仍以公开资料为依据"
+      ],
+      "evaluation_focus": [
+        "是否严格引用FinOps Foundation权威资料并正确理解核心概念与KPI",
+        "ROI测算是否有清晰公式、透明假设，并能被第三方据公开资料复算",
+        "标签与成本分摊建议是否具体、可操作、与公开最佳实践一致",
+        "报告结构清晰、可执行性高、引用来源完整可访问（URL有效）"
+      ]
+    },
+    {
+      "query_id": "digital_solution_architect-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "GS1 EPCIS and CBV Standard Version 2.0 PDF 2021 2022 site:gs1.org",
+      "search_queries": [
+        "GS1 EPCIS and CBV Standard Version 2.0 PDF 2021 2022 site:gs1.org",
+        "FDA FSMA 204 final rule 2022 key data elements critical tracking events PDF site:fda.gov",
+        "GS1 EPCIS 2.0 JSON schema GitHub",
+        "GS1 Digital Link standard 1.0 2020 PDF",
+        "EPCIS event examples JSON site:gs1.org"
+      ],
+      "scenario": "角色：数字化解决方案设计师。背景：一家食品加工企业准备面向北美市场合规FSMA 204（可追溯性法规），需要在数日内构建一个可复现的小型数据原型，验证使用GS1 EPCIS 2.0事件模型映射关键数据要素（KDE）和关键追踪事件（CTE）的可行性。约束：仅使用公开标准与示例（GS1与FDA公开文档、GitHub开源模式/Schema），不接触供应商私有数据；交付为一个代码仓库（含README与示例数据），可在开发者本地复现实验。",
+      "task_focus": [
+        "研读FDA《FSMA 204最终规则》（2022），提取食品场景的CTE与KDE清单",
+        "依据GS1《EPCIS & CBV 2.0》将CTE/KDE映射到EPCIS事件结构（ObjectEvent/TransformationEvent/AggregationEvent等）",
+        "在GitHub建立原型仓库，提供JSON示例事件（跨供应商-加工-物流-零售链路），并附验证说明",
+        "参考GS1公开JSON Schema或开源工具，提供事件结构的基本校验流程"
+      ],
+      "deliverable_requirements": [
+        "一个公共代码仓库（GitHub/GitLab），包含：/data（JSON示例事件）、/schemas（引用或链接GS1 JSON Schema）、/docs（README与映射说明）",
+        "README需包含：标准/法规引用链接（GS1与FDA官方URL）、事件模型设计决策、如何使用JSON Schema进行本地验证的步骤",
+        "在docs中给出FSMA 204的CTE/KDE到EPCIS 2.0字段的映射表（以公开文本为依据），并说明任何假设",
+        "仓库提供MIT或Apache-2.0许可文件，便于复用与审阅"
+      ],
+      "evaluation_focus": [
+        "CTE/KDE映射的准确性与合规性，是否与FDA公开文本一致",
+        "EPCIS事件结构是否符合GS1 2.0标准（字段/命名/事件类型使用合理）",
+        "README与验证步骤是否清晰、可使第三方在数日内复现原型",
+        "引用资料是否权威、链接是否可访问、版本/年份标注是否完整"
+      ]
+    },
+    {
+      "query_id": "digital_solution_architect-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST AI Risk Management Framework 1.0 PDF 2023 site:nist.gov",
+      "search_queries": [
+        "NIST AI Risk Management Framework 1.0 PDF 2023 site:nist.gov",
+        "EU AI Act 2024 final text PDF EUR-Lex",
+        "McKinsey 2023 economic potential of generative AI report PDF",
+        "Stanford AI Index 2024 report PDF",
+        "Google MLOps Continuous Delivery and Automation Pipelines whitepaper PDF 2021"
+      ],
+      "scenario": "角色：数字化解决方案设计师（项目负责人）。背景：一家中型工业设备制造企业计划在研发、售后服务与内部共享服务中落地生成式AI，需制定至少12-18个月的企业级路线图，确保在欧盟与美国市场合规（EU AI Act、NIST AI RMF），并用公开资料支撑价值与风险评估。约束：仅使用公开报告、法规与标准说明（NIST、EUR-Lex、McKinsey、Stanford AI Index、公开MLOps白皮书等）；不依赖任何内部数据或保密资料；交付为一份战略报告，历时≥1月可迭代完善。",
+      "task_focus": [
+        "构建企业AI用例组合（如文档助理、预测维护、工程变更辅助），并用公开资料的生产率/效益基准进行价值估算",
+        "建立治理与合规框架：映射EU AI Act的风险分类与义务、对照NIST AI RMF的治理/测量/管理功能",
+        "设计技术架构与MLOps流程（数据治理、模型评估、部署与监控），引用公开白皮书与实践指南",
+        "制定分阶段路线图（试点→扩展→规模化）、关键里程碑、组织与能力建设计划，以及ROI与风险缓释策略"
+      ],
+      "deliverable_requirements": [
+        "一份25-40页的战略报告（PDF/HTML），包含：执行摘要、用例价值模型、合规映射矩阵（EU AI Act×NIST AI RMF）、技术架构与MLOps流程图、路线图与资源规划",
+        "所有价值与风险结论必须有公开资料引用与可追溯假设；在附录提供完整参考文献列表与URL，注明年份/版本",
+        "提供可复算的ROI模型（参数来源、敏感性分析方法、示例计算），并与公开报告（McKinsey、AI Index等）数据对应",
+        "包含风险登记册（模型风险、数据风险、合规风险）与控制措施，明确与NIST AI RMF功能的对应关系"
+      ],
+      "evaluation_focus": [
+        "法规与框架对齐的严谨性：EU AI Act要求的识别/义务与NIST AI RMF功能映射是否准确",
+        "价值与ROI模型是否基于权威公开资料、可被第三方复算与质证",
+        "技术架构与MLOps流程是否可落地、与公开最佳实践一致且考虑制造业场景",
+        "路线图的可执行性（资源、时间、风险缓释）与报告中的引用完整性与可访问性"
+      ]
+    },
+    {
+      "query_id": "cyber_security_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "CISA Known Exploited Vulnerabilities catalog 2025 site:cisa.gov",
+      "search_queries": [
+        "CISA Known Exploited Vulnerabilities catalog 2025 site:cisa.gov",
+        "FIRST EPSS API documentation 2024",
+        "CVSS v4.0 specification 2023 site:first.org",
+        "NIST SP 800-40 Rev.3 enterprise patch management 2013",
+        "CISA vulnerability management prioritization guidance 2023"
+      ],
+      "scenario": "角色：信息安全工程技术人员；背景：你在一家中型SaaS企业负责漏洞处置策略，需要在无内部资产清单与扫描数据的前提下，基于公开权威资料为“已被利用的高风险漏洞”制定处置优先级与SLA建议，供管理层决策与跨部门协同。约束：仅可使用公开互联网资料（如CISA KEV目录、FIRST EPSS、CVSS v4.0规范、厂商公告、NIST补丁管理指南），不可依赖任何组织内部数据或付费情报源，结论需以可验证引用支撑。",
+      "task_focus": [
+        "从CISA KEV目录中选取最近30天新增的5-10个CVE作为样本集，记录添加日期与受影响产品。",
+        "汇总每个CVE的EPSS当日概率、CVSS v4.0基准向量/严重度（若无v4则说明来源并给出v3.1）、对应厂商安全公告与是否存在公开PoC/利用（如Exploit-DB/GitHub）。",
+        "设计基于“是否在KEV、EPSS分位、CVSS严重度、是否有PoC/在野利用证据”的优先级打分模型，并给出SLA分层（如24h/72h/7d）。",
+        "在报告中给出数据采集与计算的可复现步骤（API/网页来源、时间戳、字段定义）与所有外链引用。"
+      ],
+      "deliverable_requirements": [
+        "提交一篇6-8页中文报告（PDF或HTML），包含方法说明、决策模型、样本CVE表格（至少含：CVE、产品/版本、加入KEV日期、EPSS分值/分位、CVSS版本与向量、厂商公告链接、PoC/利用情况、建议SLA与理由）。",
+        "在报告中明确引用并标注链接与访问日期：CISA KEV目录、FIRST EPSS（含API或UI截图/示例）、CVSS v4.0规范、NIST SP 800-40 Rev.3、相关厂商公告；对无法获得v4指标的说明与替代依据。",
+        "提供可复现步骤（例如：EPSS查询方式、KEV筛选条件、CVSS向量解析方法、PoC检索路径），并在附录给出关键截图或简短指令示例。"
+      ],
+      "evaluation_focus": [
+        "证据可验证性：引用来源是否权威、链接是否可达、时间戳与版本（年份/修订版）是否标注清晰。",
+        "方法严谨性：优先级模型因素（KEV、EPSS、CVSS、PoC）权重合理且解释充分，SLA建议与NIST/CISA通用建议吻合。",
+        "可复现性：他人依据报告的步骤可在相同公开来源重建样本表与排序；数据口径与字段定义一致且无歧义。"
+      ]
+    },
+    {
+      "query_id": "cyber_security_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Sigma rules GitHub sigmahq/sigma 2024",
+      "search_queries": [
+        "Sigma rules GitHub sigmahq/sigma 2024",
+        "MITRE ATT&CK Enterprise matrix 2024 techniques",
+        "Mordor dataset Windows event logs OTRF",
+        "pySigma documentation 2023",
+        "Windows Security Event IDs Microsoft Docs 2024"
+      ],
+      "scenario": "角色：威胁检测与响应工程技术人员；背景：需要在不接入任何企业内部SIEM/日志的情况下，基于公开数据集验证Windows主机层TTP检测规则的有效性，并给出覆盖率与改进建议，以便后续迁移到公司平台。约束：仅使用公开资源（Sigma开源规则、MITRE ATT&CK官方文档、OTRF/Mordor公开数据集、Microsoft事件ID文档、pySigma/相关开源工具），交付物为一个可重复执行、开源许可的代码仓库。",
+      "task_focus": [
+        "从MITRE ATT&CK Enterprise中选取3-5个Windows相关技术（例如T1059、T1055、T1218等），为每个技术挑选2-3条相关Sigma规则（来自sigmahq/sigma）。",
+        "实现一个离线评测流程：使用pySigma解析规则，加载Mordor数据集中匹配场景的Windows事件日志（JSON/CSV），对事件进行规则匹配并输出检测结果。",
+        "为每条规则计算基本评估指标（如命中样本数、样本覆盖率、代表性误报样例数量），并产出规则-ATT&CK技术映射与证据样例。",
+        "形成对规则改进的建议（字段条件、阈值、排除条件），并以Microsoft官方事件ID文档与ATT&CK技战术描述作为依据。"
+      ],
+      "deliverable_requirements": [
+        "提交一个公开代码仓库（如GitHub），包含：评测脚本（Python或等效）、环境依赖（requirements.txt）、运行入口、示例配置、开源许可（MIT/Apache-2.0）。",
+        "README需给出端到端复现步骤（数据下载链接、解压与目录结构、命令行示例）、所选ATT&CK技术ID与链接、对应Sigma规则链接、以及预期输出样例。",
+        "在仓库中提供至少3个不同Mordor数据集的测试用例与对应检测输出（JSON/CSV），并附上简短分析说明与改进建议。",
+        "提供一个mapping与引用文件（如mappings.yaml与REFERENCES.md），明确规则与ATT&CK技术ID对应关系、Microsoft事件ID参考链接、Sigma规则来源与版本。"
+      ],
+      "evaluation_focus": [
+        "可复现性：在干净环境按README一步步可运行并重现检测结果；依赖明确、路径清晰。",
+        "技术准确性：规则与ATT&CK技术映射正确，事件字段引用符合Microsoft官方文档；匹配逻辑与Sigma语义一致。",
+        "评估有效性：输出的覆盖率/命中统计真实反映数据集特征，误报样例分析基于证据且建议可操作。",
+        "资料权威性：MITRE、Sigma、Mordor、Microsoft文档等引用完整且可在线验证。"
+      ]
+    },
+    {
+      "query_id": "cyber_security_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST Cybersecurity Framework 2.0 2024",
+      "search_queries": [
+        "NIST Cybersecurity Framework 2.0 2024",
+        "ISO/IEC 27001:2022 overview controls",
+        "NIST SP 800-61 Rev.2 Computer Security Incident Handling Guide",
+        "MITRE D3FEND knowledge graph 2024",
+        "CVSS v4.0 User Guide 2023 site:first.org"
+      ],
+      "scenario": "角色：集团级SOC/安全工程技术负责人；背景：需要规划“合规核查、漏洞分析、审计取证”三类智能体协同的安全运营蓝图，面向一个月以上周期的策略与落地。目标是在不使用任何内部数据的前提下，基于公开标准/框架与开源资料，制定可执行的路线图、能力矩阵、评估指标与PoC验证方案，为后续引入到企业环境做准备。约束：仅引用公开权威资料（NIST CSF 2.0、ISO/IEC 27001:2022/27002:2022、NIST SP 800-61、NIST SP 800-86、MITRE ATT&CK/D3FEND、CVSS v4.0、FIRST EPSS、CISA KEV等），最终只提交一份战略与实施路线图报告。",
+      "task_focus": [
+        "建立控制与能力映射：以NIST CSF 2.0功能域和ISO/IEC 27001:2022控制为骨架，梳理合规核查、漏洞分析、审计取证三类智能体的职责边界与输入/输出数据最小化原则。",
+        "设计智能体能力矩阵与治理机制：包含提示与政策模板、审计溯源（NIST SP 800-86/证据保全流程）、对抗性滥用防护、人工复核闭环。",
+        "定义评估指标体系与里程碑：覆盖ATT&CK检测覆盖度、处置时效（MTTD/MTTR替代性指标基于公开数据集复测）、风险优先级（CVSS v4+EPSS+KEV）、合规对齐度（条款映射）。",
+        "制定PoC复现与验证计划：使用公开数据集/案例（如Mordor、公开CISA告警案例与ATT&CK场景）进行端到端演练，输出可量化对比与纳入持续改进的机制。"
+      ],
+      "deliverable_requirements": [
+        "提交一份20-30页中文战略与实施路线图报告，包含总体目标、范围、角色RACI、分阶段里程碑与甘特图、风险与缓释策略、预算与资源估算。",
+        "提供控制-能力-度量三维矩阵：逐条映射NIST CSF 2.0与ISO/IEC 27001:2022条款编号到智能体能力与客观度量，引用标准原文链接与版本/年份。",
+        "给出PoC方案：明确选用的公开数据集/案例、验证步骤、判定准则、预期指标阈值，以及将结果纳入改进循环的方法。",
+        "附完整参考文献与链接（NIST、ISO/IEC公开摘要/页面、MITRE ATT&CK/D3FEND、FIRST EPSS、CVSS v4.0、CISA KEV），并标注访问日期与版本。"
+      ],
+      "evaluation_focus": [
+        "权威对齐与时效性：引用的标准/框架版本正确（如NIST CSF 2.0、ISO/IEC 27001:2022、CVSS v4.0等）且链接可验证。",
+        "可执行性与可落地：里程碑、RACI、资源与预算估算合理，PoC计划能在公开数据与工具上复现并产出度量。",
+        "度量体系完备：覆盖检测覆盖率、时效性、风险优先级与合规对齐度，指标定义清晰可量化。",
+        "风险治理充分：对模型与智能体的偏差、误用、隐私与证据可采信风险评估全面，提出可操作的缓解措施与审计机制。"
+      ]
+    },
+    {
+      "query_id": "ps_cyber_drill_commander-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST SP 800-84 Guide to Test",
+      "search_queries": [
+        "NIST SP 800-84 Guide to Test",
+        "Training",
+        "and Exercise Programs for IT Plans and Capabilities PDF 2006",
+        "CISA Cybersecurity Tabletop Exercise Package ransomware 2022 site:cisa.gov",
+        "NIST SP 800-61 Computer Security Incident Handling Guide Rev.2 PDF 2012",
+        "MITRE ATT&CK Enterprise ransomware TTPs 2024 site:attack.mitre.org",
+        "Atomic Red Team ransomware tests GitHub 2024"
+      ],
+      "scenario": "你是一家中型制造企业的网安攻防演练指挥官，需在两周后向管理层组织半天（3–4小时）的勒索软件场景桌面演练。企业未提供内部架构或日志，要求演练脚本、目标与评估标准均依据权威公开资料构建，并可被审计复核。约束：仅使用公开资料（NIST、CISA、MITRE、开源工具文档等），不进行任何真实渗透或扫描；全流程需对照权威来源标注出处与年份/版本；交付限一篇演练脚本与ROE报告。",
+      "task_focus": [
+        "依据MITRE ATT&CK提炼勒索软件常见战术/技术（如Initial Access、Execution、Privilege Escalation、Exfiltration、Impact），形成可演练的关键行为清单",
+        "参照NIST SP 800-84设计演练目标、范围、注入（inject）与时间线，并引用CISA桌面演练包确定角色分工与沟通流程",
+        "结合NIST SP 800-61的事件响应阶段（准备、检测分析、遏制根除恢复、事后活动）制定评估指标（MTTD、沟通时延、决策节点达成率）",
+        "制定ROE（边界、合法性、保密与数据最小化）和复盘证据清单，确保每项结论均可溯源到公开资料"
+      ],
+      "deliverable_requirements": [
+        "提交一篇中文报告（6–10页），包含：演练目标与范围、情景设定、详细时间线与注入卡、角色与沟通矩阵、ROE、评估指标与评分表、复盘要点",
+        "在正文或脚注中标注权威资料的精确引用（标题、机构、年份/版本、URL及页码/章节），至少覆盖：NIST SP 800-84、NIST SP 800-61、CISA桌面演练资料、MITRE ATT&CK相关技术页",
+        "附录提供ATT&CK技术ID映射表（如T1059、T1486等）与可选的Atomic Red Team测试用例编号清单（供后续实验环境复现）",
+        "明确不开展任何真实攻击的合规与安全声明，并给出演练前置条件（参与人、时长、会议室/线上工具）"
+      ],
+      "evaluation_focus": [
+        "可验证性：随机抽查至少3处引用能在公开资料中找到且与报告结论一致（年份/版本正确、链接可访问）",
+        "框架一致性：演练流程与指标与NIST SP 800-84/800-61术语与步骤一致，ATT&CK技术映射合理无明显遗漏",
+        "可执行性：注入卡具体可操作，时间线清晰，角色与沟通矩阵覆盖关键干系人（IT、法务、传播、管理层）",
+        "专业清晰：ROE全面、指标可量化、复盘要点可直接用于会后改进"
+      ]
+    },
+    {
+      "query_id": "ps_cyber_drill_commander-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Atomic Red Team GitHub redcanaryco/atomic-red-team 2024",
+      "search_queries": [
+        "Atomic Red Team GitHub redcanaryco/atomic-red-team 2024",
+        "Sigma rules GitHub SigmaHQ detection 2024",
+        "Mordor datasets adversary emulation Windows Sysmon 2023",
+        "mitre enterprise-attack.json ATT&CK 2024 GitHub",
+        "CISA Known Exploited Vulnerabilities Catalog CSV 2024 site:cisa.gov"
+      ],
+      "scenario": "你负责在3–5天内为内部蓝队搭建一个最小可复现的“钓鱼到勒索”对抗链路仿真包（仅限离线实验环境），用于日常演练与检测验证。必须仅使用公开开源资源（Atomic Red Team、Sigma、Mordor、MITRE ATT&CK数据等），不包含真实加密破坏，只触发可控的模拟行为与日志。约束：交付仅为一个GitHub代码仓库；需在通用实验机（Windows 10/11、Ubuntu 22.04）上可按文档一步步复现；所有TTP选择、检测规则与预期遥测均要有公开资料依据。",
+      "task_focus": [
+        "选择6–10个覆盖初始访问到影响阶段的关键ATT&CK技术（结合CISA KEV与近年公开威胁趋势），映射到具体Atomic Red Team测试用例",
+        "编排自动化脚本（Windows PowerShell + Linux Bash）顺序执行选定TTP，收集Sysmon/PowerShell与Zeek等基础遥测",
+        "为每个TTP提供预期遥测示例与至少1条对应Sigma规则，给出触发条件与阈值说明",
+        "提供安全控制开关、最小权限与防误用提示，确保在隔离环境中安全运行"
+      ],
+      "deliverable_requirements": [
+        "提交一个公开GitHub仓库，包含：README（环境准备、一键执行、清理步骤）、/scripts（Windows/Linux）、/mapping（ATT&CK-TTP到Atomic/Sigma映射CSV或YAML）、/data（小型示例日志或引导性Mordor数据子集链接）、/docs（参考链接与版本说明）",
+        "仓库需配置基础CI（如GitHub Actions）对YAML/JSON进行语法校验，并对关键脚本执行干跑检查（不触发危险动作）",
+        "README中提供可复现步骤（从空白VM开始），并给出预期产出（示例事件ID、字段匹配片段）与常见故障排查",
+        "在/docs中逐条列出公开来源引用（Atomic Red Team测试路径、Sigma规则链接、MITRE ATT&CK技术页、CISA KEV CSV、Mordor数据集），含年份/版本与URL"
+      ],
+      "evaluation_focus": [
+        "可复现性：在标准虚拟机中按README可在2小时内完成最小场景运行并产生与示例一致的日志片段",
+        "映射完整性：ATT&CK技术—Atomic用例—预期遥测—Sigma规则链条闭环，标注技术ID与规则来源准确",
+        "工程质量：脚本健壮、具备幂等与清理机制；CI校验生效；仓库结构清晰、LICENSE与安全声明完备",
+        "证据充足：公开资料引用全面且对应到具体用例或规则，链接可访问、年份/版本明确"
+      ]
+    },
+    {
+      "query_id": "ps_cyber_drill_commander-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST Cybersecurity Framework 2.0 PDF 2024",
+      "search_queries": [
+        "NIST Cybersecurity Framework 2.0 PDF 2024",
+        "CISA Cybersecurity Performance Goals CPG 2023 PDF site:cisa.gov",
+        "ENISA Threat Landscape 2023 PDF site:enisa.europa.eu",
+        "Verizon DBIR 2024 healthcare ransomware PDF",
+        "Mandiant M-Trends 2024 PDF"
+      ],
+      "scenario": "作为一家区域性医疗机构的网安攻防演练指挥官，你需制定覆盖12个月的“演练-检测-整改”战略路线图，以应对医疗行业高发的勒索与业务中断风险。计划须以公开权威资料的威胁态势与统计为依据，落地到NIST CSF 2.0与CISA CPG的能力建设与演练节奏（季度级），并给出可量化的指标基线与目标。约束：不使用任何内部数据；所有优先级排序、指标与经费量级建议均要以公开资料支撑并可核验；交付仅限一篇战略方案报告。",
+      "task_focus": [
+        "基于ENISA Threat Landscape与Verizon DBIR（行业分段，如医疗）识别未来一年最可能/影响最大的前5类攻击路径与关键TTP",
+        "将威胁图谱映射到NIST CSF 2.0类别/子类别与CISA CPG控制项，形成按影响/可行性排序的年度整改与演练清单",
+        "规划季度演练组合（桌面演练、紫队对抗、危机沟通演练）与检测迭代节奏，并定义关键KPI/KRI（如MTTD、MTTR、ATT&CK覆盖率、演练达成度）",
+        "制定治理与复盘闭环（度量采集、报告节拍、审计溯源、供应商/第三方配合），并给出资源与预算量级区间估计"
+      ],
+      "deliverable_requirements": [
+        "提交一篇中文战略报告（20–30页），包含：威胁态势证据综述、能力现状假设与边界、年度目标与里程碑、季度演练与检测建设计划、资源/预算区间、风险与依赖、治理与复盘机制",
+        "提供基于公开资料的证据—优先级矩阵（影响×可能性×实施难度），并在表格中标注来源（报告名称、机构、年份/版本、URL、页码/章节）",
+        "附上ATT&CK覆盖热力表（战术×技术）与KPI/KRI基线与目标值的定义方法（度量口径、采集方式、计算频率）",
+        "给出NIST CSF 2.0与CISA CPG映射表（涉及的Function/Category/Subcategory与CPG实践项），说明每项如何通过演练与工程化落地"
+      ],
+      "evaluation_focus": [
+        "证据与可追溯性：引用页码/章节可核验且与优先级/路线图结论一致，年份/版本正确",
+        "战略可行性：季度里程碑与资源/预算区间匹配、依赖关系清晰、对医疗行业的业务连续性约束有针对性",
+        "度量可操作：KPI/KRI定义清晰、可采集、可计算，覆盖检测、响应与演练有效性，具备基线与目标值",
+        "框架一致性与完整性：与NIST CSF 2.0与CISA CPG对应关系准确，ATT&CK覆盖合理并能支撑演练与整改闭环"
+      ]
+    },
+    {
+      "query_id": "mfg_predictive_maintenance_architect-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "ISO 20816-3 2017 pump vibration limits chart mm/s",
+      "search_queries": [
+        "ISO 20816-3 2017 pump vibration limits chart mm/s",
+        "ISO 10816 vibration severity zones A B C D pdf",
+        "SKF vibration severity chart ISO 10816",
+        "PRÜFTECHNIK ISO 10816 overview pumps",
+        "Centrifugal pump vibration limit mm/s field acceptance"
+      ],
+      "scenario": "角色：市政供水企业的预测性维护架构师。背景：需在不接触内部历史数据的前提下，为站内各功率段的悬臂式离心泵建立RMS振动速度初始报警阈值，用于状态监测上线前的基线配置。约束：仅可使用公开、可验证的权威资料（ISO 10816/20816概述、制造商技术白皮书与大学/行业协会公开教程），不得引用付费或内部标准文本；所有阈值与分区必须在报告中给出出处并交叉验证。",
+      "task_focus": [
+        "识别泵的机器分类（如ISO 10816/20816中针对泵/电机功率或安装方式的类目），明确测点位置为非旋转部位（轴承座）与单位（mm/s）。",
+        "从公开资料提取振动严重度分区（Zone A–D）与对应阈值，并进行必要的单位/频带说明；对比至少两份独立权威来源（如SKF/PRÜFTECHNIK技术说明）以交叉验证。",
+        "结合功率与安装类别，生成适配本泵型谱的基线报警策略（如预警=Zone B上沿、报警=Zone C下沿、停机=Zone D），并说明现场传感器量程与数据质量的前提假设。",
+        "提出上线后微调策略：记录期、数据清洗、异常点处理与阈值复核的流程要点。"
+      ],
+      "deliverable_requirements": [
+        "提交一篇可公开分享的技术报告（PDF或HTML），包含：泵分类与适用标准条款、阈值表（mm/s，含Zone A–D）、报警/预警/停机策略矩阵、测点与频带假设。",
+        "在报告中以脚注或参考文献形式标注每一处阈值与分区的来源链接（至少2个独立权威来源），并说明差异时的取舍逻辑。",
+        "提供单位换算与示例（如IPS→mm/s），并说明测量工况（稳态、非共振区、非旋转部位）及其对阈值适用性的影响。",
+        "附上上线后微调SOP要点（数据观察期长度、异常点筛除规则、何时调整阈值）。"
+      ],
+      "evaluation_focus": [
+        "阈值与严重度分区的准确性与可溯源性（来源必须为公开且可信的技术资料或标准概述）。",
+        "报警策略对具体泵型与工况的适配性与可执行性（包含测点、频带、单位与工况说明）。",
+        "引用与交叉验证的充分性（至少两处独立权威来源，且对差异给出合理解释）。",
+        "报告结构清晰、结论与证据一致、便于现场实施与后续优化。"
+      ]
+    },
+    {
+      "query_id": "mfg_predictive_maintenance_architect-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FEMTO PRONOSTIA bearing dataset PHM 2012",
+      "search_queries": [
+        "FEMTO PRONOSTIA bearing dataset PHM 2012",
+        "ISO 13374-1 2014 condition monitoring functional blocks overview pdf",
+        "MIMOSA OSA-CBM specification 2018 pdf",
+        "PHM Society 2012 Prognostics Challenge scoring function",
+        "GitHub PRONOSTIA bearing RUL baseline"
+      ],
+      "scenario": "角色：工业设备OEM的预测性维护架构师。背景：为滚动轴承健康评估与寿命预测设计可复现的最小闭环管线，并以公开数据集验证。约束：仅使用公开数据与开放标准；将管线功能模块与ISO 13374功能块（数据采集/处理/状态评估/健康评估/建议生成）逐一对应；评估指标参照PHM Society 2012滚动轴承挑战公开评分与基准。",
+      "task_focus": [
+        "获取FEMTO-ST PRONOSTIA公开数据集（PHM 2012），编写数据摄取与元数据说明（传感通道、采样率、负载工况、失效标签/停止时刻）。",
+        "实现基础信号处理与健康指标：时域（RMS、峰值、峭度）、频域（包络谱或带能量）、滚动统计；选取至少1个健康指数用于趋势化。",
+        "实现简化的寿命预测方法（如退化趋势拟合与失效门限法或简单回归/分类基线），并依据PHM 2012评分函数计算RUL误差与综合得分。",
+        "将管线各脚本/函数映射到ISO 13374功能块，生成架构图与模块说明；对照至少一个公开基线代码仓或论文结果进行指标对比与讨论。"
+      ],
+      "deliverable_requirements": [
+        "提交一个可复现实验的代码仓库（GitHub或Gitee），包含：README（数据来源与下载方式、环境依赖、运行步骤）、src代码、可运行脚本或Notebook、生成结果与图表。",
+        "README中需提供ISO 13374功能块与实现模块的逐一映射表与架构图（可用开源绘图），并在引用处给出标准与MIMOSA OSA-CBM资料的公开链接。",
+        "实现并公布PHM 2012评分结果（如RUL MAE、score函数），并与至少一个公开基线仓库或论文的指标进行旁证对比，附参考链接。",
+        "仓库需含开源许可证（如MIT/Apache-2.0），并保证在常见环境（Python 3.x）下可一键复现（含requirements.txt或environment.yml）。"
+      ],
+      "evaluation_focus": [
+        "复现性与工程可读性（环境配置、脚本组织、README清晰度）。",
+        "标准对齐的完整性（ISO 13374功能块映射准确、MIMOSA/OSA-CBM引用到位）。",
+        "评估指标的正确实现与与公开基线的对比合理性（评分函数一致、结果可信）。",
+        "代码质量与数据合规（仅使用公开数据，注释与异常处理到位）。"
+      ]
+    },
+    {
+      "query_id": "mfg_predictive_maintenance_architect-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST GCR 16-910 Prognostics and Health Management for Smart Manufacturing Systems 2016 pdf",
+      "search_queries": [
+        "NIST GCR 16-910 Prognostics and Health Management for Smart Manufacturing Systems 2016 pdf",
+        "MIMOSA OSA-CBM Open System Architecture 2020 specification pdf",
+        "ISO 55000 asset management overview 2014 pdf",
+        "US DOE O&M Best Practices Guide Version 3 2010 predictive maintenance benefits pdf",
+        "OPC UA 1.04 information model overview white paper pdf"
+      ],
+      "scenario": "角色：跨国流程制造企业的预测性维护架构师。背景：制定覆盖泵与电机两类关键资产的企业级PdM架构与12–18个月落地路线图，需兼顾标准化、互操作与ROI可验证。约束：仅采用公开标准与权威报告；架构需结合NIST PHM参考架构、MIMOSA OSA-CBM语义与ISO 13374数据处理功能块，数据互联建议以OPC UA/MQTT为主；ROI与KPI依据DOE O&M指南与公开行业报告估算与论证；不得依赖内部数据或厂商私有协议。",
+      "task_focus": [
+        "汇总并对齐参考架构：从NIST GCR 16-910与MIMOSA OSA-CBM提炼企业级PHM/CBM数据与服务层次，形成目标架构（边缘采集→中台分析→资产策略）。",
+        "制定语义与互操作方案：资产层次模型、事件/测点词汇、接口协议（OPC UA 1.04/MQTT），并明确与ISO 13374功能块的对应关系及数据契约。",
+        "设计治理与模型运维（MLOps）框架：数据质量、版本化、模型验证与回收机制；与ISO 55000资产管理的目标/风险/性能管理对齐。",
+        "构建ROI测算与试点计划：基于DOE O&M指南的节能与维护成本收益模型，明确KPI（MTBF、维护成本降幅、误报率、工单关闭周期），制定两个资产类（泵/电机）的分阶段试点方案与里程碑。"
+      ],
+      "deliverable_requirements": [
+        "提交一篇战略规划报告（可公开分享，PDF/HTML），包含：目标架构图与分层说明、标准与协议对齐表（NIST/MIMOSA/ISO 13374/OPC UA）、数据与模型治理方案、试点范围与时间表（12–18个月）。",
+        "报告中需提供ROI/KPI测算方法与假设，引用DOE O&M指南与公开案例/报告的参数与公式，并给出来源链接与版本/年份说明。",
+        "在标准引用部分，列出每一处对齐关系的出处（NIST GCR 16-910、MIMOSA OSA-CBM 2020、ISO 55000概述与ISO 13374功能块公开资料、OPC UA 1.04白皮书/技术说明），确保可在线访问。",
+        "提出风险与合规清单（数据隐私、网络安全、供应商锁定风险、模型失效风险）与缓解策略，基于公开指南或行业最佳实践。"
+      ],
+      "evaluation_focus": [
+        "架构与标准对齐的完整性与一致性（NIST/MIMOSA/ISO/OPC UA之间的关系清晰、可落地）。",
+        "ROI与KPI测算的透明度与可验证性（公式、参数来源、敏感性分析合理且可追溯）。",
+        "路线图的可执行性（里程碑、资源与风险配置合理，试点范围明确）。",
+        "引用与证据的权威性（全部为公开可访问资料，版本/年份恰当，链接有效）。"
+      ]
+    },
+    {
+      "query_id": "mfg_visual_inspection_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NEU surface defect database NEU-DET dataset paper 2019",
+      "search_queries": [
+        "NEU surface defect database NEU-DET dataset paper 2019",
+        "NEU surface defect categories cracks inclusions rolled-in scale patches pitted surface scratches",
+        "COCO dataset annotation guidelines bounding boxes segmentation",
+        "CVAT annotation quality guidelines inter-annotator agreement",
+        "scikit-learn Cohen's kappa documentation"
+      ],
+      "scenario": "你是一家钢材冷轧厂外观检测项目的视觉质检工程师，需要在未接入产线前，用公开数据集先建立可执行的缺陷标注规范，后续用于训练与评估缺陷检测模型。管理层要求你仅依赖公开资料，优先参照权威数据集和标注指南，形成标准化的缺陷定义、边界划分、最小可标注尺寸与质检审核流程。约束：不得使用内部样本；标注格式需兼容主流开源工具（如 COCO/YOLO/CVAT）；规范需包含可度量的质检一致性指标与复核流程。",
+      "task_focus": [
+        "基于公开论文与数据集文档，提炼钢材表面缺陷类别与正反例边界（以NEU-DET/NEU为主）",
+        "制定检测/分割的标注细则（框或掩膜优先级、遮挡/粘连/微小缺陷处理、最小像素阈值）",
+        "建立标注QA与一致性度量方案（复核流程、Cohen’s kappa/IoU一致性阈值）",
+        "定义可落地的标注文件结构（COCO或YOLO）与命名规范、示例链接"
+      ],
+      "deliverable_requirements": [
+        "提交一份6-10页的《钢材表面缺陷标注规范》报告（PDF/Doc），引用并链接公开资料（如NEU-DET论文/数据集页、COCO/CVAT指南、scikit-learn文档），在文中标注版本/年份",
+        "报告需包含：缺陷类目表（定义、正反例边界、典型/易混样例）、标注策略（框/掩膜、最小尺寸、重叠处理）、文件命名与目录结构建议",
+        "提供标注质量控制方案：双人复标流程、抽检比例、Cohen’s kappa或IoU阈值与计算示例（可引用scikit-learn说明），以及误差来源清单",
+        "附5-10个来自公开数据集的样例图链接与文字说明，展示规则如何处理边缘情况（无需上传图片，只需可访问链接和讲解）"
+      ],
+      "evaluation_focus": [
+        "资料溯源与权威性：是否准确引用NEU-DET/NEU原始论文或数据集页面、COCO/CVAT官方指南、scikit-learn文档等公开来源",
+        "规范可执行性与完备度：是否覆盖类目定义、边界与小目标阈值、遮挡/粘连处理、文件结构与命名",
+        "质量控制可验证性：一致性指标（如kappa/IoU）是否给出计算方法与阈值，抽检与复核流程是否清晰可落地"
+      ]
+    },
+    {
+      "query_id": "mfg_visual_inspection_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "anomalib GitHub MVTec AD",
+      "search_queries": [
+        "anomalib GitHub MVTec AD",
+        "MVTec AD dataset download official",
+        "PaDiM anomaly detection 2020 paper",
+        "PatchCore anomaly detection 2022 paper",
+        "MVTec AD benchmark AUROC results"
+      ],
+      "scenario": "你是包装容器生产线（瓶类）导入视觉异常检测的质检工程师，需要基于公开数据集与开源算法，复现实验基线并形成可复现的验证流水线，用于方法选型与阈值策略制定。要求只用公开数据（MVTec AD中的bottle与hazelnut类）与开源实现（优先anomalib中的PaDiM、PatchCore），对比官方/论文公布指标，给出阈值选择与失败案例分析。约束：不使用内部图像；实验需可在通用工作站（CPU或单卡GPU）数天内完成；结果与公开基线的偏差需合理解释。",
+      "task_focus": [
+        "搭建可复现基线：基于anomalib复现PaDiM与PatchCore在MVTec AD bottle与hazelnut的图像级与像素级指标",
+        "实现阈值选择策略（如基于验证集的Youden’s J、固定FPR、或PRO曲线最优点）并输出PR/ROC/PRO曲线",
+        "对比公开基线（论文或anomalib文档/issue中提供的参考值），分析偏差来源（预处理、特征层、采样、随机种）",
+        "失败案例与可视化：定位高置信误报/漏报样本，输出热力图与可解释性分析"
+      ],
+      "deliverable_requirements": [
+        "提交一个可执行的代码仓库（GitHub/GitLab），包含：README（环境/依赖/数据下载脚本/运行步骤/预期耗时）、requirements或conda环境文件、固定随机种、训练与评估脚本",
+        "在仓库中生成并保存：图像级与像素级AUROC、AUPRC、F1（报告阈值）、PRO曲线与数值，及关键可视化（缺陷热力图、Top-N误报/漏报拼图）",
+        "在README的实验报告部分，引用并链接：MVTec AD官网/论文、anomalib文档与代码、PaDiM与PatchCore原论文或官方实现，列出参考基线数值与来源",
+        "给出与公开基线的差异对比（±绝对百分比）与原因分析，并注明硬件配置、运行时间与任何加速/降采样设置"
+      ],
+      "evaluation_focus": [
+        "可复现性：是否一键运行（含数据自动下载/校验）、固定随机种、明确环境依赖，CPU可运行的降规模配置说明是否完善",
+        "指标与对标准确性：是否覆盖图像级与像素级AUROC/PRO等核心指标，并与公开基线进行严谨对比与引用",
+        "分析深度：阈值选择合理性、失败案例与可视化是否有洞见，偏差来源分析是否基于实验证据"
+      ]
+    },
+    {
+      "query_id": "mfg_visual_inspection_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST AI Risk Management Framework 1.0 PDF",
+      "search_queries": [
+        "NIST AI Risk Management Framework 1.0 PDF",
+        "EU AI Act 2024 final text high-risk obligations",
+        "NASA-STD-8739.1 workmanship standard PDF visual inspection",
+        "MIL-STD-105E Sampling Procedures and Tables for Inspection by Attributes PDF",
+        "anomalib GitHub production anomaly detection"
+      ],
+      "scenario": "你是汽车电子SMT产线的视觉质检工程师，受命在1-2个月内提出“缺陷检测闭环提升（人机协同+智能体）”战略方案，目标是以公开最佳实践搭建从标注规范、抽样检验、模型验证到治理合规的一体化流程。必须依据公开与可获取的权威资料（如NIST AI RMF 1.0、EU AI Act公开文本、NASA-STD-8739.1可视化外观判定、MIL-STD-105E抽样方案、开源工具链如CVAT/Label Studio/Anomalib），形成阶段化路线与KPI，定义智能体在“标注规则生成、验证报告汇总、风险提示”的角色与接口。约束：不得使用内部数据；方案需可用公开数据集（如MVTec/NEU）完成原型验证；需覆盖合规与风险管理映射。",
+      "task_focus": [
+        "制定端到端流程蓝图：数据治理-标注-抽检-训练/验证-部署-监控-回流，标注与抽样参考NASA-STD-8739.1与MIL-STD-105E",
+        "引入AI治理与合规：将NIST AI RMF与EU AI Act高风险系统义务映射到质检流程与控制点",
+        "设计人机协同闭环：利用CVAT/Label Studio与Anomalib，规划主动学习/难例回流与智能体任务编排",
+        "形成KPI与里程碑：缺陷检出率、误报率、放行风险、数据/模型漂移监测与审计证据留存"
+      ],
+      "deliverable_requirements": [
+        "提交一份20-30页的战略方案报告（PDF/Doc），包含：流程架构图、角色职责矩阵、智能体功能清单与接口示意（输入/输出/触发条件）、阶段目标与时间表（甘特图）",
+        "在报告中以可核验引用形式链接权威公开资料：NIST AI RMF 1.0、EU AI Act 2024公开文本、NASA-STD-8739.1（可视化/可焊点判据作为外观参考）、MIL-STD-105E抽样表、CVAT/Label Studio/Anomalib官方文档或GitHub",
+        "提供可用公开数据集进行原型验证的最小可行方案：选用MVTec/NEU子集、标注规范摘要、抽样与阈值策略、模型评估指标与合规检查清单（审计证据与日志留存要求）",
+        "给出风险与合规映射表：将NIST AI RMF功能（治理/映射/测量/管理）与EU AI Act相关条款对应到质检环节的控制点、监控指标与升级路径"
+      ],
+      "evaluation_focus": [
+        "权威对标与可验证性：是否准确引用并链接NIST AI RMF、EU AI Act公开文本、NASA-STD-8739.1、MIL-STD-105E与开源工具文档，且与方案环节逐条映射",
+        "闭环完整性与可落地性：人机协同、主动学习回流、抽样与标注规范、模型验证与监控是否形成闭环并可基于公开数据复现小规模原型",
+        "KPI与风险控制：是否定义量化KPI（检出率、FPR、放行风险、漂移指标等）与审计/追溯机制，智能体职责是否清晰可测"
+      ]
+    },
+    {
+      "query_id": "industrial_control_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Skogestad 2003 Simple analytic rules PID controller tuning PDF Journal of Process Control",
+      "search_queries": [
+        "Skogestad 2003 Simple analytic rules PID controller tuning PDF Journal of Process Control",
+        "Feedback Systems Astrom Murray PDF anti-windup setpoint weighting 2010 2020",
+        "python-control documentation step response PID 2024",
+        "Ziegler–Nichols PID tuning 1942 PDF"
+      ],
+      "scenario": "角色：化工过程自动控制工程师。背景：需要为一条连续温度控制回路在无厂内隐私数据的前提下制定一套可复现的PID初始整定与防饱和方案，用于内部评审与后续上机试验前的仿真验证。约束：仅使用公开可获得的权威文献与开源工具，选取文献中公开的一阶滞后加纯滞后（FOPDT）或公开基准模型进行计算与仿真；报告中需严格标注来源与公式出处，并给出可由他人复核的计算过程与仿真图。",
+      "task_focus": [
+        "基于公开资料选取或引用一个FOPDT被控对象模型，明确参数与来源",
+        "分别依据Skogestad IMC-PID整定规则与Ziegler–Nichols法计算PID参数，并说明适用性差异",
+        "设计并说明积分抗饱和（anti-windup）与设定值加权（setpoint weighting）策略，给出结构图与依据",
+        "使用开源工具（如python-control）进行阶跃与负荷扰动仿真，对比两种整定方法的超调、调节时间与稳态误差"
+      ],
+      "deliverable_requirements": [
+        "交付物为一篇技术报告（PDF，3–6页），包含：问题定义、模型与来源、整定计算、控制结构（含anti-windup与设定值加权）、仿真结果与对比、结论与建议",
+        "报告中需以编号引用权威来源：Skogestad 2003（IMC-PID规则原文）、Åström & Murray《Feedback Systems》（饱和与加权结构）、以及所用开源库文档；在附录给出关键公式与逐步计算",
+        "提供可复核的仿真结果：至少包含设定值阶跃响应与负荷扰动响应曲线，并标注关键性能指标（如最大超调%、整定时间、IAE或ISE）及计算方法",
+        "如使用代码，须将关键代码片段放入报告附录，确保读者可在本地重现实验；不得依赖任何内部或保密数据"
+      ],
+      "evaluation_focus": [
+        "整定公式与实现是否与所引用权威资料一致（如Skogestad 2003的参数计算与适用前提）",
+        "仿真设置、指标计算与对比是否可复现且数据闭环（读者可据报告与公开工具重现曲线与数值）",
+        "控制结构（anti-windup与设定值加权）描述是否准确、引用是否充分，并能解释其对性能与稳健性的影响"
+      ]
+    },
+    {
+      "query_id": "industrial_control_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "Tennessee Eastman process dataset GitHub 21 faults dynamic simulation",
+      "search_queries": [
+        "Tennessee Eastman process dataset GitHub 21 faults dynamic simulation",
+        "Downs and Vogel 1993 Tennessee Eastman paper PDF",
+        "DPCA Tennessee Eastman benchmark GitHub 2018 2020",
+        "LSTM fault detection Tennessee Eastman GitHub 2019 2021",
+        "Kano Nakagawa 2008 Tennessee Eastman process review PDF"
+      ],
+      "scenario": "角色：流程工业自动控制工程师（数据与诊断方向）。背景：主管要求在不接触厂内历史数据的情况下，复现实验室级的异常检测与初步根因诊断流程，目标是在公开基准（Tennessee Eastman, TE）上对比经典统计方法（PCA/DPCA）与深度学习（如LSTM自编码器），评估检测准确率与告警延迟，为后续落地提供参考。约束：仅使用公开TE数据/仿真代码仓库与论文中的已知21类故障设定及标签；需严格复现实验设置与评价指标，并在README中对照引用基线结果。",
+      "task_focus": [
+        "获取并说明TE数据来源（论文与GitHub仿真/数据仓库），明确变量、采样率与21类故障定义",
+        "实现并对比PCA/DPCA与一个深度学习基线（如LSTM-AE），设定训练/验证/测试切分与早停策略",
+        "统一评价指标：如F1-score、AUC、平均检测延迟（samples）与误报率；对不同故障类型分层评估",
+        "撰写复现实验文档：记录超参数、数据预处理、滑窗长度、告警阈值选择（如基于Q/T2分布或分位数）"
+      ],
+      "deliverable_requirements": [
+        "交付物为一个公开代码仓库（GitHub）：包含可运行代码（Python/Notebook）、环境文件（requirements.txt或environment.yml）、以及一份结构化README（即报告）说明数据来源、方法与结果",
+        "README中需给出可复现实验步骤、关键超参数、评价指标定义与计算公式、以及对照文献/代码仓库的基线结果与差异解释；附上可视化图表（ROC、PR、告警时间线）",
+        "仓库需包含一键复现实验脚本（如makefile或bash脚本）与固定随机种子；注明许可证与致谢原始数据/代码来源",
+        "所有引用需指向可公开访问的源：原始TE论文（Downs & Vogel, 1993）、综述/基线实现（如DPCA与公开GitHub仓库），并在README中列出链接"
+      ],
+      "evaluation_focus": [
+        "可复现性：第三方是否可按README在干净环境中复现实验并获得接近参考文献的指标（允许合理误差范围）",
+        "对公开基线的对齐程度：数据切分、变量选择、阈值设定与评价口径是否与文献或权威代码一致",
+        "工程可用性：代码结构、环境管理、日志与可视化是否清晰，能支撑在实际系统中的原型迁移"
+      ]
+    },
+    {
+      "query_id": "industrial_control_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST SP 800-82 Rev. 3 2024 ICS security PDF",
+      "search_queries": [
+        "NIST SP 800-82 Rev. 3 2024 ICS security PDF",
+        "MITRE ATT&CK for ICS matrix 2024",
+        "NIST AI Risk Management Framework 1.0 2023 PDF",
+        "OpenPLC GitHub 2024",
+        "Tennessee Eastman process do-mpc GEKKO GitHub 2020 2024"
+      ],
+      "scenario": "角色：自动控制首席工程师/技术负责人。背景：制定≥1个月的战略性方案，规划在不接触任何企业私有数据的前提下，以公开基准与开源平台为试验场，构建“自适应整定与异常诊断智能体”的技术路线与验证框架；内容需覆盖控制性能、稳健性/安全性与网络安全三方面，并明确落地路径（从仿真到试点）。约束：所有标准、指南、基准与工具须为公开资源（如NIST SP 800-82 Rev.3、MITRE ATT&CK for ICS、NIST AI RMF 1.0、OpenPLC、TE基准、开源MPC/PID工具链）；给出可复现实验与评估清单、量化KPI与里程碑。",
+      "task_focus": [
+        "定义业务KPI与技术KPI：控制性能（IAE/ISE/ITAE、能耗 proxy、超限率）、诊断（F1/延迟）、韧性（失效模式覆盖）与网络安全（对照NIST SP 800-82与ATT&CK for ICS缓解项）",
+        "设计端到端验证架构：TE过程作为虚拟工厂，OpenPLC/OPC UA仿真联调，控制器（PID/MPC）与智能体（参数建议/告警）在环测试",
+        "制定标准对齐与风险治理：映射NIST AI RMF 1.0与NIST SP 800-82 Rev.3控制项到开发与运维流程，形成可审计的验证清单",
+        "形成分阶段路线图：从公开基准PoC（第1月）到模拟工艺扩展与硬件在环（HIL）验证（第2–3月）的里程碑、资源与预算估算"
+      ],
+      "deliverable_requirements": [
+        "交付物为一篇策略与技术路线报告（PDF，20–30页）：包含执行摘要、现状痛点、目标与KPI、技术架构、验证与评估方案、标准与合规映射、路线图与风险台账",
+        "报告需以编号引用并链接公开权威资料：NIST SP 800-82 Rev.3（2024）、MITRE ATT&CK for ICS（最新版矩阵页面）、NIST AI RMF 1.0（2023）、OpenPLC与相关开源控制/通信栈（如open62541/OPC UA）、TE过程基准与开源控制库（如do-mpc/GEKKO/python-control）",
+        "给出可复现的试验计划：最小可行系统BOM（开源软件组件清单）、数据流与接口规范、在TE基准上的实验矩阵（扰动与故障场景、指标与阈值）、通过/不通过判据",
+        "提供安全与安全性并行验证清单：将智能体输出（参数建议/告警）纳入功能安全与网络安全的双重关卡（如双阈值、人工复核、回退策略），并映射到NIST SP 800-82与AI RMF控制点",
+        "路线图需量化里程碑（周粒度）、角色分工、关键风险与缓解措施、以及对外部资源（开源与公开资料）的依赖与替代方案"
+      ],
+      "evaluation_focus": [
+        "标准与权威资料对齐程度：是否正确引用并落实NIST SP 800-82、MITRE ATT&CK for ICS与NIST AI RMF到具体控制与验证措施",
+        "技术可行性与可复现性：所提架构与试验计划能否仅凭公开软件与基准完成端到端验证，KPI是否可量化与可审计",
+        "路线图与风险管理：里程碑清晰、资源估算合理、关键风险（误整定、安全与网络攻击场景）识别充分且有可执行的缓解措施"
+      ]
+    },
+    {
+      "query_id": "power_generation_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "EIA Form 923 plant-level heat rate 2023 download",
+      "search_queries": [
+        "EIA Form 923 plant-level heat rate 2023 download",
+        "EPA eGRID 2022 technical guide heat rate",
+        "DOE Operations & Maintenance Best Practices Release 3.0 heat rate PDF",
+        "EIA Form 860 2023 plant technology classification download",
+        "DOE energy tips steam system condensate return savings PDF"
+      ],
+      "scenario": "角色：独立电力公司发电工程技术人员。背景：公司考虑对同类燃煤或燃气机组开展低成本节能优化，但短期内无法共享内部生产数据；希望基于公开数据库先完成热耗率对标与快速机会识别，输出一页可决策的技术备忘录。约束：仅使用公开权威数据源（EIA Form 923/860、EPA eGRID、DOE O&M指南），限定近两年数据（优先2022–2023），对比对象需技术路线/容量/燃料尽量可比，所有结论需给出可核验的链接与表格/页码引用。",
+      "task_focus": [
+        "选取3–5台同类型机组（同燃料、相近容量与技术），从EIA Form 923/860与EPA eGRID提取净发电量、热输入等字段，计算和校核年度平均热耗率（Btu/kWh或kJ/kWh）",
+        "进行口径对齐（高/低热值、净/毛发电、容量因子差异）并阐明假设与单位转换，形成可比性说明",
+        "引用DOE O&M最佳实践（如蒸汽系统与燃烧优化）梳理3–5项低成本节能措施，结合文献给出典型节能幅度区间与预估年化燃料节约",
+        "形成1页A3技术备忘录：呈现对标结果、差距分析、前三项机会与量化影响、实施优先级和参考文献"
+      ],
+      "deliverable_requirements": [
+        "单一交付物：一页A3技术备忘录（PDF或HTML），包含图表（对标散点/柱状）、关键假设、计算公式、参考文献与超链接",
+        "明确列出数据来源（EIA 923/860表格名称/字段、eGRID版本/技术手册页码）与下载链接，单位换算与口径差异需可复现",
+        "对每项节能措施给出可核验的依据（DOE/FEMP指南或同等权威资料）与量化区间；对不确定性进行±区间说明",
+        "在文末附“可复现步骤”清单（数据下载、清洗、计算顺序），确保他人可在数小时内复现结论"
+      ],
+      "evaluation_focus": [
+        "数据与结论可核验性：是否准确引用EIA/eGRID/DOE的公开文档、表格与页码；链接是否有效",
+        "方法透明度与可比性：单位、口径、边界条件说明是否充分；对标样本选择是否合理",
+        "量化严谨性：热耗率计算是否正确、敏感性与不确定性表达是否到位",
+        "建议的可执行性：所提O&M措施是否符合指南、具备低成本落地性与明确预期收益"
+      ]
+    },
+    {
+      "query_id": "power_generation_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "EPA CAMD API CEMS hourly emissions documentation",
+      "search_queries": [
+        "EPA CAMD API CEMS hourly emissions documentation",
+        "NOAA ISD dataset documentation download",
+        "combined cycle efficiency ambient temperature correction study PDF",
+        "gas turbine compressor fouling performance degradation review open access",
+        "scikit-learn HuberRegressor documentation"
+      ],
+      "scenario": "角色：联合循环（CCGT）机组性能工程师。背景：希望利用公开小时级排放与出力数据，对某台美国公开可识别的CCGT机组进行环境条件归一化的效率劣化分析，识别清洗/检修窗口并提出运维建议。约束：仅使用EPA CAMD CEMS小时数据与NOAA ISD气象数据（距机组≤20 km的站点）；公开方法学与开源库完成建模（回归/稳健回归）；全流程可复现（含数据下载脚本），不涉及任何登录/付费或内部数据。",
+      "task_focus": [
+        "数据管道：调用EPA CAMD CEMS API获取目标机组12–24个月小时数据（热输入、净/毛发电、CO2等），并从NOAA ISD获取同期环境温度/压力/湿度数据，完成时间对齐与质量控制",
+        "指标计算：计算小时热耗率（例如Btu/kWh），剔除明显异常点与停运/启停过渡点；进行基础特征工程（负荷率、环境修正变量）",
+        "环境归一化：采用稳健回归（如Huber回归或分位回归/LOESS）构建热耗率-环境与负荷关系基线，提取残差序列并识别随时间单调上升的劣化信号",
+        "检修建议：结合公开文献对压气机结垢/换热器污垢的典型影响幅度，提出线洗/停机清洗与检修窗口建议，并量化潜在效率恢复与燃料节约"
+      ],
+      "deliverable_requirements": [
+        "单一交付物：一个公开代码仓库（如GitHub），含README（复现步骤）、环境文件（requirements.txt/conda）、数据下载与清洗脚本、建模与可视化脚本、以及生成的单一HTML报告（由脚本自动产出）",
+        "README需列明数据来源与API端点、字段字典、时间对齐与过滤规则、模型选择依据与参数、评价指标（MAPE/RMSE、残差漂移率）",
+        "报告中需引用至少3篇权威公开资料（EPA CAMD文档、NOAA ISD文档、开放获取的燃气轮机性能与结垢影响研究），并以图表呈现环境归一化前后对比与残差时间趋势",
+        "在仓库中提供可替换的目标机组与气象站配置文件，保证他人可在数天内复现实验并替换对象"
+      ],
+      "evaluation_focus": [
+        "端到端可复现性：脚本能否自动下载、处理数据并生成同等结果；环境与版本锁定是否充分",
+        "方法与引用的权威性：是否正确使用EPA/NOAA文档与公开研究支撑方法选择与假设",
+        "模型稳健性与可解释性：异常处理、稳健回归合理性、环境归一化效果与残差漂移是否清晰可信",
+        "建议的实用性：检修窗口建议是否结合机组运行现实（季节/负荷谷期），量化收益估算是否基于公开文献并标注不确定性"
+      ]
+    },
+    {
+      "query_id": "power_generation_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NETL Options for Improving the Flexibility of Existing Coal-Fired Power Plants PDF",
+      "search_queries": [
+        "NETL Options for Improving the Flexibility of Existing Coal-Fired Power Plants PDF",
+        "NREL thermal power plant flexibility report PDF",
+        "NERC BAL-003-1 frequency response standard PDF",
+        "AEMO Generator Performance Standards 2023 PDF",
+        "RWE flexible coal operation minimum load case study"
+      ],
+      "scenario": "角色：发电工程技术人员（技术改造与数字化项目负责人）。背景：所在公司拟在未来12–18个月内推动存量燃煤或燃气机组的灵活性改造与数字化运维（智能体）部署，以适应高可再生渗透电力市场（更低最小技术出力、更快爬坡/启停、更高AGC跟踪质量），并确保并网与调频合规。约束：仅依托公开权威资料形成路线图与量化目标；必须引用国际/区域标准与案例（NETL/NREL/IEA、NERC/AEMO/ENTSO-E、公开案例）做可验证对比；不假设可访问内部SCADA或商业机密，所有假设需注明来源与区间。",
+      "task_focus": [
+        "政策与并网要求扫描：梳理目标市场的频率响应/调度与灵活性要求（如NERC BAL-003-1、AEMO GPS、欧盟SOGL/RfG公开文档），形成合规指标清单与现状差距（以文献/案例为基线）",
+        "技术改造选项：基于NETL/NREL等公开报告，列出适配机组类型的灵活性改造包（如滑压运行、最小稳燃/最小负荷降低、启停优化、燃烧/热端改造、旁路与疏水优化），给出典型CAPEX/OPEX区间与可实现的性能提升范围",
+        "数字化与智能体方案：设计负荷预测-启停排程-AGC跟踪-检修建议的智能体工作流，优先采用开源组件与可公开验证的数据接口，定义数据治理与网络安全基线",
+        "实施计划与风险：制定分阶段试点-评估-扩展的12–18个月路线图（含里程碑/KPI/验证方法），并评估技术、合规、网络安全与运维组织变更风险"
+      ],
+      "deliverable_requirements": [
+        "单一交付物：一份战略路线图报告（≤30页，PDF/HTML），包含：法规与标准对标表、技术改造选项矩阵（性能提升与成本区间）、智能体方案架构与开源清单、实施甘特图与KPI基线-目标",
+        "引用≥15条公开权威资料（含NETL/NREL/IEA/监管机构标准或指南、公开案例/论文），在文中以编号标注并在附录给出完整链接；关键结论需有至少两处独立来源交叉验证",
+        "对核心灵活性KPI（最小技术出力、爬坡率、启停时间、AGC跟踪误差等）给出可核验的目标区间与引用来源；同时给出保守/基准/进取三档情景",
+        "明确网络与控制系统边界、数据最小化与接口策略，参考公开的并网与网络安全要求（引用原文条款号或章节）"
+      ],
+      "evaluation_focus": [
+        "权威性与可验证性：是否充分、准确地引用公开标准/指南/报告并提供可用链接；关键指标是否有交叉验证",
+        "完整性与可执行性：技术、数字化、合规与组织四方面是否形成闭环；路线图的里程碑与KPI是否清晰可跟踪",
+        "量化严谨性：性能提升与成本区间是否来自公开资料并体现不确定性；情景分析是否合理",
+        "风险与合规：对频率响应/并网与网络安全风险的识别与缓解措施是否基于公开规范，具有落地可行性"
+      ]
+    }
+  ]
+}

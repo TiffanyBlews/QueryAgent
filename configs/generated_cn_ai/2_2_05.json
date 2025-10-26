@@ -1,0 +1,793 @@
+{
+  "queries": [
+    {
+      "query_id": "med_clinical_ai_manager-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NICE Evidence standards framework for digital health technologies 2022 PDF",
+      "search_queries": [
+        "NICE Evidence standards framework for digital health technologies 2022 PDF",
+        "FDA Clinical Decision Support Software Guidance 2022 final PDF",
+        "IMDRF SaMD Clinical Evaluation N12 2015 PDF",
+        "WHO regulatory considerations for artificial intelligence for health 2023 PDF",
+        "Epic Sepsis Model external evaluation JAMA Internal Medicine 2021 PDF"
+      ],
+      "scenario": "角色：三甲医院“临床AI转化经理”。背景：院内拟引入一款厂商提供的“AI脓毒症预警”CDS工具，需要在采购谈判前完成快速尽调与试点风险评估。约束：仅可使用公开互联网权威资料（指南/标准/法规/案例/同行评审论文），不接触任何厂商或院内私有数据；在4–6小时内完成一份可供院内技术与医务管理联合审阅的简报。",
+      "task_focus": [
+        "锁定并提炼AI临床决策支持的证据分级与合规框架（NICE DHT ESF 2022、FDA CDS 2022、IMDRF SaMD N12、WHO 2023）",
+        "检索并对比至少2–3个公开脓毒症AI预警案例的真实效果与问题（如Epic Sepsis Model等），提取AUROC、PPV、敏感度、误报率等核心指标",
+        "依据风险与证据框架，进行SaMD风险归类与院内试点“最小安全集”建议（报警门槛、人工复核、告警负荷控制）",
+        "形成面向试点的指标清单（过程/结局/安全），明确可通过公开资料定义的度量方式与阈值"
+      ],
+      "deliverable_requirements": [
+        "输出一篇6–8页中文报告（PDF/Doc），包含：框架综述、案例对比表、风险分级与试点建议；所有结论须以公开资料为依据并逐条引用（含链接、年份/版本）",
+        "提供一个对比表，至少覆盖3项模型指标（如AUROC、PPV、敏感度、告警率）与关键不良影响（如报警疲劳、过度治疗），并标注来源期刊/年份",
+        "将目标工具按NICE DHT ESF证据等级与IMDRF SaMD风险类别进行归类，并给出依据条款/段落的页码或章节定位",
+        "附一页“试点最小安全集”检查清单（可直接用于院内评审）：包含人机协同流程、二次确认、告警负荷上限、退出与回滚机制"
+      ],
+      "evaluation_focus": [
+        "来源权威性与可核验性：是否主要引用NICE/FDA/IMDRF/WHO及同行评审论文，链接有效、年份与版本准确",
+        "指标与结论的对齐度：案例指标是否与原文一致；风险归类是否严格依据框架条款而非主观判断",
+        "试点建议的可操作性：指标可度量、阈值明确、流程完整；与院内实际资源场景具有可落地性"
+      ]
+    },
+    {
+      "query_id": "med_clinical_ai_manager-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIH ChestX-ray14 dataset download",
+      "search_queries": [
+        "NIH ChestX-ray14 dataset download",
+        "CheXNet GitHub pneumonia detection 2017",
+        "TRIPOD-AI reporting guideline 2023 BMJ",
+        "CONSORT-AI extension 2020 BMJ JAMA",
+        "DECIDE-AI reporting 2022 Nature Medicine"
+      ],
+      "scenario": "角色：临床AI转化经理。背景：为评估一类“胸片肺炎自动识别”AI在院内可行性，需要在数天内完成一次可复现的外部验证与方法学合规性检查，基于公开数据与开源代码形成独立证据。约束：不使用院内影像或病历；仅依赖公开数据集（如NIH ChestX-ray14）与开源仓库（如CheXNet），产出一个可完全复现的代码仓库。",
+      "task_focus": [
+        "获取并记录数据来源与许可（ChestX-ray14官方下载），构建标准化数据管线（分割、预处理、标签处理）",
+        "复用或重现开源模型（如CheXNet）进行推理/微调，并计算关键指标（AUROC、敏感度、特异度、Brier分数、混淆矩阵）",
+        "开展基础公平性分析（按性别/年龄分层性能差异）与校准评估，并与原论文指标进行对照",
+        "以TRIPOD-AI/CONSORT-AI/DECIDE-AI要求编制技术说明与结果记录，确保方法与结果透明可复现"
+      ],
+      "deliverable_requirements": [
+        "输出一个公开GitHub代码仓库，包含：环境配置（requirements/conda或Docker）、数据获取脚本（含官方链接与校验）、可运行评估Notebook/脚本",
+        "仓库需生成结构化结果文件（如results.json）与可视化（ROC曲线、校准曲线、混淆矩阵），并提供分层公平性结果",
+        "README须明确数据来源与许可证、复现实验步骤（从零到结果）、与原论文指标的对照表；在文档中引用TRIPOD-AI/CONSORT-AI/DECIDE-AI相关条款以说明合规性",
+        "代码质量要求：固定随机种子、记录版本（Python/框架），提供一键运行入口（make命令或bash脚本），确保第三方可在≤2天内复现"
+      ],
+      "evaluation_focus": [
+        "可复现性与透明度：第三方是否可按README成功下载数据并复现实验；环境与版本是否记录充分",
+        "方法学合规性：是否按TRIPOD-AI/CONSORT-AI/DECIDE-AI进行关键信息披露（数据来源、预处理、分割、评估指标与不确定性）",
+        "结果可靠性与对照一致性：与原论文指标对比是否合理；分层与校准分析是否完整并有解释",
+        "开源规范性：仓库结构清晰、许可证声明与引用完整、脚本可直接运行"
+      ]
+    },
+    {
+      "query_id": "med_clinical_ai_manager-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FDA Predetermined Change Control Plan ML-Enabled Devices Draft Guidance 2023 PDF",
+      "search_queries": [
+        "FDA Predetermined Change Control Plan ML-Enabled Devices Draft Guidance 2023 PDF",
+        "FDA AI/ML-Based SaMD Action Plan 2021",
+        "NIST AI Risk Management Framework 1.0 2023 PDF",
+        "MDCG 2019-11 Guidance on Qualification and Classification of Software PDF",
+        "WHO Ethics and governance of AI for health 2021 PDF"
+      ],
+      "scenario": "角色：临床AI转化经理（兼项目群负责人）。背景：医院计划未来12个月内在放射、心内、重症、药学等多科室分阶段落地多款AI工具（含CDS与影像SaMD），需制定“跨部门AI治理与全生命周期监测”蓝图，覆盖采购评估、合规审查、PCCP（预定变更控制计划）、部署与实时监控、偏倚与安全管理、真实世界证据（RWE）沉淀与再评价。约束：仅依赖公开权威资料与成熟案例；需形成可执行的策略与模板合集，以报告形式交付；周期≥1个月，强调“调研-验证循环”的多轮迭代。",
+      "task_focus": [
+        "系统性梳理多法域合规框架（FDA PCCP 2023草案、FDA 2021行动计划、NIST AI RMF 1.0、欧盟MDR软件分类MDCG 2019-11、WHO 2021伦理治理）并建立映射关系",
+        "设计医院级AI治理模型（职责、流程、审查关卡、文档模板），覆盖采购尽调、入院评审、上线前验证、变更管理（PCCP）、停用与回滚",
+        "规划生产监控与RWE管线（数据漂移/性能漂移检测、警报安全阈值、偏倚监测、事件上报与根因分析），定义可度量的指标体系与仪表盘蓝图",
+        "制定年度路线图与里程碑（季度检查点、合规审计、模型再评价频次），并附供应商评估与合同要件清单（性能担保、更新计划、审计权）"
+      ],
+      "deliverable_requirements": [
+        "输出一篇20–30页中文战略报告（PDF/Doc）：包含法规与标准映射矩阵（逐条引用官方章节/页码/年份）、治理流程图与角色职责、指标体系与监控蓝图、模板与清单",
+        "报告需给出至少10个权威来源的精确引用（FDA、NIST、MDCG、WHO、国家级指南/标准），并以附录形式提供PCCP模板与供应商评估清单（含必备条款与证据要求）",
+        "定义一套分阶段成熟度模型（Level 1–5），每级别明确可量化指标（如AUROC稳定性阈值、告警可控率、偏倚差异上限、变更审批SLA）与审核证据",
+        "提供RWE与模型再评价的复现步骤（基于公开数据或模拟数据流程），说明如何以月度/季度节奏进行性能再审与报告归档（含失败场景回滚流程）"
+      ],
+      "evaluation_focus": [
+        "框架对齐与准确性：法规/标准映射是否精确（年份、章节、定义）；不同法域的差异与协同是否解释清晰",
+        "可执行性与度量性：治理流程是否可落地；指标体系是否可量化并与监控蓝图一一对应；检查点与SLA设置合理",
+        "风险全面性：是否覆盖安全、隐私、网络安全、偏倚、公平性、变更管理（PCCP）、停用与回滚等关键风险",
+        "证据与模板可用性：引用是否权威可核验；模板与清单是否可直接用于院内评审与供应商谈判"
+      ]
+    },
+    {
+      "query_id": "med_imaging_quality_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "DICOM PS3.3 2024 Segmentation Information Object Definition DICOM SEG",
+      "search_queries": [
+        "DICOM PS3.3 2024 Segmentation Information Object Definition DICOM SEG",
+        "IHE Radiology AI Results (AIR) profile 2023 PDF",
+        "dcmqi GitHub QIICR DICOM segmentation examples",
+        "DICOM Sample Image Sets Clunie SEG SR",
+        "NIST AI RMF 1.0 PDF medical imaging risk"
+      ],
+      "scenario": "角色：影像中心质量工程师。背景：医院拟引入一款基于分割结果的影像AI（如器官/病灶分割），需在上线前进行结果封装与互操作性的快速核查，确保AI输出符合DICOM SEG与IHE AIR对AI结果编码、交换与消费的要求。约束：不使用任何内部或患者数据；仅依赖公开可获取的权威标准与开源样例（如dcmqi示例、Clunie DICOM样本）；核查过程以标准条款为依据并形成可复用的入院验收清单。",
+      "task_focus": [
+        "锁定DICOM SEG与SR相关的强制元素与关键约束（如SOP Class UID、Frame of Reference、Segment Description、CodeValue/CodeMeaning、Pixel Spacing），并列出标准条款路径与编号",
+        "对公开样例（dcmqi或Clunie的SEG/SR）进行标签检查，验证必需元素是否存在与取值是否合规，记录可重复的检查步骤与工具链（pydicom/dcmtk/dcm4che）",
+        "将AI结果承载与交付流程对齐IHE Radiology AIR（结果对象、关联检查、消费者显示），形成互操作核查要点清单",
+        "依据NIST AI RMF 1.0将不合规点映射到风险类别（如数据/模型/治理风险），提出现场缓解建议（如拒收条件、整改要求）"
+      ],
+      "deliverable_requirements": [
+        "一份可执行的《AI影像结果互操作性验收清单与风险报告》（不超过15页），内容含：DICOM SEG/SR强制元素列表与标准引用（精确到Part/Section/表格编号）、IHE AIR关键流程点、核查步骤、工具与截图/标签转储证据",
+        "提供标准条款的可公开链接引用（DICOM Standard、IHE AIR在线框架文档、dcmqi GitHub README/示例），每条结论后附参考来源",
+        "给出不合规项的风险登记（风险类型、影响、发生场景、缓解措施），与NIST AI RMF中的风险功能映射（Map/Measure/Manage/GOvern）",
+        "附上可在无患者数据条件下重跑的标签检查SOP（命令行或脚本片段），指向公开样例获取路径（Clunie/TCIA/dcmqi）"
+      ],
+      "evaluation_focus": [
+        "标准引用的准确性与可定位性（要求精确到DICOM PS3.3/PS3.2具体章节与IHE AIR具体事务/对象定义）",
+        "互操作性核查清单的完备性（覆盖标识、坐标系、编码系统、关联检查、显示消费等核心要点）",
+        "证据链可复现性（使用公开样例、开源工具，第三方可在数小时内复现标签检查结果）",
+        "风险分析的合理性（与NIST AI RMF框架一致，能支撑上线决策的拒收与整改建议）"
+      ]
+    },
+    {
+      "query_id": "med_imaging_quality_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "TorchXRayVision GitHub pretrained models NIH ChestX-ray14",
+      "search_queries": [
+        "TorchXRayVision GitHub pretrained models NIH ChestX-ray14",
+        "NIH ChestX-ray14 dataset official download Wang 2017 NIHCC",
+        "FDA Good Machine Learning Practice medical device 2021 guiding principles PDF",
+        "IMDRF SaMD N40 clinical evaluation 2017 PDF",
+        "MIMIC-CXR v2.0.0 PhysioNet dataset JPG metadata"
+      ],
+      "scenario": "角色：影像中心质量工程师。背景：为设定影像AI肺部异常检出类模型的院内准入阈值与质控指标，需要复现一个公开胸片AI基线评估，量化AUROC、灵敏度/特异度、PPV/NPV、校准（Brier/可靠度图）、数据迁移泛化（NIH ChestX-ray14与MIMIC-CXR对比）。约束：仅使用公开模型与数据（优先NIH ChestX-ray14官方下载，MIMIC-CXR为可选扩展）；遵循FDA GMLP与IMDRF SaMD临床评估要点定义指标与报告；最终交付仅为一个代码仓库。",
+      "task_focus": [
+        "基于TorchXRayVision预训练模型搭建评估管线，下载并预处理NIH ChestX-ray14（标签/分割不需，自带多标签），计算AUROC、敏感性、特异性、F1、PPV/NPV与校准曲线",
+        "依据FDA GMLP与IMDRF SaMD N40定义并记录指标计算方法、数据划分、验证流程与限制，确保度量标准可追溯",
+        "开展有限的数据迁移测试（可选使用MIMIC-CXR v2.0.0 JPG），比较不同数据源的性能差异并进行简单误差模式分析（如设备/曝光差异的元数据关联）",
+        "输出结果CSV、图表与简要结论，形成可复现的开源评估仓库（包含环境与运行说明）"
+      ],
+      "deliverable_requirements": [
+        "一个公开代码仓库（含README）：包含数据获取链接与步骤（NIH ChestX-ray14官方Box链接；MIMIC-CXR为可选并说明申请流程）、环境依赖（Python/torch/torchxrayvision版本）、运行命令与预计时长",
+        "实现评估脚本（如evaluate.py）与指标计算模块（AUROC、敏感性/特异性、F1、PPV/NPV、Brier分数/可靠度图），并输出标准化CSV与PNG图表",
+        "在README中对每个指标给出来源与定义引用（FDA GMLP指导原则PDF、IMDRF SaMD N40临床评估文件），阐明适用性与注意事项",
+        "提供最小化可运行配置（样例子集或下采样方案）以便在普通工作站上24小时内完成评估；注明数据版权与许可链接",
+        "仓库中保留复现实验日志/种子设置，确保第三方在数天内可复现关键指标（误差<可接受阈值）"
+      ],
+      "evaluation_focus": [
+        "可复现实证（第三方可按README在数天内拉取数据并重现主要指标与图表）",
+        "指标实现的正确性与合规性（与FDA GMLP、IMDRF SaMD定义一致，计算公式与阈值说明清晰）",
+        "数据与模型来源权威性（官方下载链接、开源仓库可信且活跃）、许可合规（注明数据使用条款）",
+        "分析的完整性（含校准、数据迁移差异与误差模式示例），结论不夸大、贴合证据"
+      ]
+    },
+    {
+      "query_id": "med_imaging_quality_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "NIST AI Risk Management Framework 1.0 PDF 2023",
+      "search_queries": [
+        "NIST AI Risk Management Framework 1.0 PDF 2023",
+        "FDA AI/ML SaMD Action Plan 2021 PDF",
+        "WHO Guidance on Ethics and Governance of Artificial Intelligence for Health 2021 PDF",
+        "IHE Radiology AI Results AIR profile 2023 Technical Framework",
+        "ACR Data Science Institute AI-LAB deployment resources"
+      ],
+      "scenario": "角色：影像中心质量工程师（项目负责人）。背景：医院计划在未来一年内分阶段上线多款影像AI（检出、分割、分级），需制定一套可执行的质量管理与治理蓝图，覆盖选型、准入、集成（IHE AIR/DICOM）、临床验证、上线监测、再评估与退场机制。约束：仅依赖公开权威资料（NIST AI RMF、FDA GMLP、IMDRF SaMD、WHO AI健康指南、IHE AIR、DICOM标准、ACR DSI资源）；交付物为一份战略与实施方案报告，可支持≥1个月的调研-验证循环。",
+      "task_focus": [
+        "汇总并比对核心公开框架与指南（NIST AI RMF、FDA GMLP、IMDRF SaMD、WHO AI健康、IHE AIR、DICOM），形成影像AI生命周期质量要求的标准映射矩阵",
+        "设计院内治理结构与职责分工（临床、信息、质量、安全），明确准入门槛、验证指标、互操作测试与隐私/安全要求",
+        "制定部署与监测策略：上线前临床评估方案、上线后性能/漂移/校准监测、问题通报与再训练/退场流程；引入模板与SOP",
+        "形成第一阶段（1个月）执行路线图与后续季度里程碑，明确可复用的文档与工件（验收清单、风险登记、指标字典、接口测试用例）"
+      ],
+      "deliverable_requirements": [
+        "一份《影像AI质量管理与治理蓝图》报告（建议20-40页）：包含标准映射矩阵（各框架到生命周期环节的对应关系）、角色与流程图、关键质控指标定义、验收与监测SOP、风险管理方法与升级路径",
+        "所有结论需以公开链接与版本/年份标注（NIST AI RMF 1.0、FDA GMLP 2021、IMDRF SaMD N12/N40、WHO 2021、IHE AIR最新版、DICOM标准现行版本），并在报告尾部形成参考文献表",
+        "明确互操作与集成要求：以IHE AIR与DICOM为基础，列出上线前的结果编码/交换/显示测试用例模板，并给出示例检查项（含条款引用）",
+        "给出性能与治理KPI（如AUROC/灵敏度目标、校准漂移阈值、事件响应时效、合规审计频率）及监测仪表盘需求概述",
+        "制定第一阶段（≥1个月）详细时间表与里程碑（每周目标与交付），并附后续季度滚动计划草案"
+      ],
+      "evaluation_focus": [
+        "标准与指南引用的权威性与完整性（链接、版本、章节齐全，覆盖风险、性能、互操作、伦理治理等维度）",
+        "蓝图的可执行性与可复用性（流程清晰、模板齐备、指标可量化、测试用例可落地）",
+        "与影像中心实际工作贴合度（角色分工合理、集成与质控环节符合IHE/DICOM实践）",
+        "路线图的现实可行性（时间/资源安排合理，能够支持调研—验证—迭代循环）",
+        "风险管理与监测机制的成熟度（包含性能漂移、数据移位、事件响应与退场机制）"
+      ]
+    },
+    {
+      "query_id": "clinical_records_technologist-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "WHO ICD-10 2016 Volume 1 PDF site:who.int",
+      "search_queries": [
+        "WHO ICD-10 2016 Volume 1 PDF site:who.int",
+        "ICD-10 pneumonia codes J12-J18 WHO",
+        "ICD-10 acute myocardial infarction I21 I22 WHO",
+        "WHO ICD-11 MMS 2023 AMI BA41 browser",
+        "ICD-11 pneumonia codes site:icd.who.int"
+      ],
+      "scenario": "角色：三甲医院病案信息技师。背景：医院正在开展编码质量提升行动，需要一个可快速复用的主诊断编码合法性校验模块用于培训和自查。约束：仅使用公开、权威的ICD-10/ICD-11官方资料作为Ground Truth；不依赖任何院内数据库或受限数据；在数小时内完成一个最小可用模块。",
+      "task_focus": [
+        "锁定并引用WHO官方ICD-10（2016版）与ICD-11 MMS（最新在线版本）作为编码合法性与代码范围的基准",
+        "以“社区获得性肺炎（CAP）”与“急性心肌梗死（AMI）”为示例，梳理ICD-10的代码区间（如J12–J18、I21–I22）及常见编码规则要点",
+        "设计并实现代码字符串校验（格式、长度、是否存在于官方代码表、是否为有效细目）与简单映射（ICD-10→ICD-11）",
+        "构建可扩展的规则模板与最小测试集（含若干正确/错误编码示例），输出可运行与可复用的开源代码仓库"
+      ],
+      "deliverable_requirements": [
+        "仅提交一个代码仓库（含README），明确列出所用官方资料的链接与版本信息，并在README中标注对应校验规则的出处页码或浏览器路径",
+        "实现一个命令行脚本或函数库：输入诊断编码，返回合法性判定、归属章节、示例映射（若可用），并包含至少10条涵盖肺炎与AMI的测试用例（正确/错误各占至少一半）",
+        "在README中给出复现步骤（环境、依赖、运行命令），以及可扩展到其他病种的规则模板说明",
+        "所有结论与代码注释需引用公开权威来源（WHO ICD-10/ICD-11），不得引用付费或非公开数据"
+      ],
+      "evaluation_focus": [
+        "权威性与可验证性：是否精准引用WHO官方ICD-10/ICD-11并标注版本/章节；检索词能否定位到Ground Truth",
+        "规则正确性与覆盖度：编码合法性校验是否符合官方规则；示例是否覆盖常见正确/错误场景（如类别与亚目、已废止/不存在代码）",
+        "可运行性与复现性：仓库能否在标准环境中运行，README说明是否清晰、步骤可复现",
+        "可扩展性：规则模板是否易于扩展到其他疾病编码；代码结构是否模块化"
+      ]
+    },
+    {
+      "query_id": "clinical_records_technologist-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "CHS-DRG 技术规范 2020 试行 国家医保局 PDF",
+      "search_queries": [
+        "CHS-DRG 技术规范 2020 试行 国家医保局 PDF",
+        "CHS-DIP 技术规范 2021 试行 国家医保局 PDF",
+        "WS 445-2014 医疗机构病案管理规范 PDF",
+        "国家卫生健康委 病案首页 数据填报 规范 通知 PDF",
+        "DRG 分组 数据元 要求 病案首页 国家医保局 2020 2021"
+      ],
+      "scenario": "角色：省级医院病案信息技师。背景：医院需在DRG/DIP支付改革下提升病案首页数据质量与编码准确率，以保证合理分组与支付。目标是在数日内形成一份可复现的报告，梳理CHS-DRG与CHS-DIP对高频病种分组的关键要素，并制定病案首页质控清单。约束：仅依赖国家医保局发布的试行版技术规范、国家卫生健康委发布的病案管理/填报资料等公开来源；不使用院内数据；可用官方示例进行说明。",
+      "task_focus": [
+        "锁定CHS-DRG（2020试行版）与CHS-DIP（2021试行版）官方技术规范的版本与下载地址，提取分组所需的核心数据元（如主诊断/主手术编码、年龄、并发症/合并症、出院方式等）",
+        "选取3–5个高频病种（例如：社区获得性肺炎、阑尾炎、髋关节置换、脑卒中）比较DRG与DIP分组的关键差异（编码粒度、并发症分层、手术影响）",
+        "对照病案首页字段，形成“分组关键字段清单+质控规则建议”（字段取值合法性、缺失/冲突检查、编码一致性）",
+        "结合官方文件中的示例或公开案例，给出可复现的分组要素解读与病案首页填写要点"
+      ],
+      "deliverable_requirements": [
+        "仅提交一篇结构化报告（PDF或HTML），包含：资料来源列表（官方链接与版本）、方法、分组要素汇总、病种差异分析、病案首页质控清单、结论与建议",
+        "在报告中以表格形式呈现：每个病种的DRG与DIP分组关键字段、对应ICD-10诊断/操作编码范围、并发症/合并症（CC/MCC或严重度）的采集要求与判定提示",
+        "所有结论需在文内脚注或参考文献中明确标注出处页码或章节（如CHS-DRG技术规范具体章节、CHS-DIP条款、WS 445-2014相关条款）",
+        "报告需给出可复现路径：列出检索词、查找步骤、比对方法，使他人可在数天内复刻相同分析"
+      ],
+      "evaluation_focus": [
+        "Ground Truth完整性：是否覆盖并准确引用CHS-DRG与CHS-DIP官方技术规范及病案管理/填报相关标准/通知",
+        "分析准确度与实用性：病种分组要素梳理是否准确；质控清单是否可落地并能减少分组失败/降组风险",
+        "透明性与复现性：报告是否给出明确检索词与出处定位；第三方是否可按步骤复刻",
+        "规范性：表格、术语、编码范围与字段定义是否与官方一致；无臆造或未标注来源的信息"
+      ]
+    },
+    {
+      "query_id": "clinical_records_technologist-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "WHO ICD-11 Implementation or Transition Guide 2022 site:who.int",
+      "search_queries": [
+        "WHO ICD-11 Implementation or Transition Guide 2022 site:who.int",
+        "HL7 FHIR R4 Condition resource",
+        "HL7 FHIR R4 Procedure resource",
+        "三级公立医院绩效考核 指标体系 2023 国家卫生健康委 PDF",
+        "ICD-10 to ICD-11 mapping tables 2022 site:icd.who.int"
+      ],
+      "scenario": "角色：区域医疗集团病案信息技师负责人。背景：需制定面向未来1–3年的智能体方案路线图，实现病案首页数据标准化、自动编码（向ICD-11过渡）、质量指标计算（对接三级公立医院绩效考核）与持续质控。约束：仅使用公开互联网资料（WHO ICD-11实施工具包、ICD-10↔ICD-11映射、HL7 FHIR R4资源规范、国家级绩效考核指标等）；不依赖任何院内私有数据；以一个月以上的调研-验证循环形成战略报告。",
+      "task_focus": [
+        "梳理ICD-11实施与过渡路径（WHO实施指南、MMS浏览器、ICD-10↔ICD-11映射），明确中国院内编码从ICD-10向ICD-11迁移的关键风险与阶段性目标",
+        "确定数据交换与建模标准（HL7 FHIR R4的Condition/Procedure/Encounter等资源），定义与病案首页字段的映射关系与最小可用数据集",
+        "对接国家层面的医疗质量/绩效指标（如三级公立医院绩效考核2023版），制定自动化计算与审计的规则蓝图（指标口径、可重复计算路径、数据质量门槛）",
+        "规划智能体工作流：信息抽取→编码建议→质控校验→指标生成→审计追踪，形成阶段性里程碑、人才/工具配置与开源参考实现清单"
+      ],
+      "deliverable_requirements": [
+        "仅提交一篇战略与技术路线图报告（PDF或HTML），分为：现状与目标、标准与规范综述、数据模型与映射、指标计算蓝图、智能体架构与迭代计划、风险与合规、参考资料",
+        "报告必须以公开权威资料为依据：逐条引用WHO ICD-11实施指南（年份/版本）、ICD-10↔ICD-11官方映射资源（链接）、HL7 FHIR R4规范（资源/字段）、国家卫生健康委发布的绩效指标（版本与条款）",
+        "给出一个月以上的调研-验证迭代计划（周粒度），包含任务分解、预期交付、复现方法；并提供可在公开资料基础上进行的验证清单（如基于FHIR示例与ICD浏览器的编码校验）",
+        "明确不使用院内数据或付费资源；所有样例均基于公开示例或自拟合成数据（并说明生成规则与不含真实患者信息）"
+      ],
+      "evaluation_focus": [
+        "战略完整性与可执行性：是否覆盖编码迁移、数据标准、指标计算与智能体流程；里程碑与资源配置是否清晰",
+        "权威性与可验证性：是否严格引用WHO、HL7、国家卫生健康委等官方资料，标注版本/链接/条款，检索词能定位到Ground Truth",
+        "方法论与复现性：调研-验证循环是否可按报告复制；映射与规则是否有明确来源与验证步骤",
+        "合规与风险控制：是否识别并应对编码迁移、数据质量、隐私与审计的关键风险；明确不使用私有/院内数据"
+      ]
+    },
+    {
+      "query_id": "med_data_governance_officer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "HHS HIPAA Privacy Rule minimum necessary 45 CFR 164.502(b) 2024",
+      "search_queries": [
+        "HHS HIPAA Privacy Rule minimum necessary 45 CFR 164.502(b) 2024",
+        "NIST SP 800-53 Rev.5 Access Control AC PDF",
+        "HL7 FHIR R4 Consent resource specification",
+        "ONC USCDI v4 2024 data classes",
+        "个人信息保护法 2021 全文 国家法律法规数据库"
+      ],
+      "scenario": "角色：某三甲医院医疗数据治理官。背景：医院拟上线基于HL7 FHIR R4的对外接口与科研工作台，需要在不接触患者数据的前提下，形成可复用的“最小必要”访问权限矩阵与审计事件清单，用于采购评估和内控对标。约束：仅可依赖公开、权威的法律法规与标准（如HIPAA、PIPL、NIST、ONC/HL7），不得使用任何内部制度或患者数据；结论必须以原始出处的章节/条款为证据。",
+      "task_focus": [
+        "梳理USCDI v4数据类与常见FHIR R4资源，按角色（临床医师、护理、科研、第三方应用）设计“最小必要”访问权限矩阵",
+        "依据HIPAA Privacy Rule与NIST SP 800-53 AC控制，明确访问条件、例外与审查机制",
+        "参考NIST SP 800-66/53与HL7 FHIR Consent，设计可验证的审计事件清单与日志字段规范",
+        "为每条矩阵或事件提供可溯源引用（来源URL、版本、章节/条款）"
+      ],
+      "deliverable_requirements": [
+        "交付一篇报告（10-15页），包含角色-权限矩阵、审计事件与日志字段规格，并在正文或脚注中标注引用来源的URL、版本与具体章节/条款",
+        "提供USCDI数据类与FHIR资源的交叉表，说明权限界定依据与“最小必要”判定规则",
+        "提出紧急访问（break-glass）建议流程与风险提示，明确合规边界与审查点",
+        "不得包含任何患者可识别信息或医院内部制度；报告可被他院复用"
+      ],
+      "evaluation_focus": [
+        "引用准确性与权威性（条款、章节、版本匹配；来源为HHS/ONC/HL7/NIST/国家法律法规数据库等）",
+        "矩阵的覆盖度与与USCDI/FHIR一致性（资源与数据类映射合理）",
+        "审计事件设计的充分性与可操作性（日志字段可支撑事后追溯）",
+        "结论是否与HIPAA/PIPL/NIST原则一致且无自相矛盾"
+      ]
+    },
+    {
+      "query_id": "med_data_governance_officer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "HL7 FHIR R4 Observation examples JSON",
+      "search_queries": [
+        "HL7 FHIR R4 Observation examples JSON",
+        "HAPI FHIR public test server base URL",
+        "Great Expectations docs create expectation suite",
+        "OpenMetadata ingestion pipeline tutorial",
+        "LOINC official search code system"
+      ],
+      "scenario": "角色：区域医学研究中心医疗数据治理官。背景：团队拟评估开源工具在医疗数据质量与元数据管理上的适配性，需用公开FHIR样例数据与HAPI FHIR测试服务器复现一套可运行的质量校验与元数据登记流程（Observation/实验室检验为主）。约束：仅使用公开可获取的数据与工具；代码仓库需可一键复现，不依赖私有服务；不得包含受限术语库的离线副本（可通过公开接口校验代码有效性）。",
+      "task_focus": [
+        "从HL7官方样例或HAPI测试服务器拉取FHIR R4 Observation数据，生成用于校验的CSV/JSON中间数据",
+        "依据LOINC与FHIR规范定义≥10项质量规则（必填项、代码合法性、单位一致性、值域与取值类型），使用Great Expectations实现",
+        "将数据集、规则与运行结果元数据登记到OpenMetadata（数据源、schema、质量度量、简要血缘）",
+        "提供完整复现脚本、环境配置与文档，明确引用来源与版本"
+      ],
+      "deliverable_requirements": [
+        "交付一个公共代码仓库（包含README、环境文件如Docker/conda、数据拉取与转换脚本、Great Expectations规则与校验报告、OpenMetadata注册脚本/配置）",
+        "README需提供一键运行指令与本地复现步骤，包含预期输出示例（如JSON/截图）",
+        "质量规则需可读、可运行并与标准一致；OpenMetadata中可查看数据源、schema、质量结果与简要血缘",
+        "仓库需列出所有引用资料的URL与版本，并标注任何许可证限制；不包含敏感或受限数据副本"
+      ],
+      "evaluation_focus": [
+        "复现可靠性（在干净环境可成功拉起并执行全流程）",
+        "质量规则合理性与与标准一致性（例如LOINC代码与单位校验逻辑正确）",
+        "元数据登记完整度（数据源、schema、质量指标、血缘关系齐备）",
+        "文档清晰度与开放性（依赖公开资源与明确引用）"
+      ]
+    },
+    {
+      "query_id": "med_data_governance_officer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "OECD Recommendation on Health Data Governance 2017",
+      "search_queries": [
+        "OECD Recommendation on Health Data Governance 2017",
+        "ONC TEFCA Common Agreement PDF 2023",
+        "USCDI v4 ONC 2024 Final",
+        "NIST Privacy Framework v1.0 PDF",
+        "中华人民共和国个人信息保护法 2021 全文"
+      ],
+      "scenario": "角色：大型综合医院医疗数据治理官。背景：医院将开展为期12-18个月的数据治理提升计划，目标涵盖互操作（FHIR/USCDI）、隐私合规（PIPL/HIPAA）、同意管理、审计与外部共享（对接区域网络/TEFCA）。需形成战略与路线图，指导试点到全面推广。约束：仅引用公开权威资料和案例；提出分阶段目标、里程碑、能力指标与风险缓解；工具选型依据公开案例与标准；不涉及内部敏感信息或供应商私有报价。",
+      "task_focus": [
+        "汇总并解读OECD、ONC/TEFCA、USCDI、NIST隐私框架与PIPL等公开资料，形成治理原则与政策基线",
+        "设计分阶段目标架构与流程（FHIR/USCDI采集、同意管理与审计治理、数据质量与元数据、对接TEFCA的共享机制）",
+        "制定评估指标体系（互操作覆盖率、合规闭环率、质量得分、审计可追溯性等）与年度目标值",
+        "提出开放技术栈备选（OpenMetadata、Great Expectations、HAPI FHIR等）与风险/合规清单，并设计试点—推广路径"
+      ],
+      "deliverable_requirements": [
+        "交付一篇战略报告（20-30页），包含治理原则、政策基线、目标架构与流程图、分阶段实施计划与KPI、风险与缓解措施",
+        "报告需对所有引用框架/法规/标准标注来源、版本与章节，并附参考文献URL列表",
+        "提供与TEFCA/USCDI/FHIR/PIPL/HIPAA的对照表，明确适配路径与差异",
+        "不包含任何内部敏感信息或专有商业数据；建议与工具选型均基于公开资料"
+      ],
+      "evaluation_focus": [
+        "证据链完整性与引用准确度（来源权威、版本明确，能追溯到原文）",
+        "路线图可执行性（阶段目标可衡量、里程碑清晰、依赖与风险可管理）",
+        "架构与流程与公开标准的一致性，且考虑跨法域的合规要求",
+        "风险识别与缓解措施的充分性、开放工具选型的合理性与可落地性"
+      ]
+    },
+    {
+      "query_id": "medical_device_engineer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "WHO Medical equipment maintenance programme overview 2011 PDF",
+      "search_queries": [
+        "WHO Medical equipment maintenance programme overview 2011 PDF",
+        "MHRA Managing medical devices guidance for healthcare organisations 2014 PDF",
+        "FDA infusion pumps guidance total product life cycle 2014 PDF",
+        "infusion pump preventive maintenance checklist manufacturer IFU PDF",
+        "hospital biomedical engineering maintenance policy infusion pumps WHO 2011"
+      ],
+      "scenario": "角色：三甲医院医学设备管理工程技术人员。背景：科室需在本周通过内部审计抽查，重点核查输注泵（Infusion Pump）维护与文档合规性，要求在数小时内基于公开资料形成可核验的保养清单与审计材料。约束：仅使用公开互联网可获取的权威资料（WHO技术系列、MHRA指南、FDA公开指导文件、制造商IFU/用户手册PDF），不得访问厂商内部门户或付费数据库；所有结论必须以可检索的原文链接和版本年份佐证。",
+      "task_focus": [
+        "从WHO Medical device technical series（2011）和MHRA Managing Medical Devices（2014）提炼输注泵的保养层级、职责分工与记录要点",
+        "引用FDA Infusion Pumps Guidance（2014）中风险与故障场景，补充保养与功能测试的重点环节",
+        "定位至少1份制造商公开用户手册/IFU（PDF），抽取日/周/月保养项目与注意事项，并与WHO/MHRA一致性比对",
+        "形成审计就绪的清单与记录模板（含任务-频次-所据标准/手册页码-验收准则）"
+      ],
+      "deliverable_requirements": [
+        "提交一篇6–10页的审计就绪报告（PDF/HTML），包含：保养清单、频次建议、记录模板、以及每一条目对应的权威出处（WHO 2011、MHRA 2014、FDA 2014、制造商IFU），附可点击链接与具体章节/页码",
+        "报告中提供至少一张对照表：WHO/MHRA通用要求 vs 制造商IFU具体操作（列出差异与本院采纳原则）",
+        "给出一页可直接复用的保养记录与功能测试模板（表格化），包含任务描述、执行人、日期、判定标准、引用来源",
+        "在报告末尾统一列出参考文献清单（标题、机构、年份、版本/修订号、URL）"
+      ],
+      "evaluation_focus": [
+        "来源权威性与可验证性：是否均来自WHO/MHRA/FDA及公开制造商文档，是否标注年份与章节页码",
+        "结论可复现性：第三方仅凭报告中的链接与模板可在数小时内复现检查流程",
+        "一致性与合理性：WHO/MHRA通用框架与制造商IFU的具体要求是否一致或给出合理取舍说明",
+        "完整性：是否覆盖任务、频次、验收标准、记录要点与风险提示"
+      ]
+    },
+    {
+      "query_id": "medical_device_engineer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "openFDA device adverse event API MAUDE documentation 2024",
+      "search_queries": [
+        "openFDA device adverse event API MAUDE documentation 2024",
+        "WHO Medical equipment maintenance programme overview 2011 PDF",
+        "MHRA Managing medical devices 2014 PDF hospital maintenance",
+        "FDA MAUDE device event data infusion pump ventilator defibrillator CSV",
+        "risk-based maintenance medical equipment WHO 2011"
+      ],
+      "scenario": "角色：大型医院医学设备管理工程技术人员。背景：院级要求在3–5天内迭代形成“风险分层的维护计划”，并以公开不涉密数据支撑优先级排序。工程师拟使用openFDA MAUDE公开不良事件数据，对五类常见设备（输注泵、呼吸机、除颤仪、患者监护仪、麻醉机）进行事件频度与严重性分析，结合WHO/MHRA框架制定保养频次建议。约束：仅使用公开API与免费报告，需形成可复现的分析代码仓库；不得依赖院内故障台账或付费情报。",
+      "task_focus": [
+        "调用openFDA MAUDE设备事件API，抓取近3–5年的不良事件数据（按设备类型/问题代码/严重后果分类）",
+        "依据WHO（2011）维护层级与MHRA（2014）管理要求，将事件严重性与维护频次建立映射（风险分层）",
+        "生成五类设备的风险评分与保养频次建议（含数据可视化），并输出CSV/图表",
+        "在README中记录数据获取、清洗、分析方法及依据文献，保证可复现性"
+      ],
+      "deliverable_requirements": [
+        "提交一个公开代码仓库（例如GitHub），包含：数据抓取脚本（Python/R）、分析Notebook、生成的CSV与图表、README（详述数据来源、API端点、参数、日期范围、清洗与评分方法）",
+        "仓库中明确引用并链接WHO 2011与MHRA 2014文档，阐述风险分层与维护频次的依据与适用边界",
+        "提供一键可复现说明（requirements.txt或environment.yml；运行步骤；示例命令），并对API速率限制与重试策略作出说明",
+        "加入基本单元测试或数据校验（如字段完整性、日期范围、缺失值处理），确保结果稳定"
+      ],
+      "evaluation_focus": [
+        "数据可追溯性与合规性：openFDA MAUDE端点、查询参数、时间窗口是否清晰记录，结果是否与原始API一致",
+        "方法透明度：风险评分与维护频次映射是否有清晰、可查证的文献依据（WHO/MHRA），并在README中阐明",
+        "可复现性：是否能在标准环境中一键运行并得到同样的CSV/图表",
+        "代码质量与鲁棒性：错误处理、速率限制、测试/校验是否到位"
+      ]
+    },
+    {
+      "query_id": "medical_device_engineer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "FDA AccessGUDID API documentation UDI 2024",
+      "search_queries": [
+        "FDA AccessGUDID API documentation UDI 2024",
+        "EU MDR 2017/745 Article 27 UDI requirements PDF",
+        "NMPA 医疗器械 唯一标识 UDI 管理规定 2021 发布",
+        "WHO Global Model Regulatory Framework for Medical Devices 2020 PDF",
+        "GS1 UDI implementation guideline healthcare 2021 PDF"
+      ],
+      "scenario": "角色：医院医学设备管理工程技术负责人。背景：院方计划在1–2个月内推进院级UDI（唯一器械标识）驱动的资产台账与合规备案能力建设，覆盖采购入库、标签扫描、记录字段标准化、与监管数据库的核验。目标：制定跨部门实施路线图（采购/物资/设备管理/信息科），并以开源API实现样例UDI核验与数据模型演示。约束：仅依赖公开权威资料与开放API（FDA AccessGUDID、EU MDR、NMPA UDI、WHO/GS1），不得调用厂商私有数据库或付费系统；所有流程、字段映射与合规要求必须有公开出处与年份/条款。",
+      "task_focus": [
+        "系统梳理并对比FDA（21 CFR、AccessGUDID）、EU MDR 2017/745（Article 27/UDI）、NMPA UDI（2021）对DI/PI、标签载体、数据字段的要求",
+        "制定院级UDI实施路线图：流程重构（入库/贴标/扫描/记录/核验）、角色分工、培训与审计节点",
+        "构建开源示例：利用AccessGUDID API对样例UDI进行查询与核验，输出字段映射与数据质量检查",
+        "风险与合规评估：识别跨法规差异、数据质量与信息安全风险，提出缓解措施与里程碑评估机制"
+      ],
+      "deliverable_requirements": [
+        "提交一篇战略实施报告（15–25页），包含：法规条款对照（明确条文/年份/URL）、院内流程蓝图（泳道图/步骤）、字段映射表（DI/PI/批号/序列号/有效期/生产商等）、培训与审计计划、风险评估与里程碑时间表",
+        "同时提交一个公开代码仓库，内含：AccessGUDID查询脚本与示例数据集（匿名化样例UDI/条码）、字段解析与校验逻辑、README（API端点、参数示例、运行方法、合规与适用性声明）",
+        "报告与仓库均需提供完整参考文献列表：FDA/AccessGUDID文档（2024）、EU MDR 2017/745、NMPA UDI（2021发布）、WHO 2020模型监管框架、GS1 2021实施指南（含可点击URL）",
+        "给出跨法规差异的实际落地建议（如EUDAMED公开模块进展、数据缺口处理、院内台账字段最小必需集），并说明迭代计划"
+      ],
+      "evaluation_focus": [
+        "法规准确性与可验证性：是否逐条对应FDA/EU/NMPA/WHO/GS1公开文档，标注年份、条款、链接与差异点",
+        "实施可行性与完整性：流程、角色、培训、审计、里程碑是否清晰且可执行，是否覆盖采购到使用的全生命周期",
+        "技术演示有效性：代码仓库是否可运行并正确调用AccessGUDID，字段解析与校验逻辑是否清晰、可复现",
+        "风险识别与缓解：对数据质量、跨法规差异、信息安全的认识是否到位并提出可操作的缓解措施"
+      ]
+    },
+    {
+      "query_id": "medical_research_specialist-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "RECIST 1.1 2009 PDF Eur J Cancer EORTC",
+      "search_queries": [
+        "RECIST 1.1 2009 PDF Eur J Cancer EORTC",
+        "iRECIST 2017 Lancet Oncology PDF",
+        "FDA Clinical Trial Endpoints for the Approval of Cancer Drugs and Biologics 2023 guidance PDF",
+        "SITC consensus recommendations endpoints immunotherapy trials 2023 PDF"
+      ],
+      "scenario": "你是一名肿瘤临床研究者，正在为一项二线PD-1单抗在晚期NSCLC的开放标签II期试验定稿统计分析方案。主要痛点：免疫治疗应答存在伪进展与迟发应答，需在有限时间内确定客观缓解率与无进展生存的判定标准与影像复评策略。约束：仅可使用公开权威资料（如RECIST 1.1、iRECIST、FDA终点指南、SITC共识等），不使用任何内部影像数据库或保密文档；需在1个工作日内完成；所有结论必须提供可验证的公开来源链接与年份/版本信息。",
+      "task_focus": [
+        "系统对比RECIST 1.1与iRECIST的评估逻辑、进展确认规则、目标/非目标病灶定义与测量频次差异",
+        "分析差异对试验设计的影响：主要/次要终点的可测性、样本量与中期分析风险、影像时间窗与独立评审需求",
+        "制定与所选标准匹配的数据采集与质控清单（影像格式、测量字段、审读流程、复评触发条件）",
+        "梳理监管与发表常见合规要求（FDA终点指南、学术期刊要求）与潜在风险点"
+      ],
+      "deliverable_requirements": [
+        "单篇2-4页的快速证据简报（PDF或HTML），包含执行摘要、对比表、建议与引用列表；每条引用需给出公开URL与年份/版本",
+        "一页A4对比表，逐项映射RECIST 1.1与iRECIST关键条款，并标注出处页码/段落或图表编号",
+        "一份≤20项的数据采集与影像审读核对清单，覆盖影像数据格式、测量字段、审读者角色与复评规则",
+        "所有引用应来自公开可访问的权威站点（如EORTC/RECIST官网、Lancet Oncology开放获取页面、FDA官网、SITC官网）"
+      ],
+      "evaluation_focus": [
+        "引文准确可核：评审者可在提供链接中定位到被引用条款/图表，页码/章节匹配且年份/版本正确",
+        "事实无误：对比表中关于进展确认、不可测病灶处理、影像频次等关键差异表述无事实性错误",
+        "可执行性：采集与审读清单具体可用，能直接转化为CRF字段与影像工作流程",
+        "相关性：建议与PD-1免疫治疗的II期NSCLC场景匹配，避免泛泛而谈或与场景无关的条款"
+      ]
+    },
+    {
+      "query_id": "medical_research_specialist-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "TCGAbiolinks Bioconductor vignette 2024",
+      "search_queries": [
+        "TCGAbiolinks Bioconductor vignette 2024",
+        "GDC API download HTSeq counts TCGA COAD",
+        "DESeq2 vignette 2023 PDF",
+        "clusterProfiler GO enrichment vignette 2023",
+        "GSE39582 GEO colon cancer dataset"
+      ],
+      "scenario": "你是一名转化医学研究者，需要在一周内向课题组复现并展示TCGA结直肠癌（COAD）肿瘤与邻近正常组织的差异表达与功能富集结果，作为后续标志物筛选的基线。痛点：确保数据来源合规可公开复现、避免“环境不可复现”和“数据处理黑箱”。约束：仅可使用GDC公开数据与开源R/Bioconductor工具；禁止使用需授权的基因集或私有数据；所有结果需可一键重跑；交付仅为一个公开代码仓库。",
+      "task_focus": [
+        "使用GDC API或TCGAbiolinks自动化下载并记录TCGA-COAD RNA-Seq HTSeq counts与临床数据，保留文件UUID/MD5与获取日期",
+        "使用DESeq2完成肿瘤vs正常差异表达分析，合理处理配对样本/批次效应，导出结果表与诊断图",
+        "采用clusterProfiler基于Gene Ontology进行功能富集分析，输出可复现图表，避免使用需授权的基因集",
+        "在GEO数据集GSE39582上进行外部方向一致性或重现性对比，并报告一致性指标（如方向一致比例、富集通路重叠）"
+      ],
+      "deliverable_requirements": [
+        "单一公开GitHub仓库（唯一交付物），包含：数据下载脚本、分析脚本、README复现步骤、环境锁定文件（renv.lock或conda.yml）、数据来源清单（含GDC文件UUID/MD5与获取日期）",
+        "仓库脚本可在干净环境中“一键重跑”至结果产出（差异基因CSV、富集结果CSV、关键图形PNG/PDF）；不得提交大型原始数据文件",
+        "README中需列出外部验证流程与结果（如与GSE39582在logFC方向一致的基因比例），并附原始链接与Accession",
+        "仓库内附≤6页的简短技术报告（可为README子章节或单独PDF/HTML），说明方法选择、关键参数、潜在偏倚与局限"
+      ],
+      "evaluation_focus": [
+        "完全可复现：评审者克隆仓库并按README配置环境后可一键运行获得相同输出（文件名/尺寸/哈希或关键统计量一致）",
+        "数据可追溯：GDC/GEO来源、版本、UUID/Accession与下载日期可核对；脚本包含基本校验（如MD5）",
+        "方法规范性：流程与包版本符合官方文档建议（如DESeq2与clusterProfiler小册/手册），未使用受限或付费基因集",
+        "外部验证有效：一致性指标与对照结果可被独立重算并匹配，结论与数据支撑一致"
+      ]
+    },
+    {
+      "query_id": "medical_research_specialist-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "PRISMA 2020 statement BMJ PDF",
+      "search_queries": [
+        "PRISMA 2020 statement BMJ PDF",
+        "Cochrane living systematic reviews guidance 2019 2022 update PDF",
+        "RoB 2 tool 2019 PDF risk of bias",
+        "GRADE handbook 2023 PDF",
+        "PROSPERO registration guidance 2024"
+      ],
+      "scenario": "你是医院研究中心的首席研究员，需制定一个为期≥12个月的“长新冠（Post-COVID condition）药物治疗”活性系统综述与（网状）Meta分析战略方案，并引入智能体以提升筛选与偏倚评估效率。痛点：证据快速更新、研究异质性大、质量参差不齐、跨团队协作难。约束：仅使用公开权威资料与开源工具；全流程遵循PRISMA 2020、Cochrane活性系统综述方法、RoB 2与GRADE；方案需在PROSPERO注册；任何自动化步骤必须可审计并有人工复核机制；交付仅为一篇战略与方法学蓝图报告。",
+      "task_focus": [
+        "明确PICO与纳排标准，形成并注册PROSPERO预先方案；制定覆盖ClinicalTrials.gov、ICTRP、PubMed、medRxiv的检索式与更新频率",
+        "设计半自动筛选与数据提取流程（如ASReview/RobotReviewer），定义人工复核阈值、冲突解决规则与审计日志要求",
+        "规范化风险偏倚评估（RoB 2）与证据质量分级（GRADE），形成模板、决策规则与升级/降级触发条件；明确何时开展网络Meta分析",
+        "制定12个月路线图：里程碑、团队分工（RACI）、计算环境与开源仓库结构、数据共享与合规（如NIH 2023 DMS）、发布与更新节奏"
+      ],
+      "deliverable_requirements": [
+        "单篇15-25页战略与方法学蓝图（PDF或HTML），包含：背景与范围、方法与标准（逐条对齐PRISMA 2020、Cochrane LSR、RoB 2、GRADE）、流程图与RACI、检索式附录、数据字典与质控清单、更新与治理机制、风险清单与缓解策略",
+        "为所有关键规范提供原始出处链接、年份/版本与可核对的条款引用；提供PROSPERO草案条目对照表（字段级映射）",
+        "列出计划采用的自动化工具与开源组件（含版本）、替代方案与故障切换策略，并定义审计与人工复核要求"
+      ],
+      "evaluation_focus": [
+        "标准对齐度：评审者可逐条核对PRISMA 2020、Cochrane LSR、RoB 2、GRADE要求与文档内的实现映射，引用可回溯到原文",
+        "可实施性：路线图包含明确里程碑、资源与责任分配，更新节奏具体可行，自动化流程具备人工兜底与审计轨迹",
+        "可验证性：检索式、筛选/提取规则、偏倚评估与GRADE决策足够具体，第三方可据此独立复现同等工作流",
+        "合规完备：包含注册（PROSPERO）、数据管理与共享（如NIH 2023 DMS）、伦理与治理的公开规范引用，未依赖私有数据或封闭平台"
+      ]
+    },
+    {
+      "query_id": "med_ai_ethics_officer-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "WHO Ethics and governance of artificial intelligence for health 2021 pdf",
+      "search_queries": [
+        "WHO Ethics and governance of artificial intelligence for health 2021 pdf",
+        "NIST AI Risk Management Framework 1.0 2023 PDF",
+        "NHS Digital Technology Assessment Criteria DTAC 2023 pdf",
+        "FDA Good Machine Learning Practice for Medical Device Development guiding principles 2021 PDF",
+        "CONSORT-AI SPIRIT-AI 2020 pdf"
+      ],
+      "scenario": "角色：三甲医院AI伦理合规官。背景：皮肤科拟在医院官网上线“院外皮肤症状初筛聊天机器人”，向患者提供非诊断性建议与就医分流提示，需在伦理评审会前提交一份可被引用验证的“AI伦理影响声明”与整改计划，明确风险、缓解措施与监测指标。约束：仅使用公开且权威的互联网资料；不接触或使用任何患者私有数据；在数小时内完成首版；所有结论必须给出可核查来源与具体章节/页码/链接。",
+      "task_focus": [
+        "明确用途、目标用户与使用环境，基于公开指南初步判断是否可能构成医疗器械/医疗软件（并说明不确定性与边界）",
+        "依据WHO 2021、NIST AI RMF 1.0与NHS DTAC提炼前10项关键伦理/合规风险（公平性、鲁棒性、隐私与数据治理、透明度与可解释、误用/过度信任、人类监督、可及性等）",
+        "为每项风险制定可量化的KPI/阈值与持续监测计划（采样频率、责任人、触发条件与处置流程）",
+        "提出用户沟通与标识策略（免责声明、适用范围、已知局限、数据使用说明）及最小可行整改清单"
+      ],
+      "deliverable_requirements": [
+        "提交一份5–7页的中文PDF报告，结构包括：执行摘要、用途与边界、风险登记表（风险→来源条款→KPI→缓解措施→监测计划）、实施时间表",
+        "所有关键结论必须附权威来源的精确引文（列出文件名、年份/版本、章节/条款/页码或图表编号、可访问URL/DOI），至少覆盖WHO 2021与NIST AI RMF 1.0；如涉及英国院外部署，优先引用NHS DTAC 2023的相关要求",
+        "提供“是否可能构成医疗器械/医疗软件”的初步判断与依据，并明确不确定性与管辖差异（允许采用多法域并列论证）",
+        "在附录给出KPI度量与数据采集示例（不含任何真实患者数据）及每项措施的复核周期与责任角色"
+      ],
+      "evaluation_focus": [
+        "引文可核查性与权威性（WHO/NIST/NHS/FDA等官方或顶级学术出版物；年份版本明确）",
+        "风险—控制—指标的映射是否具体、可测量、可复现（含阈值/频率/触发条件）",
+        "医疗器械属性初判的逻辑严谨性、边界与不确定性说明是否充分",
+        "整改与监测计划的可执行性与时间表可行性（责任人、里程碑、复盘机制）"
+      ]
+    },
+    {
+      "query_id": "med_ai_ethics_officer-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "EU AI Act 2024 Official Journal EUR-Lex pdf health high-risk",
+      "search_queries": [
+        "EU AI Act 2024 Official Journal EUR-Lex pdf health high-risk",
+        "FDA AI/ML-Enabled Medical Devices list 2024 site:fda.gov",
+        "MHRA Software and AI as a Medical Device Change Programme 2024",
+        "NIST AI Risk Management Framework 1.0 2023 PDF site:nist.gov",
+        "WHO regulatory considerations for AI in health 2023 pdf"
+      ],
+      "scenario": "角色：区域医疗集团AI伦理合规官。背景：需在集团层面建立“医疗AI法规与标准周度监测”机制，为伦理例会提供最新权威更新（EU AI Act、FDA相关清单与指南、MHRA SaMD动向、NIST/WHO等）。计划在数天内交付一个开源代码仓库，自动抓取官方公开页面的更新信号，聚合、去重、比对变更并产出周报。约束：仅抓取官方公开网页/文档；遵守robots.txt与合理请求频率；不使用付费或私有API；交付成果需可在他人机器一键复现。",
+      "task_focus": [
+        "梳理与配置权威来源清单及其更新信号（RSS、版本号、发布日期、修订历史），覆盖EU/US/UK/WHO/NIST至少5类来源",
+        "设计统一数据结构（源、地域、主题标签、标题、发布日期、版本/修订号、原始URL、内容哈希、抓取时间戳）与去重/变更比对策略",
+        "实现抓取、解析、去重、差异化比对与Markdown周报自动生成；输出机器可读（JSON/CSV）与人可读版本",
+        "建立审计留痕（抓取日志、错误处理、来源快照链接或内容摘要）与复现流程（环境、配置、任务调度）"
+      ],
+      "deliverable_requirements": [
+        "一个可运行的GitHub代码仓库：包含README（环境依赖、安装与一键运行步骤、数据目录结构、调度建议）、开源许可证、配置样例（sources.yaml/.env模板）、核心脚本与模块化代码",
+        "至少支持并默认启用以下来源中的5个或以上：EUR-Lex（EU AI Act官方文本/更新）、美国FDA AI/ML-Enabled Medical Devices清单与相关指导页面、MHRA Software and AI as a Medical Device Change Programme、NIST AI RMF 1.0页面、WHO 2023《Regulatory considerations on AI for health》页面",
+        "自动生成两类输出：1) data/ 下的JSON或CSV（含去重与变更字段）；2) reports/ 下的周报Markdown，列出新增/更新项、原文链接、变更摘要与时间戳",
+        "提交一次示例运行的产出（包含在仓库内），README中记录采集日期、版本信息与再次复现的具体命令；确保遵守robots.txt并设置合理的请求间隔"
+      ],
+      "evaluation_focus": [
+        "来源权威性与覆盖度（是否覆盖EU/US/UK/WHO/NIST等关键法域与机构）",
+        "变更检测的准确性与稳定性（新增/更新识别、重复消解、版本/日期解析鲁棒性）",
+        "可复现性（环境配置、依赖锁定、CI或一键脚本、错误处理与日志）",
+        "合规与伦理（尊重抓取规范、不存储受限内容、完整保留来源链接与引用信息）"
+      ]
+    },
+    {
+      "query_id": "med_ai_ethics_officer-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "EU AI Act 2024 official journal text health high-risk obligations Annex III EUR-Lex",
+      "search_queries": [
+        "EU AI Act 2024 official journal text health high-risk obligations Annex III EUR-Lex",
+        "WHO Ethics and governance of artificial intelligence for health 2021 pdf",
+        "FDA Predetermined Change Control Plan AI/ML-enabled device software functions draft guidance 2023 pdf site:fda.gov",
+        "NICE evidence standards framework for digital health technologies 2022 pdf site:nice.org.uk",
+        "NIST AI Risk Management Framework 1.0 2023 PDF site:nist.gov"
+      ],
+      "scenario": "角色：跨境互联网医院AI伦理合规官（牵头全院AI治理）。背景：未来12–18个月内计划在多国市场引入与扩展多款医疗AI（急诊影像分诊、病历自动摘要、患者问答）。董事会要求提交“医疗AI伦理与持续监管体系蓝图”，需系统对标EU AI Act（高风险义务与上市后监测）、美国GMLP/PCCP、英国DTAC/NICE证据框架、WHO伦理原则与NIST AI RMF，形成组织治理、指标体系、流程与路线图。约束：仅依赖公开权威资料；不包含任何供应商机密/内部数据；方案需可落地至角色、文档、工具与培训，具备跨法域可迁移性；预计1个月以上完成，包含调研—验证—迭代循环。",
+      "task_focus": [
+        "建立跨法域义务映射：EU AI Act高风险要求（数据治理、技术文档、透明度、人类监督、质量管理、上市后监测/事件通报）、美国GMLP/PCCP思路、英国DTAC/NICE证据分级、WHO伦理原则、NIST AI RMF功能域",
+        "设计组织治理与RACI：伦理审查会、模型变更控制（含PCCP思想与回滚策略）、供应商尽调与合同条款（数据使用、审计权、绩效与公平KPI、通报时限）",
+        "构建指标与监控体系：安全性、临床有效性、公平性/偏倚、鲁棒性/漂移、可解释性、隐私与安全；设定度量方法、阈值、频率、数据来源与报告机制",
+        "制定12–18个月路线图：试点选择、外部评估（如NICE证据框架）、扩展与再验证、审计与培训计划、预算估算与风险应对"
+      ],
+      "deliverable_requirements": [
+        "提交一份25–40页的中文蓝图报告（PDF）：包含现状与差距评估、法规/标准义务矩阵（EU/US/UK/WHO/NICE对照）、治理架构与RACI、流程图（审查/变更/事件通报）、指标字典与SLA、12–18个月路线图与里程碑（含资源/预算/培训）",
+        "所有关键设计决策后提供至少1条权威来源的精确引用（法规条款/指南章节/官方网页），并附可访问的稳定链接或DOI；义务矩阵需指明年份/版本与适用范围",
+        "提供可直接使用的模板（附录）：伦理影响陈述模板、模型变更审批与撤回清单（涵盖PCCP思路）、供应商尽调问卷（含公平/安全KPI）、事件通报表与时间要求",
+        "给出风险登记与应急预案：包括停止/回退触发条件、沟通与报告路径、责任链与演练计划"
+      ],
+      "evaluation_focus": [
+        "跨法域义务映射的准确性与完整性（EU AI Act高风险义务、美国GMLP/PCCP、英国DTAC/NICE、WHO/NIST）",
+        "指标体系的可测量性与可操作性（明确度量方法、阈值、频率与数据来源）",
+        "路线图与治理方案的可落地性（角色、流程、预算、培训与审计安排）",
+        "引文质量与核查便捷度（官方/学术、版本与年份清晰、链接可访问）"
+      ]
+    },
+    {
+      "query_id": "public_health_lab_technologist-l3-20251014",
+      "level": "L3",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "EPA Method 1604 2014 pdf MI Medium total coliform E. coli",
+      "search_queries": [
+        "EPA Method 1604 2014 pdf MI Medium total coliform E. coli",
+        "WHO Guidelines for Drinking-water Quality 4th edition 2022 E. coli risk categories pdf",
+        "WHO Laboratory Quality Management System handbook 2011 pdf"
+      ],
+      "scenario": "角色：市级疾控中心（公共卫生实验室）检验技师。背景：需在数小时内为基层供水单位的饮用水大肠埃希氏菌（E. coli）监测，制定一份可直接执行的SOP与质控清单，并配套标准化报告模板，确保与国际公开指南一致，便于外部审计与互认。约束：仅使用公开互联网资料（如EPA方法、WHO饮用水指南、WHO实验室质量管理手册），不得使用本机构LIMS或内部SOP，不得引用付费或受限文件。",
+      "task_focus": [
+        "依据EPA Method 1604梳理膜过滤法检测E. coli的关键步骤、培养基与培养条件、阳性/阴性对照与方法空白等必备质控要点",
+        "对照WHO饮用水水质指南（最新版/2022更新），明确E. coli结果阈值与健康风险分级，并形成报告解释用语",
+        "形成标准化记录表与报告模板（含样品信息、方法与批次、质控结果、计数与换算、判定与建议）",
+        "在文末建立“可追溯引用”清单，逐条对齐SOP关键参数与其出处（EPA/WHO页码或章节）"
+      ],
+      "deliverable_requirements": [
+        "提交一份5–8页的单一报告文件（PDF或DOCX），包含：SOP流程图/步骤、质控清单（对照/频次/接受标准）、结果判读和报告模板样例",
+        "在质控清单中列出至少：阳性/阴性对照、方法空白、重复/平行样、培养温度/时间允许偏差，并给出每项的可核查接受标准与对应公开来源引用",
+        "在报告模板中提供一个示例数据表，包含E. coli计数（CFU/100 mL）计算、必要的稀释换算、以及按WHO指南的风险级别判定与建议措辞",
+        "在文末提供清晰的参考文献与链接（EPA Method 1604原文PDF、WHO饮用水指南2022版、WHO LQMS手册），并在正文中以脚注或括注标明引用点"
+      ],
+      "evaluation_focus": [
+        "方法与质控接受标准是否与EPA Method 1604一致（如培养基、培养条件、质控项目与判定逻辑），引用是否可追溯至具体章节/页码",
+        "风险分级与报告表述是否与WHO饮用水指南（2022更新）一致，阈值与健康建议是否准确且可核查",
+        "SOP与模板是否完整可执行（步骤清晰、记录要素齐全、误差与异常处置到位），并具备外部审计可用性",
+        "引用资料是否全部为公开可获取、链接可访问，且无付费/受限来源依赖"
+      ]
+    },
+    {
+      "query_id": "public_health_lab_technologist-l4-20251014",
+      "level": "L4",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "CDC 2019-nCoV Real-Time RT-PCR Diagnostic Panel N1 N2 primer and probe sequences pdf",
+      "search_queries": [
+        "CDC 2019-nCoV Real-Time RT-PCR Diagnostic Panel N1 N2 primer and probe sequences pdf",
+        "NCBI Virus SARS-CoV-2 complete genome fasta download",
+        "NCBI BLAST+ command line manual pdf",
+        "Influenza A B complete genome fasta NCBI download RSV genome fasta"
+      ],
+      "scenario": "角色：省级公共卫生实验室分子检测项目的检验技师（兼生信支持）。背景：为评估实验室现用的CDC N1/N2 SARS-CoV-2 qPCR引物/探针在当前公开基因组中的覆盖性（Inclusivity）与特异性（Exclusivity），需要构建可复现的开源代码仓库，自动化下载公开序列、对比位点错配、统计覆盖率，并对常见呼吸道病毒进行体外特异性排查（体外比对）。约束：仅使用公开数据源与工具（CDC官网引物序列页、NCBI Virus/GenBank、BLAST+等开源/免费工具），不得使用GISAID或任何受限数据库；结果需数天内可复现。",
+      "task_focus": [
+        "从CDC官网获取N1/N2引物与探针的序列（含版本/发布日期），并在仓库中固化元数据",
+        "从NCBI Virus下载近阶段的SARS-CoV-2完整基因组（可抽样5,000–10,000条，记录检索与筛选条件），进行位点提取与错配统计，评估引物/探针覆盖性",
+        "从NCBI下载常见呼吸道病毒（Influenza A/B、RSV等）代表性基因组，进行排他性体外比对，评估潜在非特异结合",
+        "输出标准化统计与可视化（错配位置分布、覆盖率、按PANGO谱系或时间分层的变化趋势），并确保一键复现（环境文件、脚本、README）"
+      ],
+      "deliverable_requirements": [
+        "提交一个公开代码仓库（如GitHub），包含：可复现的环境文件（environment.yml或requirements.txt）、数据获取脚本、比对与统计脚本、结果导出（CSV/JSON）与图表，以及详细README（含数据来源URL与检索日期、参数、版本）",
+        "README中必须明确：CDC N1/N2序列的版本与URL、NCBI Virus检索/筛选条件（如仅收录完整基因组、去除高N比例等）、样本量与时间范围、以及BLAST+/比对工具版本与关键参数",
+        "在仓库中提供一份methods.md或REPORT.md，解释错配统计方法（含IUPAC简并碱基处理）、Inclusivity/Exclusivity判定阈值与合理性，并引用公开权威来源（CDC引物页、NCBI工具手册）",
+        "输出至少：1）覆盖性总体估计（%基因组完全匹配或<=1错配）；2）错配位置热图/柱状图；3）对Influenza/RSV等的非特异性比对结果表（期待为无显著匹配）"
+      ],
+      "evaluation_focus": [
+        "可复现性：在新环境中能否按README一键运行并生成与示例一致的统计与图表；环境与版本控制是否完善",
+        "数据与参数透明度：CDC引物序列、NCBI下载条件、样本量与筛选逻辑是否记录完整且可核查；工具与参数是否合规并有公开引用",
+        "方法学正确性：错配统计、IUPAC碱基处理、Inclusivity/Exclusivity定义是否合理，是否与公开指南/常规实践一致",
+        "结果可信度：覆盖率与非特异性比对结果是否与预期一致，并有充分敏感性分析（如不同错配阈值）与局限性说明"
+      ]
+    },
+    {
+      "query_id": "public_health_lab_technologist-l5-20251014",
+      "level": "L5",
+      "orientation": "positive",
+      "language": "zh",
+      "search_query": "WHO 2022 Environmental surveillance for SARS-CoV-2 guidance pdf",
+      "search_queries": [
+        "WHO 2022 Environmental surveillance for SARS-CoV-2 guidance pdf",
+        "CDC NWSS Data and Analytics Technical Guidance 2023 pdf Percent change Percentile",
+        "APHL Wastewater Surveillance Data Interpretation and Use 2022 pdf",
+        "EU JRC 2021 2023 SARS-CoV-2 wastewater surveillance guidance pdf",
+        "UKHSA wastewater surveillance public health guidance 2023 2024 pdf"
+      ],
+      "scenario": "角色：省级疾控中心公共卫生实验室检验技师（项目负责人）。背景：拟在1–2个月内完成“基于公开指南的生活污水病原体监测（以SARS-CoV-2为先导）”数字化自动化方案设计与小规模试点计划，涵盖采样-实验-数据-解读-报告全链路，并对接公开阈值与指标（如CDC NWSS的Percent change、Percentile等），实现质控自动判定、周报自动生成与风险提示。约束：仅使用公开资料（WHO 2022环境监测指南、CDC NWSS技术指南、APHL数据解读指南、EU JRC与UKHSA公开资料、EPA相关方法），不得依赖任何内部数据库；交付物为一份完整战略与实施报告。",
+      "task_focus": [
+        "依据WHO/CDC/APHL/EU/UKHSA公开指南，梳理污水样本采集、浓缩/提取、定量、质控、数据标准化与解释的完整规范清单与可操作流程",
+        "设计自动化数据管线蓝图：含元数据标准、检测结果与质控字段、CDC NWSS核心指标计算（Percent change、Percentile、上升趋势判定）、异常值与LOD处理规则",
+        "提出试点实施计划（4–6周）：选点、频次、实验流程、人员与培训、数据接口与自动报告模板、治理与隐私合规（引用公开法规/指南）",
+        "制定成效评估框架：技术指标（数据完整性、质控通过率、时效性）、公共卫生指标（异常上升天数识别、预警提前量）与风险与应对（供应链/方法学变更）"
+      ],
+      "deliverable_requirements": [
+        "提交一份不少于25页的单一战略与实施报告（PDF或DOCX），包含：总体架构图、流程图、数据字典（字段/单位/来源/校验规则）、自动化计算公式（附参考）、报告模版（周报/月报样例）与人员/培训/治理安排",
+        "在报告中以可核查方式引用并对齐关键规范与公式：如CDC NWSS的Percent change与Percentile定义与计算、WHO 2022采样与质控要求、APHL数据解读建议、EU/UKHSA的实践要点；所有引用需提供公开链接与版本/年份",
+        "提供试点甘特图与里程碑（不超过6周），明确资源需求（仪器/试剂/耗材/人力）、数据与IT需求（仅公开工具与格式）、风险清单与缓解策略（如方法学更迭、抑制物、低丰度样本）",
+        "附带验证与复现指引：指定1–2个公开样例数据源（如已公开的污水监测数据集/仪表盘导出字段），演示指标计算与自动周报生成逻辑（可用伪数据示例与公式）"
+      ],
+      "evaluation_focus": [
+        "标准对齐度：关键流程与指标是否与WHO 2022、CDC NWSS 2023、APHL 2022、EU/UKHSA公开资料一致，并提供可追溯的章节/链接",
+        "可执行性与落地性：流程、数据字典、计算公式与报告模板是否足够细化，可在不依赖内部系统的条件下开展小规模试点",
+        "完整性与风险控制：是否覆盖采样到报告全链路、质量控制与异常处理、合规与治理及供应链/方法学变动的应对",
+        "评估框架有效性：技术与公共卫生成效指标是否明确、可量化，且验证与复现步骤清晰、可据公开数据演示"
+      ]
+    }
+  ]
+}
