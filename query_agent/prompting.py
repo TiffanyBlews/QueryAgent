@@ -253,7 +253,6 @@ def build_messages(
             f"交付要求:\n{deliver_focus}\n\n"
             f"评估要点:\n{evaluation_focus}\n\n"
             f"{ground_truth_section}\n\n"
-            # 要求模型在不改变JSON结构的前提下，落实V8的新增约束（安全/可控/时间窗口/算力红线/三E等）
             "请根据上述信息生成一个JSON结构，字段要求如下：\n"
             "{\n"
             '  "query_id": string,\n'
@@ -331,15 +330,14 @@ def build_messages(
             "}\n\n"
             "要求：\n"
             "1. 三E落实：确保Examining/Executable/Evaluable可落地，交付物与评分Rubric必须可客观验证/量化。\n"
-            "2. 角色、组织、业务背景要真实可信，不要说这是给AI布置的任务，而是存在的真实职业角色与业务场景\n"
+            "2. 角色、组织、业务背景要真实可信，即使场景给出这是智能体的任务也不要说这是给AI布置的任务，而是要改用一个存在的真实职业角色与业务场景\n"
             "3. 交付可评：在deliverables.quality_bar与evaluation_guide中给出可量化标准/阈值（尤其L4需包含与参考资料/基准的一致性指标）。\n"
-            "4. 上下文一致：context字段不得捏造，仅可细化；必须与Persona/约束/资源一致。\n"
-            "5. 算力与训练红线：任务须training-free，禁止从头训练或长时间/昂贵算力依赖；在grading_rubric与evaluation_guide.checkpoints加入对应判定。\n"
-            "6. 时间窗口：根据参考资料和Ground Truth的发布时间设置资料使用时间窗口，并写入inputs_and_resources.allowed_external_research或notes中。\n"
-            "7. 信息源限制：大部分情况不需要限制检索范围，如需限制检索范围，请在inputs_and_resources.reference_usage说明（如‘仅限提供文档库，不开放互联网搜索’）。\n"
-            "8. 红线/绿色标准自检：在evaluation_guide.checkpoints列出本级别红线与绿色标准自检项，以便评测Agent判分。\n"
-            "9. 输出中不得包含Markdown标记，仅返回纯JSON（必须是json对象）；notes可提示风险与避免泄漏Ground Truth的方法。\n"
-            "10. 交付物单一：交付物只能有一个文件和/或一个代码仓库，不得要求提交多份报告；请在deliverables.format_requirements中明确说明。\n"
+            "4. 算力与训练红线：任务须training-free，禁止从头训练或长时间/昂贵算力依赖\n"
+            "5. 时间窗口：根据参考资料和Ground Truth的发布时间设置资料使用时间窗口，并写入inputs_and_resources.allowed_external_research或notes中。\n"
+            "6. 信息源限制：大部分情况不需要限制检索范围，如需限制检索范围，请在inputs_and_resources.reference_usage说明（如‘仅限提供文档库，不开放互联网搜索’）。\n"
+            "7. 红线/绿色标准自检：在evaluation_guide.checkpoints列出本级别红线与绿色标准自检项，以便评测Agent判分。\n"
+            "8. 输出中不得包含Markdown标记，仅返回纯JSON（必须是json对象）；notes可提示风险与避免泄漏Ground Truth的方法。\n"
+            "9. 交付物单一：交付物只能有一个报告和/或一个代码仓库，不得要求提交多份报告；请在deliverables.format_requirements中明确说明。\n"
         ),
     }
 
