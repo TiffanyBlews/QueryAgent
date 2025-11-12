@@ -1,0 +1,12 @@
+API_Key.md
+.env
+output/
+packages/
+final_packages/
+reports/
+.venv/
+.DS_Store
+*.log
+ground_truth_cache/
+__pycache__/
+configs/

@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Batch generation for configs/generated_cn_ai_by_class/* 55个职业
-# Mirrors scripts/run_full_resume_llm.sh but targets the China Occupational Classification taxonomy outputs.
 
 set -euo pipefail
 
@@ -22,61 +20,23 @@ export OPENAI_TIMEOUT="${OPENAI_TIMEOUT:-400}"
 export LLM_REWRITE_SEARCH_QUERY="${LLM_REWRITE_SEARCH_QUERY:-0}"
 export FALLBACK_TO_TEMPLATE="${FALLBACK_TO_TEMPLATE:-0}"
 
-TARGET_PER_PROFESSION="${TARGET_PER_PROFESSION:-15}"
-GENERATE_MAX_WORKERS="${GENERATE_MAX_WORKERS:-32}"
-GENERATE_LIMIT="${GENERATE_LIMIT:-}"
-SKIP_GENERATION="${SKIP_GENERATION:-1}"
-TAXONOMY_PATH="${TAXONOMY_PATH:-$ROOT_DIR/configs/cn_taxonomy_ai_agents_by_classification_flat.json}"
-
-CONFIG_DIR="$ROOT_DIR/configs/generated_cn_ai"
-mkdir -p "$CONFIG_DIR"
+CONFIG_DIR="${CONFIG_DIR:-$ROOT_DIR/configs/generated_cn_ai}"
+if [[ ! -d "$CONFIG_DIR" ]]; then
+  echo "[ERROR] Config directory not found: $CONFIG_DIR" >&2
+  echo "[hint] Please run scripts/step1_generate_configs.sh first or set CONFIG_DIR." >&2
+  exit 2
+fi
 
 # Normalize CLI targets (accept both foo.json or foo)
-declare -a ARG_IDS=()
 declare -a NORMALIZED_TARGETS=()
 if [[ $# -gt 0 ]]; then
   for raw in "$@"; do
     name="${raw##*/}"
-    if [[ "$name" == *.json ]]; then
-      id="${name%.json}"
-    else
-      id="$name"
+    if [[ "$name" != *.json ]]; then
       name="${name}.json"
     fi
-    ARG_IDS+=("$id")
-    NORMALIZED_TARGETS+=("$name")
+    NORMALIZED_TARGETS+=("${name}")
   done
-fi
-
-if [[ "$SKIP_GENERATION" != "1" ]]; then
-  if [[ ! -f "$TAXONOMY_PATH" ]]; then
-    echo "[ERROR] Taxonomy file not found: $TAXONOMY_PATH" >&2
-    exit 2
-  fi
-
-  echo "[info] Running incremental config generation via generate_profession_configs.py"
-  echo "[info] Target per profession: $TARGET_PER_PROFESSION"
-
-  gen_cmd=(
-    python3 "$ROOT_DIR/scripts/generate_profession_configs.py"
-    --taxonomy "$TAXONOMY_PATH"
-    --output-dir "$CONFIG_DIR"
-    --incremental
-    --target-per-profession "$TARGET_PER_PROFESSION"
-    --max-workers "$GENERATE_MAX_WORKERS"
-  )
-
-  if [[ ${#ARG_IDS[@]} -gt 0 ]]; then
-    gen_cmd+=(--industries "${ARG_IDS[@]}")
-  fi
-  if [[ -n "$GENERATE_LIMIT" ]]; then
-    gen_cmd+=(--limit "$GENERATE_LIMIT")
-  fi
-
-  echo "[info] Generation command: ${gen_cmd[*]}"
-  "${gen_cmd[@]}"
-else
-  echo "[info] SKIP_GENERATION=1 → skip incremental config generation."
 fi
 
 OUTPUT_BASE="${OUTPUT_BASE:-$ROOT_DIR/output/cn_ai_class}"
@@ -108,7 +68,6 @@ echo "[info] Using configuration directory: $CONFIG_DIR"
 echo "[info] Target files: ${TARGETS[*]}"
 echo "[info] OUTPUT_BASE : $OUTPUT_BASE"
 echo "[info] PACKAGE_BASE: $PACKAGE_BASE"
-echo "[info] MAX_TASKS/Profession: $TARGET_PER_PROFESSION"
 echo "[info] LIMIT       : ${LIMIT:-unlimited}"
 echo "[info] MAX_WORKERS : $MAX_WORKERS"
 echo "[info] LLM rewrite : $LLM_REWRITE_SEARCH_QUERY"
