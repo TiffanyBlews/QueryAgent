@@ -19,13 +19,14 @@ export LLM_MAX_RETRIES="${LLM_MAX_RETRIES:-1}"
 export OPENAI_TIMEOUT="${OPENAI_TIMEOUT:-400}"
 export LLM_REWRITE_SEARCH_QUERY="${LLM_REWRITE_SEARCH_QUERY:-0}"
 export FALLBACK_TO_TEMPLATE="${FALLBACK_TO_TEMPLATE:-0}"
-SPLIT_VIEWS="${SPLIT_VIEWS:-1}"
 
-# 根据职业体系的config生成任务
+# 二者选其一
+# 1. 根据职业体系的config生成任务
 CONFIG_DIR="${CONFIG_DIR:-$ROOT_DIR/configs/generated_cn_ai}"
 
-# 根据简历config生成任务
-CONFIG_PATH_RESOLVED="${CONFIG_PATH_RESOLVED:-$ROOT_DIR/configs/generated/offered_resume_queries_llm_refined.json}"
+# 2. 根据简历config生成任务
+# CONFIG_DIR="${CONFIG_DIR:-$ROOT_DIR/configs/generated}"
+
 if [[ ! -d "$CONFIG_DIR" ]]; then
   echo "[ERROR] Config directory not found: $CONFIG_DIR" >&2
   echo "[hint] Please run scripts/step1_generate_configs.sh first or set CONFIG_DIR." >&2
@@ -47,52 +48,6 @@ fi
 OUTPUT_BASE="${OUTPUT_BASE:-$ROOT_DIR/output/cn_ai_class}"
 PACKAGE_BASE="${PACKAGE_BASE:-$ROOT_DIR/packages/cn_ai_class}"
 mkdir -p "$OUTPUT_BASE" "$PACKAGE_BASE"
-
-if [[ -n "$CONFIG_PATH_RESOLVED" ]]; then
-  LIMIT="${LIMIT:-}"
-  MAX_WORKERS="${MAX_WORKERS:-32}"
-  SKIP_DL="${SKIP_DOWNLOADS:-0}"
-  NO_INVERSE="${NO_INVERSE:-0}"
-  BUILD_INCREMENTAL="${BUILD_INCREMENTAL:-1}"
-  SPLIT_VIEWS="${SPLIT_VIEWS:-1}"
-
-  filename="$(basename "$CONFIG_PATH_RESOLVED")"
-  name="${filename%.json}"
-  out_path="${OUTPUT_FILE:-$OUTPUT_BASE/${name}.jsonl}"
-  pkg_dir="${PACKAGE_DIR:-$PACKAGE_BASE/${name}}"
-  mkdir -p "$(dirname "$out_path")" "$pkg_dir"
-
-  cmd=(
-    python3 "$ROOT_DIR/build_queries.py"
-    --config "$CONFIG_PATH_RESOLVED"
-    --output "$out_path"
-    --package-dir "$pkg_dir"
-    --emit-txt
-    --log-level INFO
-    --max-workers "$MAX_WORKERS"
-  )
-
-  if [[ "$SPLIT_VIEWS" != "0" && "$SPLIT_VIEWS" != "false" ]]; then
-    cmd+=(--split-views)
-  fi
-  if [[ -n "$LIMIT" ]]; then
-    cmd+=(--limit "$LIMIT")
-  fi
-  if [[ "$SKIP_DL" == "1" || "$SKIP_DL" == "true" ]]; then
-    cmd+=(--skip-downloads)
-  fi
-  if [[ "$NO_INVERSE" == "1" || "$NO_INVERSE" == "true" ]]; then
-    cmd+=(--no-inverse)
-  fi
-  if [[ "$BUILD_INCREMENTAL" == "1" || "$BUILD_INCREMENTAL" == "true" ]]; then
-    cmd+=(--incremental)
-  fi
-
-  echo "[info] Running (single config): ${cmd[*]}"
-  "${cmd[@]}"
-  echo "[OK] Completed $name → JSONL: $out_path | packages: $pkg_dir"
-  exit 0
-fi
 
 # Allow filtering by specific classification id (e.g., 2_2_02)
 TARGETS=()
@@ -146,13 +101,11 @@ for filename in "${TARGETS[@]}"; do
     --output "$out_path"
     --package-dir "$pkg_dir"
     --emit-txt
+    --split-views
     --log-level INFO
     --max-workers "$MAX_WORKERS"
   )
 
-  if [[ "$SPLIT_VIEWS" != "0" && "$SPLIT_VIEWS" != "false" ]]; then
-    cmd+=(--split-views)
-  fi
   if [[ -n "$LIMIT" ]]; then
     cmd+=(--limit "$LIMIT")
   fi
