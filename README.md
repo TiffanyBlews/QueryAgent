@@ -36,6 +36,7 @@ export SERPER_API_KEY="serper-..."
 | `output/cn_ai_class/<industry>_<timestamp>.jsonl` | 批量生成后的正式任务，每行都是带 Ground Truth、搜索记录、评估指南的 JSON。启用 `--incremental` 时会按时间戳追加。|
 | `packages/cn_ai_class/<industry>/<level>/<orientation>/<query_id>/` | 完整打包目录；含 `query.json`、`solver_query.json`、`search_results.json`、`ground_truth/metadata.json(+下载件)`、`data_room/` (参考资料) 以及 `task.txt`。|
 | `final_packages/<package-dir>/...` | “瘦身版”包，仅保留 `task.txt`、`data_room/`、`ground_truth/`，方便分发。|
+| `output/feasibility/**` | Step 3 评估输出：含 `results.jsonl`、`state.json`、各包的 `artifacts/` 文本快照及 `verified_*`/`executable_packages` 副本。|
 | `output/*.txt` | 默认 `--emit-txt`，会生成聚合版纯文本任务清单。|
 | `reports/*.md` | `scripts/analyse_cn_ai_output.py` 的统计输出。|
 
@@ -62,7 +63,27 @@ export SERPER_API_KEY="serper-..."
      5. `packager.save_query_package` 将任务、ground_truth、搜索记录、参考资料下载到包目录，并生成 solver/judge 双视图。可用 `--skip-downloads`、`--split-views`、`--emit-txt` 控制行为。
    - `generate_batch` 默认并行（`--max-workers` 或 `QUERY_AGENT_MAX_WORKERS`），失败任务最多重试三次，并在增量模式下跳过已存在的 `query_id`。
 
-3. **结果巡检/统计** (`scripts/analyse_cn_ai_output.py`)
+3. **可执行性与 Ground Truth 评估** (`scripts/step3_run_feasibility.sh` → `query_agent/feasibility_agent.py`)
+   - 输入：Step 2 生成的 `packages/**/task.txt`。脚本会自动 `source API_Key.md`，并把 `PACKAGE_ROOT`（默认 `packages/cn_ai_class`）与 `OUTPUT_DIR`（默认 `output/feasibility`）传给 Python 模块。
+   - 运行方式：
+     ```bash
+     MAX_WORKERS=8 LIMIT=20 \
+     bash scripts/step3_run_feasibility.sh 2_2_02/L3/positive 4_4_07/L3/inverse
+     ```
+     可同时指定多个 package id/路径；未提供参数时会扫描 `PACKAGE_ROOT` 下所有 `task.txt`。`LIMIT` 仅处理前 N 个包，命令行额外参数会透传给 `python3 -m query_agent.feasibility_agent`。
+   - 输出：`output/feasibility/results.jsonl` 记录评估结果，`state.json` 用于断点续跑；`artifacts/<package_id>/` 保存参考资料文本快照；当任务判定可执行或 GT 合规时会把包拷贝到 `executable_packages/`、`verified_packages/` 或 `verified_inverse_packages/`，方便后续人工复核。
+   - 独立调用示例：
+     ```bash
+     python3 -m query_agent.feasibility_agent \
+       --package-root packages/cn_ai_class \
+       --output-dir output/feasibility \
+       --max-workers 8 \
+       --limit 50 \
+       6_6_30/L4/positive
+     ```
+     CLI 支持传绝对路径、相对路径或 package id；也可以直接传 `packages/.../task.txt` 文件。
+
+4. **结果巡检/统计** (`scripts/analyse_cn_ai_output.py`)
    - 扫描 `output/cn_ai_class/*.jsonl`，统计各分类任务总数、层级、正/逆向分布、平均检索词数量、职业覆盖度。
    - 可通过 `--report report.md` 输出 Markdown 报表，辅助验收与对比。
 
@@ -83,6 +104,9 @@ bash scripts/step1_resume_generate_configs.sh
 # Step 2：基于配置批量生成任务、打包产物
 MAX_WORKERS=16 bash scripts/step2_generate_queries.sh 2_2_02.json 4_4_02.json
 
+# Step 3：巡检可执行性与 Ground Truth
+MAX_WORKERS=8 LIMIT=20 bash scripts/step3_run_feasibility.sh 2_2_02/L3/positive
+
 # 生成完毕后可做统计
 python3 scripts/analyse_cn_ai_output.py --input output/cn_ai_class --report reports/cn_ai.md
 ```
@@ -93,6 +117,7 @@ python3 scripts/analyse_cn_ai_output.py --input output/cn_ai_class --report repo
 - `TARGET_PER_PROFESSION`（Step 1）：传递给 `generate_profession_configs.py --target-per-profession`，控制每个职业的任务条数。
 - `SKIP_DOWNLOADS=1`：跳过参考资料/ground truth 下载，仅写元数据。
 - `NO_INVERSE=1`：只输出正向任务。
+- `PACKAGE_ROOT` / `OUTPUT_DIR` / `LIMIT` / `LOG_LEVEL`（Step 3）：分别指定判题输入目录、输出目录、抽样数量与日志等级；`MAX_WORKERS` 控制并发线程。
 
 ## 代码结构速览
 

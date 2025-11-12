@@ -4,6 +4,7 @@ Agent for assessing task feasibility and ground-truth suitability on synthesized
 
 from __future__ import annotations
 
+import argparse
 import json
 import logging
 import threading
@@ -746,3 +747,139 @@ class FeasibilityAgent:
                 "usage_notes": [f"LLM 调用失败：{exc}"],
                 "confidence": 0.0,
             }
+
+
+def _collect_packages_from_path(path: Path) -> List[Path]:
+    packages: List[Path] = []
+    if path.is_file():
+        if path.name == "task.txt":
+            packages.append(path.parent)
+            return packages
+        raise ValueError(f"文件 {path} 不是 task.txt，无法识别为任务包。")
+    if not path.is_dir():
+        raise ValueError(f"路径不存在或不可访问：{path}")
+
+    task_file = path / "task.txt"
+    if task_file.exists():
+        packages.append(path)
+        return packages
+
+    for candidate in sorted(path.rglob("task.txt")):
+        packages.append(candidate.parent)
+
+    if not packages:
+        raise ValueError(f"{path} 下未找到任何 task.txt，无法确定任务包目录。")
+    return packages
+
+
+def _resolve_target_packages(package_root: Path, targets: Iterable[str]) -> List[Path]:
+    resolved: List[Path] = []
+    seen: set[str] = set()
+
+    for raw in targets:
+        candidate = Path(raw)
+        if not candidate.exists():
+            candidate = package_root / raw
+
+        candidate = candidate.resolve()
+        if not candidate.exists():
+            raise ValueError(f"目标路径不存在：{raw}")
+
+        packages = _collect_packages_from_path(candidate)
+        for pkg in packages:
+            key = str(pkg.resolve())
+            if key not in seen:
+                seen.add(key)
+                resolved.append(pkg)
+
+    return resolved
+
+
+def _parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="评估 packages/<...>/task.txt 任务包的可执行性与 Ground Truth 质量。",
+    )
+    parser.add_argument(
+        "--package-root",
+        type=Path,
+        default=Path("packages/cn_ai_class"),
+        help="Step2 输出的任务包根目录（默认: packages/cn_ai_class）",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("output/feasibility"),
+        help="评估结果输出目录（默认: output/feasibility）",
+    )
+    parser.add_argument(
+        "--max-workers",
+        type=int,
+        default=8,
+        help="并发评估的线程数（默认: 8）",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="可选：只处理前 N 个待评估任务包，用于抽样或调试。",
+    )
+    parser.add_argument(
+        "--log-level",
+        default="INFO",
+        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        help="日志等级（默认: INFO）",
+    )
+    parser.add_argument(
+        "targets",
+        nargs="*",
+        help=(
+            "可选：指定一个或多个任务包路径/ID。"
+            "可以传递绝对路径、相对路径或 package_id（相对于 --package-root）。"
+            "如未传参则遍历 package-root 下全部任务包。"
+        ),
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = _parse_args()
+
+    logging.basicConfig(
+        level=getattr(logging, args.log_level.upper()),
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    )
+
+    package_root = args.package_root.resolve()
+    output_dir = args.output_dir.resolve()
+
+    if not package_root.exists():
+        raise SystemExit(f"[ERROR] package_root 不存在：{package_root}")
+
+    agent = FeasibilityAgent(
+        package_root=package_root,
+        output_dir=output_dir,
+        max_workers=args.max_workers,
+    )
+
+    if args.targets:
+        try:
+            packages = _resolve_target_packages(package_root, args.targets)
+        except ValueError as exc:
+            raise SystemExit(f"[ERROR] {exc}") from exc
+    else:
+        packages = agent._discover_packages()  # noqa: SLF001
+
+    if args.limit is not None:
+        packages = packages[: args.limit]
+
+    logger.info(
+        "启动可执行性评估：root=%s, output=%s, packages=%d",
+        package_root,
+        output_dir,
+        len(packages),
+    )
+    agent.run(packages)
+
+
+if __name__ == "__main__":
+    main()
