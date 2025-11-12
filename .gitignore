@@ -10,3 +10,4 @@ reports/
 ground_truth_cache/
 __pycache__/
 configs/
+offered_resume/

@@ -19,7 +19,11 @@ export SERPER_API_KEY="serper-..."
 ```
 如需启用 PDF 解析，还需 `CRAWL_API_ENDPOINT`、`CRAWL_API_KEY`、`CRAWL_API_SECRET`。
 
-### 3. 先验知识库 (可选)
+### 3. 简历原始数据
+- `offered_resume/`：经 OCR→Markdown 清洗后的候选人简历集合，脚本默认会扫描其中的 `*.md` 文件（包含 `new/` 子目录）。
+- `offered_resume_md.zip`：上述目录的压缩归档，方便在不同环境间传输，可用 `unzip offered_resume_md.zip -d offered_resume` 重置。
+
+### 4. 先验知识库 (可选)
 - `resources/persona_bank/personas.jsonl`：预置 persona，用于 `context_builder` 在 prompt 中生成角色画像。
 - `context_sources/**/metadata.json`：如果存在，`config_loader` 会自动把已有调研资料注入 Prompt。
 - `ground_truth_cache/`：由 `query_agent/ground_truth_cache.py` 维护的下载缓存；重复任务会直接复用已下载的 Ground Truth。
@@ -113,3 +117,43 @@ python3 scripts/analyse_cn_ai_output.py --input output/cn_ai_class --report repo
 | `BUILD_INCREMENTAL=1` | `scripts/step2_generate_queries.sh` → `build_queries.py` | 避免重复写入已存在的 query，方便多次追加。|
 
 通过以上输入、输出与流程梳理，可以快速定位数据源、管线环节以及调试入口，支持对职业评测任务的批量构建、打包与质量评估。
+
+## 使用简历生成 Query（Resume → Query Seeds → Query Packages）
+
+1. **准备环境与简历目录**
+   - 在根目录放置 `API_Key.md` 并配置 `OPENAI_API_KEY`、`OPENAI_BASE_URL`（可选）、`MODEL`、`SERPER_API_KEY` 等变量，脚本会自动 `source`。
+   - 确保 `offered_resume/` 已包含 OCR→Markdown 的简历文件（可用 `unzip offered_resume_md.zip -d offered_resume` 重置）。
+
+2. **Step Resume 1：把简历转换成 Query 配置**
+   ```bash
+   OUT_PATH=configs/generated/offered_resume_queries_llm.json \
+   MAX_WORKERS=16 \
+   bash scripts/step_resume_generate_configs.sh offered_resume
+   ```
+   - 输出：`configs/generated/offered_resume_queries_llm.json`（全量）与 `configs/generated/offered_resume_queries_llm_achievable.json`（`is_achieveable=true` 子集）。
+   - `STEP1` 脚本自动 `source API_Key.md` 并调用 `generate_resume_queries_llm.py`，支持 `MAX_WORKERS`、`RESUME_DIR(S)` 环境变量或直接传参；默认扫描 `offered_resume/` 与 `new/` 子目录。
+
+3. **Step Resume 2：执行端到端查询构建（含检索、Ground Truth、打包）**
+   ```bash
+   CONFIG_PATH=configs/generated/offered_resume_queries_llm_refined.json \
+   OUTPUT_FILE=output/offered_resume_queries_llm.jsonl \
+   PACKAGE_DIR=packages/offered_resume_llm \
+   LIMIT=80 \
+   MAX_WORKERS=16 \
+   SPLIT_VIEWS=0 \
+   bash scripts/step2_generate_queries.sh
+   ```
+   - `step2_generate_queries.sh` 现在支持 `CONFIG_PATH/CONFIG_PATHS`（绝对或相对路径）、`OUTPUT_FILE`、`PACKAGE_DIR`，以及 `LIMIT`、`MAX_WORKERS`、`SKIP_DOWNLOADS`、`SPLIT_VIEWS`、`NO_INVERSE`、`BUILD_INCREMENTAL` 等常规开关。
+   - 产物：`OUTPUT_FILE`（JSONL）、`PACKAGE_DIR/**`（完整包）、`final_packages/**`（瘦身包由 `build_queries.py` 负责）。
+
+4. **（可选）一键串联**
+   ```bash
+   GENERATE_RESUME_SEEDS=1 \
+   STEP1_MAX_WORKERS=16 \
+   STEP2_MAX_WORKERS=16 \
+   bash scripts/run_full_resume_llm.sh
+   ```
+   - `run_full_resume_llm.sh` 现已仅作包装器：根据 `GENERATE_RESUME_SEEDS` 决定是否调用 Step Resume 1，然后总是执行 `scripts/step2_generate_queries.sh`（默认 `SPLIT_VIEWS=0`，可用 `RESUME_SPLIT_VIEWS` 覆盖）。
+   - 可继续通过 `CONFIG_OUT`/`OUTPUT_FILE`/`PACKAGE_BASE` (`PACKAGE_DIR`)/`RESUME_DIR`/`LIMIT` 等环境变量自定义输入输出。
+
+依照以上分步或一键流程，可在 `release_cnaa/` 子集内完成“简历 → Query Seed → 最终包”的闭环。
