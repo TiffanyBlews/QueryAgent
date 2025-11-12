@@ -41,10 +41,15 @@ export SERPER_API_KEY="serper-..."
 
 ## 端到端流水线 (Process)
 
-1. **生成职业任务配置** (`scripts/step1_generate_configs.sh` → `scripts/generate_profession_configs.py`)
-   - 输入：taxonomy 中的行业/职业、历史任务（若 `--incremental`）。
-   - 操作：针对每个职业向 LLM 发送带 SOP 约束的 prompt，要求产出 L3/L4/L5 三个任务：包含 `scenario`、`task_focus`、`deliverable_requirements`、`evaluation_focus`、`search_queries`。
-   - 产物：默认写入 `configs/generated_cn_ai/<industry>.json`（可用 `OUTPUT_CONFIG_DIR` 改写）。`--incremental` 会合并已有任务、自动跳过重复 `query_id`；`--target-per-profession` 控制每个职业的任务条数。
+1. **生成职业任务配置（任选其一）**
+   - **Taxonomy 路径** (`scripts/step1_generate_configs.sh` → `scripts/generate_profession_configs.py`)
+     - 输入：taxonomy 中的行业/职业、历史任务（若 `--incremental`）。
+     - 操作：针对每个职业向 LLM 发送带 SOP 约束的 prompt，要求产出 L3/L4/L5 三个任务：包含 `scenario`、`task_focus`、`deliverable_requirements`、`evaluation_focus`、`search_queries`。
+     - 产物：默认写入 `configs/generated_cn_ai/<industry>.json`（可用 `OUTPUT_CONFIG_DIR` 改写）。`--incremental` 会合并已有任务、自动跳过重复 `query_id`；`--target-per-profession` 控制每个职业的任务条数。
+   - **简历路径** (`scripts/step1_resume_generate_configs.sh` → `scripts/generate_resume_queries_llm.py`)
+     - 输入：`offered_resume/**/*.md`（或通过 CLI 参数、`RESUME_DIRS=dir1,dir2`、`RESUME_DIR=dir` 指定的目录，默认再追加 `new/` 子目录）。脚本会自动 `source API_Key.md` 获取 `MODEL`、`OPENAI_BASE_URL`、`OPENAI_API_KEY` 等凭证。
+     - 操作：`generate_resume_queries_llm.py` 并发（`MAX_WORKERS`）调用 LLM 抽取每份简历中的项目经历，补齐 `scenario`、`task_focus`、`deliverable_requirements`、`evaluation_focus` 与 `search_queries`，并输出结构化查询种子。
+     - 产物：`OUT_PATH`（默认 `configs/generated/offered_resume_queries_llm.json`）以及 `_achievable` 子集，可直接作为 Step 2 的输入。
 
 2. **构造可执行评估任务** (`scripts/step2_generate_queries.sh` → `build_queries.py` + `query_agent/*`)
    - `load_specs` 读取 `configs/generated_cn_ai/*.json` 中的规格（脚本会检查目录是否存在，若缺失请先运行 Step 1），并补齐 persona、context、search query（可通过 `LLM_SEARCH_QUERY=1` 让 LLM 重写检索词）。
@@ -69,6 +74,11 @@ pip install -r requirements.txt
 
 # Step 1：生成/刷新职业任务配置
 LIMIT=5 bash scripts/step1_generate_configs.sh          # LIMIT 控制抽样职业数
+
+# Step 1（简历路径，可选）
+OUT_PATH=configs/generated/offered_resume_queries_llm.json \
+RESUME_DIR=offered_resume \
+bash scripts/step1_resume_generate_configs.sh
 
 # Step 2：基于配置批量生成任务、打包产物
 MAX_WORKERS=16 bash scripts/step2_generate_queries.sh 2_2_02.json 4_4_02.json
@@ -128,10 +138,10 @@ python3 scripts/analyse_cn_ai_output.py --input output/cn_ai_class --report repo
    ```bash
    OUT_PATH=configs/generated/offered_resume_queries_llm.json \
    MAX_WORKERS=16 \
-   bash scripts/step_resume_generate_configs.sh offered_resume
+   bash scripts/step1_resume_generate_configs.sh offered_resume
    ```
    - 输出：`configs/generated/offered_resume_queries_llm.json`（全量）与 `configs/generated/offered_resume_queries_llm_achievable.json`（`is_achieveable=true` 子集）。
-   - `STEP1` 脚本自动 `source API_Key.md` 并调用 `generate_resume_queries_llm.py`，支持 `MAX_WORKERS`、`RESUME_DIR(S)` 环境变量或直接传参；默认扫描 `offered_resume/` 与 `new/` 子目录。
+   - `step1_resume_generate_configs.sh` 会自动 `source API_Key.md`，然后把 CLI 传入目录 > `RESUME_DIRS=dir1,dir2` > `RESUME_DIR=dir` > 默认 `offered_resume/` + `offered_resume/new/` 的优先级解析成绝对路径，再将 `OUT_PATH`、`MAX_WORKERS`、`MODEL`、`OPENAI_BASE_URL`、`OPENAI_API_KEY` 等环境变量传给 `generate_resume_queries_llm.py`。
 
 3. **Step Resume 2：执行端到端查询构建（含检索、Ground Truth、打包）**
    ```bash
